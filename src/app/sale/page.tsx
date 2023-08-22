@@ -1,20 +1,12 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import react from 'react'
-import dynamic from 'next/dynamic'
- 
 
- 
-
-    
- 
- const Home = () => {
-  
-  return (
-    <html lang = "en">
+export default function Sale() {
+    return (
+        <html lang = "en">
       <head>
-        <meta charset = "utf-8" name = "viewport" content = "width=device-width,initial-scale=1.0"/>
-        <link rel = "stylesheet" href = "home.scss"/>
+        <meta charSet = "utf-8" name = "viewport" content = "width=device-width,initial-scale=1.0"/>
+        <link rel = "stylesheet" href = "sale.scss"/>
       </head>
 
       <body>
@@ -29,7 +21,7 @@ import dynamic from 'next/dynamic'
           </div>
           <ul>
             <li><Link href = "/about">O MNIE</Link></li>
-            <li><Link href = "/pages/offer">OFERTA</Link></li>
+            <li><Link href = "/offer">OFERTA</Link></li>
             <li><Link href = "/priceList">CENNIK</Link></li>
             <li><Link href = "/sale">PROMOCJA</Link></li>
             <li><Link href = "/contact">KONTAKT</Link></li>
@@ -37,9 +29,5 @@ import dynamic from 'next/dynamic'
         </header>
     </body>
     </html>
-  )
+    )
 }
-export default Home;
-
-
-
