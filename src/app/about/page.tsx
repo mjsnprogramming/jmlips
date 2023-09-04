@@ -9,6 +9,9 @@ export default function About() {
       <head>
         <meta charSet = "utf-8" name = "viewport" content = "width=device-width,initial-scale=1.0"/>
         <link rel = "stylesheet" href = "styles/about.scss"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com"/>
+        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet"/>
       </head>
 
       <body>
@@ -29,6 +32,14 @@ export default function About() {
           </ul>
           </div>
         </header>
+
+        <main>
+          <div id = "main">
+            <div id = "firstImage">
+              <Image src = "/images/about.jpg" alt = "about" width = "500" height = "500"></Image>
+            </div>
+          </div>
+        </main>
     </body>
     </html>
     )
