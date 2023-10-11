@@ -61,9 +61,13 @@ export default function About() {
 
             <div id = "experience">
               <h1 className = "text-center">DoŚwiadczenie i Profesjonalizm</h1>
-              <p className = "text-center">Z 3 latami doświadczenia w branży, jestem pewna, że razem możemy osiągnąć najlepsze wyniki. 
+              <p className = "text-center ml-40 mr-40">Z 3 latami doświadczenia w branży, jestem pewna, że razem możemy osiągnąć najlepsze wyniki. 
               Moja praktyka opiera się na najwyższych standardach opieki medycznej, a moje umiejętności stale się rozwijają dzięki uczestnictwu w kursach i szkoleniach. 
               Bezpieczeństwo i zadowolenie pacjenta zawsze są dla mnie priorytetem.</p>
+              <div id = "certificateImage" className = "mt-20 flex justify-center">
+                <Image src = "/../images/certificate1.jpg" alt = "certificate" width = "500" height = "500"></Image>
+                <Image src = "/../images/certificate2.jpg" alt = "certificate" width = "500" height = "700" className = "ml-20"></Image>
+              </div>
             </div>
 
             <div id = "individual">

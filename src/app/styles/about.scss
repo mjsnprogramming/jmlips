@@ -83,7 +83,8 @@
 }
 #experience {
     @include aboutMeSections;
-    height: 500px;
+    height: 1100px;
+    padding-top: 160px;
 }
 #individual {
     @include aboutMeSections;
@@ -96,4 +97,12 @@
 #aboutMeContact {
     @include aboutMeSections;
     height: 500px;
+}
+#certificateImage {
+    width: 100%;
+    height: 500px;
+    float: left;
+    img {
+        border-radius: 120px;
+    }
 }
