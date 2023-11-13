@@ -71,8 +71,8 @@ export default function About() {
             </div>
 
             <div id = "individual">
-              <h1>Indywidualne podejście</h1>
-              <p>Rozumiem, że każdy ma swoje własne cele i oczekiwania co do wyglądu. 
+              <h1 className = "text-center">Indywidualne podejście</h1>
+              <p className = "text-center ml-40 mr-40">Rozumiem, że każdy ma swoje własne cele i oczekiwania co do wyglądu. 
                 Dlatego zawsze zaczynamy od indywidualnej konsultacji, podczas której możemy omówić Twoje potrzeby i cele. 
                 Razem opracujemy plan zabiegowy, który będzie dostosowany do Ciebie, abyś mógł osiągnąć upragniony efekt.</p>
             </div>

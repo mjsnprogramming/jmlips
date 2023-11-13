@@ -131,6 +131,7 @@
 #aboutMeContact {
   width: 100%;
   height: 500px;
+  background-color: aqua;
 }
 #aboutMeContact h1 {
   font-size: 40px;

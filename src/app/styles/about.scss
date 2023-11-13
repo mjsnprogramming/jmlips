@@ -89,14 +89,17 @@
 #individual {
     @include aboutMeSections;
     height: 500px;
+    
 }
 #naturalness {
     @include aboutMeSections;
     height: 500px;
+    
 }
 #aboutMeContact {
     @include aboutMeSections;
     height: 500px;
+    background-color: aqua;
 }
 #certificateImage {
     width: 100%;
