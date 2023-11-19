@@ -1,5 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import './/styles/home.scss'
+import 'tailwindcss/tailwind.css'
  
  export default function Home() {
   
@@ -22,7 +24,7 @@ import Link from 'next/link'
           </div>
           <ul>
             <li><Link href = "/about">O MNIE</Link></li>
-            <li><Link href = "/pages/offer">OFERTA</Link></li>
+            <li><Link href = "/offer">OFERTA</Link></li>
             <li><Link href = "/priceList">CENNIK</Link></li>
             <li><Link href = "/sale">PROMOCJA</Link></li>
             <li><Link href = "/contact">KONTAKT</Link></li>
