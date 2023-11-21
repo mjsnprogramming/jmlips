@@ -5,6 +5,31 @@
     position: absolute;
     left: 475px;
 }
+@mixin pricingArea {
+    width: 50%;
+    height: 300px;
+    background-color: white;
+    color: black;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 50px;
+    border-radius: 24px;
+    box-shadow: 0 0 10px 10px rgb(226, 223, 218);
+    h1 {
+        font-size: 30px;
+        margin-left: 10px;
+        padding-top: 20px;
+        color:rgb(224, 180, 93);
+    }
+    p {
+        font-size: 20px;
+        line-height: 50px;
+        margin-left: 20px;
+        color:rgb(157, 146, 125);
+        margin-top: 5px;
+    }
+}
 
 * {
     margin: 0;
@@ -37,33 +62,11 @@
 }
 #mainPriceList {
     width: 100%;
-    height: 500px;
+    height: 1500px;
     background-color: rgb(247, 235, 222);
 }
 #lipsModelling {
-    width: 50%;
-    height: 300px;
-    background-color: white;
-    color: black;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
-    top: 50px;
-    border-radius: 24px;
-    box-shadow: 0 0 10px 10px rgb(226, 223, 218);
-    h1 {
-        font-size: 30px;
-        margin-left: 10px;
-        padding-top: 20px;
-        color:rgb(224, 180, 93);
-    }
-    p {
-        font-size: 20px;
-        line-height: 50px;
-        margin-left: 20px;
-        color:rgb(157, 146, 125);
-        margin-top: 5px;
-    }
+    @include pricingArea;
     .revolaxPrice{
         @include spanPriceStyle;
         top: 70px;
@@ -80,4 +83,49 @@
         @include spanPriceStyle;
         top: 230px;
     }
+}
+#makeup {
+   @include pricingArea;
+   top: 200px;
+    .eyebrowsPrice {
+        @include spanPriceStyle;
+        top: 70px;
+   }
+    .consultationPrice {
+        @include spanPriceStyle;
+        top: 123px;
+   }
+    .adjustmentPrice {
+        @include spanPriceStyle;
+        top: 175px;
+   }
+   .pigmentationPrice {
+        @include spanPriceStyle;
+        top: 230px;
+   }
+}
+#mesotherapy {
+    @include pricingArea;
+    top: 400px;
+    height: 400px;
+     .facePrice {
+        @include spanPriceStyle;
+        top: 70px;
+     }
+     .faceNeckPrice {
+        @include spanPriceStyle;
+        top: 123px;
+     }
+     .faceNeckCleavagePrice {
+        @include spanPriceStyle;
+        top: 175px;
+     }
+     .headSkinPrice {
+        @include spanPriceStyle;
+        top: 230px;
+     }
+     .biorepeelPrice {
+        @include spanPriceStyle;
+        top: 285px;
+     }
 }
