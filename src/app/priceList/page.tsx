@@ -20,7 +20,7 @@ export default function PriceList() {
             <div id = "headerMenu">
               <div id = "logo" >
                 <Link href = "/">
-                  <Image src = "" alt = "logo"></Image>
+                  <Image src = "/../../../images/logo.jpg" className = "logo" alt = "logo" width = "100" height = "100"></Image>
                 </Link>
               </div>
             <ul className = "flex justify-center items-center">
@@ -55,7 +55,7 @@ export default function PriceList() {
                 <h1 className = "font-black">MEZOTERAPIA IGŁOWA</h1>
                 <p className = "font-medium">Twarz</p><span className = "facePrice">130 zł</span>
                 <p className = "font-medium">Twarz szyja</p><span className = "faceNeckPrice">300 zł</span>
-                <p className = "font-medium">Twarz szyja dekolt</p><span className = "faceNeckCleavagePrice">350 zł</span>
+                <p className = "font-medium">Twarz szyja dekolt</p><span className = "faceNeckCleavagePrice">350  zł</span>
                 <p className = "font-medium">Skóra głowy</p><span className = "headSkinPrice">450 zł</span>
                 <p className = "font-medium">Biorepeel twarz</p><span className = "biorepeelPrice">200 zł</span>
               </div>

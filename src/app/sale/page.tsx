@@ -15,7 +15,7 @@ export default function Sale() {
           <div id = "header_menu">
             <div id = "logo">
               <Link href = "/">
-                <Image src = "" alt = "logo"></Image>
+                <Image src = "/../../../images/logo.jpg" className = "logo" alt = "logo" width = "100" height = "100"></Image>
               </Link>
             </div>
           </div>

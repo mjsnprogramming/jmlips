@@ -20,7 +20,7 @@ export default function Offer() {
           <div id = "headerMenu">
             <div id = "logo" >
               <Link href = "/">
-                <Image src = "" alt = "logo"></Image>
+                <Image src = "/../../../images/logo.jpg" className = "logo" alt = "logo" width = "100" height = "100"></Image>
               </Link>
             </div>
           <ul className = "flex justify-center items-center">
