@@ -61,7 +61,60 @@ export default function PriceList() {
               </div>
             </div>
           </main>
-        
+        <footer>
+          <div id = "footer">
+            <div id = "footerLogo">
+              <Image src = "" alt = "logo" width = "100" height = "100"></Image>
+            </div>
+            <div id = "socialMedia">
+              <div id = "facebook">
+
+              </div>
+              <div id = "instagram">
+
+              </div>
+              <div id = "tikTok">
+
+              </div>
+            </div>
+            <div id = "footerContact">
+              <p>Zapraszam do kontaktu telefonicznego, mailowego oraz w wiadomości na instagramie</p>
+              <p>Zadzwoń</p>
+              <p id = "mobileNumber"></p>
+              <p>Napisz</p>
+              <p id = "footerEmail"></p>
+            </div>
+
+            <div id = "JMstudioAddress">
+              <p>Julia Majewska Studio</p>
+              <p>ul. Wieniawska 8</p>
+              <p>20-400 Lublin</p>
+            </div>
+
+            <div id = "regulations">
+              <p id = "privacyPolicy">Polityka prywatności</p>
+              <p id = "footerStatute">Regulamin</p>
+            </div>
+
+            <div id = "footerProducts">
+              <ul>
+                <li>Revolax</li>
+                <li>Juvederm</li>
+                <li>Hialuronidaza</li>
+                <li>Biorepeel</li>
+              </ul>
+            </div>
+
+            <div id = "creator">
+              <div id = "copyright">
+                <p>Copyright Julia Majewska Studio 2024</p>
+              </div>
+              <div id = "createdBy">
+                <p>Created by MJSN</p>
+              </div>
+            </div>
+            </div>
+        </footer>
     </body>
     </html>
     )
