@@ -20,7 +20,7 @@ export default function PriceList() {
             <div id = "headerMenu">
               <div id = "logo" >
                 <Link href = "/">
-                  <Image src = "/../../../images/logo.jpg" className = "logo" alt = "logo" width = "100" height = "100"></Image>
+                  <Image src = "/../../images/logo.jpg" className = "logo" alt = "logo" width = "100" height = "100"></Image>
                 </Link>
               </div>
             <ul className = "flex justify-center items-center">
@@ -64,7 +64,7 @@ export default function PriceList() {
         <footer>
           <div id = "footer">
             <div id = "footerLogo">
-              <Image src = "" alt = "logo" width = "100" height = "100"></Image>
+              <Image src = "/../../images/logo.jpg" alt = "logo" width = "100" height = "100"></Image>
             </div>
             <div id = "socialMedia">
               <div id = "facebook">
