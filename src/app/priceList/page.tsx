@@ -3,6 +3,13 @@ import Link from 'next/link'
 import '../styles/pricelist.scss'
 import 'tailwindcss/tailwind.css'
 
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFacebook, faInstagram, faTiktok } from '@fortawesome/free-brands-svg-icons'
+
+
+
+
 export default function PriceList() {
     return (
         <html lang = "en">
@@ -68,21 +75,21 @@ export default function PriceList() {
             </div>
             <div id = "socialMedia">
               <div id = "facebook">
-
+                <Link href = "https://www.facebook.com/" target='blank'><FontAwesomeIcon icon={faFacebook} /></Link>
               </div>
               <div id = "instagram">
-
+                <Link href = "https://www.instagram.com/" target='blank'><FontAwesomeIcon icon = {faInstagram}/></Link>
               </div>
               <div id = "tikTok">
-
+                <Link href = "https://www.tiktok.com/" target='blank'><FontAwesomeIcon icon = {faTiktok} /></Link>
               </div>
             </div>
             <div id = "footerContact">
-              <p>Zapraszam do kontaktu telefonicznego, mailowego oraz w wiadomości na instagramie</p>
-              <p>Zadzwoń</p>
-              <p id = "mobileNumber"></p>
-              <p>Napisz</p>
-              <p id = "footerEmail"></p>
+              <p>Zapraszam do kontaktu telefonicznego, mailowego oraz w wiadomości na Instagramie</p>
+    
+              <p id = "mobileNumber">Zadzwoń: +48 657391939</p>
+              
+              <p id = "footerEmail">Napisz: juliamjaewskaxdxddxd@gmail.com</p>
             </div>
 
             <div id = "JMstudioAddress">
