@@ -229,14 +229,17 @@
 
 #footer {
   width: 100%;
-  height: 500px;
-  margin: 0;
+  height: 700px;
+  margin-top: 70px;
   color: rgb(185, 156, 94);
+  position: relative;
 }
 
 #footerLogo {
   position: relative;
-  top: 70px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 #footerLogo img {
   margin-left: auto;
@@ -248,10 +251,11 @@
 #footerContact {
   width: 600px;
   height: 400px;
-  position: relative;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 100px;
+  position: absolute;
+  top: 380px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  float: left;
 }
 #footerContact p {
   text-align: center;
@@ -273,26 +277,39 @@
   font-size: 20px;
   color: grey;
 }
-#footerContact p:nth-child(4) {
-  font-size: 20px;
-  color: grey;
-  margin-top: 20px;
-  left: 194px;
-}
-#footerContact #igContact {
-  width: 200px;
-  height: 30px;
-}
 #footerContact #mobileNumber {
   margin-left: -148px;
 }
 
+#igContact {
+  width: 200px;
+  height: 30px;
+  margin-top: 20px;
+  margin-left: 120px;
+  clear: both;
+}
+#igContact li {
+  list-style-type: none;
+  color: grey;
+  margin-left: 50px;
+  margin-top: -31px;
+  font-size: 20px;
+  font-family: "Playfair Display";
+}
+
 #socialMedia {
   width: 200px;
-  height: 50px;
+  height: 90px;
   position: relative;
   left: 85%;
-  margin-top: 100px;
+  margin-top: -70px;
+  float: left;
+}
+#socialMedia h1 {
+  font-size: 20px;
+  text-transform: uppercase;
+  font-family: "Playfair Display";
+  font-weight: 600;
 }
 
 #facebook, #instagram, #tikTok {
@@ -300,14 +317,18 @@
   width: 40px;
   height: 40px;
   margin-left: 20px;
+  position: relative;
+  left: -15px;
+  margin-top: 10px;
 }
 
 #JMstudioAddress {
   width: 300px;
   height: 300px;
-  position: relative;
+  position: absolute;
   left: 7%;
-  top: -400px;
+  top: 180px;
+  float: left;
 }
 #JMstudioAddress h1 {
   font-size: 25px;
@@ -340,20 +361,44 @@
 #footerProducts {
   width: 300px;
   height: 300px;
-  background-color: aqua;
-  position: relative;
-  left: 80%;
-  top: -700px;
+  position: absolute;
+  left: 75%;
+  float: left;
+  top: 180px;
+}
+#footerProducts h1 {
+  font-size: 25px;
+  font-weight: 600;
+  font-family: "Playfair Display";
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  text-align: center;
+}
+#footerProducts ul li {
+  font-size: 20px;
+  font-family: "Playfair Display";
+  font-weight: 500;
+  text-align: center;
+  margin-top: 20px;
+  letter-spacing: 1px;
 }
 
 #creator {
-  width: 1000px;
-  height: 30px;
-  background-color: aqua;
-  position: relative;
-}
-
-#createdBy {
+  width: 100%;
+  height: 40px;
   position: absolute;
-  left: 500px;
+  top: 700px;
+}
+#creator #copyright {
+  position: absolute;
+  left: 15%;
+  font-size: 20px;
+  font-weight: 600;
+}
+#creator #mjsn {
+  position: absolute;
+  left: 75%;
+  font-size: 20px;
+  font-weight: 600;
 }/*# sourceMappingURL=pricelist.css.map */

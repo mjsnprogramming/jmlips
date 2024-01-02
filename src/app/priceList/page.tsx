@@ -92,7 +92,10 @@ export default function PriceList() {
               
               <p id = "footerEmail">Napisz: juliamjaewskaxdxddxd@gmail.com</p>
 
-              <p id = "igContact"><FontAwesomeIcon icon = {faInstagram}/><Link href = "https://www.instagram.com/">Instagram</Link></p>
+              <div id = "igContact">
+              <FontAwesomeIcon icon = {faInstagram} width = "30px" height = "30px"/>
+              <li><Link href = "https://www.instagram.com/">Instagram</Link></li>
+              </div>
             </div>
 
             <div id = "JMstudioAddress">
@@ -115,12 +118,8 @@ export default function PriceList() {
             </div>
 
             <div id = "creator">
-              <div id = "copyright">
-                <p>Copyright Julia Majewska Studio 2024</p>
-              </div>
-              <div id = "createdBy">
-                <p>Created by MJSN</p>
-              </div>
+                <span id = "copyright">&copy; Copyright Julia Majewska Studio 2024</span>
+                <span id = "mjsn">Created by MJSN</span>
             </div>
             </div>
         </footer>
