@@ -27,4 +27,105 @@
 }
 #headerMenu ul li a {
   text-decoration: none;
+}
+
+#contactCaption {
+  width: 50%;
+  height: 500px;
+  float: left;
+}
+#contactCaption li:nth-child(1) {
+  font-size: 15px;
+  font-weight: 600;
+  font-family: "Playfair Display";
+  list-style-type: none;
+  color: rgb(224, 180, 93);
+  position: relative;
+  top: 50px;
+  left: 50px;
+}
+#contactCaption span:nth-child(2) {
+  font-size: 15px;
+  font-weight: 600px;
+  font-family: "Playfair Display";
+  color: grey;
+  position: relative;
+  top: 25px;
+  left: 160px;
+}
+#contactCaption h1:nth-child(3) {
+  font-size: 170px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  font-style: italic;
+  font-family: "Cinzel Decorative";
+  position: relative;
+  top: 50px;
+  left: 100px;
+}
+#contactCaption p:nth-child(4) {
+  font-size: 30px;
+  font-weight: 400;
+  font-family: "Playfair Display";
+  position: relative;
+  top: 40px;
+  left: 150px;
+}
+
+#contactPageImage {
+  width: 50%;
+  height: 500px;
+  float: left;
+}
+#contactPageImage img {
+  width: 800px;
+  height: 450px;
+  -webkit-clip-path: ellipse(60% 51% at 71% 51%);
+          clip-path: ellipse(60% 51% at 71% 51%);
+  position: relative;
+  top: 50px;
+  float: right;
+}
+
+#contactInformation {
+  margin-top: 250px;
+  width: 50%;
+  height: 500px;
+  float: left;
+}
+#contactInformation h1:nth-child(1) {
+  font-size: 60px;
+  position: relative;
+  left: 150px;
+  line-height: 50px;
+}
+#contactInformation h2:nth-child(2) {
+  font-size: 40px;
+  font-family: "Playfair Display";
+  position: relative;
+  top: 50px;
+  left: 180px;
+  color: grey;
+}
+#contactInformation p:nth-child(3),
+#contactInformation p:nth-child(4) {
+  font-size: 20px;
+  position: relative;
+  top: 100px;
+  left: 180px;
+  color: rgb(224, 180, 93);
+}
+#contactInformation p:nth-child(5),
+#contactInformation p:nth-child(6) {
+  font-size: 20px;
+  position: relative;
+  top: 150px;
+  left: 180px;
+  color: grey;
+}
+
+#googleMaps {
+  width: 50%;
+  height: 500px;
+  float: left;
 }/*# sourceMappingURL=contact.css.map */

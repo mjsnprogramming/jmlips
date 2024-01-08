@@ -3,6 +3,11 @@ import Link from 'next/link'
 import '../styles/contact.scss'
 import 'tailwindcss/tailwind.css'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faInstagram } from '@fortawesome/free-brands-svg-icons'
+
+
+
 export default function Contact() {
     return (
         <html lang = "en">
@@ -35,10 +40,10 @@ export default function Contact() {
 
         <main>
           <div id = "contactCaption">
-            <span>Strona główna {'>'} </span>
+            <li><Link href = "/../">Strona główna {'>'}</Link></li>
             <span>Kontakt</span>
             <h1>Kontakt</h1>
-            <p>Skontaktuj się z nami {'–'} Julia Majewska Studio czeka na Twój kontakt!</p>
+            <p>Skontaktuj się z nami {'–'} Julia Majewska Studio <br></br>czeka na Twój kontakt!</p>
           </div>
 
           <div id = "contactPageImage">
@@ -48,6 +53,18 @@ export default function Contact() {
           <div id = "contactInformation">
             <h1>Witam w Julia Majewska Studio!</h1>
             <h2>JULIA MAJEWSKA STUDIO</h2>
+            <p>ul. Wieniawska 8</p>
+            <p>20-400 Lublin</p>
+            <p>tel. 345 678 242</p>
+            <p>e-mail: julia@xdxddf24234@gmail.com</p>
+            <div id = "igContactPage">
+              <FontAwesomeIcon icon = {faInstagram}  width = "30px" height = "30px"/>
+              <li><Link href = "https://www.instagram.com/">Instagram</Link></li>
+              </div>
+          </div>
+
+          <div id = "googleMaps">
+
           </div>
         </main>
         </body>
