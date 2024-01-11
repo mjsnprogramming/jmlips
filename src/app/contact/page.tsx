@@ -4,7 +4,7 @@ import '../styles/contact.scss'
 import 'tailwindcss/tailwind.css'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faInstagram } from '@fortawesome/free-brands-svg-icons'
+import { faInstagram, faFacebook, faTiktok } from '@fortawesome/free-brands-svg-icons'
 
 
 
@@ -58,15 +58,71 @@ export default function Contact() {
             <p>tel. 345 678 242</p>
             <p>e-mail: julia@xdxddf24234@gmail.com</p>
             <div id = "igContactPage">
-              <FontAwesomeIcon icon = {faInstagram}  width = "30px" height = "30px"/>
-              <li><Link href = "https://www.instagram.com/">Instagram</Link></li>
+              <FontAwesomeIcon className = "iconContact" icon = {faInstagram}  width = "30px" height = "30px"/>
+              <li><Link href = "https://www.instagram.com/">INSTAGRAM</Link></li>
               </div>
           </div>
 
           <div id = "googleMaps">
-
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2497.3834766030477!2d22.551970800000003!3d51.2488484!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47225766e33247c7%3A0x30aa1000c22e0e17!2sWieniawska%208%2C%2020-400%20Lublin!5e0!3m2!1spl!2spl!4v1704996540658!5m2!1spl!2spl" width="600" height="450" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
           </div>
         </main>
+
+        <footer>
+          <div id = "footer">
+            <div id = "footerLogo">
+              <Image src = "/../../images/logo.jpg" alt = "logo" width = "100" height = "100"></Image>
+            </div>
+            <div id = "socialMedia">
+              <h1>Obserwuj mnie</h1>
+              <div id = "facebook">
+                <Link href = "https://www.facebook.com/" target='blank' title = "facebook"><FontAwesomeIcon icon={faFacebook} /></Link>
+              </div>
+              <div id = "instagram">
+                <Link href = "https://www.instagram.com/" target='blank' title = "instagram"><FontAwesomeIcon icon = {faInstagram}/></Link>
+              </div>
+              <div id = "tikTok">
+                <Link href = "https://www.tiktok.com/" target='blank' title = "tikTok"><FontAwesomeIcon icon = {faTiktok} /></Link>
+              </div>
+            </div>
+            <div id = "footerContact">
+              <p>Zapraszam do kontaktu</p>
+    
+              <p id = "mobileNumber">Zadzwoń: +48 657391939</p>
+              
+              <p id = "footerEmail">Napisz: juliamjaewskaxdxddxd@gmail.com</p>
+
+              <div id = "igContact">
+              <FontAwesomeIcon icon = {faInstagram} width = "30px" height = "30px"/>
+              <li><Link href = "https://www.instagram.com/">Instagram</Link></li>
+              </div>
+            </div>
+
+            <div id = "JMstudioAddress">
+              <h1>KONTAKT</h1>
+              <p>Julia Majewska Studio</p>
+              <p>ul. Wieniawska 8</p>
+              <p>20-400 Lublin</p>
+              <li><Link href = ""><p id = "privacyPolicy">Polityka prywatności</p></Link></li>
+              <li><Link href = ""><p id = "footerStatute">Regulamin</p></Link></li>
+            </div>
+  
+            <div id = "footerProducts">
+              <h1>Oferta</h1>
+              <ul>
+                <li>Revolax</li>
+                <li>Juvederm</li>
+                <li>Hialuronidaza</li>
+                <li>Biorepeel</li>
+              </ul>
+            </div>
+
+            <div id = "creator">
+                <span id = "copyright">&copy; Copyright Julia Majewska Studio 2024</span>
+                <span id = "mjsn">Created by MJSN</span>
+            </div>
+            </div>
+        </footer>
         </body>
         </html>
     )}
