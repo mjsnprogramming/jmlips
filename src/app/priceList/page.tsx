@@ -53,8 +53,8 @@ export default function PriceList() {
               <div id = "makeup">
                 <h1 className = "font-black">MAKIJAŻ PERMANENTNY</h1>
                 <p className = "font-medium">Brwi </p><span className = "eyebrowsPrice">500 zł</span>
-                <p className = "font-medium">Konsultacja + rysunek</p><span className = "consultationPrice">50 zł</span>
-                <p className = "font-medium">Korekta do 10 tygodni</p><span className = "adjustmentPrice">150 zł</span>
+                <p className = "font-medium">Konsultacja + rysunek</p><span className = "consultationPrice">50 &nbsp;&nbsp;zł</span>
+                <p className = "font-medium">Korekta do 10 tygodni</p><span className = "adjustmentPrice">150 &nbsp;zł</span>
                 <p className = "font-medium">Dopigmentowanie do 1,5 roku</p><span className = "pigmentationPrice">400 zł</span>              
               </div>
 

@@ -75,7 +75,7 @@ $playfairDisplay: "Playfair Display";
 }
 #lipsModelling {
     @include pricingArea;
-    .revolaxPrice{
+    .revolaxPrice {
         @include spanPriceStyle;
         top: 70px;
     }
@@ -305,5 +305,63 @@ $playfairDisplay: "Playfair Display";
         left: 75%;
         font-size: 20px;
         font-weight: 600;
+    }
+}
+@media only screen and (max-width: 1580px) {
+    #lipsModelling {
+        .revolaxPrice,
+        .juvedermPrice,
+        .moisturizingPrice,
+        .hialoPrice {
+            left: 85%;
+        }
+    }
+    #makeup {
+        .eyebrowsPrice,
+        .consultationPrice,
+        .adjustmentPrice,
+        .pigmentationPrice {
+            left: 85%;
+        }
+    }
+    #mesotherapy {
+        .facePrice,
+        .faceNeckPrice,
+        .faceNeckCleavagePrice,
+        .headSkinPrice,
+        .biorepeelPrice {
+            left: 85%;
+        }
+    }
+
+}
+@media only screen and (max-width: 1234px) {
+    #lipsModelling,
+    #makeup,
+    #mesotherapy {
+        width: 80%;
+    }
+}
+@media only screen and (max-width: 760px) {
+    #lipsModelling,
+    #makeup,
+    #mesotherapy {
+        width: 95%;
+    }
+}
+@media only screen and (max-width: 602px) {
+    #lipsModelling {
+        .font-black {
+            font-size: 20px;
+        }
+        .font-medium {
+            font-size: 15px;
+        }
+        .revolaxPrice,
+        .juvedermPrice,
+        .moisturizingPrice,
+        .hialoPrice {
+            left: 70%;
+        }
     }
 }
