@@ -44,27 +44,27 @@ export default function PriceList() {
             <div id = "mainPriceList">
               <div id = "lipsModelling">
                  <h1 className = "font-black">POWIĘKSZANIE/MODELOWANIE UST</h1>
-                 <p className = "font-medium">Revolax/Stylage - 1ml</p><span className = "revolaxPrice">600 zł</span>
-                 <p className = "font-medium">Juvederm Ultra 2 - 0.55ml</p><span className = "juvedermPrice">450 zł</span>
-                 <p className = "font-medium">Nawilżenie ust bez powiększenia</p><span className = "moisturizingPrice">500 zł</span>
-                 <p className = "font-medium">Hialuronidaza</p><span className = "hialoPrice">500 zł</span>
+                 <p className = "font-medium">Revolax/Stylage - 1ml</p><span className = "revolaxPrice under600pxPrice">600 zł</span>
+                 <p className = "font-medium">Juvederm Ultra 2 - 0.55ml</p><span className = "juvedermPrice under600pxPrice">450 zł</span>
+                 <p className = "font-medium">Nawilżenie ust bez powiększenia</p><span className = "moisturizingPrice under600pxPrice">500 zł</span>
+                 <p className = "font-medium">Hialuronidaza</p><span className = "hialoPrice under600pxPrice">500 zł</span>
               </div>
 
               <div id = "makeup">
                 <h1 className = "font-black">MAKIJAŻ PERMANENTNY</h1>
-                <p className = "font-medium">Brwi </p><span className = "eyebrowsPrice">500 zł</span>
-                <p className = "font-medium">Konsultacja + rysunek</p><span className = "consultationPrice">50 &nbsp;&nbsp;zł</span>
-                <p className = "font-medium">Korekta do 10 tygodni</p><span className = "adjustmentPrice">150 &nbsp;zł</span>
-                <p className = "font-medium">Dopigmentowanie do 1,5 roku</p><span className = "pigmentationPrice">400 zł</span>              
+                <p className = "font-medium">Brwi </p><span className = "eyebrowsPrice under600pxPrice">500 zł</span>
+                <p className = "font-medium">Konsultacja + rysunek</p><span className = "consultationPrice under600pxPrice">50 &nbsp;&nbsp;zł</span>
+                <p className = "font-medium">Korekta do 10 tygodni</p><span className = "adjustmentPrice under600pxPrice">150 &nbsp;zł</span>
+                <p className = "font-medium">Dopigmentowanie do 1,5 roku</p><span className = "pigmentationPrice under600pxPrice">400 zł</span>              
               </div>
 
               <div id = "mesotherapy">
                 <h1 className = "font-black">MEZOTERAPIA IGŁOWA</h1>
-                <p className = "font-medium">Twarz</p><span className = "facePrice">130 zł</span>
-                <p className = "font-medium">Twarz szyja</p><span className = "faceNeckPrice">300 zł</span>
-                <p className = "font-medium">Twarz szyja dekolt</p><span className = "faceNeckCleavagePrice">350  zł</span>
-                <p className = "font-medium">Skóra głowy</p><span className = "headSkinPrice">450 zł</span>
-                <p className = "font-medium">Biorepeel twarz</p><span className = "biorepeelPrice">200 zł</span>
+                <p className = "font-medium">Twarz</p><span className = "facePrice under600pxPrice">130 zł</span>
+                <p className = "font-medium">Twarz szyja</p><span className = "faceNeckPrice under600pxPrice">300 zł</span>
+                <p className = "font-medium">Twarz szyja dekolt</p><span className = "faceNeckCleavagePrice under600pxPrice">350  zł</span>
+                <p className = "font-medium">Skóra głowy</p><span className = "headSkinPrice under600pxPrice">450 zł</span>
+                <p className = "font-medium">Biorepeel twarz</p><span className = "biorepeelPrice under600pxPrice">200 zł</span>
               </div>
             </div>
           </main>
