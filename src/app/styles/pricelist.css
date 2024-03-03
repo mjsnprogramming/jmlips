@@ -36,10 +36,48 @@
   text-decoration: none;
 }
 
+#pricelistCaption li:nth-child(1) {
+  font-size: 15px;
+  font-weight: 600;
+  font-family: "Playfair Display";
+  list-style-type: none;
+  color: rgb(224, 180, 93);
+  position: relative;
+  top: 50px;
+  left: 50px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+#pricelistCaption span:nth-child(2) {
+  font-size: 15px;
+  font-weight: 600px;
+  font-family: "Playfair Display";
+  color: grey;
+  position: relative;
+  top: 25px;
+  left: 160px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+#pricelistCaption h1:nth-child(3) {
+  font-size: 170px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  font-style: italic;
+  font-family: "Cinzel Decorative";
+  position: relative;
+  top: 50px;
+  left: 100px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
 #mainPriceList {
   width: 100%;
   height: 1500px;
-  background-color: rgb(255, 255, 255);
 }
 
 #lipsModelling {
@@ -401,4 +439,58 @@
   left: 75%;
   font-size: 20px;
   font-weight: 600;
+}
+
+@media only screen and (max-width: 1580px) {
+  #lipsModelling .revolaxPrice,
+  #lipsModelling .juvedermPrice,
+  #lipsModelling .moisturizingPrice,
+  #lipsModelling .hialoPrice {
+    left: 85%;
+  }
+  #makeup .eyebrowsPrice,
+  #makeup .consultationPrice,
+  #makeup .adjustmentPrice,
+  #makeup .pigmentationPrice {
+    left: 85%;
+  }
+  #mesotherapy .facePrice,
+  #mesotherapy .faceNeckPrice,
+  #mesotherapy .faceNeckCleavagePrice,
+  #mesotherapy .headSkinPrice,
+  #mesotherapy .biorepeelPrice {
+    left: 85%;
+  }
+}
+@media only screen and (max-width: 1234px) {
+  #lipsModelling,
+  #makeup,
+  #mesotherapy {
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 760px) {
+  #lipsModelling,
+  #makeup,
+  #mesotherapy {
+    width: 95%;
+  }
+}
+@media only screen and (max-width: 602px) {
+  #lipsModelling .font-black,
+  #makeup .font-black,
+  #mesotherapy .font-black {
+    font-size: 20px;
+  }
+  #lipsModelling .font-medium,
+  #makeup .font-medium,
+  #mesotherapy .font-medium {
+    font-size: 15px;
+  }
+  #lipsModelling .under600pxPrice,
+  #makeup .under600pxPrice,
+  #mesotherapy .under600pxPrice {
+    margin-top: -13px;
+    left: 70%;
+  }
 }/*# sourceMappingURL=pricelist.css.map */

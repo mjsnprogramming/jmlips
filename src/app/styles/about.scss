@@ -4,18 +4,19 @@
     font-family: "Cinzel Decorative", cursive; 
     }
 }
-@mixin pFont {
-    p {
-        font-family: "Amatic SC", cursive;
-        font-size: 40px;
-        color:rgb(224, 180, 93);
-    }
-}
 @mixin aboutMeSections {
     width: 100%;
     @include h1Font;
-    @include pFont;
 }
+
+@mixin NoneUserSelect {
+    -webkit-user-select: none; 
+    -moz-user-select: none;    
+    -ms-user-select: none;   
+    user-select: none;
+}
+
+$playfairDisplay: "Playfair Display";
 * {
     margin: 0;
 }
@@ -45,14 +46,54 @@
         }
     }
 }
+#aboutMeCaption {
+    width: 200px;
+    height: 40px;
+    position: relative;
+    top: 50px;
+    left: 50px;
+    li:nth-child(1) {
+        font-size: 15px;
+        font-weight: 600;
+        font-family: $playfairDisplay;
+        list-style-type: none;
+        color:rgb(224, 180, 93);
+        position: absolute;
+        top: 10px;
+        left: 0;
+        @include NoneUserSelect;
+    }
+    span:nth-child(2) {
+        font-size: 15px;
+        font-weight: 600px;
+        font-family: $playfairDisplay;
+        color: grey;
+        position: absolute;
+        top: 10px;
+        left: 103px;
+        @include NoneUserSelect;
+    }
+    span:nth-child(3) {
+        font-size: 15px;
+        font-weight: 600px;
+        font-family: $playfairDisplay;
+        color: grey;
+        position: absolute;
+        top: 10px;
+        left: 120px;
+        @include NoneUserSelect;
+    }
+}
 #firstImage {
      width: 45%;
      height: 500px;
-     margin-top: 40px;
+     margin-top: 30px;
+     margin-left: 0;
      float: left;
      img {
         margin-left: auto;
         margin-right: auto;
+        clip-path: polygon(0 10%,10% 0,100% 0, 100% 90%,90% 100%,0 100%)
      }
 }
 #aboutMeText {
@@ -61,11 +102,10 @@
     margin-top: 40px;
     float: left;
     @include h1Font;
-    @include pFont;
     p {
-        font-family: "Amatic SC", cursive;
-        font-size: 40px;
-        color:rgb(224, 180, 93);
+        font-family: $playfairDisplay;
+        font-size: 30px;
+        color:grey;
     }
 }
 #passion {

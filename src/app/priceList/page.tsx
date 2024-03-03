@@ -41,6 +41,10 @@ export default function PriceList() {
           </header>
 
           <main>
+            <div id = "pricelistCaption">
+              <li><Link href = "/../">Strona główna {'>'}</Link></li>
+              <span>Cennik</span>
+            </div>
             <div id = "mainPriceList">
               <div id = "lipsModelling">
                  <h1 className = "font-black">POWIĘKSZANIE/MODELOWANIE UST</h1>

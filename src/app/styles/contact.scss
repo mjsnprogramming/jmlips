@@ -1,7 +1,13 @@
 @mixin contactDivsShape {
     width: 50%;
     height: 500px;
-    float: left;
+    float: left; 
+}
+@mixin NoneUserSelect {
+    -webkit-user-select: none; 
+    -moz-user-select: none;    
+    -ms-user-select: none;   
+    user-select: none;
 }
 
 $playfairDisplay: "Playfair Display";
@@ -46,6 +52,7 @@ $playfairDisplay: "Playfair Display";
         position: relative;
         top: 50px;
         left: 50px;
+        @include NoneUserSelect;
     }
     span:nth-child(2) {
         font-size: 15px;
@@ -55,6 +62,7 @@ $playfairDisplay: "Playfair Display";
         position: relative;
         top: 25px;
         left: 160px;
+        @include NoneUserSelect;
     }
     h1:nth-child(3) {
         font-size: 170px;
@@ -65,6 +73,7 @@ $playfairDisplay: "Playfair Display";
         position: relative;
         top: 50px;
         left: 100px;
+        @include NoneUserSelect;
     }
     p:nth-child(4) {
         font-size: 30px;

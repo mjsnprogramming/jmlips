@@ -35,16 +35,25 @@ export default function About() {
 
         <main>
           <div id = "main">
+
+            <div id = "aboutMeCaption">
+              <li><Link href = "/../">Strona główna</Link></li>
+              <span>{'>'}</span>
+              <span>O mnie</span>
+            </div>
+
             <div id = "firstImage">
               <Image src = "/../images/about.jpg" alt = "about" width = "500" height = "500"></Image>
             </div>
 
             <div id = "aboutMeText">
               <h1 className = "text-center">Specjalistka od naturalnych efektów</h1>
-              <p className = "text-left ml-5 mr-5">Witaj na mojej stronie, jestem Julia Majewska, 
-                i cieszę się, że możesz poznać mnie i moją pasję do modelowania ust oraz zabiegów na twarz. 
-                Jako specjalista w dziedzinie estetyki twarzy, moim celem jest pomóc Ci osiągnąć naturalny i wyjątkowy wygląd, 
-                który podkreśli Twoje piękno w sposób subtelny i harmonijny.</p>
+                <div id = "mainParagraphAboutMe">
+                  <p className = "text-left ml-40 mr-40">Witaj na mojej stronie, jestem Julia Majewska, 
+                    i cieszę się, że możesz poznać mnie i moją pasję do modelowania ust oraz zabiegów na twarz. 
+                    Jako specjalista w dziedzinie estetyki twarzy, moim celem jest pomóc Ci osiągnąć naturalny i wyjątkowy wygląd, 
+                    który podkreśli Twoje piękno w sposób subtelny i harmonijny.</p>
+                </div>
             </div>
 
             <div id = "passion">

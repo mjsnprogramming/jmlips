@@ -29,15 +29,63 @@
   text-decoration: none;
 }
 
+#aboutMeCaption {
+  width: 200px;
+  height: 40px;
+  position: relative;
+  top: 50px;
+  left: 50px;
+}
+#aboutMeCaption li:nth-child(1) {
+  font-size: 15px;
+  font-weight: 600;
+  font-family: "Playfair Display";
+  list-style-type: none;
+  color: rgb(224, 180, 93);
+  position: absolute;
+  top: 10px;
+  left: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+#aboutMeCaption span:nth-child(2) {
+  font-size: 15px;
+  font-weight: 600px;
+  font-family: "Playfair Display";
+  color: grey;
+  position: absolute;
+  top: 10px;
+  left: 103px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+#aboutMeCaption span:nth-child(3) {
+  font-size: 15px;
+  font-weight: 600px;
+  font-family: "Playfair Display";
+  color: grey;
+  position: absolute;
+  top: 10px;
+  left: 120px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
 #firstImage {
   width: 45%;
   height: 500px;
-  margin-top: 40px;
+  margin-top: 30px;
+  margin-left: 0;
   float: left;
 }
 #firstImage img {
   margin-left: auto;
   margin-right: auto;
+  -webkit-clip-path: polygon(0 10%, 10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%);
+          clip-path: polygon(0 10%, 10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%);
 }
 
 #aboutMeText {
@@ -51,14 +99,9 @@
   font-family: "Cinzel Decorative", cursive;
 }
 #aboutMeText p {
-  font-family: "Amatic SC", cursive;
-  font-size: 40px;
-  color: rgb(224, 180, 93);
-}
-#aboutMeText p {
-  font-family: "Amatic SC", cursive;
-  font-size: 40px;
-  color: rgb(224, 180, 93);
+  font-family: "Playfair Display";
+  font-size: 30px;
+  color: grey;
 }
 
 #passion {
@@ -70,11 +113,6 @@
 #passion h1 {
   font-size: 40px;
   font-family: "Cinzel Decorative", cursive;
-}
-#passion p {
-  font-family: "Amatic SC", cursive;
-  font-size: 40px;
-  color: rgb(224, 180, 93);
 }
 #passion img {
   float: left;
@@ -94,11 +132,6 @@
   font-size: 40px;
   font-family: "Cinzel Decorative", cursive;
 }
-#experience p {
-  font-family: "Amatic SC", cursive;
-  font-size: 40px;
-  color: rgb(224, 180, 93);
-}
 
 #individual {
   width: 100%;
@@ -107,11 +140,6 @@
 #individual h1 {
   font-size: 40px;
   font-family: "Cinzel Decorative", cursive;
-}
-#individual p {
-  font-family: "Amatic SC", cursive;
-  font-size: 40px;
-  color: rgb(224, 180, 93);
 }
 
 #naturalness {
@@ -122,11 +150,6 @@
   font-size: 40px;
   font-family: "Cinzel Decorative", cursive;
 }
-#naturalness p {
-  font-family: "Amatic SC", cursive;
-  font-size: 40px;
-  color: rgb(224, 180, 93);
-}
 
 #aboutMeContact {
   width: 100%;
@@ -136,11 +159,6 @@
 #aboutMeContact h1 {
   font-size: 40px;
   font-family: "Cinzel Decorative", cursive;
-}
-#aboutMeContact p {
-  font-family: "Amatic SC", cursive;
-  font-size: 40px;
-  color: rgb(224, 180, 93);
 }
 
 #certificateImage {

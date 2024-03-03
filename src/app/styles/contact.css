@@ -43,6 +43,9 @@
   position: relative;
   top: 50px;
   left: 50px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
 #contactCaption span:nth-child(2) {
   font-size: 15px;
@@ -52,6 +55,9 @@
   position: relative;
   top: 25px;
   left: 160px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
 #contactCaption h1:nth-child(3) {
   font-size: 170px;
@@ -62,6 +68,9 @@
   position: relative;
   top: 50px;
   left: 100px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
 #contactCaption p:nth-child(4) {
   font-size: 30px;
@@ -80,8 +89,6 @@
 #contactPageImage img {
   width: 800px;
   height: 450px;
-  -webkit-clip-path: ellipse(60% 51% at 71% 51%);
-          clip-path: ellipse(60% 51% at 71% 51%);
   position: relative;
   top: 50px;
   float: right;
