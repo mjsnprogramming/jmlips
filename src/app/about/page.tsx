@@ -58,43 +58,43 @@ export default function About() {
 
             <div id = "passion">
               <h1 className = "text-center">Pasja do estetyki twarzy</h1>
-              <p className = "text-center ml-40 mr-40">Od dawna fascynuje mnie sztuka modelowania twarzy i podkreślanie indywidualnego piękna każdej osoby. 
-                Dzięki zaawansowanym technikom i najnowszym osiągnięciom w dziedzinie estetyki twarzy, 
-                mogę pomóc Ci osiągnąć wymarzony wygląd, jednocześnie dbając o zachowanie naturalności i równowagi.</p>
+                <div id = "passionText">
+                  <p className = "text-center ml-60 mr-60">Od dawna fascynuje mnie sztuka modelowania twarzy i podkreślanie indywidualnego piękna każdej osoby. 
+                    Dzięki zaawansowanym technikom i najnowszym osiągnięciom w dziedzinie estetyki twarzy, 
+                    mogę pomóc Ci osiągnąć wymarzony wygląd, jednocześnie dbając o zachowanie naturalności i równowagi.</p>
+                </div>
                 <div id = "passionLipsImages" className = "mt-20 flex justify-center">
                   <Image src = "/../images/lips1.jpg" alt = "lips" width = "300" height = "300"></Image>
-                  <Image src = "/../images/lips2.jpg" alt = "lips" width = "300" height = "300" className = "ml-20"></Image>
-                  <Image src = "/../images/lips3.jpg" alt = "lips" width = "300" height = "300" className = "ml-20"></Image>
+                  <Image src = "/../images/lips3.jpg" alt = "lips" width = "300" height = "300" className = "ml-20 mt-20"></Image>
+                  <Image src = "/../images/lips2.jpg" alt = "lips" width = "300" height = "300" className = "ml-20 mb-20"></Image>
                 </div>
             </div>
 
             <div id = "experience">
               <h1 className = "text-center">DoŚwiadczenie i Profesjonalizm</h1>
+              <div id = "experienceText">
               <p className = "text-center ml-40 mr-40">Z 3 latami doświadczenia w branży, jestem pewna, że razem możemy osiągnąć najlepsze wyniki. 
               Moja praktyka opiera się na najwyższych standardach opieki medycznej, a moje umiejętności stale się rozwijają dzięki uczestnictwu w kursach i szkoleniach. 
               Bezpieczeństwo i zadowolenie pacjenta zawsze są dla mnie priorytetem.</p>
+              </div>
               <div id = "certificateImage" className = "mt-20 flex justify-center">
-                <Image src = "/../images/certificate1.jpg" alt = "certificate" width = "500" height = "500"></Image>
-                <Image src = "/../images/certificate2.jpg" alt = "certificate" width = "500" height = "700" className = "ml-20"></Image>
+                <Image src = "/../images/certificate1.jpg" alt = "certificate" width = "700" height = "500"></Image>
+                <Image src = "/../images/certificate2.jpg" alt = "certificate" width = "450" height = "700" className = "ml-20"></Image>
               </div>
             </div>
 
             <div id = "individual">
               <h1 className = "text-center">Indywidualne podejście</h1>
+              <div id = "individualText">
               <p className = "text-center ml-40 mr-40">Rozumiem, że każdy ma swoje własne cele i oczekiwania co do wyglądu. 
                 Dlatego zawsze zaczynamy od indywidualnej konsultacji, podczas której możemy omówić Twoje potrzeby i cele. 
                 Razem opracujemy plan zabiegowy, który będzie dostosowany do Ciebie, abyś mógł osiągnąć upragniony efekt.</p>
+                </div>
             </div>
 
-            <div id = "naturalness">
-              <h1>Dbałość o Naturalność</h1>
-              <p>W mojej pracy kładę duży nacisk na zachowanie naturalności. 
-                Chcę, aby każdy zabieg podkreślał Twoje indywidualne piękno, nie zmieniając Twojej tożsamości. 
-                Razem możemy osiągnąć efekt, który sprawi, że będziesz czuć się pewnie i pięknie.</p>
-            </div>
 
-            <div id = "aboutMeContact">
-              <h1>Kontakt</h1>
+            <div id = "studio">
+              <h1>Studio</h1>
               <p>Chętnie odpowiem na Twoje pytania i umówię Cię na konsultację. 
                 Razem możemy odkryć potencjał Twojej urody i stworzyć wyjątkowy wygląd, który będzie Cię zachwycać. 
                 Dziękuję, że odwiedziłeś moją stronę internetową, i czekam na możliwość współpracy z Tobą.</p>
