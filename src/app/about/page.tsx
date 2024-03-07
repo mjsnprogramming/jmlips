@@ -1,37 +1,25 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import Head from 'next/head'
 import '../styles/about.scss'
 import 'tailwindcss/tailwind.css'
+import HeaderComponent from '../components/HeaderComponent'
 
 export default function About() {
     return (
-        <html lang = "en">
-      <head>
+      <html lang = "en">
+      <Head>
         <meta charSet = "utf-8" name = "viewport" content = "width=device-width,initial-scale=1.0"/>
+        <link rel = "stylesheet" href = "styles/header.scss"/>
         <link rel = "stylesheet" href = "styles/about.scss"/>
         <link rel="preconnect" href="https://fonts.googleapis.com"/>
         <link rel="preconnect" href="https://fonts.gstatic.com"/>
         <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Dancing+Script:wght@600&family=Amatic+SC&display=swap" rel="stylesheet"/>
-      </head>
-
-      <body>
-        <header>
-        
-          <div id = "headerMenu">
-            <div id = "logo" >
-              <Link href = "/">
-                <Image src = "/../../../images/logo.jpg" className = "logo" alt = "logo" width = "100" height = "100"></Image>
-              </Link>
-            </div>
-          <ul className = "flex justify-center items-center">
-            <li><Link href = "/about">O MNIE</Link></li>
-            <li><Link href = "/offer">OFERTA</Link></li>
-            <li><Link href = "/priceList">CENNIK</Link></li>
-            <li><Link href = "/sale">PROMOCJA</Link></li>
-            <li><Link href = "/contact">KONTAKT</Link></li>
-          </ul>
-          </div>
-        </header>
+      </Head>
+      <div>
+        <HeaderComponent />
+      </div>
+    
 
         <main>
           <div id = "main">
@@ -83,14 +71,7 @@ export default function About() {
               </div>
             </div>
 
-            <div id = "individual">
-              <h1 className = "text-center">Indywidualne podejście</h1>
-              <div id = "individualText">
-              <p className = "text-center ml-40 mr-40">Rozumiem, że każdy ma swoje własne cele i oczekiwania co do wyglądu. 
-                Dlatego zawsze zaczynamy od indywidualnej konsultacji, podczas której możemy omówić Twoje potrzeby i cele. 
-                Razem opracujemy plan zabiegowy, który będzie dostosowany do Ciebie, abyś mógł osiągnąć upragniony efekt.</p>
-                </div>
-            </div>
+            
 
 
             <div id = "studio">
@@ -101,7 +82,7 @@ export default function About() {
             </div>
           </div>
         </main>
-    </body>
+   
     </html>
     )
 }
