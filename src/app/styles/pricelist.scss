@@ -38,6 +38,7 @@
 }
 
 $playfairDisplay: "Playfair Display";
+$cinzelDecorative: "Cinzel Decorative";
 
 * {
     margin: 0;
@@ -77,16 +78,20 @@ $playfairDisplay: "Playfair Display";
     }
 }
 #pricelistCaption {
-    
+    width: 200px;
+    height: 40px;
+    position: relative;
+    top: 50px;
+    left: 50px;
     li:nth-child(1) {
         font-size: 15px;
         font-weight: 600;
         font-family: $playfairDisplay;
         list-style-type: none;
         color:rgb(224, 180, 93);
-        position: relative;
-        top: 50px;
-        left: 50px;
+        position: absolute;
+        top: 10px;
+        left: 0;
         @include NoneUserSelect;
     }
     span:nth-child(2) {
@@ -94,26 +99,45 @@ $playfairDisplay: "Playfair Display";
         font-weight: 600px;
         font-family: $playfairDisplay;
         color: grey;
-        position: relative;
-        top: 25px;
-        left: 160px;
+        position: absolute;
+        top: 10px;
+        left: 103px;
         @include NoneUserSelect;
     }
-    h1:nth-child(3) {
-        font-size: 170px;
-        font-weight: 600;
-        letter-spacing: 2px;
-        font-style: italic;
-        font-family: "Cinzel Decorative";
-        position: relative;
-        top: 50px;
-        left: 100px;
+    span:nth-child(3) {
+        font-size: 15px;
+        font-weight: 600px;
+        font-family: $playfairDisplay;
+        color: grey;
+        position: absolute;
+        top: 10px;
+        left: 120px;
         @include NoneUserSelect;
     }
 }
 #mainPriceList {
     width: 100%;
     height: 1500px;
+}
+#bigPricelistCaption {
+    width: 100%;
+    height: 500px;
+    margin-top: 50px;
+    text-align: center;
+    p {
+        font-size: 120px;
+        font-style: italic;
+        font-weight: 500;
+        font-family: Merienda;
+    }
+    span {
+        color:rgb(224, 180, 93);
+    }
+}
+#pricelistContainers {
+    width: 100%;
+    height: auto;
+    background-color: bisque;
 }
 #lipsModelling {
     @include pricingArea;

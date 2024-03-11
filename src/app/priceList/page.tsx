@@ -41,37 +41,56 @@ export default function PriceList() {
           </header>
 
           <main>
-            <div id = "pricelistCaption">
-              <li><Link href = "/../">Strona główna {'>'}</Link></li>
+
+          <div id = "pricelistCaption">
+              <li><Link href = "/../">Strona główna</Link></li>
+              <span>{'>'}</span>
               <span>Cennik</span>
             </div>
+
             <div id = "mainPriceList">
+
+              <div id = "bigPricelistCaption">
+                <p>CE<span>NN</span>IK ZA<span>BIE</span>GÓW</p>
+              </div>
+
+              <div id = "pricelistContainers">
+                
+            
               <div id = "lipsModelling">
                  <h1 className = "font-black">POWIĘKSZANIE/MODELOWANIE UST</h1>
-                 <p className = "font-medium">Revolax/Stylage - 1ml</p><span className = "revolaxPrice under600pxPrice">600 zł</span>
-                 <p className = "font-medium">Juvederm Ultra 2 - 0.55ml</p><span className = "juvedermPrice under600pxPrice">450 zł</span>
-                 <p className = "font-medium">Nawilżenie ust bez powiększenia</p><span className = "moisturizingPrice under600pxPrice">500 zł</span>
-                 <p className = "font-medium">Hialuronidaza</p><span className = "hialoPrice under600pxPrice">500 zł</span>
+                  <div className = "pricelistDrop">
+                    <p className = "font-medium">Revolax/Stylage - 1ml</p><span className = "revolaxPrice under600pxPrice">600 zł</span>
+                    <p className = "font-medium">Juvederm Ultra 2 - 0.55ml</p><span className = "juvedermPrice under600pxPrice">450 zł</span>
+                    <p className = "font-medium">Nawilżenie ust bez powiększenia</p><span className = "moisturizingPrice under600pxPrice">500 zł</span>
+                    <p className = "font-medium">Hialuronidaza</p><span className = "hialoPrice under600pxPrice">500 zł</span>
+                 </div>
               </div>
 
               <div id = "makeup">
-                <h1 className = "font-black">MAKIJAŻ PERMANENTNY</h1>
-                <p className = "font-medium">Brwi </p><span className = "eyebrowsPrice under600pxPrice">500 zł</span>
-                <p className = "font-medium">Konsultacja + rysunek</p><span className = "consultationPrice under600pxPrice">50 &nbsp;&nbsp;zł</span>
-                <p className = "font-medium">Korekta do 10 tygodni</p><span className = "adjustmentPrice under600pxPrice">150 &nbsp;zł</span>
-                <p className = "font-medium">Dopigmentowanie do 1,5 roku</p><span className = "pigmentationPrice under600pxPrice">400 zł</span>              
-              </div>
+                  <h1 className = "font-black">MAKIJAŻ PERMANENTNY</h1>
+                  <div className = "pricelistDrop">
+                    <p className = "font-medium">Brwi </p><span className = "eyebrowsPrice under600pxPrice">500 zł</span>
+                    <p className = "font-medium">Konsultacja + rysunek</p><span className = "consultationPrice under600pxPrice">50 &nbsp;&nbsp;zł</span>
+                    <p className = "font-medium">Korekta do 10 tygodni</p><span className = "adjustmentPrice under600pxPrice">150 &nbsp;zł</span>
+                    <p className = "font-medium">Dopigmentowanie do 1,5 roku</p><span className = "pigmentationPrice under600pxPrice">400 zł</span>              
+                  </div>
+                </div>
 
               <div id = "mesotherapy">
-                <h1 className = "font-black">MEZOTERAPIA IGŁOWA</h1>
-                <p className = "font-medium">Twarz</p><span className = "facePrice under600pxPrice">130 zł</span>
-                <p className = "font-medium">Twarz szyja</p><span className = "faceNeckPrice under600pxPrice">300 zł</span>
-                <p className = "font-medium">Twarz szyja dekolt</p><span className = "faceNeckCleavagePrice under600pxPrice">350  zł</span>
-                <p className = "font-medium">Skóra głowy</p><span className = "headSkinPrice under600pxPrice">450 zł</span>
-                <p className = "font-medium">Biorepeel twarz</p><span className = "biorepeelPrice under600pxPrice">200 zł</span>
+                  <h1 className = "font-black">MEZOTERAPIA IGŁOWA</h1>
+                  <div className = "pricelistDrop">
+                    <p className = "font-medium">Twarz</p><span className = "facePrice under600pxPrice">130 zł</span>
+                    <p className = "font-medium">Twarz szyja</p><span className = "faceNeckPrice under600pxPrice">300 zł</span>
+                    <p className = "font-medium">Twarz szyja dekolt</p><span className = "faceNeckCleavagePrice under600pxPrice">350  zł</span>
+                    <p className = "font-medium">Skóra głowy</p><span className = "headSkinPrice under600pxPrice">450 zł</span>
+                    <p className = "font-medium">Biorepeel twarz</p><span className = "biorepeelPrice under600pxPrice">200 zł</span>
+                  </div>
               </div>
             </div>
+            </div>
           </main>
+          
         <footer>
           <div id = "footer">
             <div id = "footerLogo">
