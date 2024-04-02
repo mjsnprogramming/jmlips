@@ -139,6 +139,7 @@
   width: 100%;
   height: 1100px;
   padding-top: 160px;
+  background-color: bisque;
 }
 #experience h1 {
   font-size: 40px;
@@ -171,4 +172,10 @@
 }
 #certificateImage img {
   border-radius: 60px;
+}
+
+#studio {
+  background-color: aqua;
+  width: 100%;
+  height: 700px;
 }/*# sourceMappingURL=about.css.map */

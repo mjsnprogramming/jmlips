@@ -70,10 +70,7 @@ export default function About() {
                 <Image src = "/../images/certificate2.jpg" alt = "certificate" width = "450" height = "700" className = "ml-20"></Image>
               </div>
             </div>
-
             
-
-
             <div id = "studio">
               <h1>Studio</h1>
               <p>Chętnie odpowiem na Twoje pytania i umówię Cię na konsultację. 

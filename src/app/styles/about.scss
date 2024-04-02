@@ -137,6 +137,7 @@ $playfairDisplay: "Playfair Display";
     @include aboutMeSections;
     height: 1100px;
     padding-top: 160px;
+    background-color: bisque
 }
 #individual {
     @include aboutMeSections;
@@ -154,4 +155,9 @@ $playfairDisplay: "Playfair Display";
     img {
         border-radius: 60px;
     }
+}
+#studio {
+    background-color: aqua;
+    width: 100%;
+    height: 700px;
 }
