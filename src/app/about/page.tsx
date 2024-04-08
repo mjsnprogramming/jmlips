@@ -4,6 +4,7 @@ import Head from 'next/head'
 import '../styles/about.scss'
 import 'tailwindcss/tailwind.css'
 import HeaderComponent from '../components/HeaderComponent'
+import FooterComponent from '../components/FooterComponent'
 
 export default function About() {
     return (
@@ -73,11 +74,13 @@ export default function About() {
             
             <div id = "studio">
               <h1>Studio</h1>
-              <p>Chętnie odpowiem na Twoje pytania i umówię Cię na konsultację. 
-                Razem możemy odkryć potencjał Twojej urody i stworzyć wyjątkowy wygląd, który będzie Cię zachwycać. 
+              <p>Chętnie odpowiem na Twoje pytania i umówię Cię na konsultację.<br></br> 
+                Razem możemy odkryć potencjał Twojej urody i stworzyć wyjątkowy wygląd, który będzie Cię zachwycać. <br></br>
                 Dziękuję, że odwiedziłeś moją stronę internetową, i czekam na możliwość współpracy z Tobą.</p>
             </div>
           </div>
+
+          <FooterComponent />
         </main>
    
     </html>

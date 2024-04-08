@@ -137,7 +137,6 @@ $playfairDisplay: "Playfair Display";
     @include aboutMeSections;
     height: 1100px;
     padding-top: 160px;
-    background-color: bisque
 }
 #individual {
     @include aboutMeSections;
@@ -146,7 +145,6 @@ $playfairDisplay: "Playfair Display";
 #aboutMeContact {
     @include aboutMeSections;
     height: 500px;
-    background-color: aqua;
 }
 #certificateImage {
     width: 100%;
@@ -157,7 +155,25 @@ $playfairDisplay: "Playfair Display";
     }
 }
 #studio {
-    background-color: aqua;
     width: 100%;
     height: 700px;
+    h1 {
+        font-size: 50px;
+        font-family: "Dancing Script";
+        font-weight: 600;
+        letter-spacing: 3px;
+        color:rgb(224, 180, 93);
+        position: relative;
+        top: 100px;
+        margin-left: 60px;
+    }
+    p {
+        font-size: 30px;
+        font-family: $playfairDisplay;
+        font-weight: 500;
+        color: grey;
+        position: relative;
+        top: 120px;
+        margin-left: 60px;
+    }
 }
