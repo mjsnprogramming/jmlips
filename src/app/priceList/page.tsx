@@ -57,21 +57,19 @@ export default function PriceList() {
 
               <div id = "pricelistContainers">
                 
-            
+              <div className = "pricelistDrop">
               <div id = "lipsModelling">
-
                  <h1 className = "font-black">POWIĘKSZANIE/MODELOWANIE UST</h1>
-                  <div className = "pricelistDrop">
                     <p className = "font-medium">Revolax/Stylage - 1ml</p><span className = "revolaxPrice under600pxPrice">600 zł</span>
                     <p className = "font-medium">Juvederm Ultra 2 - 0.55ml</p><span className = "juvedermPrice under600pxPrice">450 zł</span>
                     <p className = "font-medium">Nawilżenie ust bez powiększenia</p><span className = "moisturizingPrice under600pxPrice">500 zł</span>
                     <p className = "font-medium">Hialuronidaza</p><span className = "hialoPrice under600pxPrice">500 zł</span>
-                 </div>
+              </div>
               </div>
 
+              <div className = "pricelistDrop">
               <div id = "makeup">
                   <h1 className = "font-black">MAKIJAŻ PERMANENTNY</h1>
-                  <div className = "pricelistDrop">
                     <p className = "font-medium">Brwi </p><span className = "eyebrowsPrice under600pxPrice">500 zł</span>
                     <p className = "font-medium">Konsultacja + rysunek</p><span className = "consultationPrice under600pxPrice">50 &nbsp;&nbsp;zł</span>
                     <p className = "font-medium">Korekta do 10 tygodni</p><span className = "adjustmentPrice under600pxPrice">150 &nbsp;zł</span>
@@ -79,9 +77,9 @@ export default function PriceList() {
                   </div>
                 </div>
 
+                <div className = "pricelistDrop">
               <div id = "mesotherapy">
                   <h1 className = "font-black">MEZOTERAPIA IGŁOWA</h1>
-                  <div className = "pricelistDrop">
                     <p className = "font-medium">Twarz</p><span className = "facePrice under600pxPrice">130 zł</span>
                     <p className = "font-medium">Twarz szyja</p><span className = "faceNeckPrice under600pxPrice">300 zł</span>
                     <p className = "font-medium">Twarz szyja dekolt</p><span className = "faceNeckCleavagePrice under600pxPrice">350  zł</span>

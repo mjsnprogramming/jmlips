@@ -103,18 +103,28 @@
 }
 
 #pricelistContainers {
-  width: 100%;
+  width: 60%;
   height: auto;
-  background-color: bisque;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pricelistDrop {
+  width: 100%;
+  height: 150px;
+  border-bottom: 1px solid black;
+  cursor: pointer;
 }
 
 #lipsModelling {
+  visibility: hidden;
+  font-style: italic;
+  letter-spacing: 3px;
   width: 50%;
-  height: 300px;
+  height: 100px;
   background-color: white;
   color: black;
-  margin-left: auto;
-  margin-right: auto;
   position: relative;
   top: 50px;
   border-radius: 24px;
@@ -122,9 +132,8 @@
 }
 #lipsModelling h1 {
   font-size: 30px;
-  margin-left: 10px;
-  padding-top: 20px;
   color: rgb(224, 180, 93);
+  visibility: visible;
 }
 #lipsModelling p {
   font-size: 20px;
@@ -167,23 +176,22 @@
 }
 
 #makeup {
+  visibility: hidden;
+  font-style: italic;
+  letter-spacing: 3px;
   width: 50%;
-  height: 300px;
+  height: 100px;
   background-color: white;
   color: black;
-  margin-left: auto;
-  margin-right: auto;
   position: relative;
   top: 50px;
   border-radius: 24px;
   box-shadow: 0 0 10px 10px rgb(226, 223, 218);
-  top: 200px;
 }
 #makeup h1 {
   font-size: 30px;
-  margin-left: 10px;
-  padding-top: 20px;
   color: rgb(224, 180, 93);
+  visibility: visible;
 }
 #makeup p {
   font-size: 20px;
@@ -226,24 +234,23 @@
 }
 
 #mesotherapy {
+  visibility: hidden;
+  font-style: italic;
+  letter-spacing: 3px;
   width: 50%;
-  height: 300px;
+  height: 100px;
   background-color: white;
   color: black;
-  margin-left: auto;
-  margin-right: auto;
   position: relative;
   top: 50px;
   border-radius: 24px;
   box-shadow: 0 0 10px 10px rgb(226, 223, 218);
-  top: 400px;
   height: 360px;
 }
 #mesotherapy h1 {
   font-size: 30px;
-  margin-left: 10px;
-  padding-top: 20px;
   color: rgb(224, 180, 93);
+  visibility: visible;
 }
 #mesotherapy p {
   font-size: 20px;
@@ -291,182 +298,6 @@
   position: absolute;
   left: 675px;
   top: 288px;
-}
-
-#footer {
-  width: 100%;
-  height: 700px;
-  margin-top: 70px;
-  color: rgb(185, 156, 94);
-  position: relative;
-}
-
-#footerLogo {
-  position: relative;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-}
-#footerLogo img {
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
-  border-radius: 360px;
-}
-
-#footerContact {
-  width: 600px;
-  height: 400px;
-  position: absolute;
-  top: 380px;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  float: left;
-}
-#footerContact p {
-  text-align: center;
-  font-family: "Playfair Display";
-  position: relative;
-}
-#footerContact p:nth-child(1) {
-  font-size: 25px;
-  text-transform: uppercase;
-  font-weight: 600;
-}
-#footerContact p:nth-child(2) {
-  padding-top: 50px;
-  font-size: 20px;
-  color: grey;
-}
-#footerContact p:nth-child(3) {
-  left: -2px;
-  font-size: 20px;
-  color: grey;
-}
-#footerContact #mobileNumber {
-  margin-left: -148px;
-}
-
-#igContact {
-  width: 200px;
-  height: 30px;
-  margin-top: 20px;
-  margin-left: 120px;
-  clear: both;
-}
-#igContact li {
-  list-style-type: none;
-  color: grey;
-  margin-left: 50px;
-  margin-top: -31px;
-  font-size: 20px;
-  font-family: "Playfair Display";
-}
-
-#socialMedia {
-  width: 200px;
-  height: 90px;
-  position: relative;
-  left: 85%;
-  margin-top: -70px;
-  float: left;
-}
-#socialMedia h1 {
-  font-size: 20px;
-  text-transform: uppercase;
-  font-family: "Playfair Display";
-  font-weight: 600;
-}
-
-#facebook, #instagram, #tikTok {
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  margin-left: 20px;
-  position: relative;
-  left: -15px;
-  margin-top: 10px;
-}
-
-#JMstudioAddress {
-  width: 300px;
-  height: 300px;
-  position: absolute;
-  left: 7%;
-  top: 180px;
-  float: left;
-}
-#JMstudioAddress h1 {
-  font-size: 25px;
-  font-weight: 600;
-  font-family: "Playfair Display";
-  letter-spacing: 1px;
-  margin-bottom: 20px;
-}
-#JMstudioAddress p {
-  margin-top: 10px;
-  font-family: "Playfair Display";
-  font-weight: 500;
-}
-#JMstudioAddress p:nth-child(2) {
-  font-size: 23px;
-}
-#JMstudioAddress p:nth-child(3), #JMstudioAddress p:nth-child(4) {
-  font-size: 17px;
-  color: grey;
-}
-#JMstudioAddress li:nth-child(5) {
-  margin-top: 40px;
-}
-#JMstudioAddress li {
-  list-style-type: none;
-  color: black;
-  font-size: 18px;
-}
-
-#footerProducts {
-  width: 300px;
-  height: 300px;
-  position: absolute;
-  left: 75%;
-  float: left;
-  top: 180px;
-}
-#footerProducts h1 {
-  font-size: 25px;
-  font-weight: 600;
-  font-family: "Playfair Display";
-  letter-spacing: 1px;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-  text-align: center;
-}
-#footerProducts ul li {
-  font-size: 20px;
-  font-family: "Playfair Display";
-  font-weight: 500;
-  text-align: center;
-  margin-top: 20px;
-  letter-spacing: 1px;
-}
-
-#creator {
-  width: 100%;
-  height: 40px;
-  position: absolute;
-  top: 700px;
-}
-#creator #copyright {
-  position: absolute;
-  left: 15%;
-  font-size: 20px;
-  font-weight: 600;
-}
-#creator #mjsn {
-  position: absolute;
-  left: 75%;
-  font-size: 20px;
-  font-weight: 600;
 }
 
 @media only screen and (max-width: 1580px) {
