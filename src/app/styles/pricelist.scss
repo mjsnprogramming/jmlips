@@ -143,7 +143,6 @@ $cinzelDecorative: "Cinzel Decorative";
     height: 150px;
     border-bottom: 1px solid black;
     cursor: pointer;
-
 }
 
 #lipsModelling {
@@ -216,6 +215,12 @@ $cinzelDecorative: "Cinzel Decorative";
         @include spanPriceStyle;
         top: 288px;
      }
+}
+#biorepeel {
+    visibility: hidden;
+    font-style: italic;
+    letter-spacing: 3px;
+    @include pricingArea;
 }
 
 @media only screen and (max-width: 1580px) {

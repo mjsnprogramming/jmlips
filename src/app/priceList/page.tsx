@@ -2,8 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import '../styles/pricelist.scss'
 import 'tailwindcss/tailwind.css'
-
-
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook, faInstagram, faTiktok } from '@fortawesome/free-brands-svg-icons'
 import FooterComponent from '../components/FooterComponent'
@@ -12,6 +11,13 @@ import FooterComponent from '../components/FooterComponent'
 
 
 export default function PriceList() {
+  const Dropdown = () => {
+    const [isOpen, setIsOpen] = useState(false);
+  
+    const toggleDetails = () =>{
+    setIsOpen(!isOpen);
+    }
+  }
     return (
         <html lang = "en">
         <head>
@@ -57,7 +63,7 @@ export default function PriceList() {
 
               <div id = "pricelistContainers">
                 
-              <div className = "pricelistDrop">
+              <div className = "pricelistDrop" onClick = {toggleDetails}>
               <div id = "lipsModelling">
                  <h1 className = "font-black">POWIĘKSZANIE/MODELOWANIE UST</h1>
                     <p className = "font-medium">Revolax/Stylage - 1ml</p><span className = "revolaxPrice under600pxPrice">600 zł</span>
@@ -84,8 +90,13 @@ export default function PriceList() {
                     <p className = "font-medium">Twarz szyja</p><span className = "faceNeckPrice under600pxPrice">300 zł</span>
                     <p className = "font-medium">Twarz szyja dekolt</p><span className = "faceNeckCleavagePrice under600pxPrice">350  zł</span>
                     <p className = "font-medium">Skóra głowy</p><span className = "headSkinPrice under600pxPrice">450 zł</span>
-                    <p className = "font-medium">Biorepeel twarz</p><span className = "biorepeelPrice under600pxPrice">200 zł</span>
                   </div>
+              </div>
+
+              <div className = "pricelistDrop">
+                <div id = "biorepeel">
+                  <h1 className = "font-black">BIOREPEEL</h1>
+                </div>
               </div>
             </div>
             </div>
