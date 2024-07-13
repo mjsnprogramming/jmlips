@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import './/styles/home.scss'
 import 'tailwindcss/tailwind.css'
+import HeaderComponent from './components/HeaderComponent'
  
  export default function Home() {
   
@@ -16,26 +17,7 @@ import 'tailwindcss/tailwind.css'
       </head>
 
       <body>
-        <header>
-        
-          <div id = "headerMenu">
-            <div id = "logo">
-              <Link href = "/">
-                <Image src = "/images/logo.jpg" alt = "logo" className = "logo" width = "100" height = "100"></Image>
-              </Link>
-          </div>
-          <ul className = "flex justify-center items-center">
-            <li><Link href = "/about">O MNIE</Link></li>
-            <li><Link href = "/offer">OFERTA</Link></li>
-            <li><Link href = "/priceList">CENNIK</Link></li>
-            <li><Link href = "/sale">PROMOCJA</Link></li>
-            <li><Link href = "/contact">KONTAKT</Link></li>
-          </ul>
-          <button id = "booking">UMÓW SIĘ</button>
-          <button id = "polish">PL</button>
-          <button id = "english">EN</button>
-          </div>
-        </header>
+        <HeaderComponent/>
     </body>
     </html>
   )

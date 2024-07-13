@@ -11,13 +11,7 @@ import FooterComponent from '../components/FooterComponent'
 
 
 export default function PriceList() {
-  const Dropdown = () => {
-    const [isOpen, setIsOpen] = useState(false);
   
-    const toggleDetails = () =>{
-    setIsOpen(!isOpen);
-    }
-  }
     return (
         <html lang = "en">
         <head>
