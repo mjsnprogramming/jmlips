@@ -9,6 +9,12 @@ export default function HeaderComponent() {
         <header>
         
         <div id = "headerMenu">
+            <div id = "headerEmail">
+              <span>juliet.majewska@gmail.com</span>
+            </div>
+            <div id = "headerPhoneNumber">
+              <span>+48 234 566 345</span>
+            </div>
             <div id = "logo">
               <Link href = "/">
                 <Image src = "/images/logo.jpg" alt = "logo" className = "logo" width = "100" height = "100"></Image>
