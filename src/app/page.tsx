@@ -3,6 +3,8 @@ import Link from 'next/link'
 import './/styles/home.scss'
 import 'tailwindcss/tailwind.css'
 import HeaderComponent from './components/HeaderComponent'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'
  
  export default function Home() {
   
@@ -18,6 +20,7 @@ import HeaderComponent from './components/HeaderComponent'
 
       <body>
         <HeaderComponent/>
+        
     </body>
     </html>
   )

@@ -8,6 +8,42 @@
   font-family: "Dancing Script";
 }
 
+#headerEmail {
+  width: 300px;
+  height: 30px;
+  text-align: center;
+  position: absolute;
+  top: 30px;
+  left: 120px;
+  color: rgb(224, 180, 93);
+}
+#headerEmail span {
+  position: absolute;
+  left: 50px;
+  top: 2px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: black;
+  font-weight: 600;
+}
+
+#headerPhoneNumber {
+  width: 300px;
+  height: 30px;
+  text-align: center;
+  position: absolute;
+  top: 30px;
+  left: 470px;
+  color: rgb(224, 180, 93);
+}
+#headerPhoneNumber span {
+  position: absolute;
+  left: 45px;
+  top: 3px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: black;
+  font-weight: 600;
+}
+
 #logo {
   display: flex;
   justify-content: center;
@@ -43,17 +79,16 @@ ul li a {
   color: rgb(224, 180, 93);
 }
 
-ul li:visited {
-  color: white;
-}
-
 #bookingButton {
   width: 200px;
-  height: 110px;
-  border: solid 2px rgba(239, 175, 64, 0.354);
+  height: 60px;
+  border: solid 3px rgb(224, 180, 93);
   border-radius: 4px;
   text-align: center;
   cursor: pointer;
+  position: absolute;
+  right: 300px;
+  top: 50px;
 }
 #bookingButton button {
   width: 100%;
@@ -73,18 +108,32 @@ ul li:visited {
 }
 
 #languageButton {
-  width: 50px;
-  height: 50px;
-  border: solid 2px rgba(239, 175, 64, 0.354);
+  width: 100px;
+  height: 60px;
+  border: solid 3px rgb(224, 180, 93);
   background-color: rgb(255, 255, 255);
   color: rgb(224, 180, 93);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 15px;
-  margin-top: 75px;
-  position: relative;
-  left: -150px;
+  position: absolute;
+  right: 100px;
+  top: 50px;
 }
 
 button:hover {
-  background-color: #ccc;
+  background-color: rgb(224, 180, 93);
+  color: rgb(255, 255, 255);
+}
+
+#polish {
+  width: 50%;
+  height: 54.5px;
+  background-color: rgb(224, 180, 93);
+  border-right: 2px solid rgb(224, 180, 93);
+  color: white;
+}
+
+#english {
+  width: 50%;
+  height: 54.5px;
+  border-left: 2px solid rgb(224, 180, 93);
 }/*# sourceMappingURL=header.css.map */

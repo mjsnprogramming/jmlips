@@ -2,6 +2,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import '../styles/header.scss'
 import 'tailwindcss/tailwind.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'
 
 export default function HeaderComponent() {
       
@@ -10,9 +12,11 @@ export default function HeaderComponent() {
         
         <div id = "headerMenu">
             <div id = "headerEmail">
+              <FontAwesomeIcon icon = {faEnvelope} className = "headerEnvelopeIcon" width = "30px" height = "30px"/>
               <span>juliet.majewska@gmail.com</span>
             </div>
             <div id = "headerPhoneNumber">
+              <FontAwesomeIcon icon = {faPhone} className = "headerPhoneIcon" width = "30px" height = "30px"/>
               <span>+48 234 566 345</span>
             </div>
             <div id = "logo">

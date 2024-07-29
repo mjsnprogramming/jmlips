@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import Head from 'next/head'
 import '../styles/about.scss'
 import 'tailwindcss/tailwind.css'
 import HeaderComponent from '../components/HeaderComponent'
@@ -9,17 +8,15 @@ import FooterComponent from '../components/FooterComponent'
 export default function About() {
     return (
       <html lang = "en">
-      <Head>
+      <head>
         <meta charSet = "utf-8" name = "viewport" content = "width=device-width,initial-scale=1.0"/>
-        <link rel = "stylesheet" href = "styles/header.scss"/>
         <link rel = "stylesheet" href = "styles/about.scss"/>
         <link rel="preconnect" href="https://fonts.googleapis.com"/>
         <link rel="preconnect" href="https://fonts.gstatic.com"/>
         <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Dancing+Script:wght@600&family=Amatic+SC&display=swap" rel="stylesheet"/>
-      </Head>
-      <div>
+      </head>
+      <body>
         <HeaderComponent />
-      </div>
     
 
         <main>
@@ -82,7 +79,7 @@ export default function About() {
 
           <FooterComponent />
         </main>
-   
+   </body>
     </html>
     )
 }
