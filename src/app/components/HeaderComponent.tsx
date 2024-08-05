@@ -39,6 +39,13 @@ export default function HeaderComponent() {
             <button id = "english">EN</button>
           </div>
           </div>
+
+          <div id = "menuBar">
+            <div className = "barLine"></div>
+            <div className = "barLine"></div>
+            <div className = "barLine"></div>
+            <span>MENU</span>
+          </div>
         </header>
     )    
 }

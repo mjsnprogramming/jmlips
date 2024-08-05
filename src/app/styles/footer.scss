@@ -70,9 +70,11 @@ $playfairDisplay: "Playfair Display";
     width: 200px;
     height: 90px;
     position: relative;
-    left: 85%;
+    left: 80%;
     margin-top: -70px;
     float: left;
+    background-color: blue;
+    text-align: center;
     h1 {
         font-size: 20px;
         text-transform: uppercase;
@@ -84,7 +86,7 @@ $playfairDisplay: "Playfair Display";
     display: inline-block;
     width: 40px;
     height: 40px;
-    margin-left: 20px;
+    margin-left: 26px;
     position: relative;
     left: -15px;
     margin-top: 10px;
@@ -128,9 +130,10 @@ $playfairDisplay: "Playfair Display";
     width: 300px;
     height: 300px;
     position: relative;
-    left: 75%;
+    left: 63.7%;
     float: left;
     top: 100px;
+    background-color: yellow;
     h1 {
         font-size: 25px;
         font-weight: 600;
@@ -147,7 +150,10 @@ $playfairDisplay: "Playfair Display";
             font-weight: 500;
             text-align: center;
             margin-top: 20px;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
         }
     }
 }
