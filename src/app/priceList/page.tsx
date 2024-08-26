@@ -5,7 +5,7 @@ import 'tailwindcss/tailwind.css'
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook, faInstagram, faTiktok } from '@fortawesome/free-brands-svg-icons'
-import FooterComponent from '../components/FooterComponent'
+import FooterComponent from '../components/FooterComponent/page'
 
 
 

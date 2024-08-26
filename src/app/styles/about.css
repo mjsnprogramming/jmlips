@@ -2,33 +2,6 @@
   margin: 0;
 }
 
-#headerMenu {
-  width: 100%;
-  height: 200px;
-  background-color: rgb(224, 180, 93);
-  display: flex;
-  flex-direction: row;
-  font-family: "Dancing Script";
-}
-#headerMenu ul {
-  position: relative;
-  margin-left: auto;
-  margin-right: auto;
-}
-#headerMenu ul li {
-  display: inline-block;
-  margin-left: 30px;
-  font-size: 30px;
-  color: white;
-  list-style-type: none;
-}
-#headerMenu ul li :visited {
-  color: white;
-}
-#headerMenu ul li a {
-  text-decoration: none;
-}
-
 #aboutMeCaption {
   width: 200px;
   height: 40px;
@@ -93,10 +66,11 @@
   height: 500px;
   margin-top: 40px;
   float: left;
+  color: rgb(224, 180, 93);
 }
 #aboutMeText h1 {
   font-size: 40px;
-  font-family: "Cinzel Decorative", cursive;
+  font-family: "Dancing Script";
 }
 #aboutMeText p {
   font-family: "Playfair Display";
@@ -106,13 +80,14 @@
 
 #passion {
   width: 100%;
+  color: rgb(224, 180, 93);
   height: 800px;
   clear: both;
   padding-top: 160px;
 }
 #passion h1 {
   font-size: 40px;
-  font-family: "Cinzel Decorative", cursive;
+  font-family: "Dancing Script";
 }
 #passion img {
   float: left;
@@ -130,37 +105,42 @@
 #experienceText,
 #individualText {
   width: 50%;
+  font-size: 20px;
   position: relative;
   margin-left: auto;
   margin-right: auto;
+  color: grey;
 }
 
 #experience {
   width: 100%;
+  color: rgb(224, 180, 93);
   height: 1100px;
   padding-top: 160px;
 }
 #experience h1 {
   font-size: 40px;
-  font-family: "Cinzel Decorative", cursive;
+  font-family: "Dancing Script";
 }
 
 #individual {
   width: 100%;
+  color: rgb(224, 180, 93);
   height: 500px;
 }
 #individual h1 {
   font-size: 40px;
-  font-family: "Cinzel Decorative", cursive;
+  font-family: "Dancing Script";
 }
 
 #aboutMeContact {
   width: 100%;
+  color: rgb(224, 180, 93);
   height: 500px;
 }
 #aboutMeContact h1 {
   font-size: 40px;
-  font-family: "Cinzel Decorative", cursive;
+  font-family: "Dancing Script";
 }
 
 #certificateImage {
@@ -174,7 +154,7 @@
 
 #studio {
   width: 100%;
-  height: 700px;
+  height: 400px;
 }
 #studio h1 {
   font-size: 50px;

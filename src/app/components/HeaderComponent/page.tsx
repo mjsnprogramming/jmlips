@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import '../styles/header.scss'
+import '../../styles/header.scss'
 import 'tailwindcss/tailwind.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'

@@ -2,8 +2,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import '../styles/about.scss'
 import 'tailwindcss/tailwind.css'
-import HeaderComponent from '../components/HeaderComponent'
-import FooterComponent from '../components/FooterComponent'
+import HeaderComponent from '../components/HeaderComponent/page'
+import FooterComponent from '../components/FooterComponent/page'
 
 export default function About() {
     return (

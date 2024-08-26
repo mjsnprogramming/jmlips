@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import './/styles/home.scss'
 import 'tailwindcss/tailwind.css'
-import HeaderComponent from './components/HeaderComponent'
+import HeaderComponent from './components/HeaderComponent/page'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'
  

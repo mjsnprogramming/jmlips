@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import '../styles/footer.scss'
+import '../../styles/footer.scss'
 import 'tailwindcss/tailwind.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInstagram, faFacebook, faTiktok } from '@fortawesome/free-brands-svg-icons'
