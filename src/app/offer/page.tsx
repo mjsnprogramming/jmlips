@@ -1,45 +1,35 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import '../styles/about.scss'
+import '../styles/offer.scss'
 import 'tailwindcss/tailwind.css'
+import HeaderComponent from '../components/HeaderComponent/page'
 
 export default function Offer() {
     return (
         <html lang = "en">
       <head>
         <meta charSet = "utf-8" name = "viewport" content = "width=device-width,initial-scale=1.0"/>
-        <link rel = "stylesheet" href = "styles/about.scss"/>
+        <link rel = "stylesheet" href = "styles/offer.scss"/>
         <link rel="preconnect" href="https://fonts.googleapis.com"/>
         <link rel="preconnect" href="https://fonts.gstatic.com"/>
         <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Dancing+Script:wght@600&family=Amatic+SC&display=swap" rel="stylesheet"/>
       </head>
 
       <body>
-        <header>
-        
-          <div id = "headerMenu">
-            <div id = "logo" >
-              <Link href = "/">
-                <Image src = "/../../../images/logo.jpg" className = "logo" alt = "logo" width = "100" height = "100"></Image>
-              </Link>
-            </div>
-          <ul className = "flex justify-center items-center">
-            <li><Link href = "/about">O MNIE</Link></li>
-            <li><Link href = "/offer">OFERTA</Link></li>
-            <li><Link href = "/priceList">CENNIK</Link></li>
-            <li><Link href = "/sale">PROMOCJA</Link></li>
-            <li><Link href = "/contact">KONTAKT</Link></li>
-          </ul>
-          </div>
-        </header>
+       <HeaderComponent/>
 
-        <main>
-          <div id = "lipsModelling">
-            <p>Powiększanie / modelowanie ust</p>
-            <p></p>
-          </div>
+       <main>
+
+        <div id = "offerCaption">
+          <li><Link href = "/../">Strona główna</Link></li>
+          <span>{'>'}</span>
+          <span>Oferta</span>
+        </div>
+
+        <div id = "offer">
+          
+        </div>
         </main>
-
         <footer>
 
         </footer>
