@@ -1,159 +1,197 @@
-@mixin h1Font {
-    h1 {
-    font-size: 40px;
-    font-family: "Dancing Script";
-    }
-}
-@mixin aboutMeSections {
-    width: 100%;
-    @include h1Font;
-    color:rgb(224, 180, 93);
-}
+// === ZMIENNE ===
+$highlight-color: rgb(224, 180, 93);
+$text-grey: grey;
+$font-title: 'Dancing Script', cursive;
+$font-body: 'Playfair Display', serif;
 
-@mixin NoneUserSelect {
-    -webkit-user-select: none; 
-    -moz-user-select: none;    
-    -ms-user-select: none;   
-    user-select: none;
-}
-
-$playfairDisplay: "Playfair Display";
+// === RESET ===
 * {
-    margin: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
+// === BREADCRUMB ===
 #aboutMeCaption {
-    width: 200px;
-    height: 40px;
-    position: relative;
-    top: 50px;
-    left: 50px;
-    li:nth-child(1) {
-        font-size: 15px;
-        font-weight: 600;
-        font-family: $playfairDisplay;
-        list-style-type: none;
-        color:rgb(224, 180, 93);
-        position: absolute;
-        top: 10px;
-        left: 0;
-        @include NoneUserSelect;
-    }
-    span:nth-child(2) {
-        font-size: 15px;
-        font-weight: 600px;
-        font-family: $playfairDisplay;
-        color: grey;
-        position: absolute;
-        top: 10px;
-        left: 103px;
-        @include NoneUserSelect;
-    }
-    span:nth-child(3) {
-        font-size: 15px;
-        font-weight: 600px;
-        font-family: $playfairDisplay;
-        color: grey;
-        position: absolute;
-        top: 10px;
-        left: 120px;
-        @include NoneUserSelect;
-    }
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: $font-body;
+  font-size: 15px;
+  font-weight: 600;
+  color: $text-grey;
+  margin: 50px 0 20px 50px;
+
+  li {
+    list-style: none;
+    color: $highlight-color;
+    user-select: none;
+  }
+
+  .breadcrumb-separator,
+  .breadcrumb-current {
+    user-select: none;
+  }
 }
+
+// === SEKCJA O MNIE ===
+#main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
 #firstImage {
-     width: 45%;
-     height: 500px;
-     margin-top: 30px;
-     margin-left: 0;
-     float: left;
-     img {
-        margin-left: auto;
-        margin-right: auto;
-        clip-path: polygon(0 10%,10% 0,100% 0, 100% 90%,90% 100%,0 100%)
-     }
+  flex: 1 1 45%;
+  height: 500px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    clip-path: polygon(0 10%, 10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%);
+  }
 }
+
 #aboutMeText {
-    width: 55%;
-    height: 500px;
-    margin-top: 40px;
-    float: left;
-    color:rgb(224, 180, 93);
-    @include h1Font;
-    p {
-        font-family: $playfairDisplay;
-        font-size: 30px;
-        color:grey;
-    }
+  flex: 1 1 50%;
+  height: auto;
+  margin-top: 40px;
+  color: $highlight-color;
+
+  h1 {
+    font-size: 40px;
+    font-family: $font-title;
+    text-align: center;
+  }
+
+  p {
+    font-family: $font-body;
+    font-size: 30px;
+    color: $text-grey;
+    margin: 0 40px;
+  }
 }
+
+// === PASJA ===
 #passion {
-    @include aboutMeSections;
-    height: 800px;
-    clear: both;
-    padding-top: 160px;
-    img {
-        float: left;
-    }
-}
-#passionLipsImages {
-    width: 100%;
-    height: 300px;
-    img {
-        height: 300px;
-    }
-}
-#passionText,
-#experienceText,
-#individualText {
-    width: 50%;
+  width: 100%;
+  padding-top: 160px;
+  color: $highlight-color;
+  text-align: center;
+
+  h1 {
+    font-size: 40px;
+    font-family: $font-title;
+  }
+
+  #passionText {
     font-size: 20px;
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
-    color:grey;
-}
-#experience {
-    @include aboutMeSections;
-    height: 1100px;
-    padding-top: 160px;
-}
-#individual {
-    @include aboutMeSections;
-    height: 500px;
-}
-#aboutMeContact {
-    @include aboutMeSections;
-    height: 500px;
-}
-#certificateImage {
-    width: 100%;
-    height: 500px;
-    float: left;
+    font-family: $font-body;
+    color: $text-grey;
+    max-width: 50%;
+    margin: 40px auto 0 auto;
+  }
+
+  #passionLipsImages {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+
     img {
-        border-radius: 60px;
+      height: 300px;
+      object-fit: cover;
     }
+  }
 }
+
+// === DOŚWIADCZENIE ===
+#experience {
+  width: 100%;
+  padding-top: 160px;
+  color: $highlight-color;
+  text-align: center;
+
+  h1 {
+    font-size: 40px;
+    font-family: $font-title;
+  }
+
+  #experienceText {
+    font-size: 20px;
+    font-family: $font-body;
+    color: $text-grey;
+    max-width: 50%;
+    margin: 40px auto 0 auto;
+  }
+
+  #certificateImage {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+
+    img {
+      border-radius: 60px;
+      object-fit: cover;
+    }
+  }
+}
+
+// === STUDIO ===
 #studio {
-    width: 100%;
-    height: 400px;
-    h1 {
-        font-size: 50px;
-        font-family: "Dancing Script";
-        font-weight: 600;
-        letter-spacing: 3px;
-        color:rgb(224, 180, 93);
-        position: relative;
-        top: 100px;
-        margin-left: 60px;
-    }
-    p {
-        font-size: 30px;
-        font-family: $playfairDisplay;
-        font-weight: 500;
-        color: grey;
-        position: relative;
-        top: 120px;
-        margin-left: 60px;
-    }
+  width: 100%;
+  padding: 100px 60px 40px 60px;
+
+  h1 {
+    font-size: 50px;
+    font-family: $font-title;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: $highlight-color;
+  }
+
+  p {
+    font-size: 30px;
+    font-family: $font-body;
+    font-weight: 500;
+    color: $text-grey;
+    margin-top: 20px;
+  }
 }
-@media only screen and (max-width: 1280px) {
-    
+
+// === RESPONSYWNOŚĆ ===
+@media (max-width: 768px) {
+  #main {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #aboutMeText p,
+  #passionText,
+  #experienceText,
+  #studio {
+    max-width: 90%;
+    margin: auto;
+    text-align: center;
+  }
+
+  #passionLipsImages {
+    flex-direction: column;
+    align-items: center;
+
+    img {
+      height: auto;
+      width: 80%;
+    }
+  }
+
+  #certificateImage {
+    flex-direction: column;
+
+    img {
+      width: 80%;
+    }
+  }
 }

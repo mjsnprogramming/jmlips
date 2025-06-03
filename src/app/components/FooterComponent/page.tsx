@@ -1,66 +1,69 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import '../../styles/footer.scss'
-import 'tailwindcss/tailwind.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faInstagram, faFacebook, faTiktok } from '@fortawesome/free-brands-svg-icons'
+import Image from 'next/image';
+import Link from 'next/link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInstagram, faFacebook, faTiktok } from '@fortawesome/free-brands-svg-icons';
+import 'tailwindcss/tailwind.css';
 
 export default function FooterComponent() {
-    return (
+  return (
+    <footer className="bg-gray-100 py-10 text-center text-sm">
+      <div className="flex flex-col md:flex-row md:justify-around gap-10 px-10">
 
-<footer>
-          <div id = "footer">
-            <div id = "footerLogo">
-              <Image src = "/../../images/logo.jpg" alt = "logo" width = "100" height = "100"></Image>
-            </div>
-            <div id = "socialMedia">
-              <h1>Obserwuj mnie</h1>
-              <div id = "facebook">
-                <Link href = "https://www.facebook.com/" target='blank' title = "facebook"><FontAwesomeIcon icon={faFacebook} /></Link>
-              </div>
-              <div id = "instagram">
-                <Link href = "https://www.instagram.com/" target='blank' title = "instagram"><FontAwesomeIcon icon = {faInstagram}/></Link>
-              </div>
-              <div id = "tikTok">
-                <Link href = "https://www.tiktok.com/" target='blank' title = "tikTok"><FontAwesomeIcon icon = {faTiktok} /></Link>
-              </div>
-            </div>
-            <div id = "footerContact">
-              <p>Zapraszam do kontaktu</p>
-    
-              <p id = "mobileNumber">Zadzwoń: +48 657391939</p>
-              
-              <p id = "footerEmail">Napisz: juliamjaewskaxdxddxd@gmail.com</p>
+        <div>
+          <Image src="/images/logo.jpg" alt="logo" width={100} height={100} />
+        </div>
 
-              <div id = "igContact">
-              <FontAwesomeIcon icon = {faInstagram} width = "30px" height = "30px"/>
-              <li><Link href = "https://www.instagram.com/">Instagram</Link></li>
-              </div>
-            </div>
+        <div>
+          <h2 className="text-lg font-semibold mb-2">Obserwuj mnie</h2>
+          <div className="flex justify-center gap-4 text-2xl">
+            <Link href="https://www.facebook.com/" target="_blank" title="Facebook">
+              <FontAwesomeIcon icon={faFacebook} />
+            </Link>
+            <Link href="https://www.instagram.com/" target="_blank" title="Instagram">
+              <FontAwesomeIcon icon={faInstagram} />
+            </Link>
+            <Link href="https://www.tiktok.com/" target="_blank" title="TikTok">
+              <FontAwesomeIcon icon={faTiktok} />
+            </Link>
+          </div>
+        </div>
 
-            <div id = "JMstudioAddress">
-              <h1>KONTAKT</h1>
-              <p>Julia Majewska Studio</p>
-              <p>ul. Wieniawska 8</p>
-              <p>20-400 Lublin</p>
-              <li><Link href = ""><p id = "privacyPolicy">Polityka prywatności</p></Link></li>
-              <li><Link href = ""><p id = "footerStatute">Regulamin</p></Link></li>
-            </div>
-  
-            <div id = "footerProducts">
-              <h1>Oferta</h1>
-              <ul>
-                <li>Revolax</li>
-                <li>Juvederm</li>
-                <li>Hialuronidaza</li>
-                <li>Biorepeel</li>
-              </ul>
-            </div>
+        <div>
+          <h2 className="text-lg font-semibold mb-2">Kontakt</h2>
+          <p>Zadzwoń: +48 657 391 939</p>
+          <p>Napisz: juliamajewska@gmail.com</p>
+          <div className="flex items-center justify-center gap-2 mt-2">
+            <FontAwesomeIcon icon={faInstagram} />
+            <Link href="https://www.instagram.com/" target="_blank">Instagram</Link>
+          </div>
+        </div>
 
-            <div id = "creator">
-                <span id = "copyright">&copy; Copyright Julia Majewska Studio 2024</span>
-                <span id = "mjsn">Created by MJSN</span>
-            </div>
-            </div>
-        </footer>
-    )}
+        <div>
+          <h2 className="text-lg font-semibold mb-2">Adres</h2>
+          <p>Julia Majewska Studio</p>
+          <p>ul. Wieniawska 8</p>
+          <p>20-400 Lublin</p>
+          <div className="mt-2 space-y-1">
+            <Link href="/"><p>Polityka prywatności</p></Link>
+            <Link href="/"><p>Regulamin</p></Link>
+          </div>
+        </div>
+
+        <div>
+          <h2 className="text-lg font-semibold mb-2">Oferta</h2>
+          <ul className="list-disc list-inside">
+            <li>Revolax</li>
+            <li>Juvederm</li>
+            <li>Hialuronidaza</li>
+            <li>Biorepeel</li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="mt-10 text-gray-600">
+        <span>&copy; 2024 Julia Majewska Studio</span><br />
+        <span>Created by MJSN</span>
+      </div>
+    </footer>
+  );
+}
