@@ -1,51 +1,48 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import '../../styles/header.scss'
-import 'tailwindcss/tailwind.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'
+
+'use client'
+
+import Image from 'next/image';
+import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 export default function HeaderComponent() {
-      
-    return (
-        <header>
-        
-        <div id = "headerMenu">
-            <div id = "headerEmail">
-              <FontAwesomeIcon icon = {faEnvelope} className = "headerEnvelopeIcon" width = "30px" height = "30px"/>
-              <span>juliet.majewska@gmail.com</span>
-            </div>
-            <div id = "headerPhoneNumber">
-              <FontAwesomeIcon icon = {faPhone} className = "headerPhoneIcon" width = "30px" height = "30px"/>
-              <span>+48 234 566 345</span>
-            </div>
-            <div id = "logo">
-              <Link href = "/">
-                <Image src = "/images/logo.jpg" alt = "logo" className = "logo" width = "100" height = "100"></Image>
-              </Link>
-          </div>
-          <ul className = "flex justify-center items-center">
-            <li><Link href = "/about">O MNIE</Link></li>
-            <li><Link href = "/offer">OFERTA</Link></li>
-            <li><Link href = "/priceList">CENNIK</Link></li>
-            <li><Link href = "/sale">PROMOCJA</Link></li>
-            <li><Link href = "/contact">KONTAKT</Link></li>
-          </ul>
-          <div id = "bookingButton">
-            <button id = "booking">UMÓW SIĘ</button>
-          </div>
-          <div id = "languageButton">
-            <button id = "polish">PL</button>
-            <button id = "english">EN</button>
-          </div>
-          </div>
+  const pathname = usePathname();
+  const router = useRouter();
+  const [language, setLanguage] = useState(pathname.startsWith('/en') ? 'en' : 'pl');
 
-          <div id = "menuBar">
-            <div className = "barLine"></div>
-            <div className = "barLine"></div>
-            <div className = "barLine"></div>
-            <span>MENU</span>
-          </div>
-        </header>
-    )    
+  const changeLanguage = (lang: 'pl' | 'en') => {
+    setLanguage(lang);
+    const newPath = pathname.replace(/^\/(pl|en)/, '');
+    router.push(`/${lang}${newPath === '' ? '/' : newPath}`);
+  };
+  
+  return (
+    <header className = "bg-[#f7f5f0] shado-sm w-full py-4 px-6 flex items-center justify-between">
+      <div className = "flex items-center">
+        <Link href = {`/${language}`}>
+        <Image src = "/images/logo.jpg" alt = "JM Studio Logo" width = {80} height = {80} className = "rounded-none"/>
+        </Link>
+      </div>
+
+      <nav className = "flex items-center space-x-8 text-black text-sm font-medium">
+        <Link href = {`/${language}/about`} className = "hover:underline"> O MNIE</Link>
+        <Link href = {`/${language}/offer`} className = "hover:underline">ZABIEGI</Link>
+        <Link href = {`/${language}/portfolio`} className = "hover:underline">PORTFOLIO</Link>
+        <Link href = {`/${language}/contact`} className = "hover:underline">KONTAKT</Link>
+      </nav>
+
+      <div className = 'flex items-center space-x-2'>
+        <button onClick = {() => changeLanguage('pl')} className = {`flex items-center px-2 py-1 rounded text-sm border ${language === 'pl' ? 'bg-white' : 'bg-transparent'} boredr-gray-300`}>
+          <Image src = "/icons/pl-flag.png" alt = "PL" width = {20} height = {15} className = "mr-1"/>
+          PL 
+        </button>
+
+        <button onClick = {() => changeLanguage('en')} className = {`flex items-center px-2 py-1 rounded text-sm border ${language === 'en' ? 'bg-white' : 'bg-transparent'} border-gray-300`}>
+          <Image src = "/icons/uk-flaf.png" alt = "EN" width = {20} height = {15} className = "mr-1"/>
+          EN
+        </button>
+      </div>
+    </header>
+  );
 }

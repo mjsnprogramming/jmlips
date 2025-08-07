@@ -1,5 +1,7 @@
 * {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 #aboutMeCaption {
@@ -12,7 +14,7 @@
 #aboutMeCaption li:nth-child(1) {
   font-size: 15px;
   font-weight: 600;
-  font-family: "Playfair Display";
+  font-family: "Playfair Display", serif;
   list-style-type: none;
   color: rgb(224, 180, 93);
   position: absolute;
@@ -22,39 +24,33 @@
   -moz-user-select: none;
   user-select: none;
 }
-#aboutMeCaption span:nth-child(2) {
+#aboutMeCaption span:nth-child(2),
+#aboutMeCaption span:nth-child(3) {
   font-size: 15px;
-  font-weight: 600px;
-  font-family: "Playfair Display";
+  font-weight: 600;
+  font-family: "Playfair Display", serif;
   color: grey;
   position: absolute;
   top: 10px;
-  left: 103px;
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
 }
+#aboutMeCaption span:nth-child(2) {
+  left: 103px;
+}
 #aboutMeCaption span:nth-child(3) {
-  font-size: 15px;
-  font-weight: 600px;
-  font-family: "Playfair Display";
-  color: grey;
-  position: absolute;
-  top: 10px;
   left: 120px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
 }
 
 #firstImage {
   width: 45%;
   height: 500px;
   margin-top: 30px;
-  margin-left: 0;
   float: left;
 }
 #firstImage img {
+  display: block;
   margin-left: auto;
   margin-right: auto;
   -webkit-clip-path: polygon(0 10%, 10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%);
@@ -70,10 +66,10 @@
 }
 #aboutMeText h1 {
   font-size: 40px;
-  font-family: "Dancing Script";
+  font-family: "Dancing Script", cursive;
 }
 #aboutMeText p {
-  font-family: "Playfair Display";
+  font-family: "Playfair Display", serif;
   font-size: 30px;
   color: grey;
 }
@@ -87,7 +83,7 @@
 }
 #passion h1 {
   font-size: 40px;
-  font-family: "Dancing Script";
+  font-family: "Dancing Script", cursive;
 }
 #passion img {
   float: left;
@@ -120,7 +116,7 @@
 }
 #experience h1 {
   font-size: 40px;
-  font-family: "Dancing Script";
+  font-family: "Dancing Script", cursive;
 }
 
 #individual {
@@ -130,7 +126,7 @@
 }
 #individual h1 {
   font-size: 40px;
-  font-family: "Dancing Script";
+  font-family: "Dancing Script", cursive;
 }
 
 #aboutMeContact {
@@ -140,7 +136,7 @@
 }
 #aboutMeContact h1 {
   font-size: 40px;
-  font-family: "Dancing Script";
+  font-family: "Dancing Script", cursive;
 }
 
 #certificateImage {
@@ -158,7 +154,7 @@
 }
 #studio h1 {
   font-size: 50px;
-  font-family: "Dancing Script";
+  font-family: "Dancing Script", cursive;
   font-weight: 600;
   letter-spacing: 3px;
   color: rgb(224, 180, 93);
@@ -168,7 +164,7 @@
 }
 #studio p {
   font-size: 30px;
-  font-family: "Playfair Display";
+  font-family: "Playfair Display", serif;
   font-weight: 500;
   color: grey;
   position: relative;

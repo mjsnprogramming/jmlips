@@ -1,102 +1,105 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import '../styles/pricelist.scss'
-import 'tailwindcss/tailwind.css'
+import Image from 'next/image';
+import Link from 'next/link';
+import Head from 'next/head';
 import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFacebook, faInstagram, faTiktok } from '@fortawesome/free-brands-svg-icons'
-import FooterComponent from '../components/FooterComponent/page'
-
-
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook, faInstagram, faTiktok } from '@fortawesome/free-brands-svg-icons';
+import FooterComponent from '../components/FooterComponent';
+import 'tailwindcss/tailwind.css';
 
 export default function PriceList() {
-  
-    return (
-        <html lang = "en">
-        <head>
-          <meta charSet = "utf-8" name = "viewport" content = "width=device-width,initial-scale=1.0"/>
-          <link rel = "stylesheet" href = "styles/about.scss"/>
-          <link rel="preconnect" href="https://fonts.googleapis.com"/>
-          <link rel="preconnect" href="https://fonts.gstatic.com"/>
-          <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Dancing+Script:wght@600&family=Amatic+SC&display=swap" rel="stylesheet"/>
-        </head>
-  
-        <body>
-          <header>
-          
-            <div id = "headerMenu">
-              <div id = "logo" >
-                <Link href = "/">
-                  <Image src = "/../../images/logo.jpg" className = "logo" alt = "logo" width = "100" height = "100"></Image>
-                </Link>
-              </div>
-            <ul className = "flex justify-center items-center">
-              <li><Link href = "/about">O MNIE</Link></li>
-              <li><Link href = "/offer">OFERTA</Link></li>
-              <li><Link href = "/priceList">CENNIK</Link></li>
-              <li><Link href = "/sale">PROMOCJA</Link></li>
-              <li><Link href = "/contact">KONTAKT</Link></li>
+  const [activeSection, setActiveSection] = useState<string | null>(null);
+
+  const toggleDetails = (section: string) => {
+    setActiveSection(prev => (prev === section ? null : section));
+  };
+
+  return (
+    <>
+      <Head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+        <title>Cennik – Julia Majewska</title>
+        <meta name="description" content="Sprawdź cennik zabiegów u Julii Majewskiej." />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Dancing+Script:wght@600&family=Amatic+SC&display=swap" rel="stylesheet" />
+      </Head>
+
+      <header className="bg-white shadow-md px-4 py-2">
+        <div className="flex items-center justify-between">
+          <Link href="/">
+            <Image src="/images/logo.jpg" alt="logo" width={100} height={100} />
+          </Link>
+
+          <nav>
+            <ul className="flex gap-4 font-medium">
+              <li><Link href="/about">O MNIE</Link></li>
+              <li><Link href="/offer">OFERTA</Link></li>
+              <li><Link href="/priceList">CENNIK</Link></li>
+              <li><Link href="/sale">PROMOCJA</Link></li>
+              <li><Link href="/contact">KONTAKT</Link></li>
             </ul>
-            </div>
-          </header>
+          </nav>
+        </div>
+      </header>
 
-          <main>
+      <main className="px-4 md:px-20 py-10">
+        <div className="mb-4">
+          <div className="flex items-center gap-2 text-sm">
+            <Link href="/">Strona główna</Link>
+            <span>{'>'}</span>
+            <span>Cennik</span>
+          </div>
+        </div>
 
-          <div id = "pricelistCaption">
-              <li><Link href = "/../">Strona główna</Link></li>
-              <span>{'>'}</span>
-              <span>Cennik</span>
-            </div>
+        <h1 className="text-3xl font-bold text-center mb-10">CENNIK ZABIEGÓW</h1>
 
-            <div id = "mainPriceList">
-
-              <div id = "bigPricelistCaption">
-                <p>CE<span>NN</span>IK ZA<span>BIE</span>GÓW</p>
+        <section className="space-y-6">
+          <div className="border p-4 rounded shadow-md cursor-pointer" onClick={() => toggleDetails('lips')}>
+            <h2 className="font-black text-xl mb-2">POWIĘKSZANIE/MODELOWANIE UST</h2>
+            {activeSection === 'lips' && (
+              <div className="space-y-2">
+                <p>Revolax/Stylage - 1ml <span className="float-right">600 zł</span></p>
+                <p>Juvederm Ultra 2 - 0.55ml <span className="float-right">450 zł</span></p>
+                <p>Nawilżenie ust bez powiększenia <span className="float-right">500 zł</span></p>
+                <p>Hialuronidaza <span className="float-right">500 zł</span></p>
               </div>
+            )}
+          </div>
 
-              <div id = "pricelistContainers">
-                
-              <div className = "pricelistDrop" onClick = {toggleDetails}>
-              <div id = "lipsModelling">
-                 <h1 className = "font-black">POWIĘKSZANIE/MODELOWANIE UST</h1>
-                    <p className = "font-medium">Revolax/Stylage - 1ml</p><span className = "revolaxPrice under600pxPrice">600 zł</span>
-                    <p className = "font-medium">Juvederm Ultra 2 - 0.55ml</p><span className = "juvedermPrice under600pxPrice">450 zł</span>
-                    <p className = "font-medium">Nawilżenie ust bez powiększenia</p><span className = "moisturizingPrice under600pxPrice">500 zł</span>
-                    <p className = "font-medium">Hialuronidaza</p><span className = "hialoPrice under600pxPrice">500 zł</span>
+          <div className="border p-4 rounded shadow-md cursor-pointer" onClick={() => toggleDetails('makeup')}>
+            <h2 className="font-black text-xl mb-2">MAKIJAŻ PERMANENTNY</h2>
+            {activeSection === 'makeup' && (
+              <div className="space-y-2">
+                <p>Brwi <span className="float-right">500 zł</span></p>
+                <p>Konsultacja + rysunek <span className="float-right">50 zł</span></p>
+                <p>Korekta do 10 tygodni <span className="float-right">150 zł</span></p>
+                <p>Dopigmentowanie do 1,5 roku <span className="float-right">400 zł</span></p>
               </div>
-              </div>
+            )}
+          </div>
 
-              <div className = "pricelistDrop">
-              <div id = "makeup">
-                  <h1 className = "font-black">MAKIJAŻ PERMANENTNY</h1>
-                    <p className = "font-medium">Brwi </p><span className = "eyebrowsPrice under600pxPrice">500 zł</span>
-                    <p className = "font-medium">Konsultacja + rysunek</p><span className = "consultationPrice under600pxPrice">50 &nbsp;&nbsp;zł</span>
-                    <p className = "font-medium">Korekta do 10 tygodni</p><span className = "adjustmentPrice under600pxPrice">150 &nbsp;zł</span>
-                    <p className = "font-medium">Dopigmentowanie do 1,5 roku</p><span className = "pigmentationPrice under600pxPrice">400 zł</span>              
-                  </div>
-                </div>
-
-                <div className = "pricelistDrop">
-              <div id = "mesotherapy">
-                  <h1 className = "font-black">MEZOTERAPIA IGŁOWA</h1>
-                    <p className = "font-medium">Twarz</p><span className = "facePrice under600pxPrice">130 zł</span>
-                    <p className = "font-medium">Twarz szyja</p><span className = "faceNeckPrice under600pxPrice">300 zł</span>
-                    <p className = "font-medium">Twarz szyja dekolt</p><span className = "faceNeckCleavagePrice under600pxPrice">350  zł</span>
-                    <p className = "font-medium">Skóra głowy</p><span className = "headSkinPrice under600pxPrice">450 zł</span>
-                  </div>
+          <div className="border p-4 rounded shadow-md cursor-pointer" onClick={() => toggleDetails('meso')}>
+            <h2 className="font-black text-xl mb-2">MEZOTERAPIA IGŁOWA</h2>
+            {activeSection === 'meso' && (
+              <div className="space-y-2">
+                <p>Twarz <span className="float-right">130 zł</span></p>
+                <p>Twarz + szyja <span className="float-right">300 zł</span></p>
+                <p>Twarz + szyja + dekolt <span className="float-right">350 zł</span></p>
+                <p>Skóra głowy <span className="float-right">450 zł</span></p>
               </div>
+            )}
+          </div>
 
-              <div className = "pricelistDrop">
-                <div id = "biorepeel">
-                  <h1 className = "font-black">BIOREPEEL</h1>
-                </div>
-              </div>
-            </div>
-            </div>
-          </main>
-        <FooterComponent/>
-    </body>
-    </html>
-    )
+          <div className="border p-4 rounded shadow-md">
+            <h2 className="font-black text-xl">BIOREPEEL</h2>
+            <p className="text-sm mt-2">Zapytaj o szczegóły podczas konsultacji.</p>
+          </div>
+        </section>
+      </main>
+
+      <FooterComponent />
+    </>
+  );
 }

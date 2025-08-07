@@ -1,157 +1,98 @@
 @mixin contactDivsShape {
-    width: 50%;
-    height: 500px;
-    float: left; 
+  width: 50%;
+  height: 500px;
+  float: left;
 }
+
 @mixin NoneUserSelect {
-    -webkit-user-select: none; 
-    -moz-user-select: none;    
-    -ms-user-select: none;   
-    user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
-$playfairDisplay: "Playfair Display";
+$playfairDisplay: "Playfair Display", serif;
 
+// === Reset ===
 * {
-    margin: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
+// === Menu ===
 #headerMenu {
-    width: 100%;
-    height: 200px;
-    background-color: rgb(224, 180, 93);
-    display: flex;
-    flex-direction: row;
-    font-family: "Dancing Script";
-    ul {
-        position: relative;
-        margin-left: auto;
-        margin-right: auto;
-        li {
-            :visited {
-                color: white;
-            }
-            display: inline-block;
-            margin-left: 30px;
-            font-size: 30px;
-            color: white;
-            a {
-                text-decoration: none;
-            }
-            list-style-type: none;
-        }
-    }
-}
-#contactCaption {
-    @include contactDivsShape;
-    li:nth-child(1) {
-        font-size: 15px;
-        font-weight: 600;
-        font-family: $playfairDisplay;
-        list-style-type: none;
-        color:rgb(224, 180, 93);
-        position: relative;
-        top: 50px;
-        left: 50px;
-        @include NoneUserSelect;
-    }
-    span:nth-child(2) {
-        font-size: 15px;
-        font-weight: 600px;
-        font-family: $playfairDisplay;
-        color: grey;
-        position: relative;
-        top: 25px;
-        left: 160px;
-        @include NoneUserSelect;
-    }
-    h1:nth-child(3) {
-        font-size: 170px;
-        font-weight: 600;
-        letter-spacing: 2px;
-        font-style: italic;
-        font-family: "Cinzel Decorative";
-        position: relative;
-        top: 50px;
-        left: 100px;
-        @include NoneUserSelect;
-    }
-    p:nth-child(4) {
-        font-size: 30px;
-        font-weight: 400;
-        font-family: $playfairDisplay;
-        position: relative;
-        top: 40px;
-        left: 150px;
-    }
-}
-#contactPageImage {
-    @include contactDivsShape;
-    img {
-        width: 800px;
-        height: 450px;
-        position: relative;
-        top: 50px;
-        float: right;
-    }
-}
-#contactInformation {
-    margin-top: 250px;
-    @include contactDivsShape;
-    h1:nth-child(1) {
-        font-size: 60px;
-        position: relative;
-        left: 150px;
-        line-height: 50px;
-    }
-    h2:nth-child(2) {
-        font-size: 40px;
-        font-family: $playfairDisplay;
-        position: relative;
-        top: 50px;
-        left: 180px;
-        color: grey;
-    }
-    p:nth-child(3),
-    p:nth-child(4) {
-        font-size: 20px;
-        position: relative;
-        top: 100px;
-        left: 180px;
-        color:rgb(224, 180, 93);
-    }
-    p:nth-child(5),
-    p:nth-child(6) {
-        font-size: 20px;
-        position: relative;
-        top: 150px;
-        left: 180px;
-        color:grey;
-    }
-}
-#igContactPage {
-    width: 200px;
-    height: 50px;
-    position: relative;
-    top: 150px;
-    left: 177px;
+  width: 100%;
+  height: 200px;
+  background-color: rgb(224, 180, 93);
+  display: flex;
+  flex-direction: row;
+  font-family: "Dancing Script", cursive;
+
+  ul {
+    margin: 0 auto;
+
     li {
-        list-style-type: none;
-        color: grey;
-        position: relative;
-        top: -18px;
-        left: 40px;
+      display: inline-block;
+      margin-left: 30px;
+      font-size: 30px;
+      color: white;
+      list-style-type: none;
+
+      a {
+        text-decoration: none;
+        color: white;
+
+        &:visited {
+          color: white;
+        }
+      }
     }
-    .iconContact {
-        position: relative;
-        top: 10px;
-        color: grey;
-    }
+  }
 }
-#googleMaps {
-    margin-top: 250px;
-    @include contactDivsShape;
-    iframe {
-        position: relative;
-        left: 300px;
-    }
+
+// === Caption ===
+#contactCaption {
+  @include contactDivsShape;
+
+  li {
+    font-size: 15px;
+    font-weight: 600;
+    font-family: $playfairDisplay;
+    list-style-type: none;
+    color: rgb(224, 180, 93);
+    position: relative;
+    top: 50px;
+    left: 50px;
+    @include NoneUserSelect;
+  }
+
+  span {
+    font-size: 15px;
+    font-weight: 600;
+    font-family: $playfairDisplay;
+    color: grey;
+    position: relative;
+    top: 25px;
+    left: 160px;
+    @include NoneUserSelect;
+  }
+
+  h1 {
+    font-size: 170px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    font-style: italic;
+    font-family: "Cinzel Decorative", serif;
+    position: relative;
+    top: 50px;
+    left: 100px;
+    @include NoneUserSelect;
+  }
+
+  p {
+    font-size: 30px;
+    font-weight: 400;
+    font-family: $playfairDisplay;
+  }
 }

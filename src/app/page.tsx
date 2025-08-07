@@ -1,28 +1,38 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import './/styles/home.scss'
-import 'tailwindcss/tailwind.css'
-import HeaderComponent from './components/HeaderComponent/page'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'
- 
- export default function Home() {
-  
-  return (
-    <html lang = "en">
-      <head>
-        <meta charSet = "utf-8" name = "viewport" content = "width=device-width,initial-scale=1.0"/>
-        <link rel = "stylesheet" href = "styles/home.scss"/>
-        <link rel="preconnect" href="https://fonts.googleapis.com"/>
-        <link rel="preconnect" href="https://fonts.gstatic.com"/>
-        <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Dancing+Script:wght@600&family=Amatic+SC&display=swap" rel="stylesheet"/>
-      </head>
 
-      <body>
-        <HeaderComponent/>
-        
-    </body>
-    </html>
+'use client'
+
+import Image from 'next/image';
+import Link from 'next/link';
+import 'tailwindcss/tailwind.css'
+
+export default function HomePage() {
+  return (
+    <section className = "relative w-full h-screen overflow-hidden bg-[#f9f5f0]">
+      <Image src = "/images/hero-bg.jpg" alt = "JM Studio background" layout = "fill" objectFit = "cover" className = "brightness-95" priority/>
+      <div className = "absolute inset-0 flex flex-col items-center justify-center text-center px-4 bg-white/50 backdrop-blur-sm">
+        <h1 className = "text-5xl md:text-6xl font-light text-gray-900 drop-shadow-md">
+          Witamy w <span className = "font-semibold text-[#a67c52]">JM Studio</span>
+        </h1>
+        <p className = "mt-4 text-lg md:text-xl text-[#5a4c3a] max-w-xl">
+          Profesjonalne zabiegi medycyny estetycznej, które wydobywają Twoje naturalne piękno.
+        </p>
+
+        <div className = "mt-8 flex-col sm:flex-row gap-4">
+          <Link href = "/contact">
+            <button className = "px-6 py-3 bg-[#a67c52] text-white rounded hover:bg-[#8c6844] transition">
+              Umów się
+            </button>
+          </Link>
+
+          <Link href = "/offer">
+            <button className = "px-6 py-3 border border-[#a67c52] text-[#a67c52] rounded hover:bg-[#a67c52] hover:text-white transition">
+              Zobacz ofertę
+            </button>
+          </Link>
+        </div>
+      </div>
+    </section>
+  
   )
 }
 
