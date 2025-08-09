@@ -18,10 +18,10 @@ export default function HeaderComponent() {
   };
   
   return (
-    <header className = "bg-[#f7f5f0] shado-sm w-full py-4 px-6 flex items-center justify-between">
+    <header className = "w-full h-[102px] px-6 shadow-sm bg-[#f7f5f0] flex items-center justify-between">
       <div className = "flex items-center">
-        <Link href = {`/${language}`}>
-        <Image src = "/images/logo.jpg" alt = "JM Studio Logo" width = {80} height = {80} className = "rounded-none"/>
+        <Link href="/" className="text-2xl md:text-3xl font-light text-gray-900">
+          JM <span className="font-semibold text-[#a67c52]">Studio</span>
         </Link>
       </div>
 
@@ -34,12 +34,12 @@ export default function HeaderComponent() {
 
       <div className = 'flex items-center space-x-2'>
         <button onClick = {() => changeLanguage('pl')} className = {`flex items-center px-2 py-1 rounded text-sm border ${language === 'pl' ? 'bg-white' : 'bg-transparent'} boredr-gray-300`}>
-          <Image src = "/icons/pl-flag.png" alt = "PL" width = {20} height = {15} className = "mr-1"/>
+          <Image src = "/images/pl_flag.png" alt = "PL" width = {20} height = {15} className = "mr-1"/>
           PL 
         </button>
 
         <button onClick = {() => changeLanguage('en')} className = {`flex items-center px-2 py-1 rounded text-sm border ${language === 'en' ? 'bg-white' : 'bg-transparent'} border-gray-300`}>
-          <Image src = "/icons/uk-flaf.png" alt = "EN" width = {20} height = {15} className = "mr-1"/>
+          <Image src = "/images/uk_flag.png" alt = "EN" width = {20} height = {15} className = "mr-1"/>
           EN
         </button>
       </div>
