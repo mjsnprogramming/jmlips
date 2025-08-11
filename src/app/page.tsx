@@ -1,12 +1,13 @@
 
 'use client'
 
-import Image from 'next/image';
 import Link from 'next/link';
-import 'tailwindcss/tailwind.css'
+import Image from 'next/image';
+import 'tailwindcss/tailwind.css';
 
 export default function HomePage() {
   return (
+    <main>
     <section className = "relative w-full h-screen overflow-hidden bg-[#f9f5f0]">
       
       <video
@@ -16,13 +17,11 @@ export default function HomePage() {
         loop
         muted
         playsInline
-        poster="/images/hero-bg.jpg"  // fallback zanim załaduje się video
+        poster="/images/hero-bg.jpg"
       />
 
-      {/* lekki veil + blur na całej sekcji, żeby tekst był czytelny */}
       <div className="absolute inset-0 bg-white/50 backdrop-blur-sm" />
 
-      {/* TREŚĆ */}
       <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 h-full">
         <h1 className="text-5xl md:text-6xl font-light text-gray-900 drop-shadow-md">
           Witamy w <span className="font-semibold text-[#a67c52]">JM Studio</span>
@@ -47,7 +46,55 @@ export default function HomePage() {
         </div>
       </div>
     </section>
+
+    <section className = "max-w-6xl mx-auto py-16 px-4">
+      <h2 className = "text-3xl md:text-4xl font-semibold text-center text-[#a67c52] mb-12">
+        Nasze najpopularniejsze zabiegi
+      </h2>
+
+      <div className = "grid grid-cols-1 md:grid-cols-3 gap-8">
+        <article className = "bg-white rounded-2xl shadow-lg overflow-hidden border border-neutral-100">
+          <Image src = "" alt = "Mezoterapia" className = "w-full h-48 object-cover"></Image>
+          <div className = "p-6">
+            <h3 className = "text-xl font-semibold mb-2 text-gray-900">Mezoterapia</h3>
+            <p className = "text-gray-600 mb-4">
+              Odmładzanie o odżywienie skóry - widoczne wygładzanie i blask.
+            </p>
+            <a href = "/offer#mezoterapia" className = "text-[#a67c52] font-medium hover:underline">
+            Dowiedz się więcej 
+            </a>
+          </div>
+        </article>
+
+        <article className = "bg-white rounded-2xl shadow-lg overflow-hidden border border-neutral-100">
+          <Image src = "" alt = "Toksyna botulinowa" className = "w-full h-48 object-cover" />
+          <div className = "p-6">
+            <h3 className = "text-xl font-semibold mb-2 text-gray-900">Toksyna botulinowa</h3>
+            <p className = "text-gray-600 mb-4">
+              Redukcja zmarszczek mimicznych z zachowaniem naturalnej ekspresji.
+            </p>
+            <a href = "/offer#botoks" className = "text-[#a67c52] font-medium hover:underline">
+            Dowiedz się więcej
+            </a>
+          </div>
+        </article>
+
+        <article className = "bg-white rounded-2xl shadow-lg overflow-hidden border border-neutral-100">
+          <Image src = "" alt = "Kwas hialuronowy" className = "w-full h-48 object-cover"/>
+          <div className = "p-6">
+            <h3 className = "text-xl font-semibold mb-2 text-gray-900">Kwas hialuronowy</h3>
+            <p className = "text-gray-600 mb-4">
+              Modelowanie i wypełnienia - subtelny efekt "fresh & natural".
+            </p>
+            <a href = "/offer#kwas-hialuronowy" className = "text-[#a67c52] font-medium hover:underline">
+            Dowiedz się więcej
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
   
+  </main>
   )
 }
 
