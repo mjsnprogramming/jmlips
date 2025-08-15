@@ -93,6 +93,43 @@ export default function HomePage() {
         </article>
       </div>
     </section>
+
+    <section className = "bg-[#f9f5f0] py-16 px-4">
+      <h2 className = "text-3xl md:text-4xl font-semibold text-center text-[#a67c52] mb-12">
+        Opinie klientek
+      </h2>
+
+      <div className = "max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+        {[
+          {
+            name: 'Anna K. ',
+            text: 'Jestem zachwycona! Efekty przerosły moje oczekiwania, a obsługa była na najwyśzym poziomie.',
+            img: '/images/client1.jpg',
+          },
+          {
+            name: 'Magda P.',
+            text: 'Profesjonalizm i przemiła atmosfera. Na pewno wrócę na kolejne zabiegi.',
+            img: '/images/client2.jpg',
+          },
+          {
+            name: 'Kasia W.',
+            text: 'Po zabiegu czuję się pięknie i pewnie siebie. Polecam każdej kobiecie!',
+            img: '/images/client3.jpg',
+          },
+        ].map((opinion, idx) => (
+          <div key = {idx} className = "bg-white rounded-2xl shadow-lg p-6 text-center border border-neutral-100">
+            <div className = "mx-auto w-20 h-20 relative mb-4">
+              <Image src = {opinion.img} alt = {opinion.name} fill className = "rounded-full object-cover"/>
+            </div>
+            <p className = "text-gray-700 italic mb-4">"{opinion.text}"</p>
+            <p className="text-[#a67c52] font-semibold">{opinion.name}</p>
+        <div className="flex justify-center mt-2 text-yellow-500">
+          {'★★★★★'}
+        </div>
+        </div>
+        ))}
+      </div>
+    </section>
   
   </main>
   )
