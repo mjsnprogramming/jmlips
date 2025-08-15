@@ -54,7 +54,9 @@ export default function HomePage() {
 
       <div className = "grid grid-cols-1 md:grid-cols-3 gap-8">
         <article className = "bg-white rounded-2xl shadow-lg overflow-hidden border border-neutral-100">
-          <Image src = "" alt = "Mezoterapia" className = "w-full h-48 object-cover"></Image>
+          <div className="relative w-full h-48 md:h-56">
+          <Image src="/images/offers1.jpg" alt="Mezoterapia" fill className="object-cover object-center" priority/>
+          </div>
           <div className = "p-6">
             <h3 className = "text-xl font-semibold mb-2 text-gray-900">Mezoterapia</h3>
             <p className = "text-gray-600 mb-4">
@@ -67,7 +69,9 @@ export default function HomePage() {
         </article>
 
         <article className = "bg-white rounded-2xl shadow-lg overflow-hidden border border-neutral-100">
-          <Image src = "" alt = "Toksyna botulinowa" className = "w-full h-48 object-cover" />
+          <div className="relative w-full h-48 md:h-56">
+          <Image src="/images/offers1.jpg" alt="Mezoterapia" fill className="object-cover object-center" priority/>
+          </div>
           <div className = "p-6">
             <h3 className = "text-xl font-semibold mb-2 text-gray-900">Toksyna botulinowa</h3>
             <p className = "text-gray-600 mb-4">
@@ -80,7 +84,9 @@ export default function HomePage() {
         </article>
 
         <article className = "bg-white rounded-2xl shadow-lg overflow-hidden border border-neutral-100">
-          <Image src = "" alt = "Kwas hialuronowy" className = "w-full h-48 object-cover"/>
+          <div className="relative w-full h-48 md:h-56">
+          <Image src="/images/offers1.jpg" alt="Mezoterapia" fill className="object-cover object-center" priority/>
+          </div>
           <div className = "p-6">
             <h3 className = "text-xl font-semibold mb-2 text-gray-900">Kwas hialuronowy</h3>
             <p className = "text-gray-600 mb-4">
@@ -104,17 +110,17 @@ export default function HomePage() {
           {
             name: 'Anna K. ',
             text: 'Jestem zachwycona! Efekty przerosły moje oczekiwania, a obsługa była na najwyśzym poziomie.',
-            img: '/images/client1.jpg',
+            img: '/images/opinion1.jpg',
           },
           {
             name: 'Magda P.',
             text: 'Profesjonalizm i przemiła atmosfera. Na pewno wrócę na kolejne zabiegi.',
-            img: '/images/client2.jpg',
+            img: '/images/opinion2.jpg',
           },
           {
             name: 'Kasia W.',
             text: 'Po zabiegu czuję się pięknie i pewnie siebie. Polecam każdej kobiecie!',
-            img: '/images/client3.jpg',
+            img: '/images/opinion3.jpg',
           },
         ].map((opinion, idx) => (
           <div key = {idx} className = "bg-white rounded-2xl shadow-lg p-6 text-center border border-neutral-100">
@@ -128,6 +134,27 @@ export default function HomePage() {
         </div>
         </div>
         ))}
+      </div>
+    </section>
+
+    <section className = "relative bg-[#f9f5f0]">
+      <div className = "max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-8 py-16 px-4">
+        <div className = "relative w-full h-[450px] md:h-[450px] rounded-2xl overflow-hidden shadow-lg">
+          <Image src = "/images/cta.jpg" alt = "Zabieg medycyny estetycznej" fill className = "object-cover"/>
+        </div>
+        <div className = "flex flex-col justify-center">
+          <h2 className = "text-3xl md:text-4xl font-semibold text-[#a67c52] mb-4">
+            Gotowa na metamorfozę?
+          </h2>
+          <p className = "text-gray-700 mb-6">
+            Skontaktuj się z nami i umów się na konsultację. Odkryj zabiegi, które podkreślą twoje naturalne piękno.
+          </p>
+          <Link href = "/contact">
+          <button className = "px-6 py-3 bg-[#a67c52] text-white rounded hover:bg-[#8c6844] transition shadow-md">
+            Skontaktuj się
+          </button>
+          </Link>
+        </div>
       </div>
     </section>
   
