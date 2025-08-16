@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import '../styles/offer.scss'
 import 'tailwindcss/tailwind.css'
-import HeaderComponent from '../components/HeaderComponent/page'
+
 
 export default function Offer() {
     return (
@@ -16,7 +16,7 @@ export default function Offer() {
       </head>
 
       <body>
-       <HeaderComponent/>
+       
 
        <main>
 

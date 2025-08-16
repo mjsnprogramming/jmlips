@@ -1,8 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import Head from 'next/head';
-import HeaderComponent from '../components/HeaderComponent/page';
-import FooterComponent from '../components/FooterComponent/page';
+
 import 'tailwindcss/tailwind.css';
 
 export default function About() {
@@ -21,7 +20,7 @@ export default function About() {
         />
       </Head>
 
-      <HeaderComponent />
+      
 
       <main className="px-4 md:px-20">
         <div className="my-8">
@@ -81,7 +80,7 @@ export default function About() {
           </section>
         </div>
 
-        <FooterComponent />
+       
       </main>
     </>
   );

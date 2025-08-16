@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import '../styles/bookingForm.scss'
+
 
 export default function bookingForm() {
     return (
