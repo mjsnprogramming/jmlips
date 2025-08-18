@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import '../styles/contact.scss'
 import 'tailwindcss/tailwind.css'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

@@ -4,7 +4,7 @@ import Head from 'next/head';
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faInstagram, faTiktok } from '@fortawesome/free-brands-svg-icons';
-import FooterComponent from '../components/FooterComponent';
+
 import 'tailwindcss/tailwind.css';
 
 export default function PriceList() {
