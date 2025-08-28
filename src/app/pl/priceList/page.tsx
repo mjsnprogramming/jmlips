@@ -1,105 +1,281 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import Head from 'next/head';
-import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook, faInstagram, faTiktok } from '@fortawesome/free-brands-svg-icons';
+"use client";
 
-import 'tailwindcss/tailwind.css';
+import { useMemo, useState } from "react";
+import { Playfair_Display } from "next/font/google";
+
+const serif = Playfair_Display({ subsets: ["latin"], weight: ["600", "700"] });
+
+// Kolory zbliżone do screenów
+const GOLD = "#c8b08a";
+const PAPER = "#f8f6f1";
+
+type Row = {
+  area: string; // Obszar
+  count: number; // Ilość zabiegów
+  price: string; // Cena
+  desc?: string; // Opis
+};
+
+type Category = {
+  id: string;
+  title: string;
+  items: {
+    name: string;
+    rows: Row[];
+  }[];
+};
+
+// Dane z Twojego zdjęcia
+const DATA: Category[] = [
+  {
+    id: "ust",
+    title: "Modelowanie ust",
+    items: [
+      {
+        name: "Modelowanie ust kwasem hialuronowym – Revolax / Stylage",
+        rows: [{ area: "Usta", count: 1, price: "750 zł", desc: "1 ml" }],
+      },
+      {
+        name: "Modelowanie ust kwasem hialuronowym – Juvederm 3",
+        rows: [{ area: "Usta", count: 1, price: "900 zł", desc: "1 ml" }],
+      },
+      {
+        name: "Rewitalizacja ust stymulatorem tkankowym",
+        rows: [{ area: "Usta", count: 1, price: "650 zł" }],
+      },
+    ],
+  },
+  {
+    id: "hialuronidaza",
+    title: "Usuwanie kwasu hialuronowego",
+    items: [
+      {
+        name: "Hialuronidaza",
+        rows: [{ area: "Twarz", count: 1, price: "600–900 zł" }],
+      },
+    ],
+  },
+  {
+    id: "oko",
+    title: "Stymulator tkankowy – okolica oka",
+    items: [
+      {
+        name: "Nucleofill Eyes",
+        rows: [{ area: "Oczy", count: 1, price: "600 zł" }],
+      },
+      {
+        name: "Electri",
+        rows: [{ area: "Oczy", count: 1, price: "550 zł" }],
+      },
+      {
+        name: "Xela Rederm 1.1%",
+        rows: [{ area: "Oczy", count: 1, price: "550 zł" }],
+      },
+    ],
+  },
+  {
+    id: "stymulatory",
+    title: "Stymulator tkankowy (twarz, szyja, dekolt, skóra głowy)",
+    items: [
+      {
+        name: "Karisma",
+        rows: [{ area: "Twarz/szyja/dekolt/skóra głowy", count: 1, price: "800 zł" }],
+      },
+      {
+        name: "Profhilo",
+        rows: [{ area: "Twarz/szyja/dekolt/skóra głowy", count: 1, price: "700 zł" }],
+      },
+      {
+        name: "Ejal40",
+        rows: [{ area: "Twarz/szyja/dekolt/skóra głowy", count: 1, price: "600 zł" }],
+      },
+      {
+        name: "Neauvia Hydro Deluxe",
+        rows: [{ area: "Twarz/szyja/dekolt/skóra głowy", count: 1, price: "550 zł" }],
+      },
+      {
+        name: "Dr.Cyj Hair Filler",
+        rows: [{ area: "Skóra głowy", count: 1, price: "550 zł" }],
+      },
+    ],
+  },
+  {
+    id: "mezoterapia",
+    title: "Mezoterapia igłowa",
+    items: [
+      {
+        name: "Twarz",
+        rows: [{ area: "Twarz", count: 1, price: "350 zł" }],
+      },
+      {
+        name: "Twarz + szyja",
+        rows: [{ area: "Twarz + szyja", count: 1, price: "400 zł" }],
+      },
+      {
+        name: "Twarz + szyja + dekolt",
+        rows: [{ area: "Twarz + szyja + dekolt", count: 1, price: "500 zł" }],
+      },
+    ],
+  },
+];
 
 export default function PriceList() {
-  const [activeSection, setActiveSection] = useState<string | null>(null);
+  const [query, setQuery] = useState("");
+  const [open, setOpen] = useState<String[]>([]);
 
-  const toggleDetails = (section: string) => {
-    setActiveSection(prev => (prev === section ? null : section));
-  };
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return DATA;
+
+    return DATA.map((cat) => {
+      const titleHit = cat.title.toLowerCase().includes(q);
+      const items = cat.items.filter((it) => it.name.toLowerCase().includes(q));
+      
+      if (titleHit && items.length === 0) return { ...cat };
+      if (items.length) return { ...cat, items };
+      return { ...cat, items: [] };
+    }).filter((cat) => cat.items.length > 0 || cat.title.toLowerCase().includes(q));
+  }, [query]);
+
+  const effectiveOpen = useMemo(() => {
+    if (!query) return open;
+    return Array.from(new Set([...open, ...filtered.map((c) => c.id)]));
+  }, [open, query, filtered]);
+
+  const toggleCat = (id: string) =>
+    setOpen((prev) =>
+      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
+    );
 
   return (
-    <>
-      <Head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-        <title>Cennik – Julia Majewska</title>
-        <meta name="description" content="Sprawdź cennik zabiegów u Julii Majewskiej." />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Dancing+Script:wght@600&family=Amatic+SC&display=swap" rel="stylesheet" />
-      </Head>
-
-      <header className="bg-white shadow-md px-4 py-2">
-        <div className="flex items-center justify-between">
-          <Link href="/">
-            <Image src="/images/logo.jpg" alt="logo" width={100} height={100} />
-          </Link>
-
-          <nav>
-            <ul className="flex gap-4 font-medium">
-              <li><Link href="/about">O MNIE</Link></li>
-              <li><Link href="/offer">OFERTA</Link></li>
-              <li><Link href="/priceList">CENNIK</Link></li>
-              <li><Link href="/sale">PROMOCJA</Link></li>
-              <li><Link href="/contact">KONTAKT</Link></li>
-            </ul>
-          </nav>
-        </div>
-      </header>
-
-      <main className="px-4 md:px-20 py-10">
-        <div className="mb-4">
-          <div className="flex items-center gap-2 text-sm">
-            <Link href="/">Strona główna</Link>
-            <span>{'>'}</span>
-            <span>Cennik</span>
+    <main
+      className="bg-[var(--paper)] text-[#2a241c]"
+      style={{ ["--paper" as any]: PAPER }}
+    >
+      
+      <div className="w-full max-w-[1200px] mx-auto px-4 md:px-6 pt-10 md:pt-12">
+        <div className="flex justify-center">
+          <div className="relative w-full max-w-[880px]">
+            <input
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Wyszukaj zabieg"
+              className="w-full h-14 md:h-[60px] rounded-none border border-[#cfc7ba] bg-white/60 px-5 pr-14 tracking-wide placeholder-[#8c806e] focus:outline-none focus:ring-0"
+            />
+            <button
+              aria-label="Szukaj"
+              className="absolute right-0 top-0 h-full aspect-square grid place-items-center border-l border-[#cfc7ba]"
+              onClick={() => null}
+            >
+              <Magnifier className="h-6 w-6" stroke={GOLD} />
+            </button>
           </div>
         </div>
+      </div>
 
-        <h1 className="text-3xl font-bold text-center mb-10">CENNIK ZABIEGÓW</h1>
+      
+      <div className="w-full max-w-[1200px] mx-auto px-4 md:px-6 pb-24">
+        <div className="h-8" />
 
-        <section className="space-y-6">
-          <div className="border p-4 rounded shadow-md cursor-pointer" onClick={() => toggleDetails('lips')}>
-            <h2 className="font-black text-xl mb-2">POWIĘKSZANIE/MODELOWANIE UST</h2>
-            {activeSection === 'lips' && (
-              <div className="space-y-2">
-                <p>Revolax/Stylage - 1ml <span className="float-right">600 zł</span></p>
-                <p>Juvederm Ultra 2 - 0.55ml <span className="float-right">450 zł</span></p>
-                <p>Nawilżenie ust bez powiększenia <span className="float-right">500 zł</span></p>
-                <p>Hialuronidaza <span className="float-right">500 zł</span></p>
-              </div>
-            )}
-          </div>
+        {filtered.map((cat) => {
+          const isOpen = effectiveOpen.includes(cat.id);
+          return (
+            <section key={cat.id} className="border-t border-[#e7e1d6]">
+              <button
+                onClick={() => toggleCat(cat.id)}
+                className="w-full flex items-center justify-between py-6 md:py-7"
+              >
+                <h2
+                  className={`${serif.className} text-[22px] md:text-[26px] italic font-semibold tracking-wide`}
+                >
+                  {cat.title.toUpperCase()}
+                </h2>
+                <span
+  className="flex items-center justify-center rounded-full border font-semibold"
+  style={{
+    borderColor: GOLD,
+    color: GOLD,
+    width: 40,
+    height: 40,
+    fontSize: 22,
+  }}
+>
+  {isOpen ? "–" : "+"}
+</span>
 
-          <div className="border p-4 rounded shadow-md cursor-pointer" onClick={() => toggleDetails('makeup')}>
-            <h2 className="font-black text-xl mb-2">MAKIJAŻ PERMANENTNY</h2>
-            {activeSection === 'makeup' && (
-              <div className="space-y-2">
-                <p>Brwi <span className="float-right">500 zł</span></p>
-                <p>Konsultacja + rysunek <span className="float-right">50 zł</span></p>
-                <p>Korekta do 10 tygodni <span className="float-right">150 zł</span></p>
-                <p>Dopigmentowanie do 1,5 roku <span className="float-right">400 zł</span></p>
-              </div>
-            )}
-          </div>
+              </button>
 
-          <div className="border p-4 rounded shadow-md cursor-pointer" onClick={() => toggleDetails('meso')}>
-            <h2 className="font-black text-xl mb-2">MEZOTERAPIA IGŁOWA</h2>
-            {activeSection === 'meso' && (
-              <div className="space-y-2">
-                <p>Twarz <span className="float-right">130 zł</span></p>
-                <p>Twarz + szyja <span className="float-right">300 zł</span></p>
-                <p>Twarz + szyja + dekolt <span className="float-right">350 zł</span></p>
-                <p>Skóra głowy <span className="float-right">450 zł</span></p>
-              </div>
-            )}
-          </div>
+              {isOpen && (
+                <div className="pb-10 md:pb-12">
+                  {cat.items.map((it, idx) => (
+                    <div key={idx} className="mb-6 md:mb-8">
+                      <h3 className="text-[15px] md:text-base font-semibold tracking-wide text-[#6d5f4c] mb-3">
+                        {it.name.toUpperCase()}
+                      </h3>
 
-          <div className="border p-4 rounded shadow-md">
-            <h2 className="font-black text-xl">BIOREPEEL</h2>
-            <p className="text-sm mt-2">Zapytaj o szczegóły podczas konsultacji.</p>
-          </div>
-        </section>
-      </main>
+                      <div className="overflow-x-auto bg-white ring-1 ring-[#eee7dc]">
+                        <div
+                          className="grid grid-cols-12 text-[13px] md:text-sm font-medium uppercase tracking-wide"
+                          style={{ backgroundColor: GOLD, color: "#3c321f" }}
+                        >
+                          <div className="col-span-3 py-3 pl-4">Obszar</div>
+                          <div className="col-span-3 py-3 pl-4">Ilość zabiegów</div>
+                          <div className="col-span-3 py-3 pl-4">Cena</div>
+                          <div className="col-span-3 py-3 pl-4">Opis</div>
+                        </div>
 
-      <FooterComponent />
-    </>
+                        {it.rows.map((row, rIdx) => (
+                          <div
+                            key={rIdx}
+                            className={`grid grid-cols-12 text-[15px] md:text-base ${
+                              rIdx % 2 === 0 ? "bg-[#fbfaf7]" : "bg-white"
+                            }`}
+                          >
+                            <div className="col-span-3 py-4 pl-4 font-semibold">
+                              {row.area}
+                            </div>
+                            <div className="col-span-3 py-4 pl-4">{row.count}</div>
+                            <div className="col-span-3 py-4 pl-4 font-semibold">
+                              {row.price}
+                            </div>
+                            <div className="col-span-3 py-4 pl-4 text-[#6b5d4a]">
+                              {row.desc || "—"}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </section>
+          );
+        })}
+      </div>
+    </main>
+  );
+}
+
+function Magnifier({
+  className,
+  stroke = "#c8b08a",
+}: {
+  className?: string;
+  stroke?: string;
+}) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className={className}
+      fill="none"
+      stroke={stroke}
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <circle cx="11" cy="11" r="8" />
+      <line x1="21" y1="21" x2="16.65" y2="16.65" />
+    </svg>
   );
 }
