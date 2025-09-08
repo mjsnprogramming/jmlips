@@ -1,74 +1,78 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import 'tailwindcss/tailwind.css'
+import Image from "next/image";
+import Link from "next/link";
+import { Playfair_Display } from "next/font/google";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faInstagram, faFacebook, faTiktok } from '@fortawesome/free-brands-svg-icons'
-
-
-
+const serif = Playfair_Display({ subsets: ["latin"], weight: ["600", "700"] });
 
 export default function Contact() {
-    return (
-        <html lang = "en">
-      <head>
-        <meta charSet = "utf-8" name = "viewport" content = "width=device-width,initial-scale=1.0"/>
-        <link rel = "stylesheet" href = "styles/contact.scss"/>
-        <link rel="preconnect" href="https://fonts.googleapis.com"/>
-        <link rel="preconnect" href="https://fonts.gstatic.com"/>
-        <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Dancing+Script:wght@600&family=Amatic+SC&display=swap" rel="stylesheet"/>
-      </head>
+  return (
+    <main className = "bg-[#f7f5f0] text-[#2a241c]">
+      <section className = "relative w-full h-[40vh] md:h-[55vh] overflow-hidden">
+        <Image src = "/images/contact.jpg" alt = "Kontakt - Julia Majewska Studio" fill priority className = "obkect-cover object-center scale-101"/>
+        <div className = "absolute inset-0 bg-black/30" />
+        <div className = "relative z-10 h-full flex items-center justify-center">
+          <h1 className = {`${serif.className} text-white text-5xl md:text-6xl leading-[1.1]`}>
+            Kontakt
+          </h1>
+        </div>
+      </section>
 
-      <body>
-        <header>
-        
-          <div id = "headerMenu">
-            <div id = "logo" >
-              <Link href = "/">
-                <Image src = "/../../../images/logo.jpg" className = "logo" alt = "logo" width = "100" height = "100"></Image>
-              </Link>
+      <section className = "w-full py-16">
+        <div className = "w-full max-w-[1600px] mx-auto px-6 lg:px-12 grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+          <div>
+            <div className = "flex justify-center text-[#a67c52] text-3xl mb-4">📍</div>
+            <h2 className = {`${serif.className} text-2xl font-semibold`}>Adres</h2>
+            <p className = "mt-2 text-lg leading-relaxed">
+              ul. Wieniawska 8 <br /> 20-400 Lublin
+            </p>
+          </div>
+
+          <div>
+            <div className = "flex justify-center text-[#a67c52] text-3xl mb-4">
+              ☎️
             </div>
-          <ul className = "flex justify-center items-center">
-            <li><Link href = "/about">O MNIE</Link></li>
-            <li><Link href = "/offer">OFERTA</Link></li>
-            <li><Link href = "/priceList">CENNIK</Link></li>
-            <li><Link href = "/sale">PROMOCJA</Link></li>
-            <li><Link href = "/contact">KONTAKT</Link></li>
-          </ul>
-          </div>
-        </header>
-
-        <main>
-          <div id = "contactCaption">
-            <li><Link href = "/../">Strona główna {'>'}</Link></li>
-            <span>Kontakt</span>
-            <h1>Kontakt</h1>
-            <p>Skontaktuj się z nami {'–'} Julia Majewska Studio <br></br>czeka na Twój kontakt!</p>
+            <h2 className = {`${serif.className} text-2xl font-semibold`}>Telefon</h2>
+            <p className="mt-2 text-lg">345 678 242</p>
           </div>
 
-          <div id = "contactPageImage">
-            <Image src = "/../../images/contact.jpg" alt = "contact lips" width = "100" height = "100"></Image>
+          <div>
+            <div className="flex justify-center text-[#a67c52] text-3xl mb-4">
+              ✉️
+            </div>
+            <h2 className={`${serif.className} text-2xl font-semibold`}>
+              E-mail
+            </h2>
+            <p className="mt-2 text-lg">julia@example.com</p>
+            <p className="text-lg">@julia_majewska_studio</p>
           </div>
+        </div>
+      </section>
 
-          <div id = "contactInformation">
-            <h1>Witam w Julia Majewska Studio!</h1>
-            <h2>JULIA MAJEWSKA STUDIO</h2>
-            <p>ul. Wieniawska 8</p>
-            <p>20-400 Lublin</p>
-            <p>tel. 345 678 242</p>
-            <p>e-mail: julia@xdxddf24234@gmail.com</p>
-            <div id = "igContactPage">
-              <FontAwesomeIcon className = "iconContact" icon = {faInstagram}  width = "30px" height = "30px"/>
-              <li><Link href = "https://www.instagram.com/">INSTAGRAM</Link></li>
-              </div>
-          </div>
+     
+      <section className="w-full">
+        <div className="w-full max-w-[1400px] mx-auto px-6 lg:px-12">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2497.3834766030477!2d22.5519708!3d51.2488484!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47225766e33247c7%3A0x30aa1000c22e0e17!2sWieniawska%208%2C%2020-400%20Lublin!5e0!3m2!1spl!2spl!4v1704996540658!5m2!1spl!2spl"
+            width="100%"
+            height="450"
+            loading="lazy"
+            className="w-full rounded-xl shadow-md"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </section>
 
-          <div id = "googleMaps">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2497.3834766030477!2d22.551970800000003!3d51.2488484!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47225766e33247c7%3A0x30aa1000c22e0e17!2sWieniawska%208%2C%2020-400%20Lublin!5e0!3m2!1spl!2spl!4v1704996540658!5m2!1spl!2spl" width="600" height="450" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
-          </div>
-        </main>
-
-        <FooterComponent></FooterComponent>
-        </body>
-        </html>
-    )}
+      
+      <section className="w-full py-16">
+        <div className="w-full max-w-[1600px] mx-auto px-6 lg:px-12 text-center">
+          <Link
+            href="/pl/contact-form"
+            className="inline-flex items-center justify-center px-10 py-4 rounded-full bg-[#a67c52] text-white text-lg hover:bg-[#8c6844] transition shadow-md"
+          >
+            Umów się na konsultację
+          </Link>
+        </div>
+      </section>
+    </main>
+  );
+}
