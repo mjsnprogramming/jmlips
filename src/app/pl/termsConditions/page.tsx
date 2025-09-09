@@ -5,7 +5,7 @@ const serif = Playfair_Display({ subsets: ["latin"], weight: ["600", "700"] });
 export default function TermsConditions() {
   return (
     <main className="bg-[#f7f5f0] text-[#2a241c]">
-      {/* HERO */}
+    
       <section className="relative w-full h-[28vh] md:h-[34vh] overflow-hidden">
         <div className="absolute inset-0 bg-[#2a241c]/70" />
         <div className="relative z-10 h-full flex items-center justify-center">
@@ -17,7 +17,7 @@ export default function TermsConditions() {
         </div>
       </section>
 
-      {/* CONTENT */}
+    
       <section className="w-full py-16">
         <div className="w-full max-w-[1000px] mx-auto px-6 lg:px-12 space-y-10 leading-relaxed text-lg">
           <p>

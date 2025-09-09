@@ -80,7 +80,7 @@ export default function About() {
             </p>
           </div>
 
-          {/* “organic” mask on the photo — clip-path + golden frame */}
+          
           <div className="relative">
             <div className="absolute -inset-3 rounded-[3rem] bg-gradient-to-b from-[#a67c52]/20 to-transparent blur-xl pointer-events-none" />
             <div

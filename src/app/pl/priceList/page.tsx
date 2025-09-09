@@ -5,15 +5,15 @@ import { Playfair_Display } from "next/font/google";
 
 const serif = Playfair_Display({ subsets: ["latin"], weight: ["600", "700"] });
 
-// Kolory zbliżone do screenów
+
 const GOLD = "#c8b08a";
 const PAPER = "#f8f6f1";
 
 type Row = {
-  area: string; // Obszar
-  count: number; // Ilość zabiegów
-  price: string; // Cena
-  desc?: string; // Opis
+  area: string;
+  count: number;
+  price: string;
+  desc?: string;
 };
 
 type Category = {
@@ -25,7 +25,7 @@ type Category = {
   }[];
 };
 
-// Dane z Twojego zdjęcia
+
 const DATA: Category[] = [
   {
     id: "ust",
