@@ -1,88 +1,106 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import Head from 'next/head'
-import '../../styles/about.scss'
-import 'tailwindcss/tailwind.css'
-import HeaderComponent from '../components/HeaderComponent_en'
-import FooterComponent from '../components/FooterComponent_en'
+import Image from "next/image";
+import { Dancing_Script } from "next/font/google";
+
+const signature = Dancing_Script({ subsets: ["latin"], weight: ["400", "700"] });
 
 export default function About() {
-    return (
-      <html lang = "en">
-      <Head>
-        <meta charSet = "utf-8" name = "viewport" content = "width=device-width,initial-scale=1.0"/>
-        <link rel = "stylesheet" href = "styles/header.scss"/>
-        <link rel = "stylesheet" href = "styles/about.scss"/>
-        <link rel="preconnect" href="https://fonts.googleapis.com"/>
-        <link rel="preconnect" href="https://fonts.gstatic.com"/>
-        <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Dancing+Script:wght@600&family=Amatic+SC&display=swap" rel="stylesheet"/>
-      </Head>
-      <div>
-        <HeaderComponent />
-      </div>
-    
+  return (
+    <main className="bg-[#f7f5f0]">
+      <section className="w-full px-6 md:px-20 py-16 flex flex-col md:flex-row items-center gap-10">
+        <div className="flex-shrink-0 md:w-1/2 flex justify-center">
+          <Image
+            src="/images/about.jpg"
+            alt="Julia Majewska"
+            width={450}
+            height={500}
+            className="rounded-2xl object-cover shadow-md w-full h-auto max-w-md"
+          />
+        </div>
 
-        <main>
-          <div id = "main">
+        <div className="md:w-1/2 text-center md:text-left relative -top-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
+            Specialist in <br /> Natural Effects
+          </h1>
+          <p className="mt-6 text-gray-700 text-lg md:text-xl leading-relaxed">
+            Specialist in enhancing natural facial features <br className="hidden md:block" />
+            and lip contouring results. As an experienced practitioner, <br className="hidden md:block" />
+            I make sure every result is subtle and harmonious.
+          </p>
+          <p
+            className={`${signature.className} mt-6 text-3xl md:text-4xl text-[#a67c52] -rotate-1`}
+          >
+            Julia Majewska
+            <span className="block mt-3 h-[2px] w-40 bg-gradient-to-r from-[#a67c52] to-transparent rounded-full" />
+          </p>
+        </div>
+      </section>
 
-            <div id = "aboutMeCaption">
-              <li><Link href = "/../">Strona główna</Link></li>
-              <span>{'>'}</span>
-              <span>O mnie</span>
-            </div>
+      <section className="px-6 md:px-20 pb-20 grid md:grid-cols-3 gap-8">
+        <div className="bg-white rounded-xl shadow p-6 text-center h-[300px] flex flex-col items-center justify-center">
+          <div className="text-2xl text-[#a67c52] mb-3">♡</div>
+          <h3 className="font-semibold text-lg">Individual Approach</h3>
+          <p className="mt-2 text-gray-600 text-sm">
+            Every treatment is tailored to the patient’s needs and expectations.
+          </p>
+        </div>
 
-            <div id = "firstImage">
-              <Image src = "/../images/about.jpg" alt = "about" width = "500" height = "500"></Image>
-            </div>
+        <div className="bg-white rounded-xl shadow p-6 text-center h-[300px] flex flex-col items-center justify-center">
+          <div className="text-2xl text-[#a67c52] mb-3">★</div>
+          <h3 className="font-semibold text-lg">Professional Care</h3>
+          <p className="mt-2 text-gray-600 text-sm">
+            I only use proven and certified methods.
+          </p>
+        </div>
 
-            <div id = "aboutMeText">
-              <h1 className = "text-center">Specjalistka od naturalnych efektów</h1>
-                <div id = "mainParagraphAboutMe">
-                  <p className = "text-left ml-40 mr-40">Witaj na mojej stronie, jestem Julia Majewska, 
-                    i cieszę się, że możesz poznać mnie i moją pasję do modelowania ust oraz zabiegów na twarz. 
-                    Jako specjalista w dziedzinie estetyki twarzy, moim celem jest pomóc Ci osiągnąć naturalny i wyjątkowy wygląd, 
-                    który podkreśli Twoje piękno w sposób subtelny i harmonijny.</p>
-                </div>
-            </div>
+        <div className="bg-white rounded-xl shadow p-6 text-center h-[300px] flex flex-col items-center justify-center">
+          <div className="text-2xl text-[#a67c52] mb-3">✎</div>
+          <h3 className="font-semibold text-lg">Proven Results</h3>
+          <p className="mt-2 text-gray-600 text-sm">
+            The results of my work are confirmed by patient feedback and certifications.
+          </p>
+        </div>
+      </section>
 
-            <div id = "passion">
-              <h1 className = "text-center">Pasja do estetyki twarzy</h1>
-                <div id = "passionText">
-                  <p className = "text-center ml-60 mr-60">Od dawna fascynuje mnie sztuka modelowania twarzy i podkreślanie indywidualnego piękna każdej osoby. 
-                    Dzięki zaawansowanym technikom i najnowszym osiągnięciom w dziedzinie estetyki twarzy, 
-                    mogę pomóc Ci osiągnąć wymarzony wygląd, jednocześnie dbając o zachowanie naturalności i równowagi.</p>
-                </div>
-                <div id = "passionLipsImages" className = "mt-20 flex justify-center">
-                  <Image src = "/../images/lips1.jpg" alt = "lips" width = "300" height = "300"></Image>
-                  <Image src = "/../images/lips3.jpg" alt = "lips" width = "300" height = "300" className = "ml-20 mt-20"></Image>
-                  <Image src = "/../images/lips2.jpg" alt = "lips" width = "300" height = "300" className = "ml-20 mb-20"></Image>
-                </div>
-            </div>
-
-            <div id = "experience">
-              <h1 className = "text-center">DoŚwiadczenie i Profesjonalizm</h1>
-              <div id = "experienceText">
-              <p className = "text-center ml-40 mr-40">Z 3 latami doświadczenia w branży, jestem pewna, że razem możemy osiągnąć najlepsze wyniki. 
-              Moja praktyka opiera się na najwyższych standardach opieki medycznej, a moje umiejętności stale się rozwijają dzięki uczestnictwu w kursach i szkoleniach. 
-              Bezpieczeństwo i zadowolenie pacjenta zawsze są dla mnie priorytetem.</p>
-              </div>
-              <div id = "certificateImage" className = "mt-20 flex justify-center">
-                <Image src = "/../images/certificate1.jpg" alt = "certificate" width = "700" height = "500"></Image>
-                <Image src = "/../images/certificate2.jpg" alt = "certificate" width = "450" height = "700" className = "ml-20"></Image>
-              </div>
-            </div>
-            
-            <div id = "studio">
-              <h1>Studio</h1>
-              <p>Chętnie odpowiem na Twoje pytania i umówię Cię na konsultację.<br></br> 
-                Razem możemy odkryć potencjał Twojej urody i stworzyć wyjątkowy wygląd, który będzie Cię zachwycać. <br></br>
-                Dziękuję, że odwiedziłeś moją stronę internetową, i czekam na możliwość współpracy z Tobą.</p>
-            </div>
+      <section className="px-6 md:px-16 lg:px-24 py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+          <div>
+            <h2 className="text-[34px] md:text-[38px] font-serif font-semibold">
+              Let’s Get to Know Each Other
+            </h2>
+            <p className="mt-5 text-[#5a4c3a]">
+              Over <strong>3 years</strong> of experience, hundreds of satisfied clients, and
+              a passion for subtle, harmonious results. During the consultation, we will
+              calmly discuss your needs and plan the best treatment – without rush, with
+              full respect for your beauty.
+            </p>
+            <p className="mt-4 text-[#5a4c3a]">
+              I care about a comfortable environment and transparent communication. I pay
+              attention to details – from aseptic conditions, through technique, to
+              post-treatment care recommendations.
+            </p>
           </div>
 
-          <FooterComponent />
-        </main>
-   
-    </html>
-    )
+          {/* “organic” mask on the photo — clip-path + golden frame */}
+          <div className="relative">
+            <div className="absolute -inset-3 rounded-[3rem] bg-gradient-to-b from-[#a67c52]/20 to-transparent blur-xl pointer-events-none" />
+            <div
+              className="relative overflow-hidden"
+              style={{
+                borderRadius: "2.5rem",
+                border: "1px solid #e7dfd6",
+              }}
+            >
+              <Image
+                src="/images/about.jpg"
+                alt="Julia in the studio"
+                width={900}
+                height={700}
+                className="w-full h-auto object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
 }

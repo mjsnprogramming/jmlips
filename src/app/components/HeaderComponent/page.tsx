@@ -32,7 +32,7 @@ export default function HeaderComponent() {
   return (
       <header className = " w-full bg-[#f7f5f0]/80 backdrop-blur-md border-b border-[#e7dfd6]">
         <div className = "md:px-10 mx-auto w-full px-6 h-[102px] px-4 md:px-6 flex items-center justify-between">
-          <Link href = {`/${language}/`} className = "text-2xl md:text-3xl font-light text-gray-900">
+          <Link href = "/" className = "text-2xl md:text-3xl font-light text-gray-900">
           JM <span className = "font-semibold text-[#a67c52]">Studio</span>
           </Link>
 
