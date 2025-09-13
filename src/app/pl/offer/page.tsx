@@ -174,10 +174,7 @@ export default function OfferPage() {
                   </p>
 
                   <div className="mt-6">
-                    <Link
-                      href={`/pl/offer/${t.slug}`}
-                      className="group inline-flex items-center gap-3 text-[#a67c52] text-lg font-medium"
-                    >
+                    <Link href={`/pl/treatments/${t.slug}`} className="group inline-flex items-center gap-3 text-[#a67c52] text-lg font-medium">
                       <span>Zobacz szczegóły</span>
                       <svg
                         className="w-7 h-7 rounded-full border border-[#d8cbb7] p-1.5 transition-transform group-hover:translate-x-1"

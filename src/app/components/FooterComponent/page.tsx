@@ -13,7 +13,7 @@ export default function FooterComponent() {
   const language: 'pl' | 'en' = pathname.startsWith('/en') ? 'en' : 'pl'
   const base = `/${language}`
 
-  // Linki prawne w stylu headera: labelPl/labelEn + różne ścieżki dla PL/EN
+
   const legalNav = useMemo(
     () => [
       {
@@ -30,9 +30,8 @@ export default function FooterComponent() {
     []
   )
 
-  // helper do budowania hrefów z prefiksem językowym
   const makeHref = (path: string) => {
-    // path powinien zaczynać się od '/', np. '/offer#revolax'
+    
     return `${base}${path}`
   }
 
@@ -41,7 +40,7 @@ export default function FooterComponent() {
       <div className="max-w-6xl mx-auto py-12 px-4 md:px-6">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-10">
           
-          {/* Logo + opis (bez zmian w strukturze) */}
+          
           <div>
             <div className="flex items-center gap-3">
               <Image src="/images/logo.jpg" alt="JM Studio — logo" width={72} height={72} className="rounded-full" />
@@ -55,7 +54,7 @@ export default function FooterComponent() {
             </p>
           </div>
 
-          {/* Social (bez zmian) */}
+     
           <div>
             <h2 className="text-lg font-semibold mb-3 text-[#a67c52]">Obserwuj nas</h2>
             <div className="flex items-center gap-3">
@@ -77,7 +76,7 @@ export default function FooterComponent() {
             </div>
           </div>
 
-          {/* Kontakt (bez zmian) */}
+         
           <div>
             <h2 className="text-lg font-semibold mb-3 text-[#a67c52]">Kontakt</h2>
             <ul className="space-y-1 text-sm">
@@ -102,7 +101,7 @@ export default function FooterComponent() {
             </ul>
           </div>
 
-          {/* Adres + linki prawne (tu wpinamy legalNav przez mapę, żadnych zmian w strukturze) */}
+         
           <div>
             <h2 className="text-lg font-semibold mb-3 text-[#a67c52]">Adres</h2>
             <address className="not-italic text-sm">
@@ -112,7 +111,7 @@ export default function FooterComponent() {
             </address>
             <nav className="mt-3 space-y-1 text-sm"> 
   {legalNav.map((item) => {
-    const href = makeHref(item.href)       // ✅ używamy tylko jednego klucza
+    const href = makeHref(item.href)       
     const label = language === 'pl' ? item.labelPl : item.labelEn
 
     return (

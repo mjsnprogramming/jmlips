@@ -32,13 +32,13 @@ export default function HomePage() {
         </p>
 
         <div className="mt-8 flex flex-col sm:flex-row gap-4">
-          <Link href="/contact">
+          <Link href="https://booksy.com/pl-pl/232580_julia-majewska-studio_medycyna-estetyczna_6832_lublin#ba_s=sh_1">
             <button className="px-6 py-3 bg-[#a67c52] text-white rounded hover:bg-[#8c6844] transition">
               Umów się
             </button>
           </Link>
 
-          <Link href="/offer">
+          <Link href="/pl/offer">
             <button className="px-6 py-3 border border-[#a67c52] text-[#a67c52] rounded hover:bg-[#a67c52] hover:text-white transition">
               Zobacz ofertę
             </button>
@@ -127,7 +127,7 @@ export default function HomePage() {
             <div className = "mx-auto w-20 h-20 relative mb-4">
               <Image src = {opinion.img} alt = {opinion.name} fill className = "rounded-full object-cover"/>
             </div>
-            <p className = "text-gray-700 italic mb-4">"{opinion.text}"</p>
+            <p className = "text-gray-700 italic mb-4">{opinion.text}</p>
             <p className="text-[#a67c52] font-semibold">{opinion.name}</p>
         <div className="flex justify-center mt-2 text-yellow-500">
           {'★★★★★'}
