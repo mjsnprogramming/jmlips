@@ -1,6 +1,6 @@
 
-'use client'
-
+'use client';
+import InstagramTestimonials from './components/InstagramTestimonials';
 import Link from 'next/link';
 import Image from 'next/image';
 import 'tailwindcss/tailwind.css';
@@ -55,7 +55,7 @@ export default function HomePage() {
       <div className = "grid grid-cols-1 md:grid-cols-3 gap-8">
         <article className = "bg-white rounded-2xl shadow-lg overflow-hidden border border-neutral-100">
           <div className="relative w-full h-48 md:h-56">
-          <Image src="/images/offers1.jpg" alt="Mezoterapia" fill className="object-cover object-center" priority/>
+          <Image src="/images/mainLeftTreatment.jpeg" alt="Mezoterapia" fill className="object-cover object-center" priority/>
           </div>
           <div className = "p-6">
             <h3 className = "text-xl font-semibold mb-2 text-gray-900">Mezoterapia</h3>
@@ -70,7 +70,7 @@ export default function HomePage() {
 
         <article className = "bg-white rounded-2xl shadow-lg overflow-hidden border border-neutral-100">
           <div className="relative w-full h-48 md:h-56">
-          <Image src="/images/offers1.jpg" alt="Mezoterapia" fill className="object-cover object-center" priority/>
+          <Image src="/images/mainMiddleTreatment.jpeg" alt="Mezoterapia" fill className="object-cover object-center" priority/>
           </div>
           <div className = "p-6">
             <h3 className = "text-xl font-semibold mb-2 text-gray-900">Toksyna botulinowa</h3>
@@ -85,7 +85,7 @@ export default function HomePage() {
 
         <article className = "bg-white rounded-2xl shadow-lg overflow-hidden border border-neutral-100">
           <div className="relative w-full h-48 md:h-56">
-          <Image src="/images/offers1.jpg" alt="Mezoterapia" fill className="object-cover object-center" priority/>
+          <Image src="/images/mainRightTreatment.jpeg" alt="Mezoterapia" fill className="object-cover object-center" priority/>
           </div>
           <div className = "p-6">
             <h3 className = "text-xl font-semibold mb-2 text-gray-900">Kwas hialuronowy</h3>
@@ -99,48 +99,14 @@ export default function HomePage() {
         </article>
       </div>
     </section>
+    
 
-    <section className = "bg-[#f9f5f0] py-16 px-4">
-      <h2 className = "text-3xl md:text-4xl font-semibold text-center text-[#a67c52] mb-12">
-        Opinie klientek
-      </h2>
-
-      <div className = "max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-        {[
-          {
-            name: 'Anna K. ',
-            text: 'Jestem zachwycona! Efekty przerosły moje oczekiwania, a obsługa była na najwyśzym poziomie.',
-            img: '/images/opinion1.jpg',
-          },
-          {
-            name: 'Magda P.',
-            text: 'Profesjonalizm i przemiła atmosfera. Na pewno wrócę na kolejne zabiegi.',
-            img: '/images/opinion2.jpg',
-          },
-          {
-            name: 'Kasia W.',
-            text: 'Po zabiegu czuję się pięknie i pewnie siebie. Polecam każdej kobiecie!',
-            img: '/images/opinion3.jpg',
-          },
-        ].map((opinion, idx) => (
-          <div key = {idx} className = "bg-white rounded-2xl shadow-lg p-6 text-center border border-neutral-100">
-            <div className = "mx-auto w-20 h-20 relative mb-4">
-              <Image src = {opinion.img} alt = {opinion.name} fill className = "rounded-full object-cover"/>
-            </div>
-            <p className = "text-gray-700 italic mb-4">{opinion.text}</p>
-            <p className="text-[#a67c52] font-semibold">{opinion.name}</p>
-        <div className="flex justify-center mt-2 text-yellow-500">
-          {'★★★★★'}
-        </div>
-        </div>
-        ))}
-      </div>
-    </section>
+    <InstagramTestimonials/>
 
     <section className = "relative bg-[#f9f5f0]">
       <div className = "max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-8 py-16 px-4">
         <div className = "relative w-full h-[450px] md:h-[450px] rounded-2xl overflow-hidden shadow-lg">
-          <Image src = "/images/cta.jpg" alt = "Zabieg medycyny estetycznej" fill className = "object-cover"/>
+          <Image src = "/images/mainReady.webp" alt = "Zabieg medycyny estetycznej" fill className = "object-cover"/>
         </div>
         <div className = "flex flex-col justify-center">
           <h2 className = "text-3xl md:text-4xl font-semibold text-[#a67c52] mb-4">
