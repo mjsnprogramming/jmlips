@@ -36,112 +36,157 @@ export default function FooterComponent() {
   }
 
   return (
-    <footer className="bg-[#f9f5f0] text-[#5a4c3a] border-t border-[#e7dfd6]">
-      <div className="max-w-6xl mx-auto py-12 px-4 md:px-6">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-10">
-          
-          
+    <footer className="border-t border-[#e7dfd6] bg-[#f9f5f0] text-[#5a4c3a]">
+  <div className="mx-auto max-w-7xl px-6 py-16">
+
+    <div className="mb-14 rounded-[2rem] border border-[#e7dfd6] bg-white/60 p-8 shadow-[0_20px_60px_rgba(0,0,0,0.05)] backdrop-blur-xl md:flex md:items-center md:justify-between">
+      <div>
+        <p className="text-sm uppercase tracking-[0.3em] text-[#a67c52]">
+          JM Studio
+        </p>
+
+        <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[#2f2924] md:text-4xl">
+          Gotowa na pierwszy krok?
+        </h2>
+
+        <p className="mt-4 max-w-xl text-gray-600 leading-7">
+          Umów konsultację i dobierz zabieg dopasowany do Twoich potrzeb,
+          oczekiwań i naturalnych rysów twarzy.
+        </p>
+      </div>
+
+      <Link
+        href={makeHref('/contact')}
+        className="mt-6 inline-flex rounded-full bg-[#a67c52] px-7 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-[#956f49] hover:shadow-xl md:mt-0"
+      >
+        Umów konsultację
+      </Link>
+    </div>
+
+    <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+
+      <div>
+        <div className="flex items-center gap-4">
+          <Image
+            src="/images/logo.jpg"
+            alt="JM Studio"
+            width={64}
+            height={64}
+            className="rounded-full shadow-md"
+          />
+
           <div>
-            <div className="flex items-center gap-3">
-              <Image src="/images/logo.jpg" alt="JM Studio — logo" width={72} height={72} className="rounded-full" />
-              <div>
-                <p className="font-semibold text-[#a67c52]">JM Studio</p>
-                <p className="text-sm">Medycyna estetyczna</p>
-              </div>
-            </div>
-            <p className="mt-4 text-sm leading-relaxed">
-              Delikatne, naturalne efekty. Jakość i bezpieczeństwo w przyjaznej atmosferze.
+            <h3 className="text-2xl font-semibold tracking-tight text-[#2f2924]">
+              JM Studio
+            </h3>
+
+            <p className="text-sm text-gray-500">
+              Medycyna estetyczna
             </p>
           </div>
-
-     
-          <div>
-            <h2 className="text-lg font-semibold mb-3 text-[#a67c52]">Obserwuj nas</h2>
-            <div className="flex items-center gap-3">
-              <Link href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#e7dfd6] hover:bg-[#a67c52] hover:text-white transition">
-                  <FontAwesomeIcon icon={faFacebook} className="h-4 w-4" />
-                </span>
-              </Link>
-              <Link href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#e7dfd6] hover:bg-[#a67c52] hover:text-white transition">
-                  <FontAwesomeIcon icon={faInstagram} className="h-4 w-4" />
-                </span>
-              </Link>
-              <Link href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-                <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#e7dfd6] hover:bg-[#a67c52] hover:text-white transition">
-                  <FontAwesomeIcon icon={faTiktok} className="h-4 w-4" />
-                </span>
-              </Link>
-            </div>
-          </div>
-
-         
-          <div>
-            <h2 className="text-lg font-semibold mb-3 text-[#a67c52]">Kontakt</h2>
-            <ul className="space-y-1 text-sm">
-              <li>
-                Telefon:{' '}
-                <Link href="tel:+48657391939" className="hover:underline">
-                  +48 657 391 939
-                </Link>
-              </li>
-              <li>
-                E-mail:{' '}
-                <Link href="mailto:juliamajewska@gmail.com" className="hover:underline">
-                  juliamajewska@gmail.com
-                </Link>
-              </li>
-              <li className="pt-2">
-                <Link href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:underline">
-                  <FontAwesomeIcon icon={faInstagram} className="h-3.5 w-3.5 text-[#a67c52]" />
-                  Instagram
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-         
-          <div>
-            <h2 className="text-lg font-semibold mb-3 text-[#a67c52]">Adres</h2>
-            <address className="not-italic text-sm">
-              Julia Majewska Studio<br />
-              ul. Wieniawska 8<br />
-              20-400 Lublin
-            </address>
-            <nav className="mt-3 space-y-1 text-sm"> 
-  {legalNav.map((item) => {
-    const href = makeHref(item.href)       
-    const label = language === 'pl' ? item.labelPl : item.labelEn
-
-    return (
-      <Link key={label} href={href} className="hover:underline block">
-        {label}
-      </Link>
-    )
-  })}
-</nav>
-
-          </div>
-
-          {/* Oferta (te linki też z prefiksem językowym, ale struktura bez zmian) */}
-          <div>
-            <h2 className="text-lg font-semibold mb-3 text-[#a67c52]">Oferta</h2>
-            <ul className="space-y-1 text-sm">
-              <li><Link href={makeHref('/offer#revolax')} className="hover:underline">Revolax</Link></li>
-              <li><Link href={makeHref('/offer#juvederm')} className="hover:underline">Juvederm</Link></li>
-              <li><Link href={makeHref('/offer#hialuronidaza')} className="hover:underline">Hialuronidaza</Link></li>
-              <li><Link href={makeHref('/offer#biorepeel')} className="hover:underline">Biorepeel</Link></li>
-            </ul>
-          </div>
         </div>
 
-        {/* dolna belka (bez zmian) */}
-        <div className="mt-10 pt-6 border-t border-[#e7dfd6] flex flex-col md:flex-row items-center justify-between gap-2 text-xs text-gray-600">
-          <span>&copy; {new Date().getFullYear()} Julia Majewska Studio</span>
-          <span>Created by MJSN</span>
+        <p className="mt-6 max-w-sm leading-8 text-gray-600">
+          Delikatne, naturalne efekty oraz indywidualne podejście do każdej
+          klientki w spokojnej i profesjonalnej atmosferze.
+        </p>
+
+        <div className="mt-8 flex items-center gap-4">
+          <a
+            href="https://instagram.com"
+            target="_blank"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-[#e7dfd6] bg-white/70 text-lg transition-all duration-300 hover:-translate-y-1 hover:border-[#a67c52] hover:text-[#a67c52]"
+          >
+            <i className="fa-brands fa-instagram"></i>
+          </a>
+
+          <a
+            href="https://tiktok.com"
+            target="_blank"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-[#e7dfd6] bg-white/70 text-lg transition-all duration-300 hover:-translate-y-1 hover:border-[#a67c52] hover:text-[#a67c52]"
+          >
+            <i className="fa-brands fa-tiktok"></i>
+          </a>
+
+          <a
+            href="https://facebook.com"
+            target="_blank"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-[#e7dfd6] bg-white/70 text-lg transition-all duration-300 hover:-translate-y-1 hover:border-[#a67c52] hover:text-[#a67c52]"
+          >
+            <i className="fa-brands fa-facebook-f"></i>
+          </a>
         </div>
       </div>
-    </footer>
+
+      <div>
+        <h4 className="text-lg font-semibold text-[#2f2924]">
+          Kontakt
+        </h4>
+
+        <div className="mt-6 space-y-4 text-gray-600">
+          <p>+48 657 391 939</p>
+          <p>juliamajewska@gmail.com</p>
+          <p>Lublin, ul. Wieniawska 8</p>
+        </div>
+      </div>
+
+      <div>
+        <h4 className="text-lg font-semibold text-[#2f2924]">
+          Nawigacja
+        </h4>
+
+        <div className="mt-6 flex flex-col gap-4 text-gray-600">
+          <Link href={makeHref('/about')} className="transition hover:text-[#a67c52]">
+            O mnie
+          </Link>
+
+          <Link href={makeHref('/offer')} className="transition hover:text-[#a67c52]">
+            Zabiegi
+          </Link>
+
+          <Link href={makeHref('/portfolio')} className="transition hover:text-[#a67c52]">
+            Portfolio
+          </Link>
+
+          <Link href={makeHref('/contact')} className="transition hover:text-[#a67c52]">
+            Kontakt
+          </Link>
+        </div>
+      </div>
+
+      <div>
+        <h4 className="text-lg font-semibold text-[#2f2924]">
+          Informacje
+        </h4>
+
+        <div className="mt-6 flex flex-col gap-4 text-gray-600">
+          <Link href={makeHref('/privacy-policy')} className="transition hover:text-[#a67c52]">
+            Polityka prywatności
+          </Link>
+
+          <Link href={makeHref('/terms')} className="transition hover:text-[#a67c52]">
+            Regulamin
+          </Link>
+
+          <Link href={makeHref('/pricelist')} className="transition hover:text-[#a67c52]">
+            Cennik
+          </Link>
+        </div>
+      </div>
+
+    </div>
+
+    <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-[#e7dfd6] pt-8 text-sm text-gray-500 md:flex-row">
+      <p>
+        © 2026 JM Studio. Wszystkie prawa zastrzeżone.
+      </p>
+
+      <p>
+        Designed & developed by MJSN.dev
+      </p>
+    </div>
+
+  </div>
+</footer>
   )
 }
