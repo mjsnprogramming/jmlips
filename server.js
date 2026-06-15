@@ -16,6 +16,7 @@ app.prepare().then(() => {
     server.get('/sale', (req, res) => app.render(req, res, '/sale', req.query));
     server.get('/contact', (req, res) => app.render(req, res, '/contact', req.query));
     server.get('/privacy', (req, res) => app.render(req, res, '/privacy', req.query));
+    server.get('/terms', (req, res) => app.render(req, res, '/terms', req.query));
 
     // Obsługa pozostałych ścieżek
     server.get('*', (req, res) => handle(req, res));

@@ -160,7 +160,7 @@ export default function FooterComponent() {
         </h4>
 
         <div className="mt-6 flex flex-col gap-4 text-gray-600">
-          <Link href={makeHref('/privacy-policy')} className="transition hover:text-[#a67c52]">
+          <Link href={makeHref('/privacy')} className="transition hover:text-[#a67c52]">
             Polityka prywatności
           </Link>
 
