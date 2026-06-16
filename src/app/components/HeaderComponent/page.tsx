@@ -40,7 +40,7 @@ export default function HeaderComponent() {
     <header className="sticky top-0 z-50 w-full border-b border-white/50 bg-[#f7f5f0]/75 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.04)]">
       <div className="mx-auto flex h-[92px] w-full items-center justify-between px-6 md:px-10">
         <Link
-          href={`/${language}`}
+          href={language === 'pl' ? '/' : '/en'}
           className="text-2xl md:text-3xl font-light tracking-tight text-gray-900 transition hover:opacity-80"
         >
           JM{' '}
