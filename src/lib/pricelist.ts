@@ -25,11 +25,17 @@ type WPPriceItem = {
     count: number
     price: string
     description?: string
-    order: number
+    order?: number
   }
 }
 
-const WP_API_URL = "http://jm-studio-cms.local/wp-json/wp/v2/price_item?per_page=100"
+const env = (globalThis as any).process?.env as
+  | Record<string, string | undefined>
+  | undefined
+
+const WP_API_URL = env?.WORDPRESS_API_URL
+  ? `${env.WORDPRESS_API_URL}/wp-json/wp/v2/price_item?per_page=100`
+  : null
 
 function slugify(value: string) {
   return value
@@ -53,53 +59,62 @@ function cleanHtml(value: string) {
 }
 
 export async function fetchPricelist(): Promise<Category[]> {
-  const res = await fetch(WP_API_URL, {
-    next: {
-      revalidate: 60,
-    },
-  })
-
-  if (!res.ok) {
-    throw new Error("Nie udało się pobrać cennika z WordPressa")
+  if (!WP_API_URL) {
+    return []
   }
 
-  const wpItems = (await res.json()) as WPPriceItem[]
+  try {
+    const res = await fetch(WP_API_URL, {
+      next: {
+        revalidate: 60,
+      },
+    })
 
-  const sorted = wpItems.sort((a, b) => {
-    return (a.acf.order ?? 999) - (b.acf.order ?? 999)
-  })
-
-  const categoriesMap = new Map<string, Category>()
-
-  sorted.forEach((item) => {
-    const categoryTitle = item.acf.category
-    const categoryId = slugify(categoryTitle)
-
-    if (!categoriesMap.has(categoryTitle)) {
-      categoriesMap.set(categoryTitle, {
-        id: categoryId,
-        title: categoryTitle,
-        items: [],
-      })
+    if (!res.ok) {
+      return []
     }
 
-    const category = categoriesMap.get(categoryTitle)!
+    const wpItems = (await res.json()) as WPPriceItem[]
 
-    category.items.push({
-      name: cleanHtml(item.title.rendered),
-      rows: [
-        {
-          area: item.acf.area,
-          count: item.acf.count,
-          price: item.acf.price,
-          desc:
-            item.acf.description && item.acf.description !== "-"
-              ? item.acf.description
-              : undefined,
-        },
-      ],
+    const sorted = wpItems.sort((a, b) => {
+      return (a.acf.order ?? 999) - (b.acf.order ?? 999)
     })
-  })
 
-  return Array.from(categoriesMap.values())
+    const categoriesMap = new Map<string, Category>()
+
+    sorted.forEach((item) => {
+      const categoryTitle = item.acf.category
+      const categoryId = slugify(categoryTitle)
+
+      if (!categoriesMap.has(categoryTitle)) {
+        categoriesMap.set(categoryTitle, {
+          id: categoryId,
+          title: categoryTitle,
+          items: [],
+        })
+      }
+
+      const category = categoriesMap.get(categoryTitle)!
+
+      category.items.push({
+        name: cleanHtml(item.title.rendered),
+        rows: [
+          {
+            area: item.acf.area,
+            count: item.acf.count,
+            price: item.acf.price,
+            desc:
+              item.acf.description && item.acf.description !== "-"
+                ? item.acf.description
+                : undefined,
+          },
+        ],
+      })
+    })
+
+    return Array.from(categoriesMap.values())
+  } catch (error) {
+    console.error("Nie udało się pobrać cennika:", error)
+    return []
+  }
 }
