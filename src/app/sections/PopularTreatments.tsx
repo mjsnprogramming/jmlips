@@ -13,7 +13,7 @@ export default function PopularTreatments() {
       </h2>
 
       <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-gray-600">
-        Subtelne efekty, naturalne piękno i indywidualne podejście do każdej klientki.
+        Poznaj zabiegi najczęściej wybierane przez klientki, które chcą podkreślić swoje naturalne piękno i zadbać o świeży, harmonijny wygląd.
       </p>
     </div>
 
@@ -122,7 +122,7 @@ export default function PopularTreatments() {
           </h3>
 
           <p className="max-w-sm text-base leading-7 text-white/80">
-            Modelowanie i wypełnienie z naciskiem na subtelny, harmonijny efekt.
+            Modelowanie konturu, poprawa proporcji i nawilżenie ust dopasowane do rysów twarzy.
           </p>
 
           <div className="mt-7 inline-flex items-center gap-3 rounded-full border border-white/30 bg-white/15 px-5 py-3 text-sm font-medium backdrop-blur-md transition-all duration-300 group-hover:bg-white group-hover:text-[#a67c52]">

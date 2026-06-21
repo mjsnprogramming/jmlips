@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
+import { AnimatePresence, motion } from 'framer-motion';
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -83,6 +84,8 @@ export default function InstagramTestimonials() {
     const [isReady, setIsReady] = useState(false);
   const swiperRef = useRef<SwiperType | null>(null);
   const [activeDot, setActiveDot] = useState(0);
+  const [selectedReview, setSelectedReview] = useState<string | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0); 
 
     function updateActiveDot(swiper: SwiperType) {
         const realIndex = swiper.realIndex ?? 0;
@@ -111,7 +114,7 @@ export default function InstagramTestimonials() {
 </h2>
 
 <p className="font-sans text-gray-500 text-lg">
-  Prawdziwe opinie moich klientek z Instagrama
+  Prawdziwe opinie klientek z Instagrama
 </p>
         </div>
 
@@ -136,6 +139,7 @@ onSlideChangeTransitionEnd={scheduleSlideTransforms}
 onActiveIndexChange={(swiper) => {
   scheduleSlideTransforms(swiper);
   updateActiveDot(swiper);
+  setActiveIndex(swiper.realIndex ?? 0)
 }}
 onSetTransition={(swiper, duration) => {
   if (!swiper?.slides?.length) return;
@@ -160,7 +164,9 @@ onSetTransition={(swiper, duration) => {
   [&_.swiper-slide]:!overflow-visible
   ${isReady ? "opacity-100" : "opacity-0"}
 `}>
-            {opinionsImages.map((img) => (
+            {opinionsImages.map((img, index) => {
+              const isActive = index === activeIndex
+              return (
               <SwiperSlide
                 key={img}
                 className="
@@ -184,24 +190,33 @@ onSetTransition={(swiper, duration) => {
                     will-change-transform
                   "
                 >
-                  <img
-                    src={img}
-                    alt="Opinia klientki"
-                    loading="eager"
-                    decoding="async"
-                    className="
-                      h-[380px]
-                      sm:h-[400px]
-                      xl:h-[420px]
-                      w-full
-                      object-cover
-                      rounded-[2.5rem]
-                      shadow-2xl
-                    "
-                  />
+                  <button
+  type="button"
+  disabled={!isActive}
+  onClick={() => {
+    if (isActive) setSelectedReview(img)
+  }}
+  className={[
+    'block rounded-[2.5rem] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b98b5c]/50',
+    isActive ? 'cursor-zoom-in' : 'cursor-default',
+  ].join(' ')}
+  aria-label={isActive ? 'Powiększ opinię klientki' : undefined}
+>
+  <img
+    src={img}
+    alt="Opinia klientki"
+    loading="eager"
+    decoding="async"
+    className={[
+      'h-[380px] sm:h-[400px] xl:h-[420px] w-full rounded-[2.5rem] object-cover shadow-2xl transition duration-500',
+      isActive ? 'hover:scale-[1.02]' : '',
+    ].join(' ')}
+  />
+</button>
                 </div>
               </SwiperSlide>
-            ))}
+             )
+})}
           </Swiper>
 
           <div className="mt-3 flex justify-center gap-4" aria-hidden="true">
@@ -369,6 +384,41 @@ onSetTransition={(swiper, duration) => {
 </button>
         </div>
       </div>
+      <AnimatePresence>
+  {selectedReview && (
+    <motion.div
+      className="fixed inset-0 z-[999] flex items-center justify-center bg-black/70 px-4 py-8 backdrop-blur-sm"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={() => setSelectedReview(null)}
+    >
+      <motion.div
+        className="relative w-full max-w-[430px]"
+        initial={{ scale: 0.92, opacity: 0, y: 20 }}
+        animate={{ scale: 1, opacity: 1, y: 0 }}
+        exit={{ scale: 0.92, opacity: 0, y: 20 }}
+        transition={{ duration: 0.25, ease: 'easeOut' }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          type="button"
+          onClick={() => setSelectedReview(null)}
+          className="absolute -right-3 -top-3 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white text-2xl text-[#a67c52] shadow-lg"
+          aria-label="Zamknij opinię"
+        >
+          ×
+        </button>
+
+        <img
+          src={selectedReview}
+          alt="Powiększona opinia klientki"
+          className="max-h-[88vh] w-full rounded-[2rem] object-contain shadow-2xl"
+        />
+      </motion.div>
+    </motion.div>
+  )}
+</AnimatePresence>
     </section>
   );
 }
