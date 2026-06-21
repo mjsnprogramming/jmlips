@@ -78,24 +78,6 @@ export default function OfferFAQ({ items }: OfferFAQProps) {
             );
           })}
         </div>
-
-        <div className="mt-20 text-center">
-          <div className="mb-4 text-3xl text-[#b8946f]">✦</div>
-
-          <p className="text-sm text-zinc-600">Masz inne pytania?</p>
-
-          <p className="mt-2 font-serif text-2xl font-light text-zinc-900">
-            Jesteśmy tutaj, aby pomóc.
-          </p>
-
-          <a
-            href="/pl/contact"
-            className="mt-8 inline-flex items-center gap-3 bg-[#b8946f] px-8 py-4 text-sm uppercase tracking-[0.2em] text-white transition hover:bg-[#a17f5c]"
-          >
-            Umów konsultację
-            <span>→</span>
-          </a>
-        </div>
       </div>
     </section>
   );

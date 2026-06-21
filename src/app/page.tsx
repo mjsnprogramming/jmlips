@@ -11,7 +11,6 @@ export default function HomePage() {
     <HeroSection/>
     <PopularTreatments/>
     <InstagramTestimonials/>
-    <HomeCTA/>
   </main>
   )
 }
