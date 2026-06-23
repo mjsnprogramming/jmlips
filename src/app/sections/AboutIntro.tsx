@@ -16,14 +16,15 @@ return (
       </h1>
 
       <p className="mt-8 max-w-2xl text-lg leading-9 text-gray-600">
-        Nazywam się Julia Majewska i tworzę miejsce, w którym medycyna estetyczna
-        łączy profesjonalizm, spokój i indywidualne podejście. Pomagam podkreślić
-        urodę tak, aby efekt był subtelny, świeży i zgodny z Tobą.
+        Nazywam się Julia Majewska i tworzę miejsce, 
+        w którym możesz poczuć się spokojnie, bez presji 
+        i przypadkowych decyzji. Każdy zabieg dobieram indywidualnie, 
+        z dbałością o proporcje, komfort i efekt dopasowany do Twojej urody.
       </p>
 
       <div className="mt-10 grid max-w-xl grid-cols-1 gap-4 sm:grid-cols-3">
         <div className="rounded-2xl border border-[#eadbc9] bg-white/70 p-5 shadow-sm">
-          <p className="text-2xl font-semibold text-[#a67c52]">01</p>
+         <p className="text-2xl font-semibold text-[#a67c52]">01</p>
           <p className="mt-2 text-sm text-gray-600">Naturalny efekt</p>
         </div>
 

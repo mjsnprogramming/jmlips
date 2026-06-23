@@ -14,10 +14,10 @@ return (
 
       <div className="md:col-span-2 rounded-[2rem] border border-[#eadbc9] bg-[#fbf8f4] p-8 shadow-sm">
         <p className="text-lg leading-9 text-gray-600">
-          W mojej pracy najważniejszy jest naturalny efekt — taki, który nie zmienia
-          rysów twarzy, tylko subtelnie podkreśla to, co już w Tobie wyjątkowe.
-          Każdy zabieg poprzedzony jest rozmową, analizą potrzeb i spokojnym
-          omówieniem możliwych rezultatów.
+          Każdy zabieg poprzedzony jest konsultacją i 
+          dokładną analizą potrzeb. Wspólnie omawiamy
+          oczekiwania, możliwe rezultaty oraz rozwiązania 
+          najlepiej dopasowane do Twojej urody i stylu życia.
         </p>
       </div>
     </div>
