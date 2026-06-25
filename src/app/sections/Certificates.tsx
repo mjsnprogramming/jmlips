@@ -7,11 +7,11 @@ export default function Certificates() {
         
               <div>
                 <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#a67c52]">
-                  Rozwój i estetyka
+                  SZKOLENIA I CERTYFIKATY
                 </p>
         
                 <h2 className="text-4xl font-semibold tracking-tight text-[#2f2924] md:text-5xl">
-                  Regularnie rozwijam swoje umiejętności.
+                  Nieustannie poszerzam swoją wiedzę i umiejętności.
                 </h2>
         
                 <p className="mt-6 max-w-xl text-lg leading-8 text-gray-600">

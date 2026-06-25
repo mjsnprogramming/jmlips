@@ -1,15 +1,18 @@
 
-'use client';
 import InstagramTestimonials from './sections/InstagramTestimonials';
 import HeroSection from './sections/HeroSection';
 import PopularTreatments from './sections/PopularTreatments';
+import { fetchPopularTreatments } from '@/lib/treatments';
 import HomeCTA from './sections/HomeCTA';
 
-export default function HomePage() {
+export default async function HomePage() {
+
+  const popularTreatments = await fetchPopularTreatments('pl')
+  console.log(popularTreatments)
   return (
-    <main>
+  <main>
     <HeroSection/>
-    <PopularTreatments/>
+    <PopularTreatments treatments = {popularTreatments}/>
     <InstagramTestimonials/>
   </main>
   )
