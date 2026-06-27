@@ -32,12 +32,18 @@ export default function HeaderComponent() {
   )
 
   const changeLanguage = (lang: 'pl' | 'en') => {
-    setLanguage(lang)
-    setIsMenuOpen(false)
+  setLanguage(lang)
+  setIsMenuOpen(false)
 
-    const newPath = pathname.replace(/^\/(pl|en)/, '')
-    router.push(`/${lang}${newPath === '' ? '/' : newPath}`)
+  const newPath = pathname.replace(/^\/(pl|en)/, '')
+
+  if (lang === 'pl') {
+    router.push(newPath === '' || newPath === '/' ? '/' : `/pl${newPath}`)
+    return
   }
+
+  router.push(newPath === '' || newPath === '/' ? '/en' : `/en${newPath}`)
+}
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-white/50 bg-[#f7f5f0]/75 shadow-[0_8px_30px_rgba(0,0,0,0.04)] backdrop-blur-xl">

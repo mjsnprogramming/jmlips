@@ -14,34 +14,34 @@ export default function AboutIntro({ aboutImage }: Props) {
       <div className="relative mx-auto grid max-w-7xl items-center gap-16 lg:grid-cols-[0.95fr_1.05fr]">
         <div>
           <p className="mb-6 inline-flex rounded-full bg-[#a67c52] px-5 py-2 text-sm font-semibold uppercase tracking-[0.18em] text-white">
-            O mnie
+            About Me
           </p>
 
           <h1 className="max-w-3xl text-5xl font-semibold tracking-tight text-[#111827] md:text-7xl">
-            Naturalne efekty zaczynają się od zaufania.
+            Natural Results Begin with Trust.
           </h1>
 
           <p className="mt-8 max-w-2xl text-lg leading-9 text-gray-600">
-            Nazywam się Julia Majewska i tworzę miejsce,
-            w którym możesz poczuć się spokojnie, bez presji
-            i przypadkowych decyzji. Każdy zabieg dobieram indywidualnie,
-            z dbałością o proporcje, komfort i efekt dopasowany do Twojej urody.
+            My name is Julia Majewska, and I have created a place where you can feel comfortable, 
+            relaxed, and free from pressure or rushed decisions. 
+            Every treatment is tailored individually, with great attention to balance, 
+            comfort, and results that enhance your natural beauty.
           </p>
 
           <div className="mt-10 grid max-w-xl grid-cols-1 gap-4 sm:grid-cols-3">
             <div className="rounded-2xl border border-[#eadbc9] bg-white/70 p-5 shadow-sm">
               <p className="text-2xl font-semibold text-[#a67c52]">01</p>
-              <p className="mt-2 text-sm text-gray-600">Naturalny efekt</p>
+              <p className="mt-2 text-sm text-gray-600">Natural Results</p>
             </div>
 
             <div className="rounded-2xl border border-[#eadbc9] bg-white/70 p-5 shadow-sm">
               <p className="text-2xl font-semibold text-[#a67c52]">02</p>
-              <p className="mt-2 text-sm text-gray-600">Indywidualne podejście</p>
+              <p className="mt-2 text-sm text-gray-600">Personalized Approach</p>
             </div>
 
             <div className="rounded-2xl border border-[#eadbc9] bg-white/70 p-5 shadow-sm">
               <p className="text-2xl font-semibold text-[#a67c52]">03</p>
-              <p className="mt-2 text-sm text-gray-600">Spokojna atmosfera</p>
+              <p className="mt-2 text-sm text-gray-600">Relaxing Atmosphere</p>
             </div>
           </div>
         </div>

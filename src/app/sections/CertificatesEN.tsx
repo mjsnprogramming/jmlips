@@ -16,17 +16,17 @@ export default function Certificates({
 
           <div>
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#a67c52]">
-              SZKOLENIA I CERTYFIKATY
+              TRAINING & CERTIFICATES
             </p>
 
             <h2 className="text-4xl font-semibold tracking-tight text-[#2f2924] md:text-5xl">
-              Nieustannie poszerzam swoją wiedzę i umiejętności.
+              Continuously Expanding My Knowledge and Skills.
             </h2>
 
             <p className="mt-6 max-w-xl text-lg leading-8 text-gray-600">
-              Uczestniczę w certyfikowanych szkoleniach z zakresu nowoczesnej
-              medycyny estetycznej, aby zapewnić bezpieczeństwo, komfort
-              oraz naturalne efekty dopasowane do każdej klientki.
+              I regularly participate in certified training courses in modern 
+              aesthetic medicine to provide safe treatments, exceptional comfort, 
+              and natural-looking results tailored to every client.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -34,9 +34,9 @@ export default function Certificates({
                 "Profhilo",
                 "Karisma",
                 "Nucleofill",
-                "Mezoterapia",
-                "Stymulatory tkankowe",
-                "Modelowanie ust",
+                "Mesotherapy",
+                "Skin Boosters",
+                "Lip Enhancement",
               ].map((item) => (
                 <div
                   key={item}

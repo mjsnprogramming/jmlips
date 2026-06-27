@@ -100,15 +100,15 @@ export default function InstagramTestimonials( {testimonials }: Props) {
       <div className="max-w-[1500px] mx-auto px-4">
         <div className="text-center mb-16">
           <p className="font-script text-[#b98b5c] text-3xl mb-2">
-  Wasze opinie
+  Client Reviews
 </p>
 
 <h2 className="font-heading text-5xl md:text-6xl font-semibold text-[#a67c52] mb-5 tracking-tight">
-  Opinie klientek
+  What Our Clients Say
 </h2>
 
 <p className="font-sans text-gray-500 text-lg">
-  Prawdziwe opinie klientek z Instagrama
+  Real reviews from our Instagram community.
 </p>
         </div>
 
@@ -289,7 +289,7 @@ onSetTransition={(swiper, duration) => {
       </div>
 
       <span className="text-base text-gray-500 sm:text-lg">
-        Zobacz więcej opinii na naszym Instagramie
+        See more reviews on my Instagram
       </span>
     </div>
 

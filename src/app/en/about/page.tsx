@@ -1,7 +1,7 @@
 import React from "react";
-import AboutIntro from "@/app/sections/AboutIntro";
-import Philosophy from "@/app/sections/Philosophy";
-import Certificates from "@/app/sections/Certificates";
+import AboutIntro from "@/app/sections/AboutIntroEN";
+import Philosophy from "@/app/sections/PhilosophyEN";
+import Certificates from "@/app/sections/CertificatesEN";
 import type { AboutData } from "@/lib/about";
 
 type Props = {

@@ -1,11 +1,11 @@
-import InstagramTestimonials from './sections/InstagramTestimonials'
-import HeroSection from './sections/HeroSection'
-import PopularTreatments from './sections/PopularTreatments'
+import InstagramTestimonials from '../sections/InstagramTestimonialsEN'
+import HeroSection from '../sections/HeroSectionEN'
+import PopularTreatments from '../sections/PopularTreatmentsEN'
 import { fetchPopularTreatments } from '@/lib/treatments'
 import { fetchTestimonials } from '@/lib/testimonials'
 
 export default async function HomePage() {
-  const popularTreatments = await fetchPopularTreatments('pl')
+  const popularTreatments = await fetchPopularTreatments('en')
   const testimonials = await fetchTestimonials()
  
   return (
