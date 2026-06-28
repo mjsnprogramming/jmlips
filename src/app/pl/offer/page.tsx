@@ -1,20 +1,15 @@
 import OfferClient from "../../components/offer/OfferClient";
-
+import { fetchTreatments } from "@/lib/allTreatments";
+import { fetchFAQ } from "@/lib/faq";
 export default async function OfferPage() {
-  const faqItems = [
-    {
-      id: 1,
-      question: "Czy zabiegi są bolesne?",
-      answer: "Każdy zabieg odczuwany jest indywidualnie...",
-      order: 1,
-    },
-    {
-      id: 2,
-      question: "Jak długo utrzymuje się efekt?",
-      answer: "Czas utrzymywania zależy od rodzaju zabiegu...",
-      order: 2,
-    },
-  ];
+const faqItems = await fetchFAQ("pl")
 
-  return <OfferClient faqItems={faqItems} />;
+  const treatments = await fetchTreatments("pl");
+console.log(faqItems)
+  return (
+    <OfferClient
+      faqItems={faqItems}
+      treatments={treatments}
+    />
+  );
 }

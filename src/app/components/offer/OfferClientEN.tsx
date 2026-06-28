@@ -27,15 +27,15 @@ export default function OfferClient({ faqItems, treatments }: OfferClientProps) 
         <div className="relative mx-auto max-w-7xl">
           <div className="mb-16 max-w-3xl">
             <p className="mb-5 inline-flex rounded-full bg-[#a67c52] px-5 py-2 text-sm font-semibold uppercase tracking-[0.18em] text-white">
-              Oferta
+              Treatments
             </p>
 
             <h1 className="text-5xl font-semibold tracking-tight md:text-7xl">
-              Zabiegi dobrane do Twoich potrzeb.
+              Treatments Tailored to Your Needs.
             </h1>
 
             <p className="mt-7 text-lg leading-8 text-gray-600">
-              Kliknij wybrany zabieg, aby zobaczyć najważniejsze informacje bez przechodzenia na osobną podstronę.
+              Click on a treatment to view the most important information without leaving the page.
             </p>
           </div>
 
@@ -90,7 +90,7 @@ export default function OfferClient({ faqItems, treatments }: OfferClientProps) 
                     type="button"
                     className="mt-7 inline-flex w-full items-center justify-center gap-3 rounded-full border border-[#d7b995] bg-[#f9f5f0] px-6 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-[#a67c52] transition-all duration-300 group-hover:bg-[#a67c52] group-hover:text-white"
                   >
-                    Czytaj więcej
+                    Learn More
                     <span>→</span>
                   </button>
                 </div>
@@ -155,7 +155,7 @@ export default function OfferClient({ faqItems, treatments }: OfferClientProps) 
 
                       <div className="rounded-2xl bg-[#f9f5f0] p-5">
                         <p className="text-xs uppercase tracking-[0.2em] text-[#a67c52]">
-                          Efekt
+                          Result
                         </p>
                         <p className="mt-2 font-semibold text-[#2f2924]">
                           {selectedTreatment.effect}
@@ -165,7 +165,7 @@ export default function OfferClient({ faqItems, treatments }: OfferClientProps) 
 
                     <div className="mt-8 border-t border-[#eadbc9] pt-8">
                       <h3 className="text-xl font-semibold text-[#2f2924]">
-                        Szczegóły zabiegu
+                        Treatment Details
                       </h3>
 
                       <p className="mt-4 leading-8 text-gray-600">
