@@ -1,24 +1,11 @@
 import OfferClient from "../../components/offer/OfferClientEN";
 import { fetchTreatments } from "@/lib/allTreatments";
-
+import { fetchFAQ } from "@/lib/faq";
 export default async function OfferPage() {
-  const faqItems = [
-    {
-      id: 1,
-      question: "Czy zabiegi są bolesne?",
-      answer: "Każdy zabieg odczuwany jest indywidualnie...",
-      order: 1,
-    },
-    {
-      id: 2,
-      question: "Jak długo utrzymuje się efekt?",
-      answer: "Czas utrzymywania zależy od rodzaju zabiegu...",
-      order: 2,
-    },
-  ];
+const faqItems = await fetchFAQ("en")
 
   const treatments = await fetchTreatments("en");
-
+console.log(faqItems)
   return (
     <OfferClient
       faqItems={faqItems}

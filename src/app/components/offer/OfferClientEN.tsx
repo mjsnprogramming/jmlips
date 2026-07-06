@@ -1,6 +1,6 @@
 'use client'
 
-import OfferFAQ from "@/app/components/offer/OfferFAQ";
+import OfferFAQ from "@/app/components/offer/OfferFAQEN";
 import Image from 'next/image'
 import { FAQItem } from "@/lib/faq";
 import { useState } from 'react'

@@ -16,15 +16,22 @@ export type Category = {
 
 type WPPriceItem = {
   id: number
-  title: {
-    rendered: string
-  }
   acf: {
-    category: string
-    area: string
+    title_pl: string
+    title_en: string
+
+    category_pl: string
+    category_en: string
+
+    area_pl: string
+    area_en: string
+
     count: number
     price: string
-    description?: string
+
+    description_pl?: string
+    description_en?: string
+
     order?: number
   }
 }
@@ -54,11 +61,9 @@ function slugify(value: string) {
     .replace(/(^-|-$)/g, "")
 }
 
-function cleanHtml(value: string) {
-  return value.replace(/<[^>]*>/g, "")
-}
-
-export async function fetchPricelist(): Promise<Category[]> {
+export async function fetchPricelist(
+  lang: "pl" | "en"
+): Promise<Category[]> {
   if (!WP_API_URL) {
     return []
   }
@@ -76,14 +81,18 @@ export async function fetchPricelist(): Promise<Category[]> {
 
     const wpItems = (await res.json()) as WPPriceItem[]
 
-    const sorted = wpItems.sort((a, b) => {
-      return (a.acf.order ?? 999) - (b.acf.order ?? 999)
-    })
+    const sorted = wpItems.sort(
+      (a, b) => (a.acf.order ?? 999) - (b.acf.order ?? 999)
+    )
 
     const categoriesMap = new Map<string, Category>()
 
     sorted.forEach((item) => {
-      const categoryTitle = item.acf.category
+      const categoryTitle =
+        lang === "pl"
+          ? item.acf.category_pl
+          : item.acf.category_en
+
       const categoryId = slugify(categoryTitle)
 
       if (!categoriesMap.has(categoryTitle)) {
@@ -96,19 +105,40 @@ export async function fetchPricelist(): Promise<Category[]> {
 
       const category = categoriesMap.get(categoryTitle)!
 
-      category.items.push({
-        name: cleanHtml(item.title.rendered),
-        rows: [
-          {
-            area: item.acf.area,
-            count: item.acf.count,
-            price: item.acf.price,
-            desc:
-              item.acf.description && item.acf.description !== "-"
-                ? item.acf.description
-                : undefined,
-          },
-        ],
+      const treatmentName =
+        lang === "pl"
+          ? item.acf.title_pl
+          : item.acf.title_en
+
+      let treatment = category.items.find(
+        (t) => t.name === treatmentName
+      )
+
+      if (!treatment) {
+        treatment = {
+          name: treatmentName,
+          rows: [],
+        }
+
+        category.items.push(treatment)
+      }
+
+      treatment.rows.push({
+        area:
+          lang === "pl"
+            ? item.acf.area_pl
+            : item.acf.area_en,
+
+        count: item.acf.count,
+
+        price: item.acf.price,
+
+        desc:
+          (
+            lang === "pl"
+              ? item.acf.description_pl
+              : item.acf.description_en
+          ) || undefined,
       })
     })
 

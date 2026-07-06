@@ -1,3 +1,4 @@
+import OfferFAQ from "@/app/components/offer/OfferFAQ";
 import OfferClient from "../../components/offer/OfferClient";
 import { fetchTreatments } from "@/lib/allTreatments";
 import { fetchFAQ } from "@/lib/faq";
