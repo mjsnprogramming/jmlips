@@ -36,6 +36,29 @@ type WPPriceItem = {
   }
 }
 
+const CATEGORY_LABELS = {
+  modelowanie_ust: {
+    pl: "Modelowanie ust",
+    en: "Lip Augmentation",
+  },
+  usuwanie_kwasu: {
+    pl: "Usuwanie kwasu hialuronowego",
+    en: "Hyaluronic Acid Dissolving",
+  },
+  wolumetria_twarzy: {
+    pl: "Wolumetria twarzy",
+    en: "Facial Volumization",
+  },
+  stymulatory_tkankowe: {
+    pl: "Stymulatory tkankowe",
+    en: "Tissue Stimulators",
+  },
+  pakiety_zabiegowe: {
+    pl: "Pakiety zabiegowe",
+    en: "Treatment Packages",
+  },
+} as const;
+
 const env = (globalThis as any).process?.env as
   | Record<string, string | undefined>
   | undefined
@@ -88,22 +111,26 @@ export async function fetchPricelist(
     const categoriesMap = new Map<string, Category>()
 
     sorted.forEach((item) => {
-      const categoryTitle =
-        lang === "pl"
-          ? item.acf.category_pl
-          : item.acf.category_en
+      const categorySlug =
+  lang === "pl"
+    ? item.acf.category_pl
+    : item.acf.category_en
+    console.log("CATEGORY:", categorySlug)
 
-      const categoryId = slugify(categoryTitle)
+const categoryId = categorySlug
 
-      if (!categoriesMap.has(categoryTitle)) {
-        categoriesMap.set(categoryTitle, {
+      if (!categoriesMap.has(categorySlug)) {
+        categoriesMap.set(categorySlug, {
           id: categoryId,
-          title: categoryTitle,
+          title:
+  CATEGORY_LABELS[
+    categorySlug as keyof typeof CATEGORY_LABELS
+  ][lang],
           items: [],
         })
       }
 
-      const category = categoriesMap.get(categoryTitle)!
+      const category = categoriesMap.get(categorySlug)!
 
       const treatmentName =
         lang === "pl"

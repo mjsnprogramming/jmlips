@@ -1,19 +1,28 @@
-import Image from 'next/image';
+import Image from "next/image";
 
 type Props = {
   certificate1?: string;
   certificate2?: string;
+  certificates?: string[];
 };
 
 export default function Certificates({
   certificate1,
   certificate2,
+  certificates,
 }: Props) {
+  const gallery =
+    certificates ?? [
+      "/images/certificate3.webp",
+      "/images/certificate4.webp",
+      "/images/certificate5.webp",
+      "/images/certificate6.webp"
+    ];
+
   return (
     <section className="bg-white px-6 py-24">
       <div className="mx-auto max-w-7xl">
         <div className="grid items-center gap-14 lg:grid-cols-[0.9fr_1.1fr]">
-
           <div>
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#a67c52]">
               SZKOLENIA I CERTYFIKATY
@@ -24,9 +33,9 @@ export default function Certificates({
             </h2>
 
             <p className="mt-6 max-w-xl text-lg leading-8 text-gray-600">
-              Uczestniczę w certyfikowanych szkoleniach z zakresu nowoczesnej
-              medycyny estetycznej, aby zapewnić bezpieczeństwo, komfort
-              oraz naturalne efekty dopasowane do każdej klientki.
+              Rozwój to dla mnie klucz do sukcesu, dlatego nieustannie się
+              szkolę. Uwielbiam to robić, bo każde szkolenie jeszcze bardziej
+              napędza mnie do działania i motywuje do dalszego rozwoju.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -69,7 +78,27 @@ export default function Certificates({
               />
             </div>
           </div>
+        </div>
 
+        {/* Dodatkowe certyfikaty */}
+
+        <div className="mt-20">
+          <div className="mx-auto grid max-w-5xl grid-cols-2 gap-6 md:grid-cols-4">
+            {gallery.map((image, index) => (
+              <div
+  className={`relative h-[340px] overflow-hidden rounded-[1.5rem] shadow-[0_15px_40px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)] ${
+    index % 2 === 1 ? "mt-8" : ""
+  }`}
+>
+  <Image
+    src={image}
+    alt={`Certyfikat ${index + 3}`}
+    fill
+    className="object-cover transition duration-500 hover:scale-105"
+  />
+</div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
