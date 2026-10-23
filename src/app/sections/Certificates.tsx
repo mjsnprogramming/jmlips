@@ -38,23 +38,7 @@ export default function Certificates({
               napędza mnie do działania i motywuje do dalszego rozwoju.
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-3">
-              {[
-                "Profhilo",
-                "Karisma",
-                "Nucleofill",
-                "Mezoterapia",
-                "Stymulatory tkankowe",
-                "Modelowanie ust",
-              ].map((item) => (
-                <div
-                  key={item}
-                  className="rounded-full border border-[#eadbc9] bg-[#fbf8f4] px-5 py-3 text-sm text-[#2f2924]"
-                >
-                  {item}
-                </div>
-              ))}
-            </div>
+            
           </div>
 
           <div className="grid grid-cols-2 gap-5">

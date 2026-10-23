@@ -8,6 +8,8 @@ export interface Certificate {
   };
 }
 
+
+
 export async function getCertificates(): Promise<Certificate[]> {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_WORDPRESS_API_URL}/wp-json/wp/v2/certyfikat?per_page=100&orderby=id&order=asc`,

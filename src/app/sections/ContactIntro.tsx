@@ -13,28 +13,46 @@ return (
               Kontakt
             </p>
 
-            <h1 className="max-w-3xl text-5xl font-semibold tracking-tight text-[#111827] md:text-7xl">
-              Umów wizytę lub zapytaj o zabieg.
+            <h1 className="max-w-3xl text-5xl font-semibold tracking-tight text-[#111827] md:text-5xl">
+              Zadbaj o naturalny efekt. Zacznij od konsultacji.
             </h1>
 
             <p className="mt-8 max-w-2xl text-lg leading-9 text-gray-600">
-              Masz pytania dotyczące zabiegu, efektu albo przeciwwskazań?
-              Skontaktuj się — spokojnie dobierzemy najlepsze rozwiązanie.
+              Nie wiesz, który zabieg będzie najlepszy? Podczas konsultacji
+              omówimy Twoje oczekiwania i dobierzemy rozwiązanie dopasowane do
+              Twoich potrzeb.
             </p>
+
+            <div className="mt-8 space-y-3 text-[15px] text-[#4b5563]">
+  <div className="flex items-center gap-3">
+    <span className="text-[#a67c52]">✓</span>
+    Indywidualna konsultacja przed zabiegiem
+  </div>
+
+  <div className="flex items-center gap-3">
+    <span className="text-[#a67c52]">✓</span>
+    Dobór terapii dopasowany do Twoich potrzeb
+  </div>
+
+  <div className="flex items-center gap-3">
+    <span className="text-[#a67c52]">✓</span>
+    Wygodna rezerwacja online przez Booksy
+  </div>
+</div>
 
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <Link
-                href="tel:+48657391939"
+                href="#"
                 className="inline-flex rounded-full bg-[#a67c52] px-8 py-4 text-sm font-semibold uppercase tracking-[0.16em] text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-[#956f49] hover:shadow-xl"
-              >
-                Zadzwoń
+                >
+                  Umów w Booksy
               </Link>
 
               <Link
-                href="mailto:juliamajewska@gmail.com"
+                href="#"
                 className="inline-flex rounded-full border border-[#d7b995] bg-white/75 px-8 py-4 text-sm font-semibold uppercase tracking-[0.16em] text-[#a67c52] shadow-md transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-xl"
-              >
-                Napisz e-mail
+                  >
+                 Napisz na Instagramie
               </Link>
             </div>
           </div>
@@ -51,14 +69,19 @@ return (
               priority
             />
 
-            <div className="absolute -bottom-8 -right-4 z-20 rounded-3xl bg-white/85 p-6 shadow-[0_20px_60px_rgba(0,0,0,0.12)] backdrop-blur-xl md:-right-8">
-              <p className="text-sm uppercase tracking-[0.25em] text-[#a67c52]">
-                JM Studio
-              </p>
-              <p className="mt-2 text-lg font-semibold text-[#2f2924]">
-                Lublin, Wieniawska 8
-              </p>
-            </div>
+            <div className="absolute -bottom-8 -right-4 z-20 rounded-3xl bg-white/90 p-6 shadow-[0_20px_60px_rgba(0,0,0,0.12)] backdrop-blur-xl md:-right-8">
+  <p className="text-sm uppercase tracking-[0.25em] text-[#a67c52]">
+    JM Studio
+  </p>
+
+  <p className="mt-2 text-lg font-semibold text-[#2f2924]">
+    Lublin, Wieniawska 8
+  </p>
+
+  <p className="mt-1 text-sm text-gray-500">
+    Rezerwacja online • Booksy
+  </p>
+</div>
           </div>
         </div>
       </section>

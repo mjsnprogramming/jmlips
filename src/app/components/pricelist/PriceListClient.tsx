@@ -32,26 +32,45 @@ export default function PriceListClient({
   const [query, setQuery] = useState("")
   const [open, setOpen] = useState<string[]>([])
 
-  const filtered = useMemo(() => {
-    const q = query.trim().toLowerCase()
-    if (!q) return initialData
+ const filtered = useMemo(() => {
+  const q = query.trim().toLowerCase()
 
-    return initialData
-      .map((cat) => {
-        const titleHit = cat.title.toLowerCase().includes(q)
-        const items = cat.items.filter((it) =>
-          it.name.toLowerCase().includes(q)
+  if (!q) return initialData
+
+  return initialData
+    .map((cat) => {
+      const titleHit = cat.title.toLowerCase().includes(q)
+
+      const items = cat.items.filter((it) => {
+        const nameHit = it.name.toLowerCase().includes(q)
+
+        const rowHit = it.rows.some((row) =>
+          [
+            row.area,
+            row.price,
+            row.desc ?? "",
+            String(row.count),
+          ]
+            .join(" ")
+            .toLowerCase()
+            .includes(q)
         )
 
-        if (titleHit && items.length === 0) return { ...cat }
-        if (items.length) return { ...cat, items }
-        return { ...cat, items: [] }
+        return nameHit || rowHit
       })
-      .filter(
-        (cat) =>
-          cat.items.length > 0 || cat.title.toLowerCase().includes(q)
-      )
-  }, [query, initialData])
+
+      if (titleHit && items.length === 0) return { ...cat }
+
+      if (items.length) return { ...cat, items }
+
+      return { ...cat, items: [] }
+    })
+    .filter(
+      (cat) =>
+        cat.items.length > 0 ||
+        cat.title.toLowerCase().includes(q)
+    )
+}, [query, initialData])
 
   const effectiveOpen = useMemo(() => {
     if (!query) return open

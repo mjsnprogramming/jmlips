@@ -8,16 +8,16 @@ const CONTACT_ITEMS = [
     href: "https://maps.google.com/?q=Wieniawska+8+Lublin",
   },
   {
-    label: "Telefon",
-    value: "+48 657 391 939",
-    second: "Zadzwoń lub napisz SMS",
-    href: "tel:+48657391939",
+    label: "Instagram",
+    value: "@julia_majewska_studio",
+    second: "Napisz wiadomość",
+    href: "https://instagram.com/julia_majewska_studio",
   },
   {
-    label: "E-mail",
-    value: "juliamajewska@gmail.com",
-    second: "@julia_majewska_studio",
-    href: "mailto:juliamajewska@gmail.com",
+    label: "Booksy",
+    value: "Umów wizytę online",
+    second: "Rezerwacja 24/7",
+    href: "#", // później podmienisz
   },
 ]
 

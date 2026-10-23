@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import type { PopularTreatment } from '@/lib/treatments'
 
+
 type Props = {
   treatments: PopularTreatment[]
 }
