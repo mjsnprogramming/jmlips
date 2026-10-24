@@ -24,29 +24,27 @@ const interfaceCopy = {
     heading: "Zabiegi dobrane do Twoich potrzeb.",
     introduction:
       "Poznaj możliwości i wybierz zabieg, o którym chcesz dowiedzieć się więcej.",
-    readMore: "Czytaj więcej",
     duration: "Czas",
     effect: "Efekt",
     close: "Zamknij szczegóły zabiegu",
+    previous: "Poprzedni zabieg",
+    next: "Następny zabieg",
+    position: "Pozycja",
+    empty: "Aktualnie nie ma dostępnych zabiegów.",
   },
   en: {
     offer: "Treatments",
     heading: "Treatments tailored to your needs.",
     introduction: "Explore the options and learn more about each treatment.",
-    readMore: "Read more",
     duration: "Duration",
     effect: "Effect",
     close: "Close treatment details",
+    previous: "Previous treatment",
+    next: "Next treatment",
+    position: "Position",
+    empty: "There are no treatments available right now.",
   },
 } as const;
-
-const cardLayout = [
-  "xl:col-span-7",
-  "xl:col-span-5",
-  "xl:col-span-4",
-  "xl:col-span-4",
-  "xl:col-span-4",
-];
 
 const treatmentAccents: Record<string, string> = {
   "Modelowanie ust": "konturu i kształtu ust",
@@ -78,7 +76,7 @@ function TreatmentImage({
 }: {
   src: string | null;
   alt: string;
-  variant: "card" | "modal";
+  variant: "editorial" | "modal";
 }) {
   const [failed, setFailed] = useState(false);
 
@@ -95,16 +93,16 @@ function TreatmentImage({
     />
   );
 
-  if (variant === "card") {
+  if (variant === "editorial") {
     return (
-      <span className="mb-6 block aspect-[16/10] overflow-hidden rounded-[1.15rem] bg-[#f8f3ed]">
+      <div className="ml-auto aspect-[4/3] w-full max-w-[34rem] overflow-hidden bg-[#f1e9df]">
         {image}
-      </span>
+      </div>
     );
   }
 
   return (
-    <div className="mb-8 aspect-[16/9] max-h-[20rem] overflow-hidden rounded-[1.2rem] bg-[#f8f3ed]">
+    <div className="mb-8 aspect-[16/9] max-h-[20rem] overflow-hidden bg-[#f8f3ed]">
       {image}
     </div>
   );
@@ -117,12 +115,57 @@ export default function OfferClient({
 }: OfferClientProps) {
   const [selectedTreatment, setSelectedTreatment] =
     useState<Treatment | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const prefersReducedMotion = useReducedMotion();
   const reduceMotion = Boolean(prefersReducedMotion);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const dialogRef = useRef<HTMLElement>(null);
   const triggerSlugRef = useRef<string | null>(null);
+  const sliderRef = useRef<HTMLElement>(null);
+  const touchStartX = useRef<number | null>(null);
+
+  const copy = interfaceCopy[lang];
+  const treatmentCount = treatments.length;
+  const safeIndex = treatmentCount > 0 ? activeIndex % treatmentCount : 0;
+  const currentTreatment = treatments[safeIndex] ?? null;
+  const transitionDuration = reduceMotion ? 0 : 0.42;
+  const modalDuration = reduceMotion ? 0.01 : 0.22;
+
+  function goToTreatment(direction: -1 | 1) {
+    if (treatmentCount < 2) return;
+
+    setActiveIndex(
+      (index) => (index + direction + treatmentCount) % treatmentCount,
+    );
+  }
+
+  useEffect(() => {
+    if (treatmentCount === 0) {
+      setActiveIndex(0);
+      return;
+    }
+
+    setActiveIndex((index) => index % treatmentCount);
+  }, [treatmentCount]);
+
+  useEffect(() => {
+    function handleSliderKeyDown(event: KeyboardEvent) {
+      if (selectedTreatment) return;
+      if (!sliderRef.current?.contains(document.activeElement)) return;
+
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        goToTreatment(-1);
+      } else if (event.key === "ArrowRight") {
+        event.preventDefault();
+        goToTreatment(1);
+      }
+    }
+
+    window.addEventListener("keydown", handleSliderKeyDown);
+    return () => window.removeEventListener("keydown", handleSliderKeyDown);
+  }, [selectedTreatment, treatmentCount]);
 
   useEffect(() => {
     if (!selectedTreatment) return;
@@ -134,7 +177,7 @@ export default function OfferClient({
       closeButtonRef.current?.focus();
     });
 
-    function handleKeyDown(event: KeyboardEvent) {
+    function handleDialogKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") {
         setSelectedTreatment(null);
         return;
@@ -168,11 +211,11 @@ export default function OfferClient({
       }
     }
 
-    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keydown", handleDialogKeyDown);
 
     return () => {
       document.body.style.overflow = previousBodyOverflow;
-      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("keydown", handleDialogKeyDown);
       window.cancelAnimationFrame(focusFrame);
 
       window.requestAnimationFrame(() => {
@@ -198,15 +241,14 @@ export default function OfferClient({
     setSelectedTreatment(treatment);
   }
 
-  const cardDuration = reduceMotion ? 0 : 0.38;
-  const modalDuration = reduceMotion ? 0.01 : 0.22;
-  const copy = interfaceCopy[lang];
   const detailParagraphs = selectedTreatment
     ? selectedTreatment.details.split(/\n\s*\n/).filter(Boolean)
     : [];
+
   const hasEffectParagraph = detailParagraphs.some((paragraph) =>
     /^(?:Efekt|Effect):\s*/i.test(paragraph.trim()),
   );
+
   const modalFacts = selectedTreatment
     ? [
         ...(selectedTreatment.duration?.trim()
@@ -222,104 +264,173 @@ export default function OfferClient({
     <div className="bg-[#fbf8f4] font-[var(--font-inter)] text-[#2f2924]">
       <section className="px-6 py-16 sm:py-20">
         <div className="mx-auto max-w-7xl">
-          <header className="mb-10 max-w-4xl sm:mb-14">
-            <p className="mb-5 font-[var(--font-quicksand)] text-xs font-semibold uppercase tracking-[0.2em] text-[#8b6543]">
-              {copy.offer}
-            </p>
+          <header className="mb-14 max-w-4xl sm:mb-20">
             <h1 className="max-w-3xl font-serif text-5xl font-medium leading-[1.04] tracking-[-0.035em] text-[#332a23] sm:text-6xl">
               {copy.heading}
             </h1>
+
             <p className="mt-5 max-w-xl text-base leading-7 text-[#6b625b] sm:text-lg sm:leading-8">
               {copy.introduction}
             </p>
           </header>
 
-          <div className="grid grid-cols-1 items-stretch gap-4 md:grid-cols-2 xl:grid-cols-12 xl:gap-5">
-            {treatments.map((treatment, index) => (
-              <motion.button
-                key={treatment.slug}
-                type="button"
-                data-treatment-trigger={treatment.slug}
-                aria-haspopup="dialog"
-                aria-expanded={selectedTreatment?.slug === treatment.slug}
-                aria-hidden={
-                  selectedTreatment?.slug === treatment.slug || undefined
-                }
-                tabIndex={
-                  selectedTreatment?.slug === treatment.slug ? -1 : 0
-                }
-                initial={
-                  reduceMotion
-                    ? { opacity: 1, y: 0 }
-                    : { opacity: 0, y: 12 }
-                }
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.12 }}
-                whileHover={
-                  reduceMotion
-                    ? undefined
-                    : { y: -2, transition: { duration: 0.16 } }
-                }
-                whileTap={reduceMotion ? undefined : { scale: 0.995 }}
-                transition={{
-                  duration: cardDuration,
-                  delay: reduceMotion ? 0 : Math.min(index * 0.045, 0.18),
-                }}
-                onClick={(event) =>
-                  openTreatment(treatment, event.currentTarget)
-                }
-                className={`group w-full rounded-[1.65rem] border border-[#e7dbcf] bg-[#fffdfa] text-left transition-colors duration-200 hover:border-[#cdb79f] hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b6543] focus-visible:ring-offset-4 focus-visible:ring-offset-[#fbf8f4] motion-reduce:transition-none ${cardLayout[index] ?? "xl:col-span-4"} ${
-                  selectedTreatment?.slug === treatment.slug
-                    ? "pointer-events-none opacity-0"
-                    : ""
-                }`}
-              >
-                <span className="flex h-full min-h-[290px] flex-col p-6 sm:min-h-[310px] sm:p-8">
-                  {treatment.image && (
-                    <TreatmentImage
-                      key={`card-${treatment.slug}-${treatment.image}`}
-                      src={treatment.image}
-                      alt={treatment.title}
-                      variant="card"
-                    />
-                  )}
-                  <span className="flex items-start justify-between gap-5">
-                    {treatment.category?.trim() ? (
-                      <span className="pt-1 font-[var(--font-quicksand)] text-[0.68rem] font-semibold uppercase tracking-[0.19em] text-[#8b6543]">
-                        {treatment.category}
-                      </span>
-                    ) : (
-                      <span />
+          {currentTreatment ? (
+            <section
+              ref={sliderRef}
+              aria-label={copy.offer}
+              aria-roledescription="carousel"
+              onTouchStart={(event) => {
+                touchStartX.current = event.touches[0]?.clientX ?? null;
+              }}
+              onTouchEnd={(event) => {
+                if (touchStartX.current === null) return;
+
+                const endX =
+                  event.changedTouches[0]?.clientX ?? touchStartX.current;
+                const delta = endX - touchStartX.current;
+                touchStartX.current = null;
+
+                if (Math.abs(delta) < 48) return;
+                goToTreatment(delta < 0 ? 1 : -1);
+              }}
+              className="outline-none focus-visible:ring-2 focus-visible:ring-[#8b6543] focus-visible:ring-offset-8 focus-visible:ring-offset-[#fbf8f4]"
+            >
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.article
+                  key={currentTreatment.slug}
+                  aria-live="polite"
+                  initial={{
+                    opacity: 0,
+                    y: reduceMotion ? 0 : 14,
+                  }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{
+                    opacity: 0,
+                    y: reduceMotion ? 0 : -10,
+                  }}
+                  transition={{ duration: transitionDuration }}
+                  className="grid grid-cols-1 gap-x-10 gap-y-10 lg:grid-cols-12 lg:gap-x-14"
+                >
+                  <div className="flex flex-col justify-center lg:col-span-5">
+                    {currentTreatment.category?.trim() && (
+                      <p className="mb-5 font-[var(--font-quicksand)] text-xs font-semibold uppercase tracking-[0.2em] text-[#8b6543]">
+                        {currentTreatment.category}
+                      </p>
                     )}
-                    <span
-                      aria-hidden="true"
-                      className="-mt-2 font-serif text-5xl font-light leading-none tracking-[-0.06em] text-[#e6d9cc] sm:text-6xl"
-                    >
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                  </span>
 
-                  <h2 className="mt-7 max-w-xl font-serif text-[1.75rem] font-medium leading-[1.12] tracking-[-0.025em] text-[#332a23] sm:text-3xl">
-                    {treatment.title}
-                  </h2>
+                    <p className="mb-5 font-[var(--font-quicksand)] text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-[#a28b76]">
+                      {copy.position} {String(safeIndex + 1).padStart(2, "0")} /{" "}
+                      {String(treatmentCount).padStart(2, "0")}
+                    </p>
 
-                  <p className="mt-4 max-w-prose text-sm leading-6 text-[#6b625b] sm:text-[0.95rem] sm:leading-7">
-                    {renderAccentedText(treatment.description, treatment.title)}
-                  </p>
+                    <h2 className="max-w-xl font-serif text-5xl font-medium leading-[1.02] tracking-[-0.04em] text-[#332a23] sm:text-6xl lg:text-7xl">
+                      {currentTreatment.title}
+                    </h2>
+                  </div>
 
-                  <span className="mt-auto inline-flex items-center justify-between gap-4 border-t border-[#eee5dc] pt-6 text-xs font-semibold uppercase tracking-[0.16em] text-[#805a3a] transition-colors duration-200 group-hover:text-[#4f3928] motion-reduce:transition-none">
-                    {copy.readMore}
-                    <span
-                      aria-hidden="true"
-                      className="text-base transition-transform duration-200 group-hover:translate-x-1 motion-reduce:transition-none"
-                    >
-                      →
-                    </span>
-                  </span>
-                </span>
-              </motion.button>
-            ))}
-          </div>
+                  <div className="lg:col-span-5 lg:col-start-8">
+                    {currentTreatment.image ? (
+                      <TreatmentImage
+                        key={`${currentTreatment.slug}-${currentTreatment.image}`}
+                        src={currentTreatment.image}
+                        alt={currentTreatment.title}
+                        variant="editorial"
+                      />
+                    ) : (
+                      <div
+                        aria-hidden="true"
+                        className="ml-auto aspect-[4/3] w-full max-w-[34rem] bg-[#f1e9df]"
+                      />
+                    )}
+                  </div>
+
+                  <div className="lg:col-span-6 lg:col-start-2 lg:row-start-2">
+                    <div className="relative mx-auto min-h-[22rem] w-full max-w-[30rem] sm:min-h-[27rem] lg:min-h-[30rem]">
+                      <div className="absolute left-0 top-0 z-0 aspect-[0.88/1] w-[72%] overflow-hidden bg-[#efe5d9]">
+                        {currentTreatment.image2 && (
+                          <img
+                            src={currentTreatment.image2}
+                            alt=""
+                            loading="lazy"
+                            decoding="async"
+                            className="h-full w-full object-cover"
+                          />
+                        )}
+                      </div>
+
+                      <div className="absolute right-0 top-1/2 z-10 aspect-[4/3] w-[48%] -translate-y-1/2 overflow-hidden bg-[#e7dbcf]">
+                        {currentTreatment.image3 && (
+                          <img
+                            src={currentTreatment.image3}
+                            alt=""
+                            loading="lazy"
+                            decoding="async"
+                            className="h-full w-full object-cover"
+                          />
+                        )}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="lg:col-span-5 lg:col-start-8 lg:row-start-2 lg:pt-8">
+                    {currentTreatment.category?.trim() && (
+                      <p className="mb-5 font-[var(--font-quicksand)] text-[0.68rem] font-semibold uppercase tracking-[0.19em] text-[#8b6543]">
+                        {currentTreatment.category}
+                      </p>
+                    )}
+
+                    <div className="max-w-xl space-y-4 text-base leading-7 text-[#6b625b] sm:text-lg sm:leading-8">
+                      {currentTreatment.details
+                        .split(/\n\s*\n/)
+                        .filter(Boolean)
+                        .map((paragraph, index) => (
+                          <p key={index}>
+                            {renderAccentedText(
+                              paragraph,
+                              currentTreatment.title,
+                            )}
+                          </p>
+                        ))}
+                    </div>
+                  </div>
+                </motion.article>
+              </AnimatePresence>
+
+              <div className="mt-12 flex items-center justify-between border-t border-[#e7dbcf] pt-5 sm:mt-16">
+                <p className="font-[var(--font-quicksand)] text-xs font-semibold uppercase tracking-[0.16em] text-[#8b6543]">
+                  {String(safeIndex + 1).padStart(2, "0")}
+                  <span className="mx-2 text-[#c5b5a4]">/</span>
+                  {String(treatmentCount).padStart(2, "0")}
+                </p>
+
+                <div className="flex gap-3">
+                  <button
+                    type="button"
+                    onClick={() => goToTreatment(-1)}
+                    disabled={treatmentCount < 2}
+                    aria-label={copy.previous}
+                    className="flex h-12 w-12 items-center justify-center border border-[#d9cbbb] text-xl text-[#5c4939] transition-colors hover:bg-[#efe5d9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b6543] disabled:cursor-not-allowed disabled:opacity-40 motion-reduce:transition-none"
+                  >
+                    <span aria-hidden="true">←</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => goToTreatment(1)}
+                    disabled={treatmentCount < 2}
+                    aria-label={copy.next}
+                    className="flex h-12 w-12 items-center justify-center border border-[#d9cbbb] text-xl text-[#5c4939] transition-colors hover:bg-[#efe5d9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b6543] disabled:cursor-not-allowed disabled:opacity-40 motion-reduce:transition-none"
+                  >
+                    <span aria-hidden="true">→</span>
+                  </button>
+                </div>
+              </div>
+            </section>
+          ) : (
+            <p className="py-16 text-center font-serif text-2xl text-[#6b625b]">
+              {copy.empty}
+            </p>
+          )}
 
           <AnimatePresence>
             {selectedTreatment && (
@@ -354,13 +465,13 @@ export default function OfferClient({
                       : { type: "spring", stiffness: 320, damping: 30 }),
                   }}
                   onClick={(event) => event.stopPropagation()}
-                  className="relative max-h-[88dvh] w-full max-w-3xl overflow-hidden rounded-[1.75rem] border border-[#e7dbcf] bg-[#fffdfa]"
+                  className="relative max-h-[88dvh] w-full max-w-3xl overflow-hidden border border-[#e7dbcf] bg-[#fffdfa]"
                 >
                   <button
                     ref={closeButtonRef}
                     type="button"
                     onClick={() => setSelectedTreatment(null)}
-                    className="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-[#e7dbcf] bg-[#fbf8f4] text-2xl leading-none text-[#332a23] transition-colors hover:bg-[#eee5dc] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#805a3a] focus-visible:ring-offset-2 motion-reduce:transition-none sm:right-6 sm:top-6"
+                    className="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center border border-[#e7dbcf] bg-[#fbf8f4] text-2xl leading-none text-[#332a23] transition-colors hover:bg-[#eee5dc] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#805a3a] focus-visible:ring-offset-2 motion-reduce:transition-none sm:right-6 sm:top-6"
                     aria-label={copy.close}
                   >
                     <span aria-hidden="true">×</span>
@@ -378,6 +489,7 @@ export default function OfferClient({
                         variant="modal"
                       />
                     )}
+
                     {selectedTreatment.category?.trim() && (
                       <p className="mb-4 font-[var(--font-quicksand)] text-xs font-semibold uppercase tracking-[0.2em] text-[#8b6543]">
                         {selectedTreatment.category}
@@ -411,7 +523,11 @@ export default function OfferClient({
                       </dl>
                     )}
 
-                    <div className={`${modalFacts.length > 0 ? "mt-8" : "mt-7"} space-y-5`}>
+                    <div
+                      className={`${
+                        modalFacts.length > 0 ? "mt-8" : "mt-7"
+                      } space-y-5`}
+                    >
                       {detailParagraphs.map((paragraph, index) => {
                         const isEffect = /^(?:Efekt|Effect):\s*/i.test(
                           paragraph.trim(),
@@ -422,14 +538,20 @@ export default function OfferClient({
                             key={index}
                             className="border-l-2 border-[#b89775] bg-[#f8f3ed] px-5 py-4 text-[0.95rem] leading-7 text-[#51463d] sm:text-base sm:leading-8"
                           >
-                            {renderAccentedText(paragraph, selectedTreatment.title)}
+                            {renderAccentedText(
+                              paragraph,
+                              selectedTreatment.title,
+                            )}
                           </p>
                         ) : (
                           <p
                             key={index}
                             className="text-[0.95rem] leading-7 text-[#5e554d] sm:text-base sm:leading-8"
                           >
-                            {renderAccentedText(paragraph, selectedTreatment.title)}
+                            {renderAccentedText(
+                              paragraph,
+                              selectedTreatment.title,
+                            )}
                           </p>
                         );
                       })}
@@ -442,13 +564,16 @@ export default function OfferClient({
         </div>
       </section>
 
-      <OfferFAQ items={faqItems} />
+      <OfferFAQ
+  lang={lang}
+  groups={treatments.map((treatment) => ({
+    slug: treatment.slug,
+    title: treatment.title,
+    items: faqItems.filter(
+      (item) => item.treatmentSlug === treatment.slug,
+    ),
+  }))}
+/>
     </div>
   );
 }
-
-
-
-
-
-

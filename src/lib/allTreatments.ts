@@ -9,7 +9,11 @@ export type Treatment = {
   effect: string
   image: string | null
   order: number
+  image2: string | null
+  image3: string | null
 }
+
+type WPImageValue = string | number | false | null
 
 type WPAllTreatment = {
   id: number
@@ -27,7 +31,9 @@ type WPAllTreatment = {
     duration_en?: string | null
     effect_pl?: string | null
     effect_en?: string | null
-    image?: string | null
+    image?: WPImageValue
+    image2?: WPImageValue
+    image3?: WPImageValue
     order?: string | number | null
   }
 }
@@ -117,8 +123,36 @@ function normalizeText(value: string | null | undefined): string {
   return typeof value === "string" ? value.trim() : ""
 }
 
-function normalizeImage(value: string | null | undefined): string | null {
-  return normalizeText(value) || null
+async function getImageUrl(
+  image: WPImageValue | undefined,
+): Promise<string | null> {
+  if (typeof image === "string") {
+    return image.trim() || null
+  }
+
+  if (typeof image !== "number" || !WP_BASE_URL) {
+    return null
+  }
+
+  try {
+    const res = await fetch(
+      `${WP_BASE_URL}/wp-json/wp/v2/media/${image}`,
+      {
+        next: { revalidate: 60 },
+      },
+    )
+
+    if (!res.ok) return null
+
+    const media = (await res.json()) as {
+      source_url?: string | null
+    }
+
+    return normalizeText(media.source_url) || null
+  } catch (error) {
+    console.error(`Nie udało się pobrać zdjęcia o ID ${image}:`, error)
+    return null
+  }
 }
 
 function normalizeOrder(
@@ -144,16 +178,28 @@ function createPolishFallbacks(): Treatment[] {
     duration: "",
     effect: "",
     image: null,
+    image2: null,
+    image3: null,
     order: copy.order,
   }))
 }
 
-function mapWPTreatment(item: WPAllTreatment, lang: "pl" | "en"): Treatment {
+async function mapWPTreatment(
+  item: WPAllTreatment,
+  lang: "pl" | "en",
+): Promise<Treatment> {
   const acf = item.acf
+
   const polishCopy =
     lang === "pl"
       ? POLISH_TREATMENT_COPY.find((copy) => copy.slug === item.slug)
       : undefined
+
+  const [image, image2, image3] = await Promise.all([
+    getImageUrl(acf?.image),
+    getImageUrl(acf?.image2),
+    getImageUrl(acf?.image3),
+  ])
 
   return {
     id: item.id,
@@ -175,13 +221,15 @@ function mapWPTreatment(item: WPAllTreatment, lang: "pl" | "en"): Treatment {
       "",
     duration: normalizeText(lang === "pl" ? acf?.duration_pl : acf?.duration_en),
     effect: normalizeText(lang === "pl" ? acf?.effect_pl : acf?.effect_en),
-    image: normalizeImage(acf?.image),
+    image,
+    image2,
+    image3,
     order: normalizeOrder(acf?.order, polishCopy?.order ?? 0),
   }
 }
 
 export async function fetchTreatments(
-  lang: "pl" | "en"
+  lang: "pl" | "en",
 ): Promise<Treatment[]> {
   const polishFallbacks = createPolishFallbacks()
 
@@ -203,8 +251,11 @@ export async function fetchTreatments(
       return lang === "pl" ? polishFallbacks : []
     }
 
-    return data
-      .map((item) => mapWPTreatment(item, lang))
+    const treatments = await Promise.all(
+      data.map((item) => mapWPTreatment(item, lang)),
+    )
+
+    return treatments
       .filter((treatment) => treatment.title.length > 0)
       .sort((a, b) => a.order - b.order)
   } catch (error) {

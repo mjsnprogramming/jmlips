@@ -3,11 +3,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import {
-  FaFacebookF,
-  FaInstagram,
-  FaTiktok,
-} from 'react-icons/fa6'
+//import {
+ // FaFacebookF,
+  //FaInstagram,
+  //FaTiktok,
+//} from 'react-icons/fa6'
 
 const content = {
   pl: {
@@ -56,17 +56,17 @@ const socials = [
   {
     label: 'Instagram',
     href: 'https://www.instagram.com/',
-    Icon: FaInstagram,
+    //Icon: FaInstagram,
   },
   {
     label: 'TikTok',
     href: 'https://www.tiktok.com/',
-    Icon: FaTiktok,
+    //Icon: FaTiktok,
   },
   {
     label: 'Facebook',
     href: 'https://www.facebook.com/',
-    Icon: FaFacebookF,
+   // Icon: FaFacebookF,
   },
 ]
 
@@ -143,19 +143,19 @@ export default function FooterComponent() {
             </p>
 
             <div className="mt-8 flex items-center gap-4">
-              {socials.map(({ label, href, Icon }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-[#e7dfd6] bg-white/70 text-[#5a4c3a] transition-colors duration-200 hover:border-[#8b6543] hover:text-[#8b6543] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#805a3a] focus-visible:ring-offset-2 motion-reduce:transition-none"
-                >
-                  <Icon size={18} aria-hidden="true" />
-                </a>
-              ))}
-            </div>
+  {socials.map(({ label, href }) => (
+    <a
+      key={label}
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={label}
+      className="flex h-11 w-11 items-center justify-center rounded-full border border-[#e7dfd6] bg-white/70 text-xs font-semibold text-[#5a4c3a] transition-colors duration-200 hover:border-[#8b6543] hover:text-[#8b6543] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#805a3a] focus-visible:ring-offset-2"
+    >
+      {label === 'Instagram' ? 'IG' : label === 'TikTok' ? 'TT' : 'FB'}
+    </a>
+  ))}
+</div>
           </div>
 
           <div className="min-w-0">

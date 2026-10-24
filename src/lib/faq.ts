@@ -3,11 +3,14 @@ export type FAQItem = {
   question: string
   answer: string
   order: number
+  treatmentSlug: string
 }
 
 type WPFAQItem = {
   id: number
   acf: {
+    category_pl: string
+    category_en: string
     question_pl: string
     question_en: string
     answer_pl: string
@@ -16,14 +19,25 @@ type WPFAQItem = {
   }
 }
 
+function toSlug(value: string): string {
+  return value
+    .trim()
+    .toLowerCase()
+    .replace(/ł/g, "l")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "")
+}
+
 export async function fetchFAQ(
-  lang: "pl" | "en"
+  lang: "pl" | "en",
 ): Promise<FAQItem[]> {
   const res = await fetch(
-  `${process.env.WORDPRESS_API_URL}/wp-json/wp/v2/question?per_page=100`,
+    `${process.env.WORDPRESS_API_URL}/wp-json/wp/v2/question?per_page=100`,
     {
       next: { revalidate: 60 },
-    }
+    },
   )
 
   if (!res.ok) {
@@ -44,6 +58,7 @@ export async function fetchFAQ(
           ? item.acf.answer_pl
           : item.acf.answer_en,
       order: Number(item.acf.order),
+      treatmentSlug: toSlug(item.acf.category_pl),
     }))
     .sort((a, b) => a.order - b.order)
 }
