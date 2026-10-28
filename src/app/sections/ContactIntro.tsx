@@ -1,88 +1,96 @@
-import Link from "next/link";
-import Image from 'next/image';
+import Image from "next/image";
 
-export default function ContactIntro () {
-return (
-<section className="relative overflow-hidden px-6 py-28">
-        <div className="absolute -left-24 top-16 h-80 w-80 rounded-full bg-[#a67c52]/10 blur-3xl" />
-        <div className="absolute -right-24 bottom-10 h-80 w-80 rounded-full bg-[#a67c52]/10 blur-3xl" />
+// Podmień na właściwy adres Booksy, gdy będzie dostępny.
+const BOOKSY_URL = "#";
+const INSTAGRAM_URL = "https://www.instagram.com/julia_majewska_studio/";
 
-        <div className="relative mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[0.95fr_1.05fr]">
-          <div>
-            <p className="mb-6 inline-flex rounded-full bg-[#a67c52] px-5 py-2 text-sm font-semibold uppercase tracking-[0.18em] text-white">
-              Kontakt
-            </p>
+export default function ContactIntro() {
+  return (
+    <section className="overflow-hidden bg-[#f8f5f0] px-5 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
+      <div className="mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
+        <div className="max-w-2xl">
+          <p className="mb-6 flex items-center gap-4 text-xs font-medium uppercase tracking-[0.28em] text-[#a77b50] sm:text-sm">
+            Kontakt <span className="h-px w-12 bg-[#c8a987]" aria-hidden="true" />
+          </p>
 
-            <h1 className="max-w-3xl text-5xl font-semibold tracking-tight text-[#111827] md:text-5xl">
-              Zadbaj o naturalny efekt. Zacznij od konsultacji.
-            </h1>
+          <h1 className="font-serif text-[2.8rem] font-normal leading-[1.06] tracking-[-0.045em] text-[#171513] sm:text-6xl lg:text-[3.65rem] xl:text-[4rem]">
+            Zadbaj o naturalny efekt.{" "}
+            <span className="italic text-[#a77b50]">Zacznij od konsultacji.</span>
+          </h1>
 
-            <p className="mt-8 max-w-2xl text-lg leading-9 text-gray-600">
-              Nie wiesz, który zabieg będzie najlepszy? Podczas konsultacji
-              omówimy Twoje oczekiwania i dobierzemy rozwiązanie dopasowane do
-              Twoich potrzeb.
-            </p>
+          <p className="mt-7 max-w-xl text-base leading-7 text-[#625d58] sm:text-[1.05rem] sm:leading-8">
+            Nie wiesz, który zabieg będzie najlepszy? Podczas konsultacji omówimy
+            Twoje oczekiwania i dobierzemy rozwiązanie dopasowane do Twoich potrzeb.
+          </p>
 
-            <div className="mt-8 space-y-3 text-[15px] text-[#4b5563]">
-  <div className="flex items-center gap-3">
-    <span className="text-[#a67c52]">✓</span>
-    Indywidualna konsultacja przed zabiegiem
-  </div>
+          <ul className="mt-6 space-y-3 text-sm text-[#625d58] sm:text-[0.95rem]">
+            {[
+              "Indywidualna konsultacja przed zabiegiem",
+              "Dobór terapii dopasowany do Twoich potrzeb",
+              "Wygodna rezerwacja online przez Booksy",
+            ].map((benefit) => (
+              <li key={benefit} className="flex items-center gap-3">
+                <span className="flex h-[22px] w-[22px] shrink-0 items-center justify-center rounded-full bg-[#b18a61] text-white">
+                  <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" aria-hidden="true">
+                    <path
+                      d="m3.5 8 3 3 6-6"
+                      stroke="currentColor"
+                      strokeWidth="1.7"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
+                {benefit}
+              </li>
+            ))}
+          </ul>
 
-  <div className="flex items-center gap-3">
-    <span className="text-[#a67c52]">✓</span>
-    Dobór terapii dopasowany do Twoich potrzeb
-  </div>
-
-  <div className="flex items-center gap-3">
-    <span className="text-[#a67c52]">✓</span>
-    Wygodna rezerwacja online przez Booksy
-  </div>
-</div>
-
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-              <Link
-                href="#"
-                className="inline-flex rounded-full bg-[#a67c52] px-8 py-4 text-sm font-semibold uppercase tracking-[0.16em] text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-[#956f49] hover:shadow-xl"
-                >
-                  Umów w Booksy
-              </Link>
-
-              <Link
-                href="#"
-                className="inline-flex rounded-full border border-[#d7b995] bg-white/75 px-8 py-4 text-sm font-semibold uppercase tracking-[0.16em] text-[#a67c52] shadow-md transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-xl"
-                  >
-                 Napisz na Instagramie
-              </Link>
-            </div>
-          </div>
-
-          <div className="relative">
-            <div className="absolute -left-6 -top-6 h-full w-full rounded-[2.5rem] border border-[#d7b995]/60" />
-
-            <Image
-              src="/images/contact.jpg"
-              alt="JM Studio"
-              width={760}
-              height={620}
-              className="relative h-[560px] w-full rounded-[2.5rem] object-cover shadow-[0_30px_80px_rgba(0,0,0,0.16)]"
-              priority
-            />
-
-            <div className="absolute -bottom-8 -right-4 z-20 rounded-3xl bg-white/90 p-6 shadow-[0_20px_60px_rgba(0,0,0,0.12)] backdrop-blur-xl md:-right-8">
-  <p className="text-sm uppercase tracking-[0.25em] text-[#a67c52]">
-    JM Studio
-  </p>
-
-  <p className="mt-2 text-lg font-semibold text-[#2f2924]">
-    Lublin, Wieniawska 8
-  </p>
-
-  <p className="mt-1 text-sm text-gray-500">
-    Rezerwacja online • Booksy
-  </p>
-</div>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <a
+              href={BOOKSY_URL}
+              className="inline-flex min-h-12 items-center justify-center gap-4 rounded-full bg-[#a77b50] px-7 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-white transition-colors hover:bg-[#916b45] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#a77b50] motion-reduce:transition-none sm:min-w-[205px]"
+            >
+              Umów w Booksy <span aria-hidden="true">→</span>
+            </a>
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex min-h-12 items-center justify-center gap-4 rounded-full border border-[#d9c6b1] px-7 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-[#8e633b] transition-colors hover:bg-white/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#a77b50] motion-reduce:transition-none sm:min-w-[240px]"
+            >
+              Napisz na Instagramie <span aria-hidden="true">→</span>
+            </a>
           </div>
         </div>
-      </section>
-)}
+
+        <div className="relative mx-auto w-full max-w-[620px] pb-7 sm:pb-8 lg:pb-6">
+          <div
+            className="absolute -left-5 top-5 h-[82%] w-[92%] rounded-tl-[2rem] rounded-tr-[2rem] border border-[#c7a47e] sm:-left-6 sm:top-6"
+            aria-hidden="true"
+          />
+          <Image
+            src="/images/contact.jpg"
+            alt="Wnętrze JM Studio"
+            width={760}
+            height={620}
+            priority
+            className="relative ml-5 h-[390px] w-[calc(100%-1.25rem)] rounded-[1.75rem] object-cover object-center shadow-[0_22px_55px_rgba(75,54,35,0.16)] sm:ml-6 sm:h-[500px] sm:w-[calc(100%-1.5rem)] lg:h-[520px]"
+          />
+
+          <div className="absolute -bottom-1 right-0 z-10 w-[min(17rem,88%)] rounded-2xl bg-[#fcfaf7]/95 p-5 shadow-[0_14px_38px_rgba(75,54,35,0.12)] backdrop-blur-sm sm:-right-2 sm:w-[17rem] sm:p-6">
+            <p className="text-[10px] font-medium uppercase tracking-[0.24em] text-[#a77b50]">
+              JM Studio
+            </p>
+            <p className="mt-2 text-base font-medium text-[#201d1a]">
+              Lublin, Wieniawska 8
+            </p>
+            <p className="mt-1 text-sm text-[#706963]">
+              Rezerwacja online · Booksy
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

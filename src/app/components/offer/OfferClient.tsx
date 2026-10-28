@@ -54,6 +54,19 @@ const treatmentAccents: Record<string, string> = {
   "Wolumetria kątów żuchwy": "bardziej wyrazistego kształtu",
 };
 
+const treatmentTitleAliases: Record<"pl" | "en", Record<string, string[]>> = {
+  pl: {
+    hialuronidaza: ["usuwanie kwasu hialuronowego"],
+  },
+  en: {
+    "tissue stimulators": ["biostimulators"],
+    hyaluronidase: [
+      "hyaluronic acid removal",
+      "hyaluronic acid dissolving",
+    ],
+  },
+};
+
 function renderAccentedText(text: string, title: string) {
   const accent = treatmentAccents[title];
   const index = accent ? text.indexOf(accent) : -1;
@@ -148,6 +161,30 @@ export default function OfferClient({
 
     setActiveIndex((index) => index % treatmentCount);
   }, [treatmentCount]);
+
+  useEffect(() => {
+    const selector = new URLSearchParams(window.location.search).get(
+      "treatment",
+    );
+    const normalizedSelector = selector?.trim().toLocaleLowerCase(lang);
+
+    if (!selector || !normalizedSelector) return;
+
+    const candidateTitles = new Set([
+      normalizedSelector,
+      ...(treatmentTitleAliases[lang][normalizedSelector] ?? []),
+    ]);
+
+    const matchingIndex = treatments.findIndex(
+      (treatment) =>
+        treatment.slug === selector ||
+        candidateTitles.has(treatment.title.trim().toLocaleLowerCase(lang)),
+    );
+
+    if (matchingIndex >= 0) {
+      setActiveIndex(matchingIndex);
+    }
+  }, [lang, treatments]);
 
   useEffect(() => {
     function handleSliderKeyDown(event: KeyboardEvent) {
@@ -483,7 +520,7 @@ export default function OfferClient({
                   >
                     {selectedTreatment.image && (
                       <TreatmentImage
-                        key={`modal-${selectedTreatment.slug}-${selectedTreatment.image}`}
+                        key={`${selectedTreatment.slug}-${selectedTreatment.image}`}
                         src={selectedTreatment.image}
                         alt={selectedTreatment.title}
                         variant="modal"
@@ -565,15 +602,15 @@ export default function OfferClient({
       </section>
 
       <OfferFAQ
-  lang={lang}
-  groups={treatments.map((treatment) => ({
-    slug: treatment.slug,
-    title: treatment.title,
-    items: faqItems.filter(
-      (item) => item.treatmentSlug === treatment.slug,
-    ),
-  }))}
-/>
+        lang={lang}
+        groups={treatments.map((treatment) => ({
+          slug: treatment.slug,
+          title: treatment.title,
+          items: faqItems.filter(
+            (item) => item.treatmentSlug === treatment.slug,
+          ),
+        }))}
+      />
     </div>
   );
 }
