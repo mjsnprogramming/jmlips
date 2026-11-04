@@ -35,13 +35,11 @@ export default function HeroSection() {
 
       <div className="relative z-10 mx-auto flex min-h-[calc(100vh-92px)] max-w-7xl flex-col items-center justify-center px-6 py-16 text-center supports-[height:100dvh]:min-h-[calc(100dvh-92px)]">
         <p className="mb-5 text-sm font-medium uppercase tracking-[0.35em] text-[#8f6a43]">
-          JM Studio
+          JM Studio • Lublin • Zamość
         </p>
 
         <h1 className="max-w-5xl text-4xl font-semibold tracking-tight text-[#2f2924] drop-shadow-sm sm:text-5xl md:text-7xl">
-          Medycyna estetyczna
-          <span className="sr-only"> • </span>
-          <span className="block">Lublin • Zamość</span>
+          Medycyna estetyczna i zabiegi upiększające
         </h1>
 
         {/* TODO: tekst tymczasowy – podmienić na aktualny opis salonu i zdanie o zabiegach od właściciela. */}
