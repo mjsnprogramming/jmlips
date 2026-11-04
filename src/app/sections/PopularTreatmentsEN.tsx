@@ -16,7 +16,7 @@ export default function PopularTreatmentsEN({ treatments }: Props) {
       <div className="mx-auto max-w-7xl">
         <div className="mb-14 text-center">
           <p className="mb-3 text-lg font-medium uppercase tracking-[0.35em] text-[#8f6a43]">
-            My Treatments
+            Treatments
           </p>
 
           <h2 className="font-heading text-4xl font-semibold tracking-tight text-[#2f2924] md:text-6xl">

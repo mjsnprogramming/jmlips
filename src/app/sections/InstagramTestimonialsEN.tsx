@@ -103,7 +103,7 @@ export default function InstagramTestimonialsEN({ testimonials }: Props) {
           </h2>
 
           <p className="font-sans text-lg text-gray-500">
-            Real reviews from our Instagram community.
+            Real client reviews from Instagram.
           </p>
         </div>
 

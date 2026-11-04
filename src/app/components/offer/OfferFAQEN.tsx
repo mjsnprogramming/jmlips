@@ -30,7 +30,7 @@ export default function OfferFAQ({ items }: OfferFAQProps) {
           </h2>
 
           <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-zinc-600 md:text-lg">
-            Everything You Need to Know Before Your Appointment.
+            Everything you need to know before your appointment.
             <br />
             We&apos;ve gathered the most important information to answer your questions and help you feel confident before your visit.
           </p>

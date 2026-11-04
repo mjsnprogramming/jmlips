@@ -223,7 +223,7 @@ export default function InstagramTestimonials({ testimonials }: Props) {
                 </div>
 
                 <span className="text-base text-gray-600 sm:text-lg">
-                  Zobacz więcej opinii na naszym Instagramie
+                  Zobacz więcej opinii na moim Instagramie
                 </span>
               </div>
 
