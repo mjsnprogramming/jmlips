@@ -3,7 +3,7 @@
 import OfferFAQ from "@/app/components/offer/OfferFAQEN";
 import Image from 'next/image'
 import { FAQItem } from "@/lib/faq";
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 
 import type { Treatment } from "@/lib/allTreatments";
@@ -11,12 +11,38 @@ import type { Treatment } from "@/lib/allTreatments";
 type OfferClientProps = {
   faqItems: FAQItem[];
   treatments: Treatment[];
+  /** Wartość parametru ?treatment= z adresu (tytuł lub slug zabiegu). */
+  initialTreatment?: string;
+}
+
+// Inne nazwy tego samego zabiegu (np. z sekcji polecanych na stronie głównej).
+const TREATMENT_TITLE_ALIASES: Record<string, string[]> = {
+  "tissue stimulators": ["biostimulators"],
+  hyaluronidase: ["hyaluronic acid removal", "hyaluronic acid dissolving"],
+}
+
+function findTreatment(treatments: Treatment[], selector: string) {
+  const normalized = selector.trim().toLowerCase()
+  const candidates = new Set([normalized, ...(TREATMENT_TITLE_ALIASES[normalized] ?? [])])
+
+  return treatments.find(
+    (treatment) =>
+      treatment.slug === selector ||
+      candidates.has(treatment.title.trim().toLowerCase()),
+  )
 }
 
 
 
-export default function OfferClient({ faqItems, treatments }: OfferClientProps) {
+export default function OfferClient({ faqItems, treatments, initialTreatment }: OfferClientProps) {
   const [selectedTreatment, setSelectedTreatment] = useState<Treatment | null>(null)
+
+  // Wejście z linku ?treatment=... od razu otwiera szczegóły tego zabiegu.
+  useEffect(() => {
+    if (!initialTreatment) return
+    const match = findTreatment(treatments, initialTreatment)
+    if (match) setSelectedTreatment(match)
+  }, [initialTreatment, treatments])
 
   return (
     <main className="bg-[#fbf8f4] text-[#2f2924]">
@@ -116,7 +142,7 @@ export default function OfferClient({ faqItems, treatments }: OfferClientProps) 
                     type="button"
                     onClick={() => setSelectedTreatment(null)}
                     className="absolute right-5 top-5 z-30 flex h-11 w-11 items-center justify-center rounded-full bg-white/90 text-xl text-[#2f2924] shadow-lg backdrop-blur-md transition hover:scale-110"
-                    aria-label="Zamknij"
+                    aria-label="Close"
                   >
                     ×
                   </button>
@@ -146,7 +172,7 @@ export default function OfferClient({ faqItems, treatments }: OfferClientProps) 
                     <div className="mt-8 grid grid-cols-2 gap-4">
                       <div className="rounded-2xl bg-[#f9f5f0] p-5">
                         <p className="text-xs uppercase tracking-[0.2em] text-[#a67c52]">
-                          Czas
+                          Duration
                         </p>
                         <p className="mt-2 font-semibold text-[#2f2924]">
                           {selectedTreatment.duration}

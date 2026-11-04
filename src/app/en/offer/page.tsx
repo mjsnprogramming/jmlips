@@ -1,15 +1,21 @@
 import OfferClient from "../../components/offer/OfferClientEN";
 import { fetchTreatments } from "@/lib/allTreatments";
 import { fetchFAQ } from "@/lib/faq";
-export default async function OfferPage() {
-const faqItems = await fetchFAQ("en")
 
+type Props = {
+  searchParams?: { treatment?: string | string[] };
+};
+
+export default async function OfferPage({ searchParams }: Props) {
+  const faqItems = await fetchFAQ("en");
   const treatments = await fetchTreatments("en");
-console.log(faqItems)
+  const treatment = searchParams?.treatment;
+
   return (
     <OfferClient
       faqItems={faqItems}
       treatments={treatments}
+      initialTreatment={Array.isArray(treatment) ? treatment[0] : treatment}
     />
   );
 }
