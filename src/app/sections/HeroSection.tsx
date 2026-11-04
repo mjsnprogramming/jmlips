@@ -31,7 +31,7 @@ export default function HeroSection() {
         <source src="/videos/homebg.mp4" type="video/mp4" />
       </video>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-white/40 to-[#f9f5f0]/60" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/45 via-white/35 to-[#f9f5f0]/55" />
 
       <div className="relative z-10 mx-auto flex min-h-[calc(100vh-92px)] max-w-7xl flex-col items-center justify-center px-6 py-16 text-center supports-[height:100dvh]:min-h-[calc(100dvh-92px)]">
         <p className="mb-5 text-sm font-medium uppercase tracking-[0.35em] text-[#8f6a43]">
@@ -63,7 +63,7 @@ export default function HeroSection() {
 
           <Link
             href="/pl/offer"
-            className="rounded-full border border-[#8f6a43]/40 bg-white/85 px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-[#8f6a43] shadow-md transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8f6a43] focus-visible:ring-offset-2 focus-visible:ring-offset-[#f9f5f0] motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+            className="rounded-full border border-[#8f6a43]/40 bg-white/90 px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-[#8f6a43] shadow-md transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8f6a43] focus-visible:ring-offset-2 focus-visible:ring-offset-[#f9f5f0] motion-reduce:transition-none motion-reduce:hover:translate-y-0"
           >
             Zobacz zabiegi
           </Link>
