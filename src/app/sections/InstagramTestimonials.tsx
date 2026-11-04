@@ -99,11 +99,11 @@ export default function InstagramTestimonials({ testimonials }: Props) {
           <p className="mb-2 font-script text-3xl text-[#b98b5c]">Wasze opinie</p>
 
           <h2 className="mb-5 font-heading text-5xl font-semibold tracking-tight text-[#a67c52] md:text-6xl">
-            Opinie klientek
+            Opinie klientów
           </h2>
 
           <p className="font-sans text-lg text-gray-500">
-            Prawdziwe opinie klientek z Instagrama
+            Prawdziwe opinie klientów z Instagrama
           </p>
         </div>
 
@@ -158,8 +158,8 @@ export default function InstagramTestimonials({ testimonials }: Props) {
                       ].join(" ")}
                       aria-label={
                         isActive
-                          ? `Powiększ opinię klientki ${index + 1} z ${count}`
-                          : `Pokaż opinię klientki ${index + 1} z ${count}`
+                          ? `Powiększ opinię klienta ${index + 1} z ${count}`
+                          : `Pokaż opinię klienta ${index + 1} z ${count}`
                       }
                     >
                       <img
@@ -272,7 +272,7 @@ export default function InstagramTestimonials({ testimonials }: Props) {
             <motion.div
               role="dialog"
               aria-modal="true"
-              aria-label="Opinia klientki"
+              aria-label="Opinia klienta"
               className="relative w-full max-w-[430px]"
               initial={{ scale: 0.92, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
@@ -292,7 +292,7 @@ export default function InstagramTestimonials({ testimonials }: Props) {
 
               <img
                 src={selectedReview}
-                alt="Powiększona opinia klientki z Instagrama"
+                alt="Powiększona opinia klienta z Instagrama"
                 className="max-h-[88vh] w-full rounded-[2rem] object-contain shadow-2xl"
               />
             </motion.div>

@@ -1,29 +1,48 @@
+import Link from "next/link";
+
+// Ten sam profil co w ContactIntro.tsx (bez parametrów śledzących z linku udostępniania).
+const BOOKSY_URL =
+  "https://booksy.com/pl-pl/232580_julia-majewska-studio_medycyna-estetyczna_6832_lublin";
+
+const POSTER_SRC = "/images/hero-poster.jpg";
+
 export default function HeroSectionEN() {
   return (
-    <section className="relative min-h-[calc(100vh-92px)] overflow-hidden bg-[#f9f5f0]">
+    <section className="relative min-h-[calc(100vh-92px)] overflow-hidden bg-[#f9f5f0] supports-[height:100dvh]:min-h-[calc(100dvh-92px)]">
+      {/* Statyczne tło: widoczne zanim wideo się załaduje i zawsze przy "ogranicz ruch". */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${POSTER_SRC})` }}
+      />
+
       <video
         autoPlay
         muted
         loop
         playsInline
         preload="metadata"
-        className="absolute inset-0 h-full w-full object-cover"
+        poster={POSTER_SRC}
+        aria-hidden="true"
+        tabIndex={-1}
+        className="absolute inset-0 h-full w-full object-cover motion-reduce:hidden"
       >
         <source src="/videos/homebg.webm" type="video/webm" />
         <source src="/videos/homebg.mp4" type="video/mp4" />
       </video>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-white/45 via-white/35 to-[#f9f5f0]/55 backdrop-blur-[1px]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/45 via-white/35 to-[#f9f5f0]/55" />
 
-      <div className="relative z-10 mx-auto flex min-h-[calc(100vh-92px)] max-w-7xl flex-col items-center justify-center px-6 text-center">
-        <p className="mb-5 text-sm font-medium uppercase tracking-[0.35em] text-[#a67c52]">
-          JM STUDIO • LUBLIN • ZAMOŚĆ
+      <div className="relative z-10 mx-auto flex min-h-[calc(100vh-92px)] max-w-7xl flex-col items-center justify-center px-6 py-16 text-center supports-[height:100dvh]:min-h-[calc(100dvh-92px)]">
+        <p className="mb-5 text-sm font-bold uppercase tracking-[0.35em] text-[#8f6a43] [text-shadow:0_0_12px_rgba(255,255,255,0.95),0_0_4px_rgba(255,255,255,0.9)]">
+          JM Studio • Lublin • Zamość
         </p>
 
-        <h1 className="max-w-5xl text-5xl font-semibold tracking-tight text-[#2f2924] drop-shadow-sm md:text-7xl">
-          Aesthetic Medicine & Beauty Treatments
+        <h1 className="max-w-5xl text-4xl font-semibold tracking-tight text-[#2f2924] drop-shadow-sm sm:text-5xl md:text-7xl">
+          Aesthetic Medicine &amp; Beauty Treatments
         </h1>
 
+        {/* TODO: tekst tymczasowy – podmienić na tłumaczenie właściwego opisu salonu z wersji PL. */}
         <p className="mt-8 max-w-2xl text-lg leading-8 text-gray-700 md:text-xl">
           Professional beauty treatments designed with care for natural-looking
           results, your comfort, and your individual needs.
@@ -31,18 +50,21 @@ export default function HeroSectionEN() {
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <a
-            href="/en/offer"
-            className="rounded-full bg-[#a67c52] px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-[#956f49] hover:shadow-xl"
-          >
-            Explore Treatments
-          </a>
-
-          <a
-            href="/en/contact"
-            className="rounded-full border border-[#a67c52]/40 bg-white/75 px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-[#a67c52] shadow-md backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-xl"
+            href={BOOKSY_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-full bg-[#8f6a43] px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-[#7a5a38] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8f6a43] focus-visible:ring-offset-2 focus-visible:ring-offset-[#f9f5f0] motion-reduce:transition-none motion-reduce:hover:translate-y-0"
           >
             Book an Appointment
+            <span className="sr-only"> (Booksy, opens in a new tab)</span>
           </a>
+
+          <Link
+            href="/en/offer"
+            className="rounded-full border border-[#8f6a43]/40 bg-white/90 px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-[#8f6a43] shadow-md transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8f6a43] focus-visible:ring-offset-2 focus-visible:ring-offset-[#f9f5f0] motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+          >
+            Explore Treatments
+          </Link>
         </div>
       </div>
     </section>

@@ -1,7 +1,5 @@
-"use client";
-
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import Link from "next/link";
 import type { PopularTreatment } from "@/lib/treatments";
 
 type Props = {
@@ -10,9 +8,6 @@ type Props = {
 
 export default function PopularTreatmentsEN({ treatments }: Props) {
   const safeTreatments = Array.isArray(treatments) ? treatments : [];
-  const pathname = usePathname();
-  const currentLocale = pathname.split("/").filter(Boolean)[0];
-  const locale = currentLocale === "en" ? "en" : "pl";
 
   if (!safeTreatments.length) return null;
 
@@ -20,41 +15,45 @@ export default function PopularTreatmentsEN({ treatments }: Props) {
     <section className="bg-white px-4 py-24">
       <div className="mx-auto max-w-7xl">
         <div className="mb-14 text-center">
-          <p className="mb-3 text-lg font-medium uppercase tracking-[0.35em] text-[#a67c52]">
+          <p className="mb-3 text-lg font-medium uppercase tracking-[0.35em] text-[#8f6a43]">
             My Treatments
           </p>
 
           <h2 className="font-heading text-4xl font-semibold tracking-tight text-[#2f2924] md:text-6xl">
-            Most Popular Treatments
+            Recommended Treatments
           </h2>
 
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-gray-600">
-            Discover the treatments most often chosen by clients who want to
-            enhance their natural beauty and enjoy a fresh, balanced look.
+            Discover treatments often chosen by clients who want to enhance
+            their natural beauty and enjoy a fresh, balanced look.
           </p>
         </div>
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
           {safeTreatments.map((treatment, index) => (
-            <a
+            <Link
               key={treatment.id}
-              href={`/${locale}/offer?treatment=${encodeURIComponent(treatment.title)}`}
+              href={`/en/offer?treatment=${encodeURIComponent(treatment.slug || treatment.title)}`}
               className={[
-                "group relative min-h-[520px] overflow-hidden rounded-[2.5rem] shadow-[0_20px_60px_rgba(0,0,0,0.12)]",
+                "group relative min-h-[420px] overflow-hidden rounded-[2.5rem] shadow-[0_20px_60px_rgba(0,0,0,0.12)] md:min-h-[520px]",
+                "focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#8f6a43] focus-visible:ring-offset-4",
                 index === 1 ? "lg:translate-y-10" : "",
               ].join(" ")}
             >
               <Image
                 src={treatment.image}
-                alt={treatment.title}
+                alt=""
                 fill
-                className="object-cover object-center transition-transform duration-700 group-hover:scale-110"
+                className="object-cover object-center transition-transform duration-700 group-hover:scale-110 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
                 sizes="(max-width: 1024px) 100vw, 33vw"
               />
 
               <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
 
-              <span className="absolute right-8 top-7 text-7xl font-semibold text-white/15">
+              <span
+                aria-hidden="true"
+                className="absolute right-8 top-7 text-7xl font-semibold text-white/15"
+              >
                 {String(index + 1).padStart(2, "0")}
               </span>
 
@@ -63,20 +62,18 @@ export default function PopularTreatmentsEN({ treatments }: Props) {
                   {treatment.subtitle}
                 </p>
 
-                <h3 className="mb-4 text-3xl font-semibold">
-                  {treatment.title}
-                </h3>
+                <h3 className="mb-4 text-3xl font-semibold">{treatment.title}</h3>
 
                 <p className="max-w-sm text-base leading-7 text-white/80">
                   {treatment.description}
                 </p>
 
-                <div className="mt-7 inline-flex items-center gap-3 rounded-full border border-white/30 bg-white/15 px-5 py-3 text-sm font-medium backdrop-blur-md transition-all duration-300 group-hover:bg-white group-hover:text-[#a67c52]">
+                <div className="mt-7 inline-flex items-center gap-3 rounded-full border border-white/30 bg-white/15 px-5 py-3 text-sm font-medium backdrop-blur-md transition-all duration-300 group-hover:bg-white group-hover:text-[#8f6a43] group-focus-visible:bg-white group-focus-visible:text-[#8f6a43] motion-reduce:transition-none">
                   Learn More
                   <span aria-hidden="true">→</span>
                 </div>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>
