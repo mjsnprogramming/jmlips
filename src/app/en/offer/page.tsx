@@ -1,4 +1,4 @@
-import OfferClient from "../../components/offer/OfferClientEN";
+import OfferClient from "../../components/offer/OfferClient";
 import { fetchTreatments } from "@/lib/allTreatments";
 import { fetchFAQ } from "@/lib/faq";
 
@@ -13,6 +13,7 @@ export default async function OfferPage({ searchParams }: Props) {
 
   return (
     <OfferClient
+      lang="en"
       faqItems={faqItems}
       treatments={treatments}
       initialTreatment={Array.isArray(treatment) ? treatment[0] : treatment}
