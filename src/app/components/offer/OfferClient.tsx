@@ -16,6 +16,8 @@ type OfferClientProps = {
   faqItems: FAQItem[];
   lang?: "pl" | "en";
   treatments: Treatment[];
+  /** Wartość parametru ?treatment= z adresu (tytuł lub slug zabiegu). */
+  initialTreatment?: string;
 };
 
 const interfaceCopy = {
@@ -123,6 +125,7 @@ export default function OfferClient({
   faqItems,
   lang = "pl",
   treatments,
+  initialTreatment,
 }: OfferClientProps) {
   const [selectedTreatment, setSelectedTreatment] =
     useState<Treatment | null>(null);
@@ -161,9 +164,7 @@ export default function OfferClient({
   }, [treatmentCount]);
 
   useEffect(() => {
-    const selector = new URLSearchParams(window.location.search).get(
-      "treatment",
-    );
+    const selector = initialTreatment;
     const normalizedSelector = selector?.trim().toLocaleLowerCase(lang);
 
     if (!selector || !normalizedSelector) return;
@@ -182,7 +183,7 @@ export default function OfferClient({
     if (matchingIndex >= 0) {
       setActiveIndex(matchingIndex);
     }
-  }, [lang, treatments]);
+  }, [initialTreatment, lang, treatments]);
 
   useEffect(() => {
     function handleSliderKeyDown(event: KeyboardEvent) {

@@ -1,6 +1,5 @@
 export type PopularTreatment = {
   id: number
-  slug: string
   title: string
   subtitle: string
   description: string
@@ -10,7 +9,6 @@ export type PopularTreatment = {
 
 type WPTreatment = {
   id: number
-  slug: string
   acf: {
     title_pl: string
     title_en: string
@@ -70,7 +68,6 @@ export async function fetchPopularTreatments(
         .filter((item) => item.acf.show_on_homepage)
         .map(async (item) => ({
           id: item.id,
-          slug: item.slug,
           title: lang === 'pl' ? item.acf.title_pl : item.acf.title_en,
           subtitle:
             lang === 'pl' ? item.acf.subtitle_pl : item.acf.subtitle_en,

@@ -9,7 +9,7 @@ const stories = {
     ],
     trustTitle: "Cierpliwość, zaufanie i relacje",
     trust: [
-      "Po ponad trzech latach pracy z klientkami wiem, że w branży beauty liczy się znacznie więcej niż sam efekt wykonanego zabiegu. Równie ważne są zaufanie, poczucie bezpieczeństwa i atmosfera, w której każda osoba może czuć się swobodnie.",
+      "Po ponad trzech latach pracy z klientami wiem, że w branży beauty liczy się znacznie więcej niż sam efekt wykonanego zabiegu. Równie ważne są zaufanie, poczucie bezpieczeństwa i atmosfera, w której każda osoba może czuć się swobodnie.",
       "Chcę, abyś podczas wizyty wiedziała, na czym polega zabieg, jakie są jego poszczególne etapy i czego możesz się spodziewać. Dlatego chętnie wyjaśniam cały proces i odpowiadam na pytania. Zależy mi na tym, abyś czuła się zaopiekowana i świadomie podejmowała decyzje dotyczące swojej skóry.",
       "Wiem też, że zaufania nie buduje się w jeden dzień. Buduje się je podczas każdej wizyty, poprzez szczerość, uważność i dbałość o szczegóły.",
     ],

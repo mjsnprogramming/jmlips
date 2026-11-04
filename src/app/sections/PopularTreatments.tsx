@@ -33,7 +33,7 @@ export default function PopularTreatments({ treatments }: Props) {
           {safeTreatments.map((treatment, index) => (
             <Link
               key={treatment.id}
-              href={`/pl/offer?treatment=${encodeURIComponent(treatment.slug || treatment.title)}`}
+              href={`/pl/offer?treatment=${encodeURIComponent(treatment.title)}`}
               className={[
                 "group relative min-h-[420px] overflow-hidden rounded-[2.5rem] shadow-[0_20px_60px_rgba(0,0,0,0.12)] md:min-h-[520px]",
                 "focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#8f6a43] focus-visible:ring-offset-4",
