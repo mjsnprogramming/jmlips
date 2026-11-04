@@ -1,6 +1,7 @@
-const MAPS_DIRECTIONS_URL = "https://maps.google.com/?q=Wieniawska+8+Lublin";
+const MAPS_DIRECTIONS_URL =
+  "https://www.google.com/maps/dir/?api=1&destination=Vital+Skin%2C+ul.+Szafirowa+7A%2C+20-573+Lublin";
 const MAP_EMBED_URL =
-  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2497.3834766030477!2d22.5519708!3d51.2488484!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47225766e33247c7%3A0x30aa1000c22e0e17!2sWieniawska%208%2C%2020-400%20Lublin!5e0!3m2!1spl!2spl!4v1704996540658!5m2!1spl!2spl";
+  "https://www.google.com/maps?q=Vital+Skin%2C+ul.+Szafirowa+7A%2C+20-573+Lublin&output=embed";
 
 export default function ContactMap() {
   return (
@@ -13,19 +14,20 @@ export default function ContactMap() {
           </p>
 
           <h2 className="max-w-xl font-serif text-[2.65rem] font-normal leading-[1.08] tracking-[-0.045em] text-[#171513] sm:text-5xl">
-            Znajdziesz mnie w{" "}
-            <span className="italic text-[#a77b50]">centrum Lublina.</span>
+            Znajdziesz mnie przy{" "}
+            <span className="italic text-[#a77b50]">ul. Szafirowej.</span>
           </h2>
 
           <p className="mt-6 max-w-xl text-base leading-7 text-[#625d58] sm:text-[1.02rem] sm:leading-8">
-            Gabinet znajduje się przy ul. Wieniawskiej 8. Wizytę możesz wygodnie
-            zarezerwować online przez Booksy lub skontaktować się przez Instagram.
+            Gabinet JM Studio znajduje się w Vital Skin przy ul. Szafirowej 7A,
+            20-573 Lublin. Wizytę możesz wygodnie zarezerwować online przez Booksy
+            lub skontaktować się przez Instagram.
           </p>
 
           <ul className="mt-7 space-y-3.5 text-sm text-[#625d58] sm:text-[0.95rem]">
             {[
-              "Centrum Lublina",
-              "Dogodny dojazd i parking w pobliżu",
+              "Gabinet w Vital Skin",
+              "Szafirowa 7A, 20-573 Lublin",
               "Rezerwacja online przez Booksy",
             ].map((item) => (
               <li key={item} className="flex items-center gap-4">
@@ -51,7 +53,7 @@ export default function ContactMap() {
         <div className="relative overflow-hidden rounded-[1.75rem] border border-[#e6d8c8] bg-white p-2.5 shadow-[0_18px_48px_rgba(75,54,35,0.11)] sm:rounded-[2rem] sm:p-3">
           <div className="relative overflow-hidden rounded-[1.35rem] sm:rounded-[1.55rem]">
             <iframe
-              title="Mapa dojazdu do JM Studio, ul. Wieniawska 8, Lublin"
+              title="Mapa dojazdu do JM Studio w Vital Skin, ul. Szafirowa 7A, 20-573 Lublin"
               src={MAP_EMBED_URL}
               width="100%"
               height="420"
@@ -62,12 +64,12 @@ export default function ContactMap() {
 
             <div className="absolute bottom-3 left-3 max-w-[calc(100%-1.5rem)] rounded-2xl bg-[#fcfaf7]/95 p-4 shadow-[0_12px_32px_rgba(75,54,35,0.14)] backdrop-blur-sm sm:bottom-4 sm:left-4 sm:w-[215px] sm:p-5">
               <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-[#a77b50]">
-                JM Studio
+                JM Studio · Vital Skin
               </p>
               <p className="mt-2 text-sm font-medium text-[#201d1a]">
-                ul. Wieniawska 8
+                ul. Szafirowa 7A
               </p>
-              <p className="text-xs text-[#706963]">20-400 Lublin</p>
+              <p className="text-xs text-[#706963]">20-573 Lublin</p>
               <a
                 href={MAPS_DIRECTIONS_URL}
                 target="_blank"

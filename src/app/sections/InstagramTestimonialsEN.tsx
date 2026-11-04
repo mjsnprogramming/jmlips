@@ -104,7 +104,7 @@ export default function InstagramTestimonials( {testimonials }: Props) {
 </p>
 
 <h2 className="font-heading text-5xl md:text-6xl font-semibold text-[#a67c52] mb-5 tracking-tight">
-  What Our Clients Say
+  What My Clients Say
 </h2>
 
 <p className="font-sans text-gray-500 text-lg">

@@ -16,11 +16,11 @@ export default function HeroSection() {
 
   <div className="relative z-10 mx-auto flex min-h-[calc(100vh-92px)] max-w-7xl flex-col items-center justify-center px-6 text-center">
     <p className="mb-5 text-sm font-medium uppercase tracking-[0.35em] text-[#a67c52]">
-      Medycyna estetyczna • Lublin
+      JM STUDIO • LUBLIN • ZAMOŚĆ
     </p>
 
     <h1 className="max-w-5xl text-5xl font-semibold tracking-tight text-[#2f2924] drop-shadow-sm md:text-7xl">
-      Piękno zaczyna się od subtelnych detali
+      Medycyna estetyczna i zabiegi upiększające
     </h1>
 
     <p className="mt-8 max-w-2xl text-lg leading-8 text-gray-700 md:text-xl">

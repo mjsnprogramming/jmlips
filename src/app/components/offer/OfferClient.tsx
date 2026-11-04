@@ -29,7 +29,6 @@ const interfaceCopy = {
     close: "Zamknij szczegóły zabiegu",
     previous: "Poprzedni zabieg",
     next: "Następny zabieg",
-    position: "Pozycja",
     empty: "Aktualnie nie ma dostępnych zabiegów.",
   },
   en: {
@@ -41,7 +40,6 @@ const interfaceCopy = {
     close: "Close treatment details",
     previous: "Previous treatment",
     next: "Next treatment",
-    position: "Position",
     empty: "There are no treatments available right now.",
   },
 } as const;
@@ -108,14 +106,14 @@ function TreatmentImage({
 
   if (variant === "editorial") {
     return (
-      <div className="ml-auto aspect-[4/3] w-full max-w-[34rem] overflow-hidden bg-[#f1e9df]">
+      <div className="ml-auto aspect-[4/3] w-full max-w-[34rem] overflow-hidden rounded-[1.75rem] bg-[#f1e9df] shadow-[0_24px_60px_-32px_rgba(47,41,36,0.42)] ring-1 ring-[#eadbc9]/80">
         {image}
       </div>
     );
   }
 
   return (
-    <div className="mb-8 aspect-[16/9] max-h-[20rem] overflow-hidden bg-[#f8f3ed]">
+    <div className="mb-8 aspect-[16/9] max-h-[20rem] overflow-hidden rounded-[1.25rem] bg-[#f8f3ed] shadow-sm ring-1 ring-[#eadbc9]/80">
       {image}
     </div>
   );
@@ -355,11 +353,6 @@ export default function OfferClient({
                       </p>
                     )}
 
-                    <p className="mb-5 font-[var(--font-quicksand)] text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-[#a28b76]">
-                      {copy.position} {String(safeIndex + 1).padStart(2, "0")} /{" "}
-                      {String(treatmentCount).padStart(2, "0")}
-                    </p>
-
                     <h2 className="max-w-xl font-serif text-5xl font-medium leading-[1.02] tracking-[-0.04em] text-[#332a23] sm:text-6xl lg:text-7xl">
                       {currentTreatment.title}
                     </h2>
@@ -376,14 +369,14 @@ export default function OfferClient({
                     ) : (
                       <div
                         aria-hidden="true"
-                        className="ml-auto aspect-[4/3] w-full max-w-[34rem] bg-[#f1e9df]"
+                        className="ml-auto aspect-[4/3] w-full max-w-[34rem] rounded-[1.75rem] bg-[#f1e9df] ring-1 ring-[#eadbc9]/80"
                       />
                     )}
                   </div>
 
                   <div className="lg:col-span-6 lg:col-start-2 lg:row-start-2">
                     <div className="relative mx-auto min-h-[22rem] w-full max-w-[30rem] sm:min-h-[27rem] lg:min-h-[30rem]">
-                      <div className="absolute left-0 top-0 z-0 aspect-[0.88/1] w-[72%] overflow-hidden bg-[#efe5d9]">
+                      <div className="absolute left-0 top-0 z-0 aspect-[0.88/1] w-[72%] overflow-hidden rounded-[1.6rem] bg-[#efe5d9] shadow-[0_24px_54px_-34px_rgba(47,41,36,0.5)] ring-1 ring-white/70">
                         {currentTreatment.image2 && (
                           <img
                             src={currentTreatment.image2}
@@ -395,7 +388,7 @@ export default function OfferClient({
                         )}
                       </div>
 
-                      <div className="absolute right-0 top-1/2 z-10 aspect-[4/3] w-[48%] -translate-y-1/2 overflow-hidden bg-[#e7dbcf]">
+                      <div className="absolute right-0 top-1/2 z-10 aspect-[4/3] w-[48%] -translate-y-1/2 overflow-hidden rounded-[1.35rem] bg-[#e7dbcf] shadow-[0_20px_45px_-28px_rgba(47,41,36,0.55)] ring-1 ring-white/80">
                         {currentTreatment.image3 && (
                           <img
                             src={currentTreatment.image3}
@@ -433,20 +426,14 @@ export default function OfferClient({
                 </motion.article>
               </AnimatePresence>
 
-              <div className="mt-12 flex items-center justify-between border-t border-[#e7dbcf] pt-5 sm:mt-16">
-                <p className="font-[var(--font-quicksand)] text-xs font-semibold uppercase tracking-[0.16em] text-[#8b6543]">
-                  {String(safeIndex + 1).padStart(2, "0")}
-                  <span className="mx-2 text-[#c5b5a4]">/</span>
-                  {String(treatmentCount).padStart(2, "0")}
-                </p>
-
+              <div className="mt-12 flex justify-end border-t border-[#e7dbcf] pt-5 sm:mt-16">
                 <div className="flex gap-3">
                   <button
                     type="button"
                     onClick={() => goToTreatment(-1)}
                     disabled={treatmentCount < 2}
                     aria-label={copy.previous}
-                    className="flex h-12 w-12 items-center justify-center border border-[#d9cbbb] text-xl text-[#5c4939] transition-colors hover:bg-[#efe5d9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b6543] disabled:cursor-not-allowed disabled:opacity-40 motion-reduce:transition-none"
+                  className="flex h-12 w-12 items-center justify-center rounded-full border border-[#d9cbbb] text-xl text-[#5c4939] transition-colors hover:bg-[#efe5d9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b6543] disabled:cursor-not-allowed disabled:opacity-40 motion-reduce:transition-none"
                   >
                     <span aria-hidden="true">←</span>
                   </button>
@@ -456,7 +443,7 @@ export default function OfferClient({
                     onClick={() => goToTreatment(1)}
                     disabled={treatmentCount < 2}
                     aria-label={copy.next}
-                    className="flex h-12 w-12 items-center justify-center border border-[#d9cbbb] text-xl text-[#5c4939] transition-colors hover:bg-[#efe5d9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b6543] disabled:cursor-not-allowed disabled:opacity-40 motion-reduce:transition-none"
+                  className="flex h-12 w-12 items-center justify-center rounded-full border border-[#d9cbbb] text-xl text-[#5c4939] transition-colors hover:bg-[#efe5d9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b6543] disabled:cursor-not-allowed disabled:opacity-40 motion-reduce:transition-none"
                   >
                     <span aria-hidden="true">→</span>
                   </button>

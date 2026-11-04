@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 // Podmień na właściwy adres Booksy, gdy będzie dostępny.
-const BOOKSY_URL = "#";
+const BOOKSY_URL = "https://booksy.com/pl-pl/232580_julia-majewska-studio_medycyna-estetyczna_6832_lublin?do=invite&_branch_match_id=1645455511291410438&utm_medium=profile_share_from_profile&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXT07J0UvKz88urtRLzs%2FVL0yxsKgIDwhyiUiyrytKTUstKsrMS49PKsovL04tsnXOKMrPTQUAXu%2FcrTwAAAA%3D"
 const INSTAGRAM_URL = "https://www.instagram.com/julia_majewska_studio/";
 
 export default function ContactIntro() {
@@ -70,7 +70,7 @@ export default function ContactIntro() {
             aria-hidden="true"
           />
           <Image
-            src="/images/contact.jpg"
+            src="/images/studio.png"
             alt="Wnętrze JM Studio"
             width={760}
             height={620}
@@ -83,7 +83,7 @@ export default function ContactIntro() {
               JM Studio
             </p>
             <p className="mt-2 text-base font-medium text-[#201d1a]">
-              Lublin, Wieniawska 8
+              Lublin, Szafirowa 7
             </p>
             <p className="mt-1 text-sm text-[#706963]">
               Rezerwacja online · Booksy
