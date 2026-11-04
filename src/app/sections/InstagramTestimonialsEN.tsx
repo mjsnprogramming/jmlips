@@ -9,7 +9,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import type { Testimonial } from '@/lib/testimonials'
 
-type props = { 
+type Props = {
   testimonials: Testimonial[]
 }
 
@@ -74,7 +74,6 @@ function scheduleSlideTransforms(swiper: SwiperType) {
 
 export default function InstagramTestimonials( {testimonials }: Props) {
   const opinionsImages = testimonials.map((item) => item.image)
-  if (!opinionsImages.length) return null;
     const [isReady, setIsReady] = useState(false);
   const swiperRef = useRef<SwiperType | null>(null);
   const [activeDot, setActiveDot] = useState(0);
@@ -95,6 +94,9 @@ export default function InstagramTestimonials( {testimonials }: Props) {
       setIsReady(true);
     });    
   }
+
+  if (!opinionsImages.length) return null;
+
   return (
     <section className="bg-[#f9f5f0] py-24 overflow-x-hidden overflow-y-visible relative">
       <div className="max-w-[1500px] mx-auto px-4">

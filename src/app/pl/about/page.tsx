@@ -2,13 +2,11 @@ import React from "react";
 import AboutIntro from "@/app/sections/AboutIntro";
 import Philosophy from "@/app/sections/Philosophy";
 import Certificates from "@/app/sections/Certificates";
-import type { AboutData } from "@/lib/about";
+import { fetchAboutData } from "@/lib/about";
 
-type Props = {
-  aboutData: AboutData | null;
-};
+export default async function AboutSection() {
+  const aboutData = await fetchAboutData();
 
-export default function AboutSection({ aboutData }: Props) {
   return (
     <main className="bg-[#fbf8f4]">
       <AboutIntro aboutImage={aboutData?.about_me_image} />

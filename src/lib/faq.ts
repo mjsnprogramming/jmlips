@@ -33,18 +33,27 @@ function toSlug(value: string): string {
 export async function fetchFAQ(
   lang: "pl" | "en",
 ): Promise<FAQItem[]> {
-  const res = await fetch(
-    `${process.env.WORDPRESS_API_URL}/wp-json/wp/v2/question?per_page=100`,
-    {
-      next: { revalidate: 60 },
-    },
-  )
+  const baseUrl = process.env.WORDPRESS_API_URL
+  if (!baseUrl) return []
 
-  if (!res.ok) {
+  let data: WPFAQItem[]
+
+  try {
+    const res = await fetch(
+      `${baseUrl}/wp-json/wp/v2/question?per_page=100`,
+      {
+        next: { revalidate: 60 },
+      },
+    )
+
+    if (!res.ok) {
+      return []
+    }
+
+    data = await res.json()
+  } catch {
     return []
   }
-
-  const data: WPFAQItem[] = await res.json()
 
   return data
     .map((item) => ({

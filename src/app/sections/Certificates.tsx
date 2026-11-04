@@ -70,6 +70,7 @@ export default function Certificates({
           <div className="mx-auto grid max-w-5xl grid-cols-2 gap-6 md:grid-cols-4">
             {gallery.map((image, index) => (
               <div
+  key={image}
   className={`relative h-[340px] overflow-hidden rounded-[1.5rem] shadow-[0_15px_40px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)] ${
     index % 2 === 1 ? "mt-8" : ""
   }`}
