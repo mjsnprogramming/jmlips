@@ -34,7 +34,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-b from-white/45 via-white/35 to-[#f9f5f0]/55" />
 
       <div className="relative z-10 mx-auto flex min-h-[calc(100vh-92px)] max-w-7xl flex-col items-center justify-center px-6 py-16 text-center supports-[height:100dvh]:min-h-[calc(100dvh-92px)]">
-        <p className="mb-5 text-sm font-medium uppercase tracking-[0.35em] text-[#8f6a43]">
+        <p className="mb-5 text-sm font-bold uppercase tracking-[0.35em] text-[#8f6a43] [text-shadow:0_0_12px_rgba(255,255,255,0.95),0_0_4px_rgba(255,255,255,0.9)]">
           JM Studio • Lublin • Zamość
         </p>
 
