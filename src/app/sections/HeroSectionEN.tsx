@@ -9,6 +9,7 @@ export default function HeroSectionEN() {
         preload="metadata"
         className="absolute inset-0 h-full w-full object-cover"
       >
+        <source src="/videos/homebg.webm" type="video/webm" />
         <source src="/videos/homebg.mp4" type="video/mp4" />
       </video>
 

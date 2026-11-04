@@ -27,6 +27,7 @@ export default function HeroSection() {
         tabIndex={-1}
         className="absolute inset-0 h-full w-full object-cover motion-reduce:hidden"
       >
+        <source src="/videos/homebg.webm" type="video/webm" />
         <source src="/videos/homebg.mp4" type="video/mp4" />
       </video>
 
