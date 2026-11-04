@@ -38,7 +38,7 @@ const interfaceCopy = {
     heading: "Treatments tailored to your needs.",
     introduction: "Explore the options and learn more about each treatment.",
     duration: "Duration",
-    effect: "Effect",
+    effect: "Result",
     close: "Close treatment details",
     previous: "Previous treatment",
     next: "Next treatment",
