@@ -84,13 +84,15 @@ export default function OfferClient({ faqItems, treatments, initialTreatment }: 
                 onClick={() => setSelectedTreatment(treatment)}
                 className="group cursor-pointer overflow-hidden rounded-[2.5rem] border border-[#eadbc9] bg-white/75 shadow-[0_20px_60px_rgba(0,0,0,0.06)] backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_80px_rgba(0,0,0,0.12)]"
               >
-                <div className="relative h-[340px] overflow-hidden">
-                  <Image
-                    src={treatment.image}
-                    alt={treatment.title}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
+                <div className="relative h-[340px] overflow-hidden bg-[#eadbc9]">
+                  {treatment.image && (
+                    <Image
+                      src={treatment.image}
+                      alt={treatment.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                  )}
 
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent" />
 
@@ -147,13 +149,15 @@ export default function OfferClient({ faqItems, treatments, initialTreatment }: 
                     ×
                   </button>
 
-                  <div className="relative min-h-[320px] md:min-h-[620px]">
-                    <Image
-                      src={selectedTreatment.image}
-                      alt={selectedTreatment.title}
-                      fill
-                      className="object-cover"
-                    />
+                  <div className="relative min-h-[320px] bg-[#eadbc9] md:min-h-[620px]">
+                    {selectedTreatment.image && (
+                      <Image
+                        src={selectedTreatment.image}
+                        alt={selectedTreatment.title}
+                        fill
+                        className="object-cover"
+                      />
+                    )}
                   </div>
 
                   <div className="overflow-y-auto p-8 md:p-12">
