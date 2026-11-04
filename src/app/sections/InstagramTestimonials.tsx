@@ -64,6 +64,9 @@ export default function InstagramTestimonials({ testimonials }: Props) {
 
   const items = testimonials.filter((item) => Boolean(item.image));
   const count = items.length;
+  // Pętla Swipera potrzebuje co najmniej 3 slajdów; przy 1 opinii nawigacja nie ma sensu.
+  const canLoop = count >= 3;
+  const hasNavigation = count > 1;
 
   const closeModal = useCallback(() => {
     setSelectedReview(null);
@@ -79,6 +82,11 @@ export default function InstagramTestimonials({ testimonials }: Props) {
 
     function onKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") closeModal();
+      // Jedyny element do fokusu w okienku to "Zamknij" - Tab nie wychodzi na stronę pod spodem.
+      if (event.key === "Tab") {
+        event.preventDefault();
+        closeButtonRef.current?.focus();
+      }
     }
 
     window.addEventListener("keydown", onKeyDown);
@@ -99,17 +107,17 @@ export default function InstagramTestimonials({ testimonials }: Props) {
           <p className="mb-2 font-script text-3xl text-[#b98b5c]">Wasze opinie</p>
 
           <h2 className="mb-5 font-heading text-5xl font-semibold tracking-tight text-[#a67c52] md:text-6xl">
-            Opinie klientów
+            Co mówią klienci
           </h2>
 
           <p className="font-sans text-lg text-gray-500">
-            Prawdziwe opinie klientów z Instagrama
+            Prawdziwe opinie z Instagrama
           </p>
         </div>
 
         <div className="relative w-full overflow-x-clip overflow-y-visible">
           <Swiper
-            loop
+            loop={canLoop}
             centeredSlides
             slidesPerView="auto"
             spaceBetween={0}
@@ -127,7 +135,7 @@ export default function InstagramTestimonials({ testimonials }: Props) {
             ].join(" ")}
           >
             {items.map((item, index) => {
-              const offset = loopOffset(index, activeIndex, count);
+              const offset = canLoop ? loopOffset(index, activeIndex, count) : index - activeIndex;
               const isActive = offset === 0;
               const fan = getFanStyles(offset);
 
@@ -180,22 +188,24 @@ export default function InstagramTestimonials({ testimonials }: Props) {
             })}
           </Swiper>
 
-          <div className="mt-3 flex flex-wrap justify-center gap-4">
-            {items.map((item, index) => (
-              <button
-                key={item.id}
-                type="button"
-                onClick={() => swiperRef.current?.slideToLoop(index)}
-                aria-label={`Przejdź do opinii ${index + 1} z ${count}`}
-                aria-current={activeIndex === index ? "true" : undefined}
-                className={[
-                  "h-2.5 w-2.5 rounded-full transition-all duration-300 motion-reduce:transition-none",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8f6a43] focus-visible:ring-offset-2 focus-visible:ring-offset-[#f9f5f0]",
-                  activeIndex === index ? "scale-125 bg-[#b98b5c]" : "bg-[#ded6ce]",
-                ].join(" ")}
-              />
-            ))}
-          </div>
+          {hasNavigation && (
+            <div className="mt-3 flex flex-wrap justify-center gap-4">
+              {items.map((item, index) => (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => swiperRef.current?.slideToLoop(index)}
+                  aria-label={`Przejdź do opinii ${index + 1} z ${count}`}
+                  aria-current={activeIndex === index ? "true" : undefined}
+                  className={[
+                    "h-2.5 w-2.5 rounded-full transition-all duration-300 motion-reduce:transition-none",
+                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8f6a43] focus-visible:ring-offset-2 focus-visible:ring-offset-[#f9f5f0]",
+                    activeIndex === index ? "scale-125 bg-[#b98b5c]" : "bg-[#ded6ce]",
+                  ].join(" ")}
+                />
+              ))}
+            </div>
+          )}
 
           <div className="mt-10 flex justify-center">
             <a
@@ -236,27 +246,31 @@ export default function InstagramTestimonials({ testimonials }: Props) {
             </a>
           </div>
 
-          <button
-            type="button"
-            onClick={() => swiperRef.current?.slidePrev()}
-            aria-label="Poprzednia opinia"
-            className="absolute left-20 top-1/2 z-[80] flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-[#b98b5c] shadow-[0_14px_35px_rgba(90,64,43,0.14)] transition hover:scale-105 hover:bg-[#fffaf5] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8f6a43] active:scale-95"
-          >
-            <span className="text-2xl leading-none" aria-hidden="true">
-              ‹
-            </span>
-          </button>
+          {hasNavigation && (
+            <>
+              <button
+                type="button"
+                onClick={() => swiperRef.current?.slidePrev()}
+                aria-label="Poprzednia opinia"
+                className="absolute left-8 top-1/2 sm:left-20 z-[80] flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-[#b98b5c] shadow-[0_14px_35px_rgba(90,64,43,0.14)] transition hover:scale-105 hover:bg-[#fffaf5] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8f6a43] active:scale-95"
+              >
+                <span className="text-2xl leading-none" aria-hidden="true">
+                  ‹
+                </span>
+              </button>
 
-          <button
-            type="button"
-            onClick={() => swiperRef.current?.slideNext()}
-            aria-label="Następna opinia"
-            className="absolute right-20 top-1/2 z-[80] flex h-14 w-14 -translate-y-1/2 translate-x-1/2 items-center justify-center rounded-full bg-white text-[#b98b5c] shadow-[0_14px_35px_rgba(90,64,43,0.14)] transition hover:scale-105 hover:bg-[#fffaf5] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8f6a43] active:scale-95"
-          >
-            <span className="text-2xl leading-none" aria-hidden="true">
-              ›
-            </span>
-          </button>
+              <button
+                type="button"
+                onClick={() => swiperRef.current?.slideNext()}
+                aria-label="Następna opinia"
+                className="absolute right-8 top-1/2 sm:right-20 z-[80] flex h-14 w-14 -translate-y-1/2 translate-x-1/2 items-center justify-center rounded-full bg-white text-[#b98b5c] shadow-[0_14px_35px_rgba(90,64,43,0.14)] transition hover:scale-105 hover:bg-[#fffaf5] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8f6a43] active:scale-95"
+              >
+                <span className="text-2xl leading-none" aria-hidden="true">
+                  ›
+                </span>
+              </button>
+            </>
+          )}
         </div>
       </div>
 
