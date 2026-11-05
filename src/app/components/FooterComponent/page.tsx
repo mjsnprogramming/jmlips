@@ -3,11 +3,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-//import {
- // FaFacebookF,
-  //FaInstagram,
-  //FaTiktok,
-//} from 'react-icons/fa6'
+import { FaFacebookF, FaInstagram, FaTiktok } from 'react-icons/fa6'
+import { FACEBOOK_URL, INSTAGRAM_URL, TIKTOK_URL } from '@/lib/links'
 
 const content = {
   pl: {
@@ -28,6 +25,7 @@ const content = {
     terms: 'Regulamin',
     pricelist: 'Cennik',
     rights: 'Wszystkie prawa zastrzeżone.',
+    newTab: 'otwiera się w nowej karcie',
     credit: 'Projekt i realizacja: MJSN.dev',
   },
   en: {
@@ -44,30 +42,20 @@ const content = {
     about: 'About me',
     treatments: 'Treatments',
     portfolio: 'Portfolio',
-    privacy: 'Privacy policy',
-    terms: 'Terms and conditions',
+    // Polityka i regulamin są tylko po polsku – link prowadzi do wersji PL.
+    privacy: 'Privacy policy (in Polish)',
+    terms: 'Terms and conditions (in Polish)',
     pricelist: 'Price list',
     rights: 'All rights reserved.',
+    newTab: 'opens in a new tab',
     credit: 'Designed and developed by MJSN.dev',
   },
 } as const
 
 const socials = [
-  {
-    label: 'Instagram',
-    href: 'https://www.instagram.com/',
-    //Icon: FaInstagram,
-  },
-  {
-    label: 'TikTok',
-    href: 'https://www.tiktok.com/',
-    //Icon: FaTiktok,
-  },
-  {
-    label: 'Facebook',
-    href: 'https://www.facebook.com/',
-   // Icon: FaFacebookF,
-  },
+  { label: 'Instagram', href: INSTAGRAM_URL, Icon: FaInstagram },
+  { label: 'TikTok', href: TIKTOK_URL, Icon: FaTiktok },
+  { label: 'Facebook', href: FACEBOOK_URL, Icon: FaFacebookF },
 ]
 
 export default function FooterComponent() {
@@ -84,10 +72,11 @@ export default function FooterComponent() {
     { href: '/contact', label: t.contact },
   ]
 
+  // Polityka prywatności i regulamin istnieją tylko po polsku.
   const information = [
-    { href: '/privacy', label: t.privacy },
-    { href: '/terms', label: t.terms },
-    { href: '/pricelist', label: t.pricelist },
+    { href: '/pl/privacy', label: t.privacy, polishOnly: true },
+    { href: '/pl/terms', label: t.terms, polishOnly: true },
+    { href: `${base}/pricelist`, label: t.pricelist, polishOnly: false },
   ]
 
   const makeHref = (path: string) => `${base}${path}`
@@ -143,19 +132,19 @@ export default function FooterComponent() {
             </p>
 
             <div className="mt-8 flex items-center gap-4">
-  {socials.map(({ label, href }) => (
-    <a
-      key={label}
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={label}
-      className="flex h-11 w-11 items-center justify-center rounded-full border border-[#e7dfd6] bg-white/70 text-xs font-semibold text-[#5a4c3a] transition-colors duration-200 hover:border-[#8b6543] hover:text-[#8b6543] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#805a3a] focus-visible:ring-offset-2"
-    >
-      {label === 'Instagram' ? 'IG' : label === 'TikTok' ? 'TT' : 'FB'}
-    </a>
-  ))}
-</div>
+              {socials.map(({ label, href, Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${label} (${t.newTab})`}
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-[#e7dfd6] bg-white/70 text-[#5a4c3a] transition-colors duration-200 hover:border-[#8b6543] hover:text-[#8b6543] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#805a3a] focus-visible:ring-offset-2"
+                >
+                  <Icon aria-hidden="true" className="h-5 w-5" />
+                </a>
+              ))}
+            </div>
           </div>
 
           <div className="min-w-0">
@@ -176,7 +165,7 @@ export default function FooterComponent() {
               >
                 juliamajewska@gmail.com
               </a>
-              <span>Lublin</span>
+              <span>Lublin • Zamość</span>
             </address>
           </div>
 
@@ -205,10 +194,11 @@ export default function FooterComponent() {
             </h3>
 
             <ul className="mt-6 flex flex-col gap-4 text-gray-600">
-              {information.map(({ href, label }) => (
+              {information.map(({ href, label, polishOnly }) => (
                 <li key={href}>
                   <Link
-                    href={makeHref(href)}
+                    href={href}
+                    hrefLang={polishOnly ? 'pl' : undefined}
                     className="transition-colors hover:text-[#8b6543] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#805a3a]"
                   >
                     {label}

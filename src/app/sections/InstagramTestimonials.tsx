@@ -8,12 +8,12 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import "swiper/css";
 import type { Testimonial } from "@/lib/testimonials";
+import { INSTAGRAM_URL } from "@/lib/links";
 
 type Props = {
   testimonials: Testimonial[];
 };
 
-const INSTAGRAM_URL = "https://www.instagram.com/juliamajewska_studio_/";
 const SLIDE_SPEED = 650;
 
 // Wygląd karty zależy od jej odległości od środka (0 = środek, 1 = obok, 2 = skraj).
