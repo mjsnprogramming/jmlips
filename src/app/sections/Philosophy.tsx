@@ -1,6 +1,6 @@
 const stories = {
   pl: {
-    eyebrow: "O mnie",
+    eyebrow: "Moja historia",
     title: "Moja droga do JM Studio",
     intro: "Wszystko zaczyna się od decyzji, by zrobić pierwszy krok.",
     journey: [
@@ -10,7 +10,7 @@ const stories = {
     trustTitle: "Cierpliwość, zaufanie i relacje",
     trust: [
       "Po ponad trzech latach pracy z klientami wiem, że w branży beauty liczy się znacznie więcej niż sam efekt wykonanego zabiegu. Równie ważne są zaufanie, poczucie bezpieczeństwa i atmosfera, w której każda osoba może czuć się swobodnie.",
-      "Chcę, abyś podczas wizyty wiedziała, na czym polega zabieg, jakie są jego poszczególne etapy i czego możesz się spodziewać. Dlatego chętnie wyjaśniam cały proces i odpowiadam na pytania. Zależy mi na tym, abyś czuła się zaopiekowana i świadomie podejmowała decyzje dotyczące swojej skóry.",
+      "Chcę, żeby podczas wizyty wszystko było dla Ciebie jasne: na czym polega zabieg, jakie są jego poszczególne etapy i czego możesz się spodziewać. Dlatego chętnie wyjaśniam cały proces i odpowiadam na pytania. Zależy mi na tym, żeby każda osoba czuła się u mnie zaopiekowana i podejmowała świadome decyzje dotyczące swojej skóry.",
       "Wiem też, że zaufania nie buduje się w jeden dzień. Buduje się je podczas każdej wizyty, poprzez szczerość, uważność i dbałość o szczegóły.",
     ],
     growthTitle: "Rozwój, który nie ma końca",
@@ -23,7 +23,7 @@ const stories = {
       "JM Studio to dla mnie coś więcej niż miejsce wykonywania zabiegów. To marka, którą buduję krok po kroku — z pasją, cierpliwością i szacunkiem do każdej osoby, która mi zaufa.",
   },
   en: {
-    eyebrow: "About me",
+    eyebrow: "My story",
     title: "My journey to JM Studio",
     intro: "It all begins with deciding to take the first step.",
     journey: [
@@ -47,8 +47,8 @@ const stories = {
   },
 };
 
-export default function Philosophy({ language = "pl" }) {
-  const copy = language.toLowerCase().startsWith("en") ? stories.en : stories.pl;
+export default function Philosophy({ lang = "pl" }: { lang?: "pl" | "en" }) {
+  const copy = stories[lang];
 
   return (
     <section

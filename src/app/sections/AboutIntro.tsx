@@ -3,23 +3,39 @@ import Link from "next/link";
 import type { AboutData } from "@/lib/about";
 
 type Props = {
-  aboutImage?: AboutData["about_me_image"];
-  aboutImageAlt?: string;
-  contactHref?: string;
+  aboutImage?: AboutData["about_me_image"] | null;
+  lang?: "pl" | "en";
 };
 
-const trustPoints = [
-  { number: "01", title: "Rozmowa o oczekiwaniach" },
-  { number: "02", title: "Indywidualny plan" },
-  { number: "03", title: "Opieka na każdym etapie" },
-] as const;
+const COPY = {
+  pl: {
+    badge: "O mnie",
+    heading: "Naturalne efekty zaczynają się od zaufania.",
+    intro:
+      "Podczas konsultacji wspólnie omawiamy Twoje oczekiwania i możliwe rozwiązania. Plan zabiegowy dobieram indywidualnie, dbając o harmonię rysów twarzy oraz Twój komfort.",
+    trustPoints: ["Rozmowa o oczekiwaniach", "Indywidualny plan", "Opieka na każdym etapie"],
+    cta: "Umów konsultację",
+    caption: "Naturalne piękno",
+  },
+  en: {
+    badge: "About me",
+    heading: "Natural results begin with trust.",
+    intro:
+      "During the consultation, we talk through your expectations and the possible options together. I tailor every treatment plan individually, with care for facial harmony and your comfort.",
+    trustPoints: ["Talking through your expectations", "A personalised plan", "Care at every stage"],
+    cta: "Book a consultation",
+    caption: "Natural beauty",
+  },
+} as const;
 
-export default function AboutIntro({
-  aboutImage,
-  aboutImageAlt = "Julia Majewska",
-  contactHref = "/contact",
-}: Props) {
-  const imageSrc = aboutImage ?? "/images/about.png";
+export default function AboutIntro({ aboutImage, lang = "pl" }: Props) {
+  const copy = COPY[lang];
+  // Pusty adres z WordPressa też ma dać zdjęcie zapasowe.
+  const imageSrc = aboutImage || "/images/about.png";
+  const trustPoints = copy.trustPoints.map((title, index) => ({
+    number: String(index + 1).padStart(2, "0"),
+    title,
+  }));
 
   return (
     <section className="relative overflow-hidden bg-[#fbf8f4] px-6 py-14 md:py-20 lg:pt-16 lg:pb-24">
@@ -34,19 +50,15 @@ export default function AboutIntro({
 
       <div className="relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[0.95fr_1.05fr] xl:gap-16">
         <div>
-          <p className="mb-6 inline-flex rounded-full bg-brand-light px-5 py-2 text-sm font-semibold uppercase tracking-[0.18em] text-white shadow-sm">
-            O mnie
+          <p className="mb-6 inline-flex rounded-full bg-brand px-5 py-2 text-sm font-semibold uppercase tracking-[0.18em] text-white shadow-sm">
+            {copy.badge}
           </p>
 
-          <h1 className="max-w-3xl text-3xl font-semibold leading-tight tracking-[-0.03em] text-[#111827] md:text-5xl">
-            Naturalne efekty zaczynają się od zaufania.
+          <h1 className="max-w-3xl text-3xl font-semibold leading-tight tracking-[-0.03em] text-[#2f2924] md:text-5xl">
+            {copy.heading}
           </h1>
 
-          <p className="mt-6 max-w-xl text-lg leading-8 text-gray-600">
-            Podczas konsultacji wspólnie omawiamy Twoje oczekiwania i możliwe
-            rozwiązania. Plan zabiegowy dobieram indywidualnie, dbając o
-            harmonię rysów twarzy oraz Twój komfort.
-          </p>
+          <p className="mt-6 max-w-xl text-lg leading-8 text-gray-600">{copy.intro}</p>
 
           <div
             aria-hidden="true"
@@ -64,7 +76,7 @@ export default function AboutIntro({
                   className="mb-4 h-1 w-10 rounded-full bg-brand-light"
                 />
 
-                <p className="text-3xl font-semibold tracking-tight text-brand-light transition-colors duration-300 group-hover:text-brand motion-reduce:transition-none">
+                <p aria-hidden="true" className="text-3xl font-semibold tracking-tight text-brand-light transition-colors duration-300 group-hover:text-brand motion-reduce:transition-none">
                   {number}
                 </p>
 
@@ -74,10 +86,10 @@ export default function AboutIntro({
           </div>
 
           <Link
-            href={contactHref}
+            href={`/${lang}/contact`}
             className="mt-8 inline-flex rounded-full bg-brand px-7 py-3 text-sm font-semibold uppercase tracking-[0.12em] text-white shadow-md transition-colors hover:bg-brand-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 motion-reduce:transition-none"
           >
-            Umów konsultację
+            {copy.cta}
           </Link>
         </div>
 
@@ -99,7 +111,7 @@ export default function AboutIntro({
           <div className="relative overflow-hidden rounded-[2.5rem] shadow-[0_40px_100px_rgba(0,0,0,0.18)]">
             <Image
               src={imageSrc}
-              alt={aboutImageAlt}
+              alt="Julia Majewska"
               width={760}
               height={620}
               priority
@@ -119,7 +131,7 @@ export default function AboutIntro({
             </p>
 
             <p className="mt-2 text-lg font-semibold text-[#2f2924]">
-              Naturalne piękno
+              {copy.caption}
             </p>
           </div>
         </div>

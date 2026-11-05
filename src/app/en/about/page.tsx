@@ -1,20 +1,21 @@
-import React from "react";
-import AboutIntro from "@/app/sections/AboutIntroEN";
-import Philosophy from "@/app/sections/PhilosophyEN";
-import Certificates from "@/app/sections/CertificatesEN";
+import AboutIntro from "@/app/sections/AboutIntro";
+import Philosophy from "@/app/sections/Philosophy";
+import Certificates from "@/app/sections/Certificates";
 import { fetchAboutData } from "@/lib/about";
 
-export default async function AboutSection() {
+export default async function AboutPage() {
   const aboutData = await fetchAboutData();
 
   return (
-    <main className="bg-[#fbf8f4]">
-      <AboutIntro aboutImage={aboutData?.about_me_image} />
-      <Philosophy />
+    <div className="bg-[#fbf8f4]">
+      <AboutIntro lang="en" aboutImage={aboutData?.about_me_image} />
+      <Philosophy lang="en" />
       <Certificates
+        lang="en"
         certificate1={aboutData?.certificate_1}
         certificate2={aboutData?.certificate_2}
+        certificates={aboutData?.certificates}
       />
-    </main>
+    </div>
   );
 }

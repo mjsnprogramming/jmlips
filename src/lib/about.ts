@@ -6,90 +6,89 @@ export type AboutData = {
 }
 
 type WPAbout = {
-  acf: {
-    about_me_image: string | number
-    certificate_1: string | number
-    certificate_2: string | number
+  acf?: {
+    about_me_image?: string | number | null
+    certificate_1?: string | number | null
+    certificate_2?: string | number | null
   }
 }
+
 type WPCertificate = {
-  acf: {
-    zdjecie: string | number
+  acf?: {
+    zdjecie?: string | number | null
   }
-}
-
-async function getCertificates(): Promise<string[]> {
-  if (!env?.WORDPRESS_API_URL) return []
-
-  const res = await fetch(
-    `${env.WORDPRESS_API_URL}/wp-json/wp/v2/certyfikat?orderby=id&order=asc`,
-    {
-      next: { revalidate: 60 },
-    }
-  )
-
-  if (!res.ok) return []
-
-  const data = (await res.json()) as WPCertificate[]
-
-  return Promise.all(
-    data.map((certificate) => getImageUrl(certificate.acf.zdjecie))
-  )
 }
 
 const env = (globalThis as any).process?.env as
   | Record<string, string | undefined>
   | undefined
 
-const WP_API_URL = env?.WORDPRESS_API_URL
-  ? `${env.WORDPRESS_API_URL}/wp-json/wp/v2/about?per_page=1`
-  : null
+const WP_BASE_URL = env?.WORDPRESS_API_URL?.trim().replace(/\/+$/, "")
 
-async function getImageUrl(image: string | number): Promise<string> {
-  if (typeof image === 'string') return image
-
-  if (!env?.WORDPRESS_API_URL) return ''
-
-  const res = await fetch(
-    `${env.WORDPRESS_API_URL}/wp-json/wp/v2/media/${image}`,
-    {
-      next: { revalidate: 60 },
-    }
-  )
-
-  if (!res.ok) return ''
-
-  const data = await res.json()
-
-  return data.source_url ?? ''
-}
-
-export async function fetchAboutData(): Promise<AboutData | null> {
-
-  const certificateImages = await getCertificates();
-  if (!WP_API_URL) return null
+/** Adres zdjęcia z WordPressa (URL albo ID z biblioteki mediów); błąd = "". */
+async function getImageUrl(image: string | number | null | undefined): Promise<string> {
+  if (typeof image === "string") return image.trim()
+  if (typeof image !== "number" || !WP_BASE_URL) return ""
 
   try {
-    const res = await fetch(WP_API_URL, {
+    const res = await fetch(`${WP_BASE_URL}/wp-json/wp/v2/media/${image}`, {
       next: { revalidate: 60 },
     })
+    if (!res.ok) return ""
+    const data = (await res.json()) as { source_url?: string | null }
+    return data.source_url?.trim() ?? ""
+  } catch {
+    return ""
+  }
+}
 
-    if (!res.ok) return null
+async function getCertificates(): Promise<string[]> {
+  if (!WP_BASE_URL) return []
 
-    const data = (await res.json()) as WPAbout[]
+  try {
+    const res = await fetch(
+      `${WP_BASE_URL}/wp-json/wp/v2/certyfikat?per_page=100&orderby=id&order=asc`,
+      { next: { revalidate: 60 } },
+    )
+    if (!res.ok) return []
 
-    if (!data.length) return null
+    const data = (await res.json()) as WPCertificate[]
+    if (!Array.isArray(data)) return []
 
-    const about = data[0]
+    const urls = await Promise.all(data.map((item) => getImageUrl(item.acf?.zdjecie)))
+    return urls.filter(Boolean)
+  } catch (error) {
+    console.error("Nie udało się pobrać certyfikatów:", error)
+    return []
+  }
+}
+
+/**
+ * Dane strony "O mnie" z WordPressa. Każdy błąd daje null / puste pola,
+ * a komponenty pokazują wtedy zdjęcia zapasowe – strona nigdy się nie wywraca.
+ */
+export async function fetchAboutData(): Promise<AboutData | null> {
+  if (!WP_BASE_URL) return null
+
+  try {
+    const [res, certificates] = await Promise.all([
+      fetch(`${WP_BASE_URL}/wp-json/wp/v2/about?per_page=1`, {
+        next: { revalidate: 60 },
+      }),
+      getCertificates(),
+    ])
+
+    const data = res.ok ? ((await res.json()) as WPAbout[]) : []
+    const about = Array.isArray(data) ? data[0] : undefined
 
     return {
-      about_me_image: await getImageUrl(about.acf.about_me_image),
-      certificate_1: await getImageUrl(about.acf.certificate_1),
-      certificate_2: await getImageUrl(about.acf.certificate_2),
-      certificates: certificateImages,
+      about_me_image: await getImageUrl(about?.acf?.about_me_image),
+      certificate_1: await getImageUrl(about?.acf?.certificate_1),
+      certificate_2: await getImageUrl(about?.acf?.certificate_2),
+      certificates,
     }
   } catch (error) {
-    console.error('Nie udało się pobrać sekcji About:', error)
+    console.error("Nie udało się pobrać sekcji About:", error)
     return null
   }
 }
