@@ -68,4 +68,3 @@ export async function fetchTestimonials(): Promise<Testimonial[]> {
   }
 }
 
-console.log('WP_API_URL TESTIMONIAL:', WP_API_URL)
