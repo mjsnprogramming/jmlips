@@ -23,7 +23,7 @@ const copy = {
       <>
         Wszystko, co warto wiedzieć przed wizytą.
         <br />
-        Zebraliśmy najważniejsze informacje, aby rozwiać Twoje wątpliwości.
+        Zebrałam najważniejsze informacje, aby rozwiać Twoje wątpliwości.
       </>
     ),
     empty: "Brak pytań dotyczących tego zabiegu.",
@@ -35,7 +35,7 @@ const copy = {
       <>
         Everything you need to know before your visit.
         <br />
-        We have gathered the key information to answer your questions.
+        I have gathered the key information to answer your questions.
       </>
     ),
     empty: "There are no questions for this treatment yet.",
@@ -68,11 +68,11 @@ export default function OfferFAQ({
     <section className="bg-[#faf7f4] px-6 py-24 md:py-32">
       <div className="mx-auto max-w-5xl">
         <div className="mb-16 text-center">
-          <span className="mb-4 block text-sm uppercase tracking-[0.3em] text-[#b8946f]">
+          <span className="mb-4 block text-sm uppercase tracking-[0.3em] text-brand">
             {text.label}
           </span>
 
-          <div className="mx-auto mb-8 h-px w-16 bg-[#b8946f]" />
+          <div className="mx-auto mb-8 h-px w-16 bg-brand-soft" />
 
           <h2 className="font-heading text-4xl font-light text-zinc-900 md:text-6xl">
             {text.heading}
@@ -93,7 +93,7 @@ export default function OfferFAQ({
                 key={group.slug}
                 className={`border-b border-[#e7ddd2] last:border-b-0 ${
                   isGroupOpen
-                    ? "border-l-4 border-l-[#b8946f] bg-[#f5efe8]"
+                    ? "border-l-4 border-l-brand-soft bg-[#f5efe8]"
                     : ""
                 }`}
               >
@@ -116,7 +116,7 @@ export default function OfferFAQ({
 
                   <span
                     aria-hidden="true"
-                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#b8946f] text-2xl font-light text-[#b8946f]"
+                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-brand-soft text-2xl font-light text-brand"
                   >
                     {isGroupOpen ? "−" : "+"}
                   </span>
@@ -161,7 +161,7 @@ export default function OfferFAQ({
 
                                   <span
                                     aria-hidden="true"
-                                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#b8946f] text-2xl font-light text-[#b8946f]"
+                                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-brand-soft text-2xl font-light text-brand"
                                   >
                                     {isQuestionOpen ? "−" : "+"}
                                   </span>

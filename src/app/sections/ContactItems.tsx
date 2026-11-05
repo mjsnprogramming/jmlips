@@ -96,7 +96,7 @@ export default function ContactItems() {
   return (
     <section className="bg-[#fbf9f6] px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
       <div className="mx-auto max-w-7xl">
-        <p className="mb-4 flex items-center gap-4 text-xs font-medium uppercase tracking-[0.28em] text-[#a77b50] sm:text-sm">
+        <p className="mb-4 flex items-center gap-4 text-xs font-medium uppercase tracking-[0.28em] text-brand-light sm:text-sm">
           Kontakt i rezerwacje{" "}
           <span className="h-px w-12 bg-[#c8a987]" aria-hidden="true" />
         </p>
@@ -115,10 +115,10 @@ export default function ContactItems() {
                 target={isPlaceholder ? undefined : "_blank"}
                 rel={isPlaceholder ? undefined : "noreferrer"}
                 aria-label={`${item.action}: ${item.label}`}
-                className="group rounded-xl border border-[#e9ddd0] bg-[#fbf9f6] p-5 transition-colors hover:border-[#cbb397] hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#a77b50] motion-reduce:transition-none sm:p-6 lg:p-7"
+                className="group rounded-xl border border-[#e9ddd0] bg-[#fbf9f6] p-5 transition-colors hover:border-[#cbb397] hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-light motion-reduce:transition-none sm:p-6 lg:p-7"
               >
                 <div className="flex items-start gap-4 sm:gap-5">
-                  <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#f2ece4] text-[#a77b50]">
+                  <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#f2ece4] text-brand-light">
                     <ContactIcon name={item.icon} />
                   </span>
                   <div className="min-w-0 pt-1">
@@ -131,7 +131,7 @@ export default function ContactItems() {
                     <p className="text-sm leading-6 text-[#706963]">
                       {item.second}
                     </p>
-                    <p className="mt-5 inline-flex items-center gap-3 text-[10px] font-medium uppercase tracking-[0.13em] text-[#986b41] sm:mt-6">
+                    <p className="mt-5 inline-flex items-center gap-3 text-[10px] font-medium uppercase tracking-[0.13em] text-brand sm:mt-6">
                       {item.action}
                       <span
                         className="transition-transform group-hover:translate-x-1 motion-reduce:transition-none"

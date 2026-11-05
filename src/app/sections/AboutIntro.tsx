@@ -64,7 +64,7 @@ export default function AboutIntro({
                   className="mb-4 h-1 w-10 rounded-full bg-brand-light"
                 />
 
-                <p className="text-3xl font-semibold tracking-tight text-brand-light transition-colors duration-300 group-hover:text-[#8b623d] motion-reduce:transition-none">
+                <p className="text-3xl font-semibold tracking-tight text-brand-light transition-colors duration-300 group-hover:text-brand motion-reduce:transition-none">
                   {number}
                 </p>
 

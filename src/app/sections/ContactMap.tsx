@@ -8,14 +8,14 @@ export default function ContactMap() {
     <section className="bg-[#f7f3ed] px-5 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-20">
       <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-14">
         <div>
-          <p className="mb-5 flex items-center gap-4 text-xs font-medium uppercase tracking-[0.28em] text-[#a77b50] sm:text-sm">
+          <p className="mb-5 flex items-center gap-4 text-xs font-medium uppercase tracking-[0.28em] text-brand-light sm:text-sm">
             Lokalizacja{" "}
             <span className="h-px w-12 bg-[#c8a987]" aria-hidden="true" />
           </p>
 
           <h2 className="max-w-xl font-heading text-[2.65rem] font-normal leading-[1.08] tracking-[-0.045em] text-[#171513] sm:text-5xl">
             Znajdziesz mnie przy{" "}
-            <span className="italic text-[#a77b50]">ul. Szafirowej.</span>
+            <span className="italic text-brand-light">ul. Szafirowej.</span>
           </h2>
 
           <p className="mt-6 max-w-xl text-base leading-7 text-[#625d58] sm:text-[1.02rem] sm:leading-8">
@@ -32,7 +32,7 @@ export default function ContactMap() {
             ].map((item) => (
               <li key={item} className="flex items-center gap-4">
                 <span
-                  className="h-px w-8 shrink-0 bg-[#a77b50]"
+                  className="h-px w-8 shrink-0 bg-brand-light"
                   aria-hidden="true"
                 />
                 {item}
@@ -44,7 +44,7 @@ export default function ContactMap() {
             href={MAPS_DIRECTIONS_URL}
             target="_blank"
             rel="noreferrer"
-            className="mt-8 inline-flex min-h-12 items-center justify-center gap-5 rounded-full bg-[#a77b50] px-7 py-3 text-xs font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#916b45] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#a77b50] motion-reduce:transition-none sm:mt-9 sm:min-w-[245px]"
+            className="mt-8 inline-flex min-h-12 items-center justify-center gap-5 rounded-full bg-brand-light px-7 py-3 text-xs font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:bg-brand focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-light motion-reduce:transition-none sm:mt-9 sm:min-w-[245px]"
           >
             Otwórz w Google Maps <span aria-hidden="true">→</span>
           </a>
@@ -63,7 +63,7 @@ export default function ContactMap() {
             />
 
             <div className="absolute bottom-3 left-3 max-w-[calc(100%-1.5rem)] rounded-2xl bg-[#fcfaf7]/95 p-4 shadow-[0_12px_32px_rgba(75,54,35,0.14)] backdrop-blur-sm sm:bottom-4 sm:left-4 sm:w-[215px] sm:p-5">
-              <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-[#a77b50]">
+              <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-brand-light">
                 JM Studio · Vital Skin
               </p>
               <p className="mt-2 text-sm font-medium text-[#201d1a]">
@@ -74,7 +74,7 @@ export default function ContactMap() {
                 href={MAPS_DIRECTIONS_URL}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-3 inline-flex items-center gap-2 text-xs text-[#986b41] underline decoration-[#c9ad8e] underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a77b50]"
+                className="mt-3 inline-flex items-center gap-2 text-xs text-brand underline decoration-[#c9ad8e] underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-light"
               >
                 Otwórz trasę <span aria-hidden="true">→</span>
               </a>

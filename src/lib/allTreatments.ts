@@ -54,7 +54,7 @@ const POLISH_TREATMENT_COPY: PolishTreatmentCopy[] = [
       "Modelowanie ust z wykorzystaniem kwasu hialuronowego to zabieg, którego celem jest poprawa proporcji, konturu i kształtu ust z pozostałymi rysami twarzy.",
     details: [
       "Modelowanie ust z wykorzystaniem kwasu hialuronowego to zabieg, którego celem jest poprawa proporcji, konturu i kształtu ust z pozostałymi rysami twarzy.",
-      "Każdy zabieg poprzedzamy indywidualną konsultacją, podczas której oceniane są proporcje twarzy, budowa ust oraz oczekiwania klientki. Technika oraz ilość preparatu dobierane są indywidualnie – tak, aby uzyskać estetyczny i możliwie naturalny efekt.",
+      "Każdy zabieg poprzedzam indywidualną konsultacją, podczas której oceniane są proporcje twarzy, budowa ust oraz oczekiwania klienta. Technika oraz ilość preparatu dobierane są indywidualnie – tak, aby uzyskać estetyczny i możliwie naturalny efekt.",
     ].join("\n\n"),
     order: 1,
   },

@@ -5,11 +5,7 @@
 import OfferFAQ from "@/app/components/offer/OfferFAQ";
 import type { FAQItem } from "@/lib/faq";
 import type { Treatment } from "@/lib/allTreatments";
-import {
-  AnimatePresence,
-  motion,
-  useReducedMotion,
-} from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 type OfferClientProps = {
@@ -26,9 +22,8 @@ const interfaceCopy = {
     heading: "Zabiegi dobrane do Twoich potrzeb.",
     introduction:
       "Poznaj możliwości i wybierz zabieg, o którym chcesz dowiedzieć się więcej.",
-    duration: "Czas",
-    effect: "Efekt",
-    close: "Zamknij szczegóły zabiegu",
+    list: "Lista zabiegów",
+    position: (current: number, total: number) => `Zabieg ${current} z ${total}`,
     previous: "Poprzedni zabieg",
     next: "Następny zabieg",
     empty: "Aktualnie nie ma dostępnych zabiegów.",
@@ -37,9 +32,8 @@ const interfaceCopy = {
     offer: "Treatments",
     heading: "Treatments tailored to your needs.",
     introduction: "Explore the options and learn more about each treatment.",
-    duration: "Duration",
-    effect: "Result",
-    close: "Close treatment details",
+    list: "Treatment list",
+    position: (current: number, total: number) => `Treatment ${current} of ${total}`,
     previous: "Previous treatment",
     next: "Next treatment",
     empty: "There are no treatments available right now.",
@@ -76,48 +70,48 @@ function renderAccentedText(text: string, title: string) {
   return (
     <>
       {text.slice(0, index)}
-      <span className="font-medium text-[#9b7655]">{accent}</span>
+      <span className="font-medium text-brand">{accent}</span>
       {text.slice(index + accent.length)}
     </>
   );
 }
 
-function TreatmentImage({
-  src,
-  alt,
-  variant,
-}: {
-  src: string | null;
-  alt: string;
-  variant: "editorial" | "modal";
-}) {
+function TreatmentImage({ src, alt }: { src: string; alt: string }) {
   const [failed, setFailed] = useState(false);
 
-  if (!src || failed) return null;
-
-  const image = (
-    <img
-      src={src}
-      alt={alt}
-      loading="lazy"
-      decoding="async"
-      className="h-full w-full object-cover"
-      onError={() => setFailed(true)}
-    />
-  );
-
-  if (variant === "editorial") {
-    return (
-      <div className="ml-auto aspect-[4/3] w-full max-w-[34rem] overflow-hidden rounded-[1.75rem] bg-[#f1e9df] shadow-[0_24px_60px_-32px_rgba(47,41,36,0.42)] ring-1 ring-[#eadbc9]/80">
-        {image}
-      </div>
-    );
-  }
+  if (failed) return null;
 
   return (
-    <div className="mb-8 aspect-[16/9] max-h-[20rem] overflow-hidden rounded-[1.25rem] bg-[#f8f3ed] shadow-sm ring-1 ring-[#eadbc9]/80">
-      {image}
+    <div className="ml-auto aspect-[4/3] w-full max-w-[34rem] overflow-hidden rounded-[1.75rem] bg-[#f1e9df] shadow-[0_24px_60px_-32px_rgba(47,41,36,0.42)] ring-1 ring-[#eadbc9]/80">
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        decoding="async"
+        className="h-full w-full object-cover"
+        onError={() => setFailed(true)}
+      />
     </div>
+  );
+}
+
+function findTreatmentIndex(
+  treatments: Treatment[],
+  selector: string,
+  lang: "pl" | "en",
+) {
+  const normalizedSelector = selector.trim().toLocaleLowerCase(lang);
+  if (!normalizedSelector) return -1;
+
+  const candidateTitles = new Set([
+    normalizedSelector,
+    ...(treatmentTitleAliases[lang][normalizedSelector] ?? []),
+  ]);
+
+  return treatments.findIndex(
+    (treatment) =>
+      treatment.slug === selector ||
+      candidateTitles.has(treatment.title.trim().toLocaleLowerCase(lang)),
   );
 }
 
@@ -127,16 +121,17 @@ export default function OfferClient({
   treatments,
   initialTreatment,
 }: OfferClientProps) {
-  const [selectedTreatment, setSelectedTreatment] =
-    useState<Treatment | null>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(() => {
+    const index = initialTreatment
+      ? findTreatmentIndex(treatments, initialTreatment, lang)
+      : -1;
+    return index >= 0 ? index : 0;
+  });
 
   const prefersReducedMotion = useReducedMotion();
   const reduceMotion = Boolean(prefersReducedMotion);
-  const closeButtonRef = useRef<HTMLButtonElement>(null);
-  const dialogRef = useRef<HTMLElement>(null);
-  const triggerSlugRef = useRef<string | null>(null);
   const sliderRef = useRef<HTMLElement>(null);
+  const listRef = useRef<HTMLDivElement>(null);
   const touchStartX = useRef<number | null>(null);
 
   const copy = interfaceCopy[lang];
@@ -144,50 +139,44 @@ export default function OfferClient({
   const safeIndex = treatmentCount > 0 ? activeIndex % treatmentCount : 0;
   const currentTreatment = treatments[safeIndex] ?? null;
   const transitionDuration = reduceMotion ? 0 : 0.42;
-  const modalDuration = reduceMotion ? 0.01 : 0.22;
+
+  /** Zmiana zabiegu przez użytkownika: zapisuje wybór w adresie (?treatment=slug). */
+  function selectTreatment(index: number) {
+    const treatment = treatments[index];
+    if (!treatment) return;
+
+    setActiveIndex(index);
+
+    const url = new URL(window.location.href);
+    url.searchParams.set("treatment", treatment.slug);
+    window.history.replaceState(window.history.state, "", url);
+  }
 
   function goToTreatment(direction: -1 | 1) {
     if (treatmentCount < 2) return;
-
-    setActiveIndex(
-      (index) => (index + direction + treatmentCount) % treatmentCount,
-    );
+    selectTreatment((safeIndex + direction + treatmentCount) % treatmentCount);
   }
 
+  // Wejście z linku (np. z polecanych zabiegów) – także przy przejściu bez przeładowania strony.
   useEffect(() => {
-    if (treatmentCount === 0) {
-      setActiveIndex(0);
-      return;
-    }
+    if (!initialTreatment) return;
 
-    setActiveIndex((index) => index % treatmentCount);
-  }, [treatmentCount]);
-
-  useEffect(() => {
-    const selector = initialTreatment;
-    const normalizedSelector = selector?.trim().toLocaleLowerCase(lang);
-
-    if (!selector || !normalizedSelector) return;
-
-    const candidateTitles = new Set([
-      normalizedSelector,
-      ...(treatmentTitleAliases[lang][normalizedSelector] ?? []),
-    ]);
-
-    const matchingIndex = treatments.findIndex(
-      (treatment) =>
-        treatment.slug === selector ||
-        candidateTitles.has(treatment.title.trim().toLocaleLowerCase(lang)),
-    );
-
-    if (matchingIndex >= 0) {
-      setActiveIndex(matchingIndex);
-    }
+    const index = findTreatmentIndex(treatments, initialTreatment, lang);
+    if (index >= 0) setActiveIndex(index);
   }, [initialTreatment, lang, treatments]);
+
+  // Na telefonie lista zabiegów przewija się poziomo – aktywny zabieg ma być widoczny.
+  useEffect(() => {
+    const active = listRef.current?.querySelector<HTMLElement>('[aria-current="true"]');
+    active?.scrollIntoView({
+      block: "nearest",
+      inline: "center",
+      behavior: reduceMotion ? "auto" : "smooth",
+    });
+  }, [safeIndex, reduceMotion]);
 
   useEffect(() => {
     function handleSliderKeyDown(event: KeyboardEvent) {
-      if (selectedTreatment) return;
       if (!sliderRef.current?.contains(document.activeElement)) return;
 
       if (event.key === "ArrowLeft") {
@@ -201,106 +190,22 @@ export default function OfferClient({
 
     window.addEventListener("keydown", handleSliderKeyDown);
     return () => window.removeEventListener("keydown", handleSliderKeyDown);
-  }, [selectedTreatment, treatmentCount]);
+  });
 
-  useEffect(() => {
-    if (!selectedTreatment) return;
-
-    const previousBodyOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-
-    const focusFrame = window.requestAnimationFrame(() => {
-      closeButtonRef.current?.focus();
-    });
-
-    function handleDialogKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        setSelectedTreatment(null);
-        return;
-      }
-
-      if (event.key !== "Tab") return;
-
-      const focusableElements =
-        dialogRef.current?.querySelectorAll<HTMLElement>(
-          'button:not([disabled]), a[href], [tabindex="0"]',
-        );
-
-      if (!focusableElements?.length) {
-        event.preventDefault();
-        closeButtonRef.current?.focus();
-        return;
-      }
-
-      const firstElement = focusableElements[0];
-      const lastElement = focusableElements[focusableElements.length - 1];
-
-      if (event.shiftKey && document.activeElement === firstElement) {
-        event.preventDefault();
-        lastElement.focus();
-      } else if (
-        !event.shiftKey &&
-        document.activeElement === lastElement
-      ) {
-        event.preventDefault();
-        firstElement.focus();
-      }
-    }
-
-    window.addEventListener("keydown", handleDialogKeyDown);
-
-    return () => {
-      document.body.style.overflow = previousBodyOverflow;
-      window.removeEventListener("keydown", handleDialogKeyDown);
-      window.cancelAnimationFrame(focusFrame);
-
-      window.requestAnimationFrame(() => {
-        const trigger = Array.from(
-          document.querySelectorAll<HTMLButtonElement>(
-            "[data-treatment-trigger]",
-          ),
-        ).find(
-          (button) =>
-            button.dataset.treatmentTrigger === triggerSlugRef.current,
-        );
-
-        trigger?.focus();
-      });
-    };
-  }, [selectedTreatment]);
-
-  function openTreatment(
-    treatment: Treatment,
-    trigger: HTMLButtonElement,
-  ) {
-    triggerSlugRef.current = trigger.dataset.treatmentTrigger ?? null;
-    setSelectedTreatment(treatment);
-  }
-
-  const detailParagraphs = selectedTreatment
-    ? selectedTreatment.details.split(/\n\s*\n/).filter(Boolean)
-    : [];
-
-  const hasEffectParagraph = detailParagraphs.some((paragraph) =>
-    /^(?:Efekt|Effect):\s*/i.test(paragraph.trim()),
-  );
-
-  const modalFacts = selectedTreatment
-    ? [
-        ...(selectedTreatment.duration?.trim()
-          ? [{ label: copy.duration, value: selectedTreatment.duration.trim() }]
-          : []),
-        ...(selectedTreatment.effect?.trim() && !hasEffectParagraph
-          ? [{ label: copy.effect, value: selectedTreatment.effect.trim() }]
-          : []),
-      ]
-    : [];
+  // FAQ tylko dla zabiegów, które mają pytania.
+  const faqGroups = treatments
+    .map((treatment) => ({
+      slug: treatment.slug,
+      title: treatment.title,
+      items: faqItems.filter((item) => item.treatmentSlug === treatment.slug),
+    }))
+    .filter((group) => group.items.length > 0);
 
   return (
     <div className="bg-[#fbf8f4] font-sans text-[#2f2924]">
       <section className="px-6 py-16 sm:py-20">
         <div className="mx-auto max-w-7xl">
-          <header className="mb-14 max-w-4xl sm:mb-20">
+          <header className="mb-10 max-w-4xl sm:mb-14">
             <h1 className="max-w-3xl font-heading text-5xl font-medium leading-[1.04] tracking-[-0.035em] text-[#332a23] sm:text-6xl">
               {copy.heading}
             </h1>
@@ -331,10 +236,45 @@ export default function OfferClient({
               }}
               className="outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-8 focus-visible:ring-offset-[#fbf8f4]"
             >
+              {treatmentCount > 1 && (
+                <nav aria-label={copy.list} className="mb-12 sm:mb-16">
+                  <div
+                    ref={listRef}
+                    className="-mx-6 flex gap-3 overflow-x-auto px-6 pb-2 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 [&::-webkit-scrollbar]:hidden"
+                  >
+                    {treatments.map((treatment, index) => {
+                      const isActive = index === safeIndex;
+
+                      return (
+                        <button
+                          key={treatment.slug}
+                          type="button"
+                          onClick={() => selectTreatment(index)}
+                          aria-current={isActive ? "true" : undefined}
+                          className={[
+                            "shrink-0 whitespace-nowrap rounded-full border px-5 py-2.5 text-sm transition-colors motion-reduce:transition-none",
+                            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-[#fbf8f4]",
+                            isActive
+                              ? "border-brand bg-brand text-white"
+                              : "border-[#e2d5c6] bg-white/70 text-[#5c4939] hover:border-brand-soft hover:bg-white",
+                          ].join(" ")}
+                        >
+                          {treatment.title}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </nav>
+              )}
+
+              {/* Krótki komunikat dla czytnika ekranu zamiast czytania całego opisu. */}
+              <p aria-live="polite" className="sr-only">
+                {`${copy.position(safeIndex + 1, treatmentCount)}: ${currentTreatment.title}`}
+              </p>
+
               <AnimatePresence mode="wait" initial={false}>
                 <motion.article
                   key={currentTreatment.slug}
-                  aria-live="polite"
                   initial={{
                     opacity: 0,
                     y: reduceMotion ? 0 : 14,
@@ -365,7 +305,6 @@ export default function OfferClient({
                         key={`${currentTreatment.slug}-${currentTreatment.image}`}
                         src={currentTreatment.image}
                         alt={currentTreatment.title}
-                        variant="editorial"
                       />
                     ) : (
                       <div
@@ -427,14 +366,20 @@ export default function OfferClient({
                 </motion.article>
               </AnimatePresence>
 
-              <div className="mt-12 flex justify-end border-t border-[#e7dbcf] pt-5 sm:mt-16">
+              <div className="mt-12 flex items-center justify-end gap-5 border-t border-[#e7dbcf] pt-5 sm:mt-16">
+                {treatmentCount > 1 && (
+                  <p aria-hidden="true" className="text-sm tabular-nums tracking-[0.12em] text-[#6b625b]">
+                    {safeIndex + 1} / {treatmentCount}
+                  </p>
+                )}
+
                 <div className="flex gap-3">
                   <button
                     type="button"
                     onClick={() => goToTreatment(-1)}
                     disabled={treatmentCount < 2}
                     aria-label={copy.previous}
-                  className="flex h-12 w-12 items-center justify-center rounded-full border border-[#d9cbbb] text-xl text-[#5c4939] transition-colors hover:bg-[#efe5d9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand disabled:cursor-not-allowed disabled:opacity-40 motion-reduce:transition-none"
+                    className="flex h-12 w-12 items-center justify-center rounded-full border border-[#d9cbbb] text-xl text-[#5c4939] transition-colors hover:bg-[#efe5d9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand disabled:cursor-not-allowed disabled:opacity-40 motion-reduce:transition-none"
                   >
                     <span aria-hidden="true">←</span>
                   </button>
@@ -444,7 +389,7 @@ export default function OfferClient({
                     onClick={() => goToTreatment(1)}
                     disabled={treatmentCount < 2}
                     aria-label={copy.next}
-                  className="flex h-12 w-12 items-center justify-center rounded-full border border-[#d9cbbb] text-xl text-[#5c4939] transition-colors hover:bg-[#efe5d9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand disabled:cursor-not-allowed disabled:opacity-40 motion-reduce:transition-none"
+                    className="flex h-12 w-12 items-center justify-center rounded-full border border-[#d9cbbb] text-xl text-[#5c4939] transition-colors hover:bg-[#efe5d9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand disabled:cursor-not-allowed disabled:opacity-40 motion-reduce:transition-none"
                   >
                     <span aria-hidden="true">→</span>
                   </button>
@@ -456,149 +401,10 @@ export default function OfferClient({
               {copy.empty}
             </p>
           )}
-
-          <AnimatePresence>
-            {selectedTreatment && (
-              <motion.div
-                className="fixed inset-0 z-[100] flex items-center justify-center bg-[#211b17]/50 p-4 backdrop-blur-sm"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: modalDuration }}
-                onClick={() => setSelectedTreatment(null)}
-              >
-                <motion.article
-                  ref={dialogRef}
-                  role="dialog"
-                  aria-modal="true"
-                  aria-labelledby="treatment-dialog-title"
-                  initial={{
-                    opacity: 0,
-                    y: reduceMotion ? 0 : 12,
-                    scale: reduceMotion ? 1 : 0.99,
-                  }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{
-                    opacity: 0,
-                    y: reduceMotion ? 0 : 8,
-                    scale: reduceMotion ? 1 : 0.99,
-                  }}
-                  transition={{
-                    duration: modalDuration,
-                    ...(reduceMotion
-                      ? {}
-                      : { type: "spring", stiffness: 320, damping: 30 }),
-                  }}
-                  onClick={(event) => event.stopPropagation()}
-                  className="relative max-h-[88dvh] w-full max-w-3xl overflow-hidden border border-[#e7dbcf] bg-[#fffdfa]"
-                >
-                  <button
-                    ref={closeButtonRef}
-                    type="button"
-                    onClick={() => setSelectedTreatment(null)}
-                    className="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center border border-[#e7dbcf] bg-[#fbf8f4] text-2xl leading-none text-[#332a23] transition-colors hover:bg-[#eee5dc] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 motion-reduce:transition-none sm:right-6 sm:top-6"
-                    aria-label={copy.close}
-                  >
-                    <span aria-hidden="true">×</span>
-                  </button>
-
-                  <div
-                    tabIndex={0}
-                    className="max-h-[88dvh] overflow-y-auto overscroll-contain px-6 pb-8 pt-20 sm:px-10 sm:pb-10 sm:pt-20 md:px-14 md:pb-12"
-                  >
-                    {selectedTreatment.image && (
-                      <TreatmentImage
-                        key={`${selectedTreatment.slug}-${selectedTreatment.image}`}
-                        src={selectedTreatment.image}
-                        alt={selectedTreatment.title}
-                        variant="modal"
-                      />
-                    )}
-
-                    {selectedTreatment.category?.trim() && (
-                      <p className="mb-4 font-heading text-xs font-semibold uppercase tracking-[0.2em] text-brand">
-                        {selectedTreatment.category}
-                      </p>
-                    )}
-
-                    <h2
-                      id="treatment-dialog-title"
-                      className="max-w-2xl font-heading text-4xl font-medium leading-[1.08] tracking-[-0.03em] text-[#332a23] sm:text-5xl"
-                    >
-                      {selectedTreatment.title}
-                    </h2>
-
-                    {modalFacts.length > 0 && (
-                      <dl className="mt-7 border-y border-[#e7dbcf]">
-                        {modalFacts.map((fact, index) => (
-                          <div
-                            key={fact.label}
-                            className={`grid grid-cols-[5.5rem_1fr] gap-4 py-4 sm:grid-cols-[7rem_1fr] ${
-                              index > 0 ? "border-t border-[#eee5dc]" : ""
-                            }`}
-                          >
-                            <dt className="pt-0.5 font-heading text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-brand">
-                              {fact.label}
-                            </dt>
-                            <dd className="text-sm leading-6 text-[#403830] sm:text-base">
-                              {fact.value}
-                            </dd>
-                          </div>
-                        ))}
-                      </dl>
-                    )}
-
-                    <div
-                      className={`${
-                        modalFacts.length > 0 ? "mt-8" : "mt-7"
-                      } space-y-5`}
-                    >
-                      {detailParagraphs.map((paragraph, index) => {
-                        const isEffect = /^(?:Efekt|Effect):\s*/i.test(
-                          paragraph.trim(),
-                        );
-
-                        return isEffect ? (
-                          <p
-                            key={index}
-                            className="border-l-2 border-[#b89775] bg-[#f8f3ed] px-5 py-4 text-[0.95rem] leading-7 text-[#51463d] sm:text-base sm:leading-8"
-                          >
-                            {renderAccentedText(
-                              paragraph,
-                              selectedTreatment.title,
-                            )}
-                          </p>
-                        ) : (
-                          <p
-                            key={index}
-                            className="text-[0.95rem] leading-7 text-[#5e554d] sm:text-base sm:leading-8"
-                          >
-                            {renderAccentedText(
-                              paragraph,
-                              selectedTreatment.title,
-                            )}
-                          </p>
-                        );
-                      })}
-                    </div>
-                  </div>
-                </motion.article>
-              </motion.div>
-            )}
-          </AnimatePresence>
         </div>
       </section>
 
-      <OfferFAQ
-        lang={lang}
-        groups={treatments.map((treatment) => ({
-          slug: treatment.slug,
-          title: treatment.title,
-          items: faqItems.filter(
-            (item) => item.treatmentSlug === treatment.slug,
-          ),
-        }))}
-      />
+      <OfferFAQ lang={lang} groups={faqGroups} />
     </div>
   );
 }

@@ -14,11 +14,11 @@ export default function ContactForm() {
     <section className="bg-[#faf7f4] px-6 py-24 md:py-32">
       <div className="mx-auto grid max-w-6xl gap-16 md:grid-cols-[0.9fr_1.1fr] md:items-start">
         <div>
-          <span className="mb-4 block text-sm uppercase tracking-[0.3em] text-[#b8946f]">
+          <span className="mb-4 block text-sm uppercase tracking-[0.3em] text-brand-soft">
             Kontakt
           </span>
 
-          <div className="mb-8 h-px w-16 bg-[#b8946f]" />
+          <div className="mb-8 h-px w-16 bg-brand-soft" />
 
           <h2 className="font-heading text-4xl font-light text-zinc-900 md:text-6xl">
             Napisz do nas
@@ -42,7 +42,7 @@ export default function ContactForm() {
                 onChange={(e) =>
                   setForm({ ...form, name: e.target.value })
                 }
-                className="w-full border-b border-[#d8c8b8] bg-transparent px-0 py-3 text-zinc-900 outline-none transition placeholder:text-zinc-400 focus:border-[#b8946f]"
+                className="w-full border-b border-[#d8c8b8] bg-transparent px-0 py-3 text-zinc-900 outline-none transition placeholder:text-zinc-400 focus:border-brand-soft"
                 placeholder="Twoje imię"
               />
             </div>
@@ -57,7 +57,7 @@ export default function ContactForm() {
                 onChange={(e) =>
                   setForm({ ...form, phone: e.target.value })
                 }
-                className="w-full border-b border-[#d8c8b8] bg-transparent px-0 py-3 text-zinc-900 outline-none transition placeholder:text-zinc-400 focus:border-[#b8946f]"
+                className="w-full border-b border-[#d8c8b8] bg-transparent px-0 py-3 text-zinc-900 outline-none transition placeholder:text-zinc-400 focus:border-brand-soft"
                 placeholder="+48..."
               />
             </div>
@@ -73,7 +73,7 @@ export default function ContactForm() {
               onChange={(e) =>
                 setForm({ ...form, email: e.target.value })
               }
-              className="w-full border-b border-[#d8c8b8] bg-transparent px-0 py-3 text-zinc-900 outline-none transition placeholder:text-zinc-400 focus:border-[#b8946f]"
+              className="w-full border-b border-[#d8c8b8] bg-transparent px-0 py-3 text-zinc-900 outline-none transition placeholder:text-zinc-400 focus:border-brand-soft"
               placeholder="adres@email.com"
             />
           </div>
@@ -88,14 +88,14 @@ export default function ContactForm() {
               onChange={(e) =>
                 setForm({ ...form, message: e.target.value })
               }
-              className="w-full resize-none border-b border-[#d8c8b8] bg-transparent px-0 py-3 text-zinc-900 outline-none transition placeholder:text-zinc-400 focus:border-[#b8946f]"
+              className="w-full resize-none border-b border-[#d8c8b8] bg-transparent px-0 py-3 text-zinc-900 outline-none transition placeholder:text-zinc-400 focus:border-brand-soft"
               placeholder="Napisz, w czym możemy pomóc..."
             />
           </div>
 
           <button
             type="button"
-            className="mt-10 inline-flex items-center gap-3 bg-[#b8946f] px-8 py-4 text-sm uppercase tracking-[0.2em] text-white transition hover:bg-[#a17f5c]"
+            className="mt-10 inline-flex items-center gap-3 bg-brand-soft px-8 py-4 text-sm uppercase tracking-[0.2em] text-white transition hover:bg-brand-light"
           >
             Wyślij wiadomość
             <span>→</span>
