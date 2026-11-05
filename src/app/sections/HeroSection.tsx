@@ -1,14 +1,11 @@
 import Link from "next/link";
-
-// Ten sam profil co w ContactIntro.tsx (bez parametrów śledzących z linku udostępniania).
-const BOOKSY_URL =
-  "https://booksy.com/pl-pl/232580_julia-majewska-studio_medycyna-estetyczna_6832_lublin";
+import { BOOKSY_URL } from "@/lib/links";
 
 const POSTER_SRC = "/images/hero-poster.jpg";
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-[calc(100vh-92px)] overflow-hidden bg-[#f9f5f0] supports-[height:100dvh]:min-h-[calc(100dvh-92px)]">
+    <section className="relative min-h-[calc(100vh_-_var(--header-h))] overflow-hidden bg-[#f9f5f0] supports-[height:100dvh]:min-h-[calc(100dvh_-_var(--header-h))]">
       {/* Statyczne tło: widoczne zanim wideo się załaduje i zawsze przy "ogranicz ruch". */}
       <div
         aria-hidden="true"
@@ -31,7 +28,7 @@ export default function HeroSection() {
         <source src="/videos/homebg.mp4" type="video/mp4" />
       </video>
 
-      <div className="relative z-10 mx-auto flex min-h-[calc(100vh-92px)] max-w-7xl flex-col items-center justify-center px-6 py-16 text-center supports-[height:100dvh]:min-h-[calc(100dvh-92px)]">
+      <div className="relative z-10 mx-auto flex min-h-[calc(100vh_-_var(--header-h))] max-w-7xl flex-col items-center justify-center px-6 py-16 text-center supports-[height:100dvh]:min-h-[calc(100dvh_-_var(--header-h))]">
         <p className="mb-5 text-sm font-bold uppercase tracking-[0.35em] text-[#8f6a43] [text-shadow:0_0_12px_rgba(255,255,255,0.95),0_0_4px_rgba(255,255,255,0.9)]">
           JM Studio • Lublin • Zamość
         </p>

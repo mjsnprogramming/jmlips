@@ -6,3 +6,13 @@
 *{
     -webkit-tap-highlight-color: transparent;
 }
+/* Wysokość nagłówka – używana przez header i sekcję Hero. */
+:root {
+  --header-h: 78px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --header-h: 92px;
+  }
+}
