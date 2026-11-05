@@ -1,16 +1,9 @@
 import type { ReactNode } from "react";
+import Fill from "@/app/components/legal/Fill";
 import { LEGAL } from "@/lib/legal";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata("privacy", "pl");
-
-/** Brakujące dane są wyraźnie oznaczone, żeby nie trafiły na stronę niezauważone. */
-function Fill({ value, label }: { value: string; label: string }) {
-  if (value) return <>{value}</>;
-  return (
-    <mark className="rounded bg-[#f3e2c4] px-1.5 py-0.5 text-[#5c4939]">[do uzupełnienia: {label}]</mark>
-  );
-}
 
 function Section({ title, children }: { title: string; children: ReactNode }) {
   return (
