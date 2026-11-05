@@ -50,7 +50,9 @@ const treatmentAccents: Record<string, string> = {
 
 const treatmentTitleAliases: Record<"pl" | "en", Record<string, string[]>> = {
   pl: {
+    // Stare i nowe nazwy tego samego zabiegu – linki działają niezależnie od tytułu w WordPressie.
     hialuronidaza: ["usuwanie kwasu hialuronowego"],
+    "usuwanie kwasu hialuronowego": ["hialuronidaza"],
   },
   en: {
     "tissue stimulators": ["biostimulators"],
@@ -58,6 +60,7 @@ const treatmentTitleAliases: Record<"pl" | "en", Record<string, string[]>> = {
       "hyaluronic acid removal",
       "hyaluronic acid dissolving",
     ],
+    "hyaluronic acid dissolving": ["hyaluronidase", "hyaluronic acid removal"],
   },
 };
 

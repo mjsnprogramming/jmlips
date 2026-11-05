@@ -71,12 +71,12 @@ const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
   },
   {
     id: "hyaluronidase",
-    label: { pl: "Hialuronidaza", en: "Hyaluronidase" },
+    label: { pl: "Usuwanie kwasu hialuronowego", en: "Hyaluronic Acid Dissolving" },
     images: makePortfolioImages(
       "hyaluronidase",
       "hialuronidaza",
-      "Hialuronidaza",
-      "Hyaluronidase",
+      "Usuwanie kwasu hialuronowego",
+      "Hyaluronic acid dissolving",
     ),
   },
   {

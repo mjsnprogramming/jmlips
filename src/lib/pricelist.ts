@@ -84,6 +84,11 @@ function slugify(value: string) {
     .replace(/(^-|-$)/g, "")
 }
 
+function humanizeCategory(value: string) {
+  const text = String(value ?? "").replace(/[_-]+/g, " ").trim()
+  return text ? text.charAt(0).toUpperCase() + text.slice(1) : "—"
+}
+
 export async function fetchPricelist(
   lang: "pl" | "en"
 ): Promise<Category[]> {
@@ -115,17 +120,17 @@ export async function fetchPricelist(
   lang === "pl"
     ? item.acf.category_pl
     : item.acf.category_en
-    console.log("CATEGORY:", categorySlug)
 
 const categoryId = categorySlug
 
       if (!categoriesMap.has(categorySlug)) {
         categoriesMap.set(categorySlug, {
           id: categoryId,
+          // Nieznana kategoria (np. nowa w WordPressie) dostaje nazwę z jej klucza,
+          // zamiast wywracać cały cennik.
           title:
-  CATEGORY_LABELS[
-    categorySlug as keyof typeof CATEGORY_LABELS
-  ][lang],
+            CATEGORY_LABELS[categorySlug as keyof typeof CATEGORY_LABELS]?.[lang] ??
+            humanizeCategory(categorySlug),
           items: [],
         })
       }
