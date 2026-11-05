@@ -20,8 +20,6 @@ const copy = {
     introduction:
       "Zobacz realne efekty mojej pracy i przekonaj się, jak subtelne zmiany potrafią podkreślić naturalne piękno.",
     galleryLabel: "REALNE EFEKTY • NATURALNY WYGLĄD",
-    before: "PRZED",
-    after: "PO",
     empty: "Zdjęcia efektów dla tej kategorii pojawią się wkrótce.",
     previous: "Poprzednia strona galerii",
     next: "Następna strona galerii",
@@ -36,8 +34,6 @@ const copy = {
     introduction:
       "See the real results of my work and discover how subtle changes can highlight your natural beauty.",
     galleryLabel: "REAL RESULTS • NATURAL LOOK",
-    before: "BEFORE",
-    after: "AFTER",
     empty: "Photos for this treatment will be added soon.",
     previous: "Previous gallery page",
     next: "Next gallery page",
@@ -77,8 +73,8 @@ export default function PortfolioClient({
       ...image,
       alt:
         lang === "pl"
-          ? `${label} — zdjęcie przed i po zabiegu, przypadek ${index + 1}`
-          : `${label} — before and after, case ${index + 1}`,
+          ? `${label} — zdjęcie ${index + 1}`
+          : `${label} — photo ${index + 1}`,
     }),
   );
   const pageCount = Math.ceil(images.length / PAGE_SIZE);
@@ -146,7 +142,7 @@ export default function PortfolioClient({
           aria-label={lang === "pl" ? "Kategorie zabiegów" : "Treatment categories"}
           className="mx-auto mt-10 max-w-7xl overflow-x-auto pb-2 sm:mt-14"
         >
-          <div className="flex min-w-max justify-center gap-2.5 px-1 sm:flex-wrap sm:gap-3">
+          <div className="flex min-w-max justify-center gap-2.5 px-1 sm:min-w-0 sm:flex-wrap sm:gap-3">
             {PORTFOLIO_CATEGORIES.map((category) => {
               const isActive = category.id === activeCategoryId;
 
@@ -213,14 +209,8 @@ export default function PortfolioClient({
                         fill
                         sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                         unoptimized={image.source === "wordpress"}
-                        className="object-contain transition-transform duration-500 group-hover:scale-[1.015] motion-reduce:transition-none"
+                        className="object-cover transition-transform duration-500 group-hover:scale-[1.015] motion-reduce:transition-none"
                       />
-                    </span>
-                    <span className="absolute left-3 top-3 rounded-full border border-white/70 bg-[#fbf8f4]/90 px-3 py-1.5 text-[0.6rem] font-semibold uppercase tracking-[0.17em] text-[#5e4936] shadow-sm backdrop-blur-sm sm:left-4 sm:top-4">
-                      {text.before}
-                    </span>
-                    <span className="absolute bottom-3 right-3 rounded-full border border-white/70 bg-[#fbf8f4]/90 px-3 py-1.5 text-[0.6rem] font-semibold uppercase tracking-[0.17em] text-[#5e4936] shadow-sm backdrop-blur-sm sm:bottom-4 sm:right-4">
-                      {text.after}
                     </span>
                   </button>
                 </figure>
@@ -299,12 +289,6 @@ export default function PortfolioClient({
                 unoptimized={selectedImage.source === "wordpress"}
                 priority
               />
-              <span className="absolute left-2 top-2 rounded-full bg-[#fbf8f4]/90 px-3 py-1.5 text-[0.6rem] font-semibold uppercase tracking-[0.17em] text-[#5e4936] sm:left-4 sm:top-4">
-                {text.before}
-              </span>
-              <span className="absolute bottom-2 right-2 rounded-full bg-[#fbf8f4]/90 px-3 py-1.5 text-[0.6rem] font-semibold uppercase tracking-[0.17em] text-[#5e4936] sm:bottom-4 sm:right-4">
-                {text.after}
-              </span>
             </div>
           </div>
         </div>
