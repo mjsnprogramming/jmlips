@@ -29,7 +29,7 @@ export default function HeroSection() {
       </video>
 
       <div className="relative z-10 mx-auto flex min-h-[calc(100vh_-_var(--header-h))] max-w-7xl flex-col items-center justify-center px-6 py-16 text-center supports-[height:100dvh]:min-h-[calc(100dvh_-_var(--header-h))]">
-        <p className="mb-5 text-sm font-bold uppercase tracking-[0.35em] text-[#8f6a43] [text-shadow:0_0_12px_rgba(255,255,255,0.95),0_0_4px_rgba(255,255,255,0.9)]">
+        <p className="mb-5 text-sm font-bold uppercase tracking-[0.35em] text-brand [text-shadow:0_0_12px_rgba(255,255,255,0.95),0_0_4px_rgba(255,255,255,0.9)]">
           JM Studio • Lublin • Zamość
         </p>
 
@@ -48,7 +48,7 @@ export default function HeroSection() {
             href={BOOKSY_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full bg-[#8f6a43] px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-[#7a5a38] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8f6a43] focus-visible:ring-offset-2 focus-visible:ring-offset-[#f9f5f0] motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+            className="rounded-full bg-brand px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-brand-dark hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-[#f9f5f0] motion-reduce:transition-none motion-reduce:hover:translate-y-0"
           >
             Umów wizytę
             <span className="sr-only"> (Booksy, otwiera się w nowej karcie)</span>
@@ -56,7 +56,7 @@ export default function HeroSection() {
 
           <Link
             href="/pl/offer"
-            className="rounded-full border border-[#8f6a43]/40 bg-white/90 px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-[#8f6a43] shadow-md transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8f6a43] focus-visible:ring-offset-2 focus-visible:ring-offset-[#f9f5f0] motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+            className="rounded-full border border-brand/40 bg-white/90 px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-brand shadow-md transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-[#f9f5f0] motion-reduce:transition-none motion-reduce:hover:translate-y-0"
           >
             Zobacz zabiegi
           </Link>

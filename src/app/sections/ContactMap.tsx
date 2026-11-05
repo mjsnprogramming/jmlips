@@ -13,7 +13,7 @@ export default function ContactMap() {
             <span className="h-px w-12 bg-[#c8a987]" aria-hidden="true" />
           </p>
 
-          <h2 className="max-w-xl font-serif text-[2.65rem] font-normal leading-[1.08] tracking-[-0.045em] text-[#171513] sm:text-5xl">
+          <h2 className="max-w-xl font-heading text-[2.65rem] font-normal leading-[1.08] tracking-[-0.045em] text-[#171513] sm:text-5xl">
             Znajdziesz mnie przy{" "}
             <span className="italic text-[#a77b50]">ul. Szafirowej.</span>
           </h2>

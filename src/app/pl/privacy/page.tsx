@@ -1,6 +1,4 @@
-import { Playfair_Display } from "next/font/google";
 
-const serif = Playfair_Display({ subsets: ["latin"], weight: ["600", "700"] });
 
 export default function PrivacyPolicy() {
   return (
@@ -10,7 +8,7 @@ export default function PrivacyPolicy() {
         <div className="absolute inset-0 bg-[#2a241c]/70" />
         <div className="relative z-10 h-full flex items-center justify-center">
           <h1
-            className={`${serif.className} text-white text-4xl md:text-6xl leading-[1.1]`}
+            className={`font-heading text-white text-4xl md:text-6xl leading-[1.1]`}
           >
             Polityka prywatności
           </h1>
@@ -28,7 +26,7 @@ export default function PrivacyPolicy() {
           </p>
 
           <div>
-            <h2 className={`${serif.className} text-2xl font-semibold mb-3`}>
+            <h2 className={`font-heading text-2xl font-semibold mb-3`}>
               1. Zakres i cele przetwarzania danych
             </h2>
             <p>
@@ -40,7 +38,7 @@ export default function PrivacyPolicy() {
           </div>
 
           <div>
-            <h2 className={`${serif.className} text-2xl font-semibold mb-3`}>
+            <h2 className={`font-heading text-2xl font-semibold mb-3`}>
               2. Podstawy prawne
             </h2>
             <p>
@@ -51,7 +49,7 @@ export default function PrivacyPolicy() {
           </div>
 
           <div>
-            <h2 className={`${serif.className} text-2xl font-semibold mb-3`}>
+            <h2 className={`font-heading text-2xl font-semibold mb-3`}>
               3. Odbiorcy danych
             </h2>
             <p>
@@ -62,7 +60,7 @@ export default function PrivacyPolicy() {
           </div>
 
           <div>
-            <h2 className={`${serif.className} text-2xl font-semibold mb-3`}>
+            <h2 className={`font-heading text-2xl font-semibold mb-3`}>
               4. Okres przechowywania danych
             </h2>
             <ul className="list-disc ml-6 space-y-1">
@@ -74,7 +72,7 @@ export default function PrivacyPolicy() {
           </div>
 
           <div>
-            <h2 className={`${serif.className} text-2xl font-semibold mb-3`}>
+            <h2 className={`font-heading text-2xl font-semibold mb-3`}>
               5. Prawa użytkowników
             </h2>
             <p>
@@ -85,7 +83,7 @@ export default function PrivacyPolicy() {
           </div>
 
           <div>
-            <h2 className={`${serif.className} text-2xl font-semibold mb-3`}>
+            <h2 className={`font-heading text-2xl font-semibold mb-3`}>
               6. Pliki cookies
             </h2>
             <p>
@@ -96,7 +94,7 @@ export default function PrivacyPolicy() {
           </div>
 
           <div>
-            <h2 className={`${serif.className} text-2xl font-semibold mb-3`}>
+            <h2 className={`font-heading text-2xl font-semibold mb-3`}>
               7. Google Maps i social media
             </h2>
             <p>
@@ -107,7 +105,7 @@ export default function PrivacyPolicy() {
           </div>
 
           <div>
-            <h2 className={`${serif.className} text-2xl font-semibold mb-3`}>
+            <h2 className={`font-heading text-2xl font-semibold mb-3`}>
               8. Zabezpieczenia
             </h2>
             <p>
@@ -117,7 +115,7 @@ export default function PrivacyPolicy() {
           </div>
 
           <div>
-            <h2 className={`${serif.className} text-2xl font-semibold mb-3`}>
+            <h2 className={`font-heading text-2xl font-semibold mb-3`}>
               9. Postanowienia końcowe
             </h2>
             <p>

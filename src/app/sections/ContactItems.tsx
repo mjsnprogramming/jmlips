@@ -100,7 +100,7 @@ export default function ContactItems() {
           Kontakt i rezerwacje{" "}
           <span className="h-px w-12 bg-[#c8a987]" aria-hidden="true" />
         </p>
-        <h2 className="mb-7 font-serif text-3xl font-normal leading-tight tracking-[-0.035em] text-[#171513] sm:mb-8 sm:text-4xl lg:text-[2.55rem]">
+        <h2 className="mb-7 font-heading text-3xl font-normal leading-tight tracking-[-0.035em] text-[#171513] sm:mb-8 sm:text-4xl lg:text-[2.55rem]">
           Skontaktuj się w wygodny dla siebie sposób.
         </h2>
 

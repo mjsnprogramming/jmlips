@@ -1,9 +1,7 @@
 "use client"
 
 import { useMemo, useState } from "react"
-import { Playfair_Display } from "next/font/google"
 
-const serif = Playfair_Display({ subsets: ["latin"], weight: ["600", "700"] })
 
 const GOLD = "#c8b08a"
 const PAPER = "#f8f6f1"
@@ -121,7 +119,7 @@ export default function PriceListClient({
                 className="w-full flex items-center justify-between py-6 md:py-7"
               >
                 <h2
-                  className={`${serif.className} text-[22px] md:text-[26px] italic font-semibold tracking-wide`}
+                  className={`font-heading text-[22px] md:text-[26px] italic font-semibold tracking-wide`}
                 >
                   {cat.title.toUpperCase()}
                 </h2>

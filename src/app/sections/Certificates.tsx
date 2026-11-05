@@ -24,7 +24,7 @@ export default function Certificates({
       <div className="mx-auto max-w-7xl">
         <div className="grid items-center gap-14 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#a67c52]">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-brand-light">
               SZKOLENIA I CERTYFIKATY
             </p>
 

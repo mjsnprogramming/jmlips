@@ -1,6 +1,4 @@
-import { Playfair_Display } from "next/font/google"
 
-const serif = Playfair_Display({ subsets: ["latin"], weight: ["600", "700"] })
 
 const terms = [
   {
@@ -33,15 +31,15 @@ export default function TermsConditions() {
   return (
     <main className="bg-[#fbf8f4] text-[#2f2924]">
       <section className="relative overflow-hidden px-6 py-28">
-        <div className="absolute -left-24 top-16 h-80 w-80 rounded-full bg-[#a67c52]/10 blur-3xl" />
-        <div className="absolute -right-24 bottom-10 h-80 w-80 rounded-full bg-[#a67c52]/10 blur-3xl" />
+        <div className="absolute -left-24 top-16 h-80 w-80 rounded-full bg-brand-light/10 blur-3xl" />
+        <div className="absolute -right-24 bottom-10 h-80 w-80 rounded-full bg-brand-light/10 blur-3xl" />
 
         <div className="relative mx-auto max-w-4xl text-center">
-          <p className="mb-5 inline-flex rounded-full bg-[#a67c52] px-5 py-2 text-sm font-semibold uppercase tracking-[0.18em] text-white">
+          <p className="mb-5 inline-flex rounded-full bg-brand-light px-5 py-2 text-sm font-semibold uppercase tracking-[0.18em] text-white">
             Dokumenty
           </p>
 
-          <h1 className={`${serif.className} text-5xl font-semibold md:text-7xl`}>
+          <h1 className={`font-heading text-5xl font-semibold md:text-7xl`}>
             Regulamin
           </h1>
 
@@ -63,7 +61,7 @@ export default function TermsConditions() {
               key={item.title}
               className="rounded-[2rem] border border-[#eadbc9] bg-white/75 p-7 shadow-[0_20px_60px_rgba(0,0,0,0.04)]"
             >
-              <h2 className={`${serif.className} text-2xl font-semibold text-[#2f2924]`}>
+              <h2 className={`font-heading text-2xl font-semibold text-[#2f2924]`}>
                 {item.title}
               </h2>
 

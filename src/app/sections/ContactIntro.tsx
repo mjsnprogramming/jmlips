@@ -13,7 +13,7 @@ export default function ContactIntro() {
             Kontakt <span className="h-px w-12 bg-[#c8a987]" aria-hidden="true" />
           </p>
 
-          <h1 className="font-serif text-[2.8rem] font-normal leading-[1.06] tracking-[-0.045em] text-[#171513] sm:text-6xl lg:text-[3.65rem] xl:text-[4rem]">
+          <h1 className="font-heading text-[2.8rem] font-normal leading-[1.06] tracking-[-0.045em] text-[#171513] sm:text-6xl lg:text-[3.65rem] xl:text-[4rem]">
             Zadbaj o naturalny efekt.{" "}
             <span className="italic text-[#a77b50]">Zacznij od konsultacji.</span>
           </h1>

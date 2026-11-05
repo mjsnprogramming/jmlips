@@ -20,7 +20,7 @@ export default function ContactForm() {
 
           <div className="mb-8 h-px w-16 bg-[#b8946f]" />
 
-          <h2 className="font-serif text-4xl font-light text-zinc-900 md:text-6xl">
+          <h2 className="font-heading text-4xl font-light text-zinc-900 md:text-6xl">
             Napisz do nas
           </h2>
 

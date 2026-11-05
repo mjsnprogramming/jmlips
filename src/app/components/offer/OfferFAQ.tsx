@@ -74,7 +74,7 @@ export default function OfferFAQ({
 
           <div className="mx-auto mb-8 h-px w-16 bg-[#b8946f]" />
 
-          <h2 className="font-serif text-4xl font-light text-zinc-900 md:text-6xl">
+          <h2 className="font-heading text-4xl font-light text-zinc-900 md:text-6xl">
             {text.heading}
           </h2>
 
@@ -107,8 +107,8 @@ export default function OfferFAQ({
                   }`}
                 >
                   <span
-                    className={`font-serif text-2xl font-light ${
-                      isGroupOpen ? "text-[#805a3a]" : "text-zinc-900"
+                    className={`font-heading text-2xl font-light ${
+                      isGroupOpen ? "text-brand" : "text-zinc-900"
                     }`}
                   >
                     {group.title}
@@ -155,7 +155,7 @@ export default function OfferFAQ({
                                   aria-controls={answerId}
                                   className="flex w-full items-center justify-between gap-6 px-6 py-7 text-left md:px-10"
                                 >
-                                  <span className="font-serif text-2xl font-light text-zinc-900">
+                                  <span className="font-heading text-2xl font-light text-zinc-900">
                                     {item.question}
                                   </span>
 

@@ -15,7 +15,7 @@ export default function PopularTreatmentsEN({ treatments }: Props) {
     <section className="bg-white px-4 py-24">
       <div className="mx-auto max-w-7xl">
         <div className="mb-14 text-center">
-          <p className="mb-3 text-lg font-medium uppercase tracking-[0.35em] text-[#8f6a43]">
+          <p className="mb-3 text-lg font-medium uppercase tracking-[0.35em] text-brand">
             Treatments
           </p>
 
@@ -36,7 +36,7 @@ export default function PopularTreatmentsEN({ treatments }: Props) {
               href={`/en/offer?treatment=${encodeURIComponent(treatment.title)}`}
               className={[
                 "group relative min-h-[420px] overflow-hidden rounded-[2.5rem] shadow-[0_20px_60px_rgba(0,0,0,0.12)] md:min-h-[520px]",
-                "focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#8f6a43] focus-visible:ring-offset-4",
+                "focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand focus-visible:ring-offset-4",
                 index === 1 ? "lg:translate-y-10" : "",
               ].join(" ")}
             >
@@ -68,7 +68,7 @@ export default function PopularTreatmentsEN({ treatments }: Props) {
                   {treatment.description}
                 </p>
 
-                <div className="mt-7 inline-flex items-center gap-3 rounded-full border border-white/30 bg-white/15 px-5 py-3 text-sm font-medium backdrop-blur-md transition-all duration-300 group-hover:bg-white group-hover:text-[#8f6a43] group-focus-visible:bg-white group-focus-visible:text-[#8f6a43] motion-reduce:transition-none">
+                <div className="mt-7 inline-flex items-center gap-3 rounded-full border border-white/30 bg-white/15 px-5 py-3 text-sm font-medium backdrop-blur-md transition-all duration-300 group-hover:bg-white group-hover:text-brand group-focus-visible:bg-white group-focus-visible:text-brand motion-reduce:transition-none">
                   Learn More
                   <span aria-hidden="true">→</span>
                 </div>

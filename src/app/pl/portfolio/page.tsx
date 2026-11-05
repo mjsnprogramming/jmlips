@@ -298,10 +298,10 @@ export default function PortfolioPage() {
     <main className="bg-[#fbf8f4] text-[#2f2924]">
       <section className="px-5 pb-12 pt-20 sm:px-8 sm:pb-16 sm:pt-28">
         <header className="mx-auto max-w-4xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#a67c52] sm:text-sm">
+          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-brand-light sm:text-sm">
             {text.eyebrow}
           </p>
-          <h1 className="mt-5 font-serif text-5xl font-medium leading-[1.04] tracking-[-0.04em] text-[#2f2924] sm:text-6xl md:text-7xl">
+          <h1 className="mt-5 font-heading text-5xl font-medium leading-[1.04] tracking-[-0.04em] text-[#2f2924] sm:text-6xl md:text-7xl">
             {text.heading}
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-[#6b625b] sm:mt-7 sm:text-lg sm:leading-8">
@@ -323,9 +323,9 @@ export default function PortfolioPage() {
                   type="button"
                   aria-pressed={isActive}
                   onClick={() => selectCategory(category.id)}
-                  className={`rounded-full border px-5 py-3 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a67c52] focus-visible:ring-offset-2 motion-reduce:transition-none sm:px-6 ${
+                  className={`rounded-full border px-5 py-3 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-light focus-visible:ring-offset-2 motion-reduce:transition-none sm:px-6 ${
                     isActive
-                      ? "border-[#a67c52] bg-[#a67c52] text-white"
+                      ? "border-brand-light bg-brand-light text-white"
                       : "border-[#e6d8c8] bg-[#fffdfa] text-[#5f5145] hover:border-[#c9ad8e] hover:bg-[#f5eee6]"
                   }`}
                 >
@@ -345,12 +345,12 @@ export default function PortfolioPage() {
           <header className="mb-8 flex flex-col gap-3 border-b border-[#e6d8c8] pb-5 sm:mb-10 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
             <h2
               id="portfolio-gallery-heading"
-              className="font-serif text-3xl font-medium tracking-[-0.03em] text-[#2f2924] sm:text-4xl"
+              className="font-heading text-3xl font-medium tracking-[-0.03em] text-[#2f2924] sm:text-4xl"
               aria-live="polite"
             >
               {activeCategory.label[lang]}
             </h2>
-            <p className="font-sans text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-[#a67c52] sm:text-xs">
+            <p className="font-sans text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-brand-light sm:text-xs">
               {text.galleryLabel}
             </p>
           </header>
@@ -358,7 +358,7 @@ export default function PortfolioPage() {
           {isCheckingImages ? (
             <p
               aria-live="polite"
-              className="py-16 text-center font-serif text-xl leading-8 text-[#786b5e] sm:py-20 sm:text-2xl"
+              className="py-16 text-center font-heading text-xl leading-8 text-[#786b5e] sm:py-20 sm:text-2xl"
             >
               {text.checking}
             </p>
@@ -378,7 +378,7 @@ export default function PortfolioPage() {
                       setSelectedImage(image);
                     }}
                     aria-label={`${text.openImage}: ${image.alt[lang]}`}
-                    className="relative block w-full overflow-hidden rounded-[1.4rem] border border-[#eadbc9] bg-[#f4eee7] shadow-[0_12px_34px_rgba(47,41,36,0.07)] outline-none transition-[box-shadow,transform] duration-300 hover:-translate-y-1 hover:shadow-[0_20px_44px_rgba(47,41,36,0.12)] focus-visible:ring-2 focus-visible:ring-[#a67c52] focus-visible:ring-offset-4 motion-reduce:transform-none motion-reduce:transition-none sm:rounded-[1.65rem]"
+                    className="relative block w-full overflow-hidden rounded-[1.4rem] border border-[#eadbc9] bg-[#f4eee7] shadow-[0_12px_34px_rgba(47,41,36,0.07)] outline-none transition-[box-shadow,transform] duration-300 hover:-translate-y-1 hover:shadow-[0_20px_44px_rgba(47,41,36,0.12)] focus-visible:ring-2 focus-visible:ring-brand-light focus-visible:ring-offset-4 motion-reduce:transform-none motion-reduce:transition-none sm:rounded-[1.65rem]"
                   >
                     <span className="relative block aspect-[4/5] w-full">
                       <Image
@@ -400,7 +400,7 @@ export default function PortfolioPage() {
               ))}
             </div>
           ) : (
-            <p className="py-16 text-center font-serif text-xl leading-8 text-[#786b5e] sm:py-20 sm:text-2xl">
+            <p className="py-16 text-center font-heading text-xl leading-8 text-[#786b5e] sm:py-20 sm:text-2xl">
               {text.empty}
             </p>
           )}
@@ -415,7 +415,7 @@ export default function PortfolioPage() {
                 onClick={() => goToPage(Math.max(1, currentPage - 1))}
                 disabled={currentPage === 1}
                 aria-label={text.previous}
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-[#d9cbbb] text-lg text-[#5c4939] transition-colors hover:bg-[#efe5d9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b6543] disabled:cursor-not-allowed disabled:opacity-40 motion-reduce:transition-none"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-[#d9cbbb] text-lg text-[#5c4939] transition-colors hover:bg-[#efe5d9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand disabled:cursor-not-allowed disabled:opacity-40 motion-reduce:transition-none"
               >
                 <span aria-hidden="true">←</span>
               </button>
@@ -431,7 +431,7 @@ export default function PortfolioPage() {
                 onClick={() => goToPage(Math.min(pageCount, currentPage + 1))}
                 disabled={currentPage === pageCount}
                 aria-label={text.next}
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-[#d9cbbb] text-lg text-[#5c4939] transition-colors hover:bg-[#efe5d9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b6543] disabled:cursor-not-allowed disabled:opacity-40 motion-reduce:transition-none"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-[#d9cbbb] text-lg text-[#5c4939] transition-colors hover:bg-[#efe5d9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand disabled:cursor-not-allowed disabled:opacity-40 motion-reduce:transition-none"
               >
                 <span aria-hidden="true">→</span>
               </button>

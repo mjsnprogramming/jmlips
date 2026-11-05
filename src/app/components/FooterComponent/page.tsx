@@ -86,7 +86,7 @@ export default function FooterComponent() {
       <div className="mx-auto max-w-7xl px-6 py-12 md:py-16">
         <section className="mb-12 rounded-[2rem] border border-[#e7dfd6] bg-white/60 p-6 shadow-[0_20px_60px_rgba(0,0,0,0.05)] backdrop-blur-xl md:mb-14 md:flex md:items-center md:justify-between md:p-8">
           <div className="md:pr-8">
-            <p className="text-sm uppercase tracking-[0.3em] text-[#8b6543]">
+            <p className="text-sm uppercase tracking-[0.3em] text-brand">
               JM Studio
             </p>
 
@@ -101,7 +101,7 @@ export default function FooterComponent() {
 
           <Link
             href={makeHref('/contact')}
-            className="mt-6 inline-flex shrink-0 items-center justify-center rounded-full bg-[#805a3a] px-7 py-3 text-sm font-semibold uppercase tracking-[0.12em] text-white shadow-lg transition duration-300 hover:-translate-y-0.5 hover:bg-[#704b2e] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#805a3a] focus-visible:ring-offset-2 motion-reduce:transition-none md:mt-0"
+            className="mt-6 inline-flex shrink-0 items-center justify-center rounded-full bg-brand px-7 py-3 text-sm font-semibold uppercase tracking-[0.12em] text-white shadow-lg transition duration-300 hover:-translate-y-0.5 hover:bg-brand-dark hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 motion-reduce:transition-none md:mt-0"
           >
             {t.ctaButton}
           </Link>
@@ -139,7 +139,7 @@ export default function FooterComponent() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`${label} (${t.newTab})`}
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-[#e7dfd6] bg-white/70 text-[#5a4c3a] transition-colors duration-200 hover:border-[#8b6543] hover:text-[#8b6543] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#805a3a] focus-visible:ring-offset-2"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-[#e7dfd6] bg-white/70 text-[#5a4c3a] transition-colors duration-200 hover:border-brand hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
                 >
                   <Icon aria-hidden="true" className="h-5 w-5" />
                 </a>
@@ -155,13 +155,13 @@ export default function FooterComponent() {
             <address className="mt-6 flex flex-col gap-4 not-italic text-gray-600">
               <a
                 href="tel:+48791967007"
-                className="transition-colors hover:text-[#8b6543] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#805a3a]"
+                className="transition-colors hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
               >
                 +48 791 967 007
               </a>
               <a
                 href="mailto:juliamajewska@gmail.com"
-                className="break-words transition-colors hover:text-[#8b6543] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#805a3a]"
+                className="break-words transition-colors hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
               >
                 juliamajewska@gmail.com
               </a>
@@ -179,7 +179,7 @@ export default function FooterComponent() {
                 <li key={href}>
                   <Link
                     href={makeHref(href)}
-                    className="transition-colors hover:text-[#8b6543] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#805a3a]"
+                    className="transition-colors hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
                   >
                     {label}
                   </Link>
@@ -199,7 +199,7 @@ export default function FooterComponent() {
                   <Link
                     href={href}
                     hrefLang={polishOnly ? 'pl' : undefined}
-                    className="transition-colors hover:text-[#8b6543] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#805a3a]"
+                    className="transition-colors hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
                   >
                     {label}
                   </Link>

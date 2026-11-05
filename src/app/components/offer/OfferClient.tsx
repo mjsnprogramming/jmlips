@@ -297,11 +297,11 @@ export default function OfferClient({
     : [];
 
   return (
-    <div className="bg-[#fbf8f4] font-[var(--font-inter)] text-[#2f2924]">
+    <div className="bg-[#fbf8f4] font-sans text-[#2f2924]">
       <section className="px-6 py-16 sm:py-20">
         <div className="mx-auto max-w-7xl">
           <header className="mb-14 max-w-4xl sm:mb-20">
-            <h1 className="max-w-3xl font-serif text-5xl font-medium leading-[1.04] tracking-[-0.035em] text-[#332a23] sm:text-6xl">
+            <h1 className="max-w-3xl font-heading text-5xl font-medium leading-[1.04] tracking-[-0.035em] text-[#332a23] sm:text-6xl">
               {copy.heading}
             </h1>
 
@@ -329,7 +329,7 @@ export default function OfferClient({
                 if (Math.abs(delta) < 48) return;
                 goToTreatment(delta < 0 ? 1 : -1);
               }}
-              className="outline-none focus-visible:ring-2 focus-visible:ring-[#8b6543] focus-visible:ring-offset-8 focus-visible:ring-offset-[#fbf8f4]"
+              className="outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-8 focus-visible:ring-offset-[#fbf8f4]"
             >
               <AnimatePresence mode="wait" initial={false}>
                 <motion.article
@@ -349,12 +349,12 @@ export default function OfferClient({
                 >
                   <div className="flex flex-col justify-center lg:col-span-5">
                     {currentTreatment.category?.trim() && (
-                      <p className="mb-5 font-[var(--font-quicksand)] text-xs font-semibold uppercase tracking-[0.2em] text-[#8b6543]">
+                      <p className="mb-5 font-heading text-xs font-semibold uppercase tracking-[0.2em] text-brand">
                         {currentTreatment.category}
                       </p>
                     )}
 
-                    <h2 className="max-w-xl font-serif text-5xl font-medium leading-[1.02] tracking-[-0.04em] text-[#332a23] sm:text-6xl lg:text-7xl">
+                    <h2 className="max-w-xl font-heading text-5xl font-medium leading-[1.02] tracking-[-0.04em] text-[#332a23] sm:text-6xl lg:text-7xl">
                       {currentTreatment.title}
                     </h2>
                   </div>
@@ -405,7 +405,7 @@ export default function OfferClient({
 
                   <div className="lg:col-span-5 lg:col-start-8 lg:row-start-2 lg:pt-8">
                     {currentTreatment.category?.trim() && (
-                      <p className="mb-5 font-[var(--font-quicksand)] text-[0.68rem] font-semibold uppercase tracking-[0.19em] text-[#8b6543]">
+                      <p className="mb-5 font-heading text-[0.68rem] font-semibold uppercase tracking-[0.19em] text-brand">
                         {currentTreatment.category}
                       </p>
                     )}
@@ -434,7 +434,7 @@ export default function OfferClient({
                     onClick={() => goToTreatment(-1)}
                     disabled={treatmentCount < 2}
                     aria-label={copy.previous}
-                  className="flex h-12 w-12 items-center justify-center rounded-full border border-[#d9cbbb] text-xl text-[#5c4939] transition-colors hover:bg-[#efe5d9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b6543] disabled:cursor-not-allowed disabled:opacity-40 motion-reduce:transition-none"
+                  className="flex h-12 w-12 items-center justify-center rounded-full border border-[#d9cbbb] text-xl text-[#5c4939] transition-colors hover:bg-[#efe5d9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand disabled:cursor-not-allowed disabled:opacity-40 motion-reduce:transition-none"
                   >
                     <span aria-hidden="true">←</span>
                   </button>
@@ -444,7 +444,7 @@ export default function OfferClient({
                     onClick={() => goToTreatment(1)}
                     disabled={treatmentCount < 2}
                     aria-label={copy.next}
-                  className="flex h-12 w-12 items-center justify-center rounded-full border border-[#d9cbbb] text-xl text-[#5c4939] transition-colors hover:bg-[#efe5d9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b6543] disabled:cursor-not-allowed disabled:opacity-40 motion-reduce:transition-none"
+                  className="flex h-12 w-12 items-center justify-center rounded-full border border-[#d9cbbb] text-xl text-[#5c4939] transition-colors hover:bg-[#efe5d9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand disabled:cursor-not-allowed disabled:opacity-40 motion-reduce:transition-none"
                   >
                     <span aria-hidden="true">→</span>
                   </button>
@@ -452,7 +452,7 @@ export default function OfferClient({
               </div>
             </section>
           ) : (
-            <p className="py-16 text-center font-serif text-2xl text-[#6b625b]">
+            <p className="py-16 text-center font-heading text-2xl text-[#6b625b]">
               {copy.empty}
             </p>
           )}
@@ -496,7 +496,7 @@ export default function OfferClient({
                     ref={closeButtonRef}
                     type="button"
                     onClick={() => setSelectedTreatment(null)}
-                    className="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center border border-[#e7dbcf] bg-[#fbf8f4] text-2xl leading-none text-[#332a23] transition-colors hover:bg-[#eee5dc] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#805a3a] focus-visible:ring-offset-2 motion-reduce:transition-none sm:right-6 sm:top-6"
+                    className="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center border border-[#e7dbcf] bg-[#fbf8f4] text-2xl leading-none text-[#332a23] transition-colors hover:bg-[#eee5dc] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 motion-reduce:transition-none sm:right-6 sm:top-6"
                     aria-label={copy.close}
                   >
                     <span aria-hidden="true">×</span>
@@ -516,14 +516,14 @@ export default function OfferClient({
                     )}
 
                     {selectedTreatment.category?.trim() && (
-                      <p className="mb-4 font-[var(--font-quicksand)] text-xs font-semibold uppercase tracking-[0.2em] text-[#8b6543]">
+                      <p className="mb-4 font-heading text-xs font-semibold uppercase tracking-[0.2em] text-brand">
                         {selectedTreatment.category}
                       </p>
                     )}
 
                     <h2
                       id="treatment-dialog-title"
-                      className="max-w-2xl font-serif text-4xl font-medium leading-[1.08] tracking-[-0.03em] text-[#332a23] sm:text-5xl"
+                      className="max-w-2xl font-heading text-4xl font-medium leading-[1.08] tracking-[-0.03em] text-[#332a23] sm:text-5xl"
                     >
                       {selectedTreatment.title}
                     </h2>
@@ -537,7 +537,7 @@ export default function OfferClient({
                               index > 0 ? "border-t border-[#eee5dc]" : ""
                             }`}
                           >
-                            <dt className="pt-0.5 font-[var(--font-quicksand)] text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-[#8b6543]">
+                            <dt className="pt-0.5 font-heading text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-brand">
                               {fact.label}
                             </dt>
                             <dd className="text-sm leading-6 text-[#403830] sm:text-base">

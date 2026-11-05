@@ -7,6 +7,15 @@ module.exports = {
   ],
   theme: {
     extend: {
+      // Brązy marki – używać tylko tych nazw zamiast wpisywać kolory ręcznie.
+      colors: {
+        brand: {
+          DEFAULT: "#8f6a43", // tekst, przyciski (kontrast ok. 4,9:1 na białym)
+          light: "#a67c52", // duże nagłówki, akcenty
+          soft: "#b98b5c", // dekoracje: pismo ozdobne, kropki, strzałki
+          dark: "#7a5a38", // stan po najechaniu
+        },
+      },
       // Wartości używane w projekcie, których domyślny Tailwind 3.3 nie ma.
       opacity: {
         15: "0.15",

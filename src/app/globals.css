@@ -16,3 +16,13 @@
     --header-h: 92px;
   }
 }
+
+/* Wszystkie nagłówki tym samym krojem (Quicksand). */
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-quicksand), ui-sans-serif, system-ui, sans-serif;
+  }
+}

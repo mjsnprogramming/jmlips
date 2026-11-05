@@ -2,8 +2,8 @@ import Image from 'next/image';
 export default function HomeCTA() {
     return (
     <section className="relative overflow-hidden bg-[#f9f5f0] px-4 py-28">
-  <div className="absolute left-0 top-0 h-72 w-72 rounded-full bg-[#a67c52]/10 blur-3xl" />
-  <div className="absolute bottom-0 right-0 h-72 w-72 rounded-full bg-[#a67c52]/10 blur-3xl" />
+  <div className="absolute left-0 top-0 h-72 w-72 rounded-full bg-brand-light/10 blur-3xl" />
+  <div className="absolute bottom-0 right-0 h-72 w-72 rounded-full bg-brand-light/10 blur-3xl" />
 
   <div className="relative mx-auto grid max-w-6xl items-center gap-14 md:grid-cols-2">
     <div className="relative">
@@ -19,7 +19,7 @@ export default function HomeCTA() {
     </div>
 
     <div className="max-w-xl">
-      <p className="mb-4 text-sm font-medium uppercase tracking-[0.35em] text-[#a67c52]">
+      <p className="mb-4 text-sm font-medium uppercase tracking-[0.35em] text-brand-light">
         Konsultacja
       </p>
 
@@ -40,7 +40,7 @@ export default function HomeCTA() {
 
       <a
         href="/pl/contact"
-        className="mt-10 inline-flex rounded-full bg-[#a67c52] px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-[#956f49] hover:shadow-xl"
+        className="mt-10 inline-flex rounded-full bg-brand-light px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-brand-dark hover:shadow-xl"
       >
         Skontaktuj się
       </a>

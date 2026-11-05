@@ -104,9 +104,9 @@ export default function InstagramTestimonialsEN({ testimonials }: Props) {
     <section className="relative overflow-x-hidden overflow-y-visible bg-[#f9f5f0] py-24">
       <div className="mx-auto max-w-[1500px] px-4">
         <div className="mb-16 text-center">
-          <p className="mb-2 font-script text-3xl text-[#b98b5c]">Client Reviews</p>
+          <p className="mb-2 font-script text-3xl text-brand-soft">Client Reviews</p>
 
-          <h2 className="mb-5 font-heading text-5xl font-semibold tracking-tight text-[#a67c52] md:text-6xl">
+          <h2 className="mb-5 font-heading text-5xl font-semibold tracking-tight text-brand-light md:text-6xl">
             What My Clients Say
           </h2>
 
@@ -161,7 +161,7 @@ export default function InstagramTestimonialsEN({ testimonials }: Props) {
                         }
                       }}
                       className={[
-                        "block rounded-[2.5rem] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8f6a43]",
+                        "block rounded-[2.5rem] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand",
                         isActive ? "cursor-zoom-in" : "cursor-pointer",
                       ].join(" ")}
                       aria-label={
@@ -199,8 +199,8 @@ export default function InstagramTestimonialsEN({ testimonials }: Props) {
                   aria-current={activeIndex === index ? "true" : undefined}
                   className={[
                     "h-2.5 w-2.5 rounded-full transition-all duration-300 motion-reduce:transition-none",
-                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8f6a43] focus-visible:ring-offset-2 focus-visible:ring-offset-[#f9f5f0]",
-                    activeIndex === index ? "scale-125 bg-[#b98b5c]" : "bg-[#ded6ce]",
+                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-[#f9f5f0]",
+                    activeIndex === index ? "scale-125 bg-brand-soft" : "bg-[#ded6ce]",
                   ].join(" ")}
                 />
               ))}
@@ -212,10 +212,10 @@ export default function InstagramTestimonialsEN({ testimonials }: Props) {
               href={INSTAGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex w-full max-w-[760px] items-center justify-between gap-5 rounded-[1.75rem] border border-[#e5d8ca] bg-white/80 px-6 py-5 shadow-sm transition hover:border-[#b98b5c] hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8f6a43] sm:px-8"
+              className="group flex w-full max-w-[760px] items-center justify-between gap-5 rounded-[1.75rem] border border-[#e5d8ca] bg-white/80 px-6 py-5 shadow-sm transition hover:border-brand-soft hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand sm:px-8"
             >
               <div className="flex items-center gap-5">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl text-[#8f6a43]">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl text-brand">
                   <svg
                     viewBox="0 0 24 24"
                     fill="none"
@@ -237,7 +237,7 @@ export default function InstagramTestimonialsEN({ testimonials }: Props) {
                 </span>
               </div>
 
-              <div className="flex shrink-0 items-center gap-5 rounded-2xl border border-[#d5b895] px-5 py-3 font-semibold text-[#8f6a43] transition group-hover:bg-[#8f6a43] group-hover:text-white sm:min-w-[210px] sm:justify-center">
+              <div className="flex shrink-0 items-center gap-5 rounded-2xl border border-[#d5b895] px-5 py-3 font-semibold text-brand transition group-hover:bg-brand group-hover:text-white sm:min-w-[210px] sm:justify-center">
                 <span className="hidden sm:inline">@jm.studio_</span>
                 <span className="text-xl leading-none" aria-hidden="true">
                   →
@@ -252,7 +252,7 @@ export default function InstagramTestimonialsEN({ testimonials }: Props) {
                 type="button"
                 onClick={() => swiperRef.current?.slidePrev()}
                 aria-label="Previous review"
-                className="absolute left-8 top-1/2 sm:left-20 z-[80] flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-[#b98b5c] shadow-[0_14px_35px_rgba(90,64,43,0.14)] transition hover:scale-105 hover:bg-[#fffaf5] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8f6a43] active:scale-95"
+                className="absolute left-8 top-1/2 sm:left-20 z-[80] flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-brand-soft shadow-[0_14px_35px_rgba(90,64,43,0.14)] transition hover:scale-105 hover:bg-[#fffaf5] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand active:scale-95"
               >
                 <span className="text-2xl leading-none" aria-hidden="true">
                   ‹
@@ -263,7 +263,7 @@ export default function InstagramTestimonialsEN({ testimonials }: Props) {
                 type="button"
                 onClick={() => swiperRef.current?.slideNext()}
                 aria-label="Next review"
-                className="absolute right-8 top-1/2 sm:right-20 z-[80] flex h-14 w-14 -translate-y-1/2 translate-x-1/2 items-center justify-center rounded-full bg-white text-[#b98b5c] shadow-[0_14px_35px_rgba(90,64,43,0.14)] transition hover:scale-105 hover:bg-[#fffaf5] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8f6a43] active:scale-95"
+                className="absolute right-8 top-1/2 sm:right-20 z-[80] flex h-14 w-14 -translate-y-1/2 translate-x-1/2 items-center justify-center rounded-full bg-white text-brand-soft shadow-[0_14px_35px_rgba(90,64,43,0.14)] transition hover:scale-105 hover:bg-[#fffaf5] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand active:scale-95"
               >
                 <span className="text-2xl leading-none" aria-hidden="true">
                   ›
@@ -298,7 +298,7 @@ export default function InstagramTestimonialsEN({ testimonials }: Props) {
                 ref={closeButtonRef}
                 type="button"
                 onClick={closeModal}
-                className="absolute -right-3 -top-3 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white text-2xl text-[#8f6a43] shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8f6a43]"
+                className="absolute -right-3 -top-3 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white text-2xl text-brand shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
                 aria-label="Close review"
               >
                 <span aria-hidden="true">×</span>

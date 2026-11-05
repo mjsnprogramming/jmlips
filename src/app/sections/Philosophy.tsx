@@ -58,7 +58,7 @@ export default function Philosophy({ language = "pl" }) {
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-10 md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] md:gap-16">
           <header className="md:pt-2">
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.25em] text-[#a67c52]">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.25em] text-brand-light">
               {copy.eyebrow}
             </p>
             <h2

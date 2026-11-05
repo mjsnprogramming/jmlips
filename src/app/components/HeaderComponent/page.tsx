@@ -94,9 +94,9 @@ export default function HeaderComponent() {
       <div className="mx-auto flex h-[var(--header-h)] w-full items-center justify-between px-5 md:px-10">
         <Link
           href={language === 'pl' ? '/' : '/en'}
-          className="rounded-md text-2xl font-light tracking-tight text-gray-900 transition hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8f6a43] md:text-3xl"
+          className="rounded-md text-2xl font-light tracking-tight text-gray-900 transition hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand md:text-3xl"
         >
-          JM <span className="font-semibold text-[#a67c52]">Studio</span>
+          JM <span className="font-semibold text-brand-light">Studio</span>
         </Link>
 
         <nav
@@ -113,10 +113,10 @@ export default function HeaderComponent() {
                 aria-current={active ? 'page' : undefined}
                 className={[
                   'relative rounded-full px-4 py-2 text-sm tracking-[0.08em] transition-all duration-300',
-                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8f6a43]',
+                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand',
                   active
-                    ? 'bg-[#f7efe6] text-[#8f6a43]'
-                    : 'text-gray-800 hover:bg-[#f7efe6] hover:text-[#8f6a43]',
+                    ? 'bg-[#f7efe6] text-brand'
+                    : 'text-gray-800 hover:bg-[#f7efe6] hover:text-brand',
                 ].join(' ')}
               >
                 {language === 'pl' ? item.labelPl : item.labelEn}
@@ -142,9 +142,9 @@ export default function HeaderComponent() {
                 lang={lang.code}
                 className={[
                   'flex items-center gap-2 px-3 py-1.5 text-sm transition-all duration-300',
-                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#8f6a43]',
+                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand',
                   language === lang.code
-                    ? 'bg-[#8f6a43] text-white'
+                    ? 'bg-brand text-white'
                     : 'text-gray-800 hover:bg-[#f1ebe4]',
                 ].join(' ')}
               >
@@ -158,7 +158,7 @@ export default function HeaderComponent() {
             href={BOOKSY_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden rounded-full bg-[#8f6a43] px-5 py-2.5 text-sm font-semibold uppercase tracking-[0.14em] text-white shadow-md transition hover:bg-[#7a5a38] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8f6a43] focus-visible:ring-offset-2 xl:inline-flex"
+            className="hidden rounded-full bg-brand px-5 py-2.5 text-sm font-semibold uppercase tracking-[0.14em] text-white shadow-md transition hover:bg-brand-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 xl:inline-flex"
           >
             {copy.book}
             <span className="sr-only">{language === 'pl' ? ' (Booksy, nowa karta)' : ' (Booksy, new tab)'}</span>
@@ -180,8 +180,8 @@ export default function HeaderComponent() {
                   aria-label={`${lang.label} – ${lang.name}`}
                   lang={lang.code}
                   className={[
-                    'rounded px-1 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8f6a43]',
-                    language === lang.code ? 'font-medium text-[#8f6a43]' : 'text-gray-600',
+                    'rounded px-1 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand',
+                    language === lang.code ? 'font-medium text-brand' : 'text-gray-600',
                   ].join(' ')}
                 >
                   {lang.label}
@@ -196,18 +196,18 @@ export default function HeaderComponent() {
             aria-label={isMenuOpen ? copy.close : copy.open}
             aria-expanded={isMenuOpen}
             aria-controls="mobile-menu"
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-[#d7b995] bg-white/80 shadow-[0_8px_25px_rgba(0,0,0,0.06)] backdrop-blur-xl transition hover:bg-[#f7efe6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8f6a43] md:hidden"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-[#d7b995] bg-white/80 shadow-[0_8px_25px_rgba(0,0,0,0.06)] backdrop-blur-xl transition hover:bg-[#f7efe6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand md:hidden"
           >
             <span className="relative h-5 w-6">
               <span
                 className={[
-                  'absolute left-0 top-[6px] h-[1.5px] w-6 bg-[#a67c52] transition-all duration-300',
+                  'absolute left-0 top-[6px] h-[1.5px] w-6 bg-brand-light transition-all duration-300',
                   isMenuOpen ? 'translate-y-[4px] rotate-45' : '',
                 ].join(' ')}
               />
               <span
                 className={[
-                  'absolute right-0 top-[14px] h-[1.5px] w-4 bg-[#a67c52] transition-all duration-300',
+                  'absolute right-0 top-[14px] h-[1.5px] w-4 bg-brand-light transition-all duration-300',
                   isMenuOpen ? 'w-6 -translate-y-[4px] -rotate-45' : '',
                 ].join(' ')}
               />
@@ -234,10 +234,10 @@ export default function HeaderComponent() {
                   aria-current={active ? 'page' : undefined}
                   className={[
                     'rounded-full border px-5 py-4 text-sm tracking-[0.14em] shadow-sm transition-all duration-300',
-                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8f6a43]',
+                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand',
                     active
-                      ? 'border-[#d7b995] bg-[#f7efe6] text-[#8f6a43]'
-                      : 'border-white bg-white/80 text-gray-800 hover:bg-[#f7efe6] hover:text-[#8f6a43]',
+                      ? 'border-[#d7b995] bg-[#f7efe6] text-brand'
+                      : 'border-white bg-white/80 text-gray-800 hover:bg-[#f7efe6] hover:text-brand',
                   ].join(' ')}
                 >
                   {language === 'pl' ? item.labelPl : item.labelEn}
@@ -249,7 +249,7 @@ export default function HeaderComponent() {
               href={BOOKSY_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-2 rounded-full bg-[#8f6a43] px-5 py-4 text-center text-sm font-semibold uppercase tracking-[0.14em] text-white shadow-md transition hover:bg-[#7a5a38] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8f6a43] focus-visible:ring-offset-2"
+              className="mt-2 rounded-full bg-brand px-5 py-4 text-center text-sm font-semibold uppercase tracking-[0.14em] text-white shadow-md transition hover:bg-brand-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
             >
               {copy.book}
               <span className="sr-only">{language === 'pl' ? ' (Booksy, nowa karta)' : ' (Booksy, new tab)'}</span>
