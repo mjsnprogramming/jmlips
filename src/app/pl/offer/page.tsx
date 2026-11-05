@@ -2,6 +2,10 @@ import OfferClient from "../../components/offer/OfferClient";
 import { fetchTreatments } from "@/lib/allTreatments";
 import { fetchFAQ } from "@/lib/faq";
 
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata("offer", "pl");
+
 type Props = {
   searchParams?: { treatment?: string | string[] };
 };

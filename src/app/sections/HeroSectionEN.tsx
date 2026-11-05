@@ -29,12 +29,15 @@ export default function HeroSectionEN() {
       </video>
 
       <div className="relative z-10 mx-auto flex min-h-[calc(100vh_-_var(--header-h))] max-w-7xl flex-col items-center justify-center px-6 py-16 text-center supports-[height:100dvh]:min-h-[calc(100dvh_-_var(--header-h))]">
-        <p className="mb-5 text-sm font-bold uppercase tracking-[0.35em] text-brand [text-shadow:0_0_12px_rgba(255,255,255,0.95),0_0_4px_rgba(255,255,255,0.9)]">
-          JM Studio • Lublin • Zamość
-        </p>
-
-        <h1 className="max-w-5xl text-4xl font-semibold tracking-tight text-[#2f2924] drop-shadow-sm sm:text-5xl md:text-7xl">
-          Aesthetic Medicine &amp; Beauty Treatments
+        {/* Miasta są częścią nagłówka h1 (SEO), wygląd bez zmian. */}
+        <h1 className="flex flex-col items-center">
+          <span className="mb-5 block font-sans text-sm font-bold uppercase tracking-[0.35em] text-brand [text-shadow:0_0_12px_rgba(255,255,255,0.95),0_0_4px_rgba(255,255,255,0.9)]">
+            JM Studio • Lublin • Zamość
+            <span className="sr-only"> – </span>
+          </span>
+          <span className="block font-heading max-w-5xl text-4xl font-semibold tracking-tight text-[#2f2924] drop-shadow-sm sm:text-5xl md:text-7xl">
+            Aesthetic Medicine &amp; Beauty Treatments
+          </span>
         </h1>
 
         {/* TODO: tekst tymczasowy – podmienić na tłumaczenie właściwego opisu salonu z wersji PL. */}

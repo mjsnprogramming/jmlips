@@ -1,4 +1,8 @@
 
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata("privacy", "pl");
+
 
 export default function PrivacyPolicy() {
   return (

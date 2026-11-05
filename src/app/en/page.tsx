@@ -4,6 +4,10 @@ import PopularTreatments from '../sections/PopularTreatmentsEN'
 import { fetchPopularTreatments } from '@/lib/treatments'
 import { fetchTestimonials } from '@/lib/testimonials'
 
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata("home", "en");
+
 export default async function HomePage() {
   const popularTreatments = await fetchPopularTreatments('en')
   const testimonials = await fetchTestimonials()

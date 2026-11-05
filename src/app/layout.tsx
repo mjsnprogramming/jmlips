@@ -2,6 +2,8 @@ import "./globals.css";
 import type { Metadata } from "next";
 import HeaderComponent from "./components/HeaderComponent/page";
 import FooterComponent from "./components/FooterComponent/page";
+import HtmlLang from "./components/HtmlLang";
+import { SITE_NAME, SITE_URL, businessJsonLd } from "@/lib/seo";
 
 import { Inter, Dancing_Script, Quicksand } from "next/font/google";
 
@@ -26,8 +28,14 @@ const quicksand = Quicksand({
 });
 
 export const metadata: Metadata = {
-  title: "JM Studio",
-  description: "Gabinet medycyny estetycznej - Julia Majewska Studio",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "JM Studio – medycyna estetyczna Lublin i Zamość",
+    template: `%s | ${SITE_NAME}`,
+  },
+  description:
+    "Gabinet medycyny estetycznej JM Studio – Julia Majewska. Lublin (ul. Szafirowa 7A) i Zamość.",
+  applicationName: SITE_NAME,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -37,6 +45,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   className={`${inter.variable} ${dancing.variable} ${quicksand.variable}`}
 >
       <body className="bg-white text-black font-sans">
+        <HtmlLang />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(businessJsonLd()) }}
+        />
         <HeaderComponent />
         <main>{children}</main>
         <FooterComponent />

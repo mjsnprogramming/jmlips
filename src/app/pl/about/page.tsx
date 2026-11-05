@@ -3,6 +3,10 @@ import Philosophy from "@/app/sections/Philosophy";
 import Certificates from "@/app/sections/Certificates";
 import { fetchAboutData } from "@/lib/about";
 
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata("about", "pl");
+
 export default async function AboutPage() {
   const aboutData = await fetchAboutData();
 
