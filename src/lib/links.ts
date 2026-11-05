@@ -7,3 +7,21 @@ export const INSTAGRAM_URL = "https://www.instagram.com/juliamajewska_studio_/";
 // TODO: podać adresy profili salonu – na razie strony główne serwisów.
 export const TIKTOK_URL = "https://www.tiktok.com/";
 export const FACEBOOK_URL = "https://www.facebook.com/";
+
+export const PHONE_DISPLAY = "+48 791 967 007";
+export const PHONE_HREF = "tel:+48791967007";
+
+// Gabinet w Lublinie.
+export const ADDRESS = {
+  place: "Vital Skin",
+  street: "ul. Szafirowa 7A",
+  city: "20-573 Lublin",
+};
+export const MAPS_DIRECTIONS_URL =
+  "https://www.google.com/maps/dir/?api=1&destination=Vital+Skin%2C+ul.+Szafirowa+7A%2C+20-573+Lublin";
+export const MAP_EMBED_URL =
+  "https://www.google.com/maps?q=Vital+Skin%2C+ul.+Szafirowa+7A%2C+20-573+Lublin&output=embed";
+
+// TODO: ustalić, który profil jest właściwy – strona kontaktu używa innego adresu niż INSTAGRAM_URL.
+export const INSTAGRAM_CONTACT_URL = "https://www.instagram.com/julia_majewska_studio/";
+export const INSTAGRAM_CONTACT_HANDLE = "@julia_majewska_studio";

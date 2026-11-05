@@ -1,34 +1,64 @@
 import Image from "next/image";
+import { ADDRESS, BOOKSY_URL, INSTAGRAM_CONTACT_URL } from "@/lib/links";
 
-// Podmień na właściwy adres Booksy, gdy będzie dostępny.
-const BOOKSY_URL = "https://booksy.com/pl-pl/232580_julia-majewska-studio_medycyna-estetyczna_6832_lublin?do=invite&_branch_match_id=1645455511291410438&utm_medium=profile_share_from_profile&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXT07J0UvKz88urtRLzs%2FVL0yxsKgIDwhyiUiyrytKTUstKsrMS49PKsovL04tsnXOKMrPTQUAXu%2FcrTwAAAA%3D"
-const INSTAGRAM_URL = "https://www.instagram.com/julia_majewska_studio/";
+const COPY = {
+  pl: {
+    eyebrow: "Kontakt",
+    heading: "Zadbaj o naturalny efekt.",
+    headingAccent: "Zacznij od konsultacji.",
+    intro:
+      "Nie wiesz, który zabieg będzie najlepszy? Podczas konsultacji omówimy Twoje oczekiwania i dobierzemy rozwiązanie dopasowane do Twoich potrzeb.",
+    benefits: [
+      "Indywidualna konsultacja przed zabiegiem",
+      "Dobór terapii dopasowany do Twoich potrzeb",
+      "Wygodna rezerwacja online przez Booksy",
+    ],
+    booksy: "Umów w Booksy",
+    instagram: "Napisz na Instagramie",
+    newTab: "(otwiera się w nowej karcie)",
+    imageAlt: "Wnętrze JM Studio",
+    cardNote: "Rezerwacja online · Booksy",
+  },
+  en: {
+    eyebrow: "Contact",
+    heading: "Natural results start here.",
+    headingAccent: "Begin with a consultation.",
+    intro:
+      "Not sure which treatment is right for you? During the consultation we will talk through your expectations and choose a solution tailored to your needs.",
+    benefits: [
+      "An individual consultation before every treatment",
+      "A treatment plan tailored to your needs",
+      "Easy online booking via Booksy",
+    ],
+    booksy: "Book on Booksy",
+    instagram: "Message me on Instagram",
+    newTab: "(opens in a new tab)",
+    imageAlt: "JM Studio interior",
+    cardNote: "Online booking · Booksy",
+  },
+} as const;
 
-export default function ContactIntro() {
+export default function ContactIntro({ lang = "pl" }: { lang?: "pl" | "en" }) {
+  const copy = COPY[lang];
+
   return (
     <section className="overflow-hidden bg-[#f8f5f0] px-5 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
       <div className="mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
         <div className="max-w-2xl">
-          <p className="mb-6 flex items-center gap-4 text-xs font-medium uppercase tracking-[0.28em] text-brand-light sm:text-sm">
-            Kontakt <span className="h-px w-12 bg-[#c8a987]" aria-hidden="true" />
+          <p className="mb-6 flex items-center gap-4 text-xs font-medium uppercase tracking-[0.28em] text-brand sm:text-sm">
+            {copy.eyebrow} <span className="h-px w-12 bg-[#c8a987]" aria-hidden="true" />
           </p>
 
           <h1 className="font-heading text-[2.8rem] font-normal leading-[1.06] tracking-[-0.045em] text-[#171513] sm:text-6xl lg:text-[3.65rem] xl:text-[4rem]">
-            Zadbaj o naturalny efekt.{" "}
-            <span className="italic text-brand-light">Zacznij od konsultacji.</span>
+            {copy.heading} <span className="text-brand-light">{copy.headingAccent}</span>
           </h1>
 
           <p className="mt-7 max-w-xl text-base leading-7 text-[#625d58] sm:text-[1.05rem] sm:leading-8">
-            Nie wiesz, który zabieg będzie najlepszy? Podczas konsultacji omówimy
-            Twoje oczekiwania i dobierzemy rozwiązanie dopasowane do Twoich potrzeb.
+            {copy.intro}
           </p>
 
           <ul className="mt-6 space-y-3 text-sm text-[#625d58] sm:text-[0.95rem]">
-            {[
-              "Indywidualna konsultacja przed zabiegiem",
-              "Dobór terapii dopasowany do Twoich potrzeb",
-              "Wygodna rezerwacja online przez Booksy",
-            ].map((benefit) => (
+            {copy.benefits.map((benefit) => (
               <li key={benefit} className="flex items-center gap-3">
                 <span className="flex h-[22px] w-[22px] shrink-0 items-center justify-center rounded-full bg-brand-soft text-white">
                   <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" aria-hidden="true">
@@ -49,17 +79,21 @@ export default function ContactIntro() {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a
               href={BOOKSY_URL}
-              className="inline-flex min-h-12 items-center justify-center gap-4 rounded-full bg-brand-light px-7 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-white transition-colors hover:bg-brand focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-light motion-reduce:transition-none sm:min-w-[205px]"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-12 items-center justify-center gap-4 rounded-full bg-brand px-7 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-white transition-colors hover:bg-brand-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand motion-reduce:transition-none sm:min-w-[205px]"
             >
-              Umów w Booksy <span aria-hidden="true">→</span>
+              {copy.booksy} <span aria-hidden="true">→</span>
+              <span className="sr-only">{copy.newTab}</span>
             </a>
             <a
-              href={INSTAGRAM_URL}
+              href={INSTAGRAM_CONTACT_URL}
               target="_blank"
-              rel="noreferrer"
-              className="inline-flex min-h-12 items-center justify-center gap-4 rounded-full border border-[#d9c6b1] px-7 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-brand transition-colors hover:bg-white/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-light motion-reduce:transition-none sm:min-w-[240px]"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-12 items-center justify-center gap-4 rounded-full border border-[#d9c6b1] px-7 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-brand transition-colors hover:bg-white/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand motion-reduce:transition-none sm:min-w-[240px]"
             >
-              Napisz na Instagramie <span aria-hidden="true">→</span>
+              {copy.instagram} <span aria-hidden="true">→</span>
+              <span className="sr-only">{copy.newTab}</span>
             </a>
           </div>
         </div>
@@ -71,7 +105,7 @@ export default function ContactIntro() {
           />
           <Image
             src="/images/studio.png"
-            alt="Wnętrze JM Studio"
+            alt={copy.imageAlt}
             width={760}
             height={620}
             priority
@@ -79,15 +113,13 @@ export default function ContactIntro() {
           />
 
           <div className="absolute -bottom-1 right-0 z-10 w-[min(17rem,88%)] rounded-2xl bg-[#fcfaf7]/95 p-5 shadow-[0_14px_38px_rgba(75,54,35,0.12)] backdrop-blur-sm sm:-right-2 sm:w-[17rem] sm:p-6">
-            <p className="text-[10px] font-medium uppercase tracking-[0.24em] text-brand-light">
-              JM Studio
+            <p className="text-[10px] font-medium uppercase tracking-[0.24em] text-brand">
+              JM Studio · {ADDRESS.place}
             </p>
             <p className="mt-2 text-base font-medium text-[#201d1a]">
-              Lublin, Szafirowa 7
+              {ADDRESS.street}, Lublin
             </p>
-            <p className="mt-1 text-sm text-[#706963]">
-              Rezerwacja online · Booksy
-            </p>
+            <p className="mt-1 text-sm text-[#706963]">{copy.cardNote}</p>
           </div>
         </div>
       </div>

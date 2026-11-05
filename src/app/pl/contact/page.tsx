@@ -1,13 +1,13 @@
-import ContactIntro from "@/app/sections/ContactIntro"
-import ContactItems from "@/app/sections/ContactItems"
-import ContactMap from "@/app/sections/ContactMap"
+import ContactIntro from "@/app/sections/ContactIntro";
+import ContactItems from "@/app/sections/ContactItems";
+import ContactMap from "@/app/sections/ContactMap";
 
-export default function Contact() {
+export default function ContactPage() {
   return (
-    <main className="bg-[#fbf8f4] text-[#2f2924]">
-      <ContactIntro/>
-      <ContactItems/>
-      <ContactMap/>
-    </main>
-  )
+    <div className="bg-[#fbf8f4] text-[#2f2924]">
+      <ContactIntro lang="pl" />
+      <ContactItems lang="pl" />
+      <ContactMap lang="pl" />
+    </div>
+  );
 }
