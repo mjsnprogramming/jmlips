@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "portfolio": "node scripts/generate-portfolio.mjs",
+    "predev": "node scripts/generate-portfolio.mjs",
+    "prebuild": "node scripts/generate-portfolio.mjs"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.6.0",

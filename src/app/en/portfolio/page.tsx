@@ -1,6 +1,8 @@
-import { redirect } from "next/navigation";
+import PortfolioClient from "@/app/components/portfolio/PortfolioClient";
+import { fetchPortfolio } from "@/lib/portfolio";
 
-// TODO: angielska wersja strony nie jest jeszcze gotowa – tymczasowo przekierowanie na wersję polską.
-export default function Page() {
-  redirect("/pl/portfolio");
+export default async function PortfolioPage() {
+  const imagesByCategory = await fetchPortfolio();
+
+  return <PortfolioClient lang="en" imagesByCategory={imagesByCategory} />;
 }
