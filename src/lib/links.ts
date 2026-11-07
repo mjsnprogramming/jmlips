@@ -4,9 +4,9 @@ export const BOOKSY_URL =
 
 export const INSTAGRAM_URL = "https://www.instagram.com/juliamajewska_studio_/";
 
-// TODO: podać adres profilu na Facebooku – na razie strona główna serwisu.
 export const TIKTOK_URL = "https://www.tiktok.com/@juliamajewska_studio_";
-export const FACEBOOK_URL = "https://www.facebook.com/";
+// Link udostępniania z aplikacji (przekierowuje na profil). Można podmienić na pełny adres profilu.
+export const FACEBOOK_URL = "https://www.facebook.com/share/19tN81Uhae/";
 
 // Gabinet w Lublinie.
 export const ADDRESS = {
