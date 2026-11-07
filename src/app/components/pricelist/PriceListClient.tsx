@@ -1,6 +1,8 @@
 "use client"
 
 import { useId, useMemo, useState } from "react"
+import { FaInstagram } from "react-icons/fa6"
+import { INSTAGRAM_HANDLE, INSTAGRAM_URL } from "@/lib/links"
 import type { Category } from "@/lib/pricelist"
 
 type Lang = "pl" | "en"
@@ -8,6 +10,8 @@ type Lang = "pl" | "en"
 const COPY = {
   pl: {
     heading: "Cennik",
+    promo: "Aktualne promocje publikuję na Instagramie – ceny promocyjne mogą różnić się od cennika.",
+    newTab: "otwiera się w nowej karcie",
     searchLabel: "Wyszukaj zabieg w cenniku",
     searchPlaceholder: "Wyszukaj zabieg",
     columns: ["Obszar", "Liczba zabiegów", "Cena", "Opis"],
@@ -16,6 +20,8 @@ const COPY = {
   },
   en: {
     heading: "Prices",
+    promo: "I post current promotions on Instagram – promotional prices may differ from this price list.",
+    newTab: "opens in a new tab",
     searchLabel: "Search the price list",
     searchPlaceholder: "Search treatments",
     columns: ["Area", "Number of sessions", "Price", "Description"],
@@ -83,8 +89,26 @@ export default function PriceListClient({
           {copy.heading}
         </h1>
 
+        {/* Promocje zmieniają się często – są na Instagramie, a cennik pokazuje ceny podstawowe. */}
+        <div className="mx-auto mt-8 flex w-full max-w-[880px] flex-col items-center gap-4 rounded-2xl border border-[#e5d8ca] bg-white/70 px-5 py-4 text-center sm:flex-row sm:justify-between sm:text-left">
+          <p className="flex items-center gap-3 text-[15px] leading-6 text-[#5c4939] md:text-base">
+            <FaInstagram aria-hidden="true" className="hidden h-6 w-6 shrink-0 text-brand sm:block" />
+            {copy.promo}
+          </p>
+          <a
+            href={INSTAGRAM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex shrink-0 items-center gap-3 rounded-full border border-[#d5b895] px-4 py-2 text-sm font-semibold text-brand transition hover:bg-brand hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand motion-reduce:transition-none"
+          >
+            {INSTAGRAM_HANDLE}
+            <span aria-hidden="true">→</span>
+            <span className="sr-only">({copy.newTab})</span>
+          </a>
+        </div>
+
         {initialData.length > 0 && (
-          <div className="mt-10 flex justify-center md:mt-12">
+          <div className="mt-6 flex justify-center md:mt-8">
             <div className="relative w-full max-w-[880px]">
               <label htmlFor={searchId} className="sr-only">
                 {copy.searchLabel}

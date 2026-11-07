@@ -40,7 +40,7 @@ Uwaga: `treatment` i `alltreatments` to różne typy. Linki z polecanych zabieg�
 ## Decyzje właściciela (nie zmieniać bez pytania)
 
 - Wygląd i klimat zostają. To ma być poprawa jakości, nie redesign.
-- **Strona działa bez WordPressa w internecie** (treści zmieniają się rzadko). Lokalny WordPress służy właścicielowi jako edytor: zmiana w panelu → `npm run export-content` → push. Portfolio na bieżąco jest na Instagramie; pod galerią i w pustych kategoriach jest odnośnik do Instagrama.
+- **Strona działa bez WordPressa w internecie** (treści zmieniają się rzadko). Lokalny WordPress służy właścicielowi jako edytor: zmiana w panelu → `npm run export-content` → push. Portfolio na bieżąco jest na Instagramie; pod galerią i w pustych kategoriach jest odnośnik do Instagrama. Cennik pokazuje ceny podstawowe, promocje są na Instagramie (karta pod nagłówkiem cennika).
 - Hero: mały napis „JM Studio • Lublin • Zamość” nad dużym „Medycyna estetyczna i zabiegi upiększające” (oba w `<h1>` ze względu na SEO, wygląd bez zmian). Mały napis pogrubiony, z białą poświatą. Wideo bez nakładki.
 - „Umów wizytę” prowadzi do Booksy (Hero, header od 1280 px, menu mobilne).
 - Wizyty umawia się tylko przez **Booksy i Instagram**. Na stronie nie ma telefonu ani e-maila do kontaktu (właścicielka z nich nie korzysta). E-mail zostaje wyłącznie w polityce prywatności i regulaminie jako kontakt w sprawie danych osobowych.
