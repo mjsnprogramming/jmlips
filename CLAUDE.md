@@ -70,7 +70,6 @@ Uwaga: `treatment` i `alltreatments` to różne typy. Linki z polecanych zabieg�
 
 ## Do zrobienia (czeka na właściciela)
 
-- Tekst pod nagłówkiem w Hero (PL i EN), teraz tymczasowy (TODO w `HeroSection.tsx` / `HeroSectionEN.tsx`).
 - Dane do `src/lib/legal.ts`: imię i nazwisko lub nazwa firmy, NIP. Potwierdzić zasady w regulaminie (odwołanie 24 h, przedpłaty, przeciwwskazania).
 - Domena (`NEXT_PUBLIC_SITE_URL`).
 - Adresy profili TikTok i Facebook (`src/lib/links.ts`).

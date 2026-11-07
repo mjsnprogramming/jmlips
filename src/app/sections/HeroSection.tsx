@@ -40,10 +40,9 @@ export default function HeroSection() {
           </span>
         </h1>
 
-        {/* TODO: tekst tymczasowy – podmienić na aktualny opis salonu i zdanie o zabiegach od właściciela. */}
         <p className="mt-8 max-w-2xl text-lg leading-8 text-gray-700 md:text-xl">
-          Profesjonalne zabiegi beauty tworzone z dbałością o naturalny efekt,
-          komfort i Twoje indywidualne potrzeby.
+          Medycyna estetyczna z indywidualnym podejściem. Spokojna atmosfera,
+          rzetelna konsultacja i plan zabiegowy dopasowany do Ciebie.
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">

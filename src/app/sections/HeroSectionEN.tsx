@@ -40,10 +40,9 @@ export default function HeroSectionEN() {
           </span>
         </h1>
 
-        {/* TODO: tekst tymczasowy – podmienić na tłumaczenie właściwego opisu salonu z wersji PL. */}
         <p className="mt-8 max-w-2xl text-lg leading-8 text-gray-700 md:text-xl">
-          Professional beauty treatments designed with care for natural-looking
-          results, your comfort, and your individual needs.
+          Aesthetic medicine with an individual approach. A calm atmosphere,
+          a thorough consultation and a treatment plan tailored to you.
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
