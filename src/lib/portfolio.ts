@@ -14,7 +14,7 @@ export const PORTFOLIO_CATEGORIES = [
   { id: "wolumetria-brody", label: { pl: "Wolumetria brody", en: "Chin Augmentation" } },
   {
     id: "wolumetria-katow-zuchwy",
-    label: { pl: "Wolumetria kątów żuchwy", en: "Jawline Augmentation" },
+    label: { pl: "Wolumetria kątów żuchwy", en: "Jawline Contouring" },
   },
   { id: "wolumetria-policzkow", label: { pl: "Wolumetria policzków", en: "Cheek Augmentation" } },
 ] as const

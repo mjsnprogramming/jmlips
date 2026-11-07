@@ -48,6 +48,21 @@ Uwaga: `treatment` i `alltreatments` to różne typy. Linki z polecanych zabieg�
 - Na stronie zabiegów kategoria może się wyświetlać dwa razy (nad tytułem i nad opisem). Tak ma zostać.
 - Brązowy nagłówek w sekcji opinii zostaje (celowy akcent).
 
+### Nazwy zabiegów (PL → EN, pisownia brytyjska)
+
+Te same nazwy w kodzie (portfolio, kategorie cennika, SEO) i w polach `title_en` w WordPressie:
+
+| PL | EN |
+|---|---|
+| Modelowanie ust | Lip Augmentation |
+| Stymulatory tkankowe | Tissue Stimulators |
+| Usuwanie kwasu hialuronowego | Hyaluronic Acid Dissolving |
+| Wolumetria brody | Chin Augmentation |
+| Wolumetria kątów żuchwy | Jawline Contouring |
+| Wolumetria policzków | Cheek Augmentation |
+| Wolumetria twarzy (kategoria cennika) | Facial Volumisation |
+| Pakiety zabiegowe (kategoria cennika) | Treatment Packages |
+
 ## Konwencje
 
 - **Kolory marki** z `tailwind.config.js`, bez wpisywania odcieni ręcznie: `brand` (#8f6a43, tekst i przyciski, kontrast ok. 4,9:1), `brand-light` (#a67c52, tylko duże nagłówki i akcenty), `brand-soft` (#b98b5c, dekoracje), `brand-dark` (#7a5a38, hover). Jasne beże (#d7b995, #eadbc9 itd.) to ramki i tła.
@@ -72,7 +87,7 @@ Uwaga: `treatment` i `alltreatments` to różne typy. Linki z polecanych zabieg�
 
 - Dane do `src/lib/legal.ts`: imię i nazwisko lub nazwa firmy, NIP. Potwierdzić zasady w regulaminie (odwołanie 24 h, przedpłaty, przeciwwskazania).
 - Domena (`NEXT_PUBLIC_SITE_URL`).
-- Angielskie nazwy zabiegów z WordPressa, żeby ujednolicić portfolio (`src/lib/portfolio.ts`) i cennik (`src/lib/pricelist.ts`).
+- W WordPressie: angielskie tytuły zabiegów (`title_en` w ofercie, polecanych i cenniku) zgodnie z tabelą „Nazwy zabiegów”.
 - W WordPressie: zmiana tytułu „Hialuronidaza” na „Usuwanie kwasu hialuronowego”, uzupełnienie zdjęć zabiegów (brak zdjęcia = beżowe pole), ewentualnie typ `portfolio_item`.
 - Zdjęcia do portfolio.
 - Przegląd polityki prywatności i regulaminu przez osobę znającą RODO / prawo przed publikacją.

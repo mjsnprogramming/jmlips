@@ -59,7 +59,7 @@ export const PAGES: Record<PageKey, Partial<Record<Lang, PageCopy>>> = {
       path: "/en/offer",
       title: "Treatments – lips, facial volumisation, tissue stimulators",
       description:
-        "Aesthetic medicine treatments at JM Studio in Lublin: lip augmentation, chin, cheek and jawline volumisation, tissue stimulators and hyaluronic acid dissolving.",
+        "Aesthetic medicine treatments at JM Studio in Lublin: lip augmentation, chin and cheek augmentation, jawline contouring, tissue stimulators and hyaluronic acid dissolving.",
     },
   },
   pricelist: {

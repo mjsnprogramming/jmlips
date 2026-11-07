@@ -47,7 +47,7 @@ const CATEGORY_LABELS = {
   },
   wolumetria_twarzy: {
     pl: "Wolumetria twarzy",
-    en: "Facial Volumization",
+    en: "Facial Volumisation",
   },
   stymulatory_tkankowe: {
     pl: "Stymulatory tkankowe",
