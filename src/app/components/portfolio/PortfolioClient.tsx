@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { FaInstagram } from "react-icons/fa6";
+import { INSTAGRAM_HANDLE, INSTAGRAM_URL } from "@/lib/links";
 import {
   PORTFOLIO_CATEGORIES,
   type PortfolioCategoryId,
@@ -20,7 +22,9 @@ const copy = {
     introduction:
       "Zobacz realne efekty mojej pracy i przekonaj się, jak subtelne zmiany potrafią podkreślić naturalne piękno.",
     galleryLabel: "REALNE EFEKTY • NATURALNY WYGLĄD",
-    empty: "Zdjęcia efektów dla tej kategorii pojawią się wkrótce.",
+    empty: "Zdjęcia z tego zabiegu znajdziesz na moim Instagramie.",
+    instagram: "Więcej zdjęć z zabiegów na moim Instagramie",
+    newTab: "otwiera się w nowej karcie",
     previous: "Poprzednia strona galerii",
     next: "Następna strona galerii",
     openImage: "Otwórz zdjęcie",
@@ -34,7 +38,9 @@ const copy = {
     introduction:
       "See the real results of my work and discover how subtle changes can highlight your natural beauty.",
     galleryLabel: "REAL RESULTS • NATURAL LOOK",
-    empty: "Photos for this treatment will be added soon.",
+    empty: "You will find photos of this treatment on my Instagram.",
+    instagram: "More treatment photos on my Instagram",
+    newTab: "opens in a new tab",
     previous: "Previous gallery page",
     next: "Next gallery page",
     openImage: "Open photo",
@@ -254,6 +260,25 @@ export default function PortfolioClient({
               </button>
             </nav>
           )}
+
+          <div className="mt-12 flex justify-center sm:mt-16">
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex w-full max-w-[760px] items-center justify-between gap-5 rounded-[1.75rem] border border-[#e5d8ca] bg-white/80 px-6 py-5 shadow-sm transition hover:border-brand-soft hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand motion-reduce:transition-none sm:px-8"
+            >
+              <div className="flex items-center gap-5">
+                <FaInstagram aria-hidden="true" className="h-8 w-8 shrink-0 text-brand" />
+                <span className="text-base text-gray-600 sm:text-lg">{text.instagram}</span>
+              </div>
+              <span className="flex shrink-0 items-center gap-5 rounded-2xl border border-[#d5b895] px-5 py-3 font-semibold text-brand transition group-hover:bg-brand group-hover:text-white motion-reduce:transition-none sm:min-w-[210px] sm:justify-center">
+                <span className="hidden sm:inline">{INSTAGRAM_HANDLE}</span>
+                <span aria-hidden="true" className="text-xl leading-none">→</span>
+                <span className="sr-only">({text.newTab})</span>
+              </span>
+            </a>
+          </div>
         </div>
       </section>
 
