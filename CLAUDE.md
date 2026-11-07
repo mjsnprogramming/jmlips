@@ -18,7 +18,7 @@ Strona salonu prowadzonego przez siostrę właściciela repo (Julia Majewska). P
 
 ### Wspólne dane: zmieniać tylko tutaj
 
-- `src/lib/links.ts`: Booksy, Instagram, TikTok, Facebook, telefon, adres gabinetu, linki do map.
+- `src/lib/links.ts`: Booksy, Instagram, TikTok, Facebook, adres gabinetu, linki do map.
 - `src/lib/legal.ts`: dane administratora do polityki i regulaminu. Puste pola widać na stronie jako „[do uzupełnienia: …]”.
 - `src/lib/seo.ts`: tytuły i opisy stron (PL/EN), domena, dane firmy (JSON-LD). Każda strona eksportuje `metadata = pageMetadata("klucz", "pl"|"en")`.
 
@@ -39,6 +39,7 @@ Uwaga: `treatment` i `alltreatments` to różne typy. Linki z polecanych zabieg�
 - Wygląd i klimat zostają. To ma być poprawa jakości, nie redesign.
 - Hero: mały napis „JM Studio • Lublin • Zamość” nad dużym „Medycyna estetyczna i zabiegi upiększające” (oba w `<h1>` ze względu na SEO, wygląd bez zmian). Mały napis pogrubiony, z białą poświatą. Wideo bez nakładki.
 - „Umów wizytę” prowadzi do Booksy (Hero, header od 1280 px, menu mobilne).
+- Wizyty umawia się tylko przez **Booksy i Instagram**. Na stronie nie ma telefonu ani e-maila do kontaktu (właścicielka z nich nie korzysta). E-mail zostaje wyłącznie w polityce prywatności i regulaminie jako kontakt w sprawie danych osobowych.
 - Na przycisku w opiniach zostaje `@jm.studio_`.
 - Bez cen i bez rezerwacji online na kartach zabiegów, bez gwiazdek i ocen z Google.
 - Bez osobnych podstron `/lublin` i `/zamosc`. Zamość to „wizyty wyjazdowe w wybrane dni”.

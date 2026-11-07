@@ -8,9 +8,6 @@ export const INSTAGRAM_URL = "https://www.instagram.com/juliamajewska_studio_/";
 export const TIKTOK_URL = "https://www.tiktok.com/";
 export const FACEBOOK_URL = "https://www.facebook.com/";
 
-export const PHONE_DISPLAY = "+48 791 967 007";
-export const PHONE_HREF = "tel:+48791967007";
-
 // Gabinet w Lublinie.
 export const ADDRESS = {
   place: "Vital Skin",

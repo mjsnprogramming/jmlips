@@ -4,7 +4,6 @@ import {
   BOOKSY_URL,
   INSTAGRAM_URL,
   MAPS_DIRECTIONS_URL,
-  PHONE_DISPLAY,
 } from "./links";
 
 // TODO: tymczasowa domena – podmienić na właściwą (albo ustawić zmienną NEXT_PUBLIC_SITE_URL).
@@ -155,7 +154,6 @@ export function businessJsonLd() {
     url: SITE_URL,
     image: `${SITE_URL}/images/hero-poster.jpg`,
     logo: `${SITE_URL}/images/logo.jpg`,
-    telephone: PHONE_DISPLAY.replace(/\s/g, ""),
     address: {
       "@type": "PostalAddress",
       streetAddress: `${ADDRESS.street} (${ADDRESS.place})`,

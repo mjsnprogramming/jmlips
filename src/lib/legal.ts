@@ -1,4 +1,4 @@
-import { ADDRESS, PHONE_DISPLAY } from "./links";
+import { ADDRESS } from "./links";
 
 /**
  * Dane administratora do polityki prywatności i regulaminu.
@@ -12,6 +12,5 @@ export const LEGAL = {
   /** Adres do korespondencji – domyślnie adres gabinetu. */
   address: `${ADDRESS.street}, ${ADDRESS.city}`,
   email: "juliamajewska@gmail.com",
-  phone: PHONE_DISPLAY,
   lastUpdated: "5 listopada 2026",
 };

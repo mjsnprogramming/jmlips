@@ -46,8 +46,8 @@ export default function PrivacyPolicy() {
             W sprawach dotyczących danych osobowych możesz pisać na adres{" "}
             <a href={`mailto:${LEGAL.email}`} className={linkClass}>
               {LEGAL.email}
-            </a>{" "}
-            lub dzwonić pod numer {LEGAL.phone}.
+            </a>
+            .
           </p>
         </Section>
 

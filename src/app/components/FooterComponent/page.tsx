@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { FaFacebookF, FaInstagram, FaTiktok } from 'react-icons/fa6'
-import { FACEBOOK_URL, INSTAGRAM_URL, TIKTOK_URL } from '@/lib/links'
+import { BOOKSY_URL, FACEBOOK_URL, INSTAGRAM_URL, TIKTOK_URL } from '@/lib/links'
 
 const content = {
   pl: {
@@ -26,6 +26,7 @@ const content = {
     pricelist: 'Cennik',
     rights: 'Wszystkie prawa zastrzeżone.',
     newTab: 'otwiera się w nowej karcie',
+    booksy: 'Booksy – rezerwacja online',
     credit: 'Projekt i realizacja: MJSN.dev',
   },
   en: {
@@ -48,6 +49,7 @@ const content = {
     pricelist: 'Price list',
     rights: 'All rights reserved.',
     newTab: 'opens in a new tab',
+    booksy: 'Booksy – online booking',
     credit: 'Designed and developed by MJSN.dev',
   },
 } as const
@@ -154,10 +156,22 @@ export default function FooterComponent() {
 
             <address className="mt-6 flex flex-col gap-4 not-italic text-gray-600">
               <a
-                href="tel:+48791967007"
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="transition-colors hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
               >
-                +48 791 967 007
+                Instagram
+                <span className="sr-only"> ({t.newTab})</span>
+              </a>
+              <a
+                href={BOOKSY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+              >
+                {t.booksy}
+                <span className="sr-only"> ({t.newTab})</span>
               </a>
               <span>Lublin • Zamość</span>
             </address>

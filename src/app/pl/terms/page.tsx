@@ -22,7 +22,7 @@ const terms: { title: string; content: ReactNode }[] = [
           <a href={`mailto:${LEGAL.email}`} className={linkClass}>
             {LEGAL.email}
           </a>
-          , tel. {LEGAL.phone} („Studio”).
+ („Studio”).
         </p>
         <p>
           Regulamin określa zasady korzystania ze strony oraz najważniejsze zasady umawiania i
