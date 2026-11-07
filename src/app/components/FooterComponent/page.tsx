@@ -159,12 +159,6 @@ export default function FooterComponent() {
               >
                 +48 791 967 007
               </a>
-              <a
-                href="mailto:juliamajewska@gmail.com"
-                className="break-words transition-colors hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
-              >
-                juliamajewska@gmail.com
-              </a>
               <span>Lublin • Zamość</span>
             </address>
           </div>

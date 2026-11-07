@@ -95,12 +95,12 @@ export const PAGES: Record<PageKey, Partial<Record<Lang, PageCopy>>> = {
     pl: {
       path: "/pl/contact",
       title: "Kontakt i dojazd – Lublin, ul. Szafirowa 7A",
-      description: `Umów wizytę w JM Studio przez Booksy, Instagram lub telefonicznie (${PHONE_DISPLAY}). Gabinet w ${ADDRESS.place}, ${ADDRESS.street}, ${ADDRESS.city}.`,
+      description: `Umów wizytę w JM Studio przez Booksy lub Instagram. Gabinet w ${ADDRESS.place}, ${ADDRESS.street}, ${ADDRESS.city}.`,
     },
     en: {
       path: "/en/contact",
       title: "Contact and directions – Lublin, Szafirowa 7A",
-      description: `Book your visit at JM Studio via Booksy, Instagram or by phone (${PHONE_DISPLAY}). Treatment room at ${ADDRESS.place}, ${ADDRESS.street}, ${ADDRESS.city}.`,
+      description: `Book your visit at JM Studio via Booksy or Instagram. Treatment room at ${ADDRESS.place}, ${ADDRESS.street}, ${ADDRESS.city}.`,
     },
   },
   privacy: {

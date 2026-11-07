@@ -70,7 +70,7 @@ const terms: { title: string; content: ReactNode }[] = [
     content: (
       <>
         <p>
-          Wizytę można umówić przez serwis Booksy, telefonicznie, przez Instagram lub e-mailowo.
+          Wizytę można umówić przez serwis Booksy lub przez Instagram.
           Rezerwacje w Booksy podlegają także regulaminowi tego serwisu.
         </p>
         <p>

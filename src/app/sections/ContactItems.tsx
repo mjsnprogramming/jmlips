@@ -4,11 +4,9 @@ import {
   INSTAGRAM_CONTACT_HANDLE,
   INSTAGRAM_CONTACT_URL,
   MAPS_DIRECTIONS_URL,
-  PHONE_DISPLAY,
-  PHONE_HREF,
 } from "@/lib/links";
 
-type Icon = "location" | "phone" | "instagram" | "calendar";
+type Icon = "location" | "instagram" | "calendar";
 
 type ContactItem = {
   label: string;
@@ -34,15 +32,6 @@ const COPY = {
         href: MAPS_DIRECTIONS_URL,
         icon: "location",
         external: true,
-      },
-      {
-        label: "Telefon",
-        value: PHONE_DISPLAY,
-        second: "Zadzwoń lub wyślij SMS",
-        action: "Zadzwoń",
-        href: PHONE_HREF,
-        icon: "phone",
-        external: false,
       },
       {
         label: "Instagram",
@@ -77,15 +66,6 @@ const COPY = {
         href: MAPS_DIRECTIONS_URL,
         icon: "location",
         external: true,
-      },
-      {
-        label: "Phone",
-        value: PHONE_DISPLAY,
-        second: "Call or send a text",
-        action: "Call",
-        href: PHONE_HREF,
-        icon: "phone",
-        external: false,
       },
       {
         label: "Instagram",
@@ -131,18 +111,6 @@ function ContactIcon({ name }: { name: Icon }) {
     );
   }
 
-  if (name === "phone") {
-    return (
-      <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" aria-hidden="true">
-        <path
-          d="M5.5 4h3l1.5 4-2 1.3a11 11 0 0 0 6.7 6.7L16 14l4 1.5v3a2 2 0 0 1-2 2A15.5 15.5 0 0 1 3.5 6a2 2 0 0 1 2-2Z"
-          {...common}
-          strokeLinejoin="round"
-        />
-      </svg>
-    );
-  }
-
   return (
     <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" aria-hidden="true">
       <path d="M19 10.2c0 5-7 11-7 11s-7-6-7-11a7 7 0 1 1 14 0Z" {...common} />
@@ -164,7 +132,7 @@ export default function ContactItems({ lang = "pl" }: { lang?: "pl" | "en" }) {
           {copy.heading}
         </h2>
 
-        <div className="grid gap-4 sm:grid-cols-2 md:gap-5 lg:grid-cols-4">
+        <div className="grid gap-4 md:grid-cols-3 md:gap-5">
           {copy.items.map((item) => (
             <a
               key={item.label}

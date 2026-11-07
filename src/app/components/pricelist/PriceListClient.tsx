@@ -11,7 +11,7 @@ const COPY = {
     searchLabel: "Wyszukaj zabieg w cenniku",
     searchPlaceholder: "Wyszukaj zabieg",
     columns: ["Obszar", "Liczba zabiegów", "Cena", "Opis"],
-    empty: "Cennik jest chwilowo niedostępny. O ceny zapytaj telefonicznie lub na Instagramie.",
+    empty: "Cennik jest chwilowo niedostępny. O ceny zapytaj na Instagramie.",
     noResults: (query: string) => `Nie znaleziono zabiegu „${query}”.`,
   },
   en: {
@@ -19,7 +19,7 @@ const COPY = {
     searchLabel: "Search the price list",
     searchPlaceholder: "Search treatments",
     columns: ["Area", "Number of sessions", "Price", "Description"],
-    empty: "The price list is temporarily unavailable. Please ask about prices by phone or on Instagram.",
+    empty: "The price list is temporarily unavailable. Please ask about prices on Instagram.",
     noResults: (query: string) => `No treatments found for “${query}”.`,
   },
 } as const
