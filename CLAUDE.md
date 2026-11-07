@@ -72,7 +72,6 @@ Uwaga: `treatment` i `alltreatments` to różne typy. Linki z polecanych zabieg�
 
 - Dane do `src/lib/legal.ts`: imię i nazwisko lub nazwa firmy, NIP. Potwierdzić zasady w regulaminie (odwołanie 24 h, przedpłaty, przeciwwskazania).
 - Domena (`NEXT_PUBLIC_SITE_URL`).
-- Który Instagram jest właściwy: `juliamajewska_studio_` (`INSTAGRAM_URL`, opinie i stopka) czy `julia_majewska_studio` (`INSTAGRAM_CONTACT_URL`, strona kontaktu).
 - Angielskie nazwy zabiegów z WordPressa, żeby ujednolicić portfolio (`src/lib/portfolio.ts`) i cennik (`src/lib/pricelist.ts`).
 - W WordPressie: zmiana tytułu „Hialuronidaza” na „Usuwanie kwasu hialuronowego”, uzupełnienie zdjęć zabiegów (brak zdjęcia = beżowe pole), ewentualnie typ `portfolio_item`.
 - Zdjęcia do portfolio.

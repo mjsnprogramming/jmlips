@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ADDRESS, BOOKSY_URL, INSTAGRAM_CONTACT_URL } from "@/lib/links";
+import { ADDRESS, BOOKSY_URL, INSTAGRAM_URL } from "@/lib/links";
 
 const COPY = {
   pl: {
@@ -87,7 +87,7 @@ export default function ContactIntro({ lang = "pl" }: { lang?: "pl" | "en" }) {
               <span className="sr-only">{copy.newTab}</span>
             </a>
             <a
-              href={INSTAGRAM_CONTACT_URL}
+              href={INSTAGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex min-h-12 items-center justify-center gap-4 rounded-full border border-[#d9c6b1] px-7 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-brand transition-colors hover:bg-white/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand motion-reduce:transition-none sm:min-w-[240px]"

@@ -1,8 +1,8 @@
 import {
   ADDRESS,
   BOOKSY_URL,
-  INSTAGRAM_CONTACT_HANDLE,
-  INSTAGRAM_CONTACT_URL,
+  INSTAGRAM_HANDLE,
+  INSTAGRAM_URL,
   MAPS_DIRECTIONS_URL,
 } from "@/lib/links";
 
@@ -35,10 +35,10 @@ const COPY = {
       },
       {
         label: "Instagram",
-        value: INSTAGRAM_CONTACT_HANDLE,
+        value: INSTAGRAM_HANDLE,
         second: "Napisz wiadomość",
         action: "Otwórz Instagram",
-        href: INSTAGRAM_CONTACT_URL,
+        href: INSTAGRAM_URL,
         icon: "instagram",
         external: true,
       },
@@ -69,10 +69,10 @@ const COPY = {
       },
       {
         label: "Instagram",
-        value: INSTAGRAM_CONTACT_HANDLE,
+        value: INSTAGRAM_HANDLE,
         second: "Send a message",
         action: "Open Instagram",
-        href: INSTAGRAM_CONTACT_URL,
+        href: INSTAGRAM_URL,
         icon: "instagram",
         external: true,
       },
