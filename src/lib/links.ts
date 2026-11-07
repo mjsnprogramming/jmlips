@@ -4,8 +4,8 @@ export const BOOKSY_URL =
 
 export const INSTAGRAM_URL = "https://www.instagram.com/juliamajewska_studio_/";
 
-// TODO: podać adresy profili salonu – na razie strony główne serwisów.
-export const TIKTOK_URL = "https://www.tiktok.com/";
+// TODO: podać adres profilu na Facebooku – na razie strona główna serwisu.
+export const TIKTOK_URL = "https://www.tiktok.com/@juliamajewska_studio_";
 export const FACEBOOK_URL = "https://www.facebook.com/";
 
 // Gabinet w Lublinie.
