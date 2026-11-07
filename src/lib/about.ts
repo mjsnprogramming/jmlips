@@ -1,3 +1,5 @@
+import { fetchCollection, WP_BASE_URL } from "./cms"
+
 export type AboutData = {
   about_me_image: string
   certificate_1: string
@@ -19,11 +21,6 @@ type WPCertificate = {
   }
 }
 
-const env = (globalThis as any).process?.env as
-  | Record<string, string | undefined>
-  | undefined
-
-const WP_BASE_URL = env?.WORDPRESS_API_URL?.trim().replace(/\/+$/, "")
 
 /** Adres zdjęcia z WordPressa (URL albo ID z biblioteki mediów); błąd = "". */
 async function getImageUrl(image: string | number | null | undefined): Promise<string> {
@@ -43,17 +40,14 @@ async function getImageUrl(image: string | number | null | undefined): Promise<s
 }
 
 async function getCertificates(): Promise<string[]> {
-  if (!WP_BASE_URL) return []
-
   try {
-    const res = await fetch(
-      `${WP_BASE_URL}/wp-json/wp/v2/certyfikat?per_page=100&orderby=id&order=asc`,
-      { next: { revalidate: 60 } },
+    const data = await fetchCollection<WPCertificate & { id?: number }>(
+      "certyfikat",
+      "&orderby=id&order=asc",
     )
-    if (!res.ok) return []
-
-    const data = (await res.json()) as WPCertificate[]
-    if (!Array.isArray(data)) return []
+    if (!data) return []
+    // Kolejność jak w WordPressie (rosnąco po ID) – także dla danych z eksportu.
+    data.sort((a, b) => (a.id ?? 0) - (b.id ?? 0))
 
     const urls = await Promise.all(data.map((item) => getImageUrl(item.acf?.zdjecie)))
     return urls.filter(Boolean)
@@ -68,18 +62,14 @@ async function getCertificates(): Promise<string[]> {
  * a komponenty pokazują wtedy zdjęcia zapasowe – strona nigdy się nie wywraca.
  */
 export async function fetchAboutData(): Promise<AboutData | null> {
-  if (!WP_BASE_URL) return null
-
   try {
-    const [res, certificates] = await Promise.all([
-      fetch(`${WP_BASE_URL}/wp-json/wp/v2/about?per_page=1`, {
-        next: { revalidate: 60 },
-      }),
+    const [data, certificates] = await Promise.all([
+      fetchCollection<WPAbout>("about"),
       getCertificates(),
     ])
 
-    const data = res.ok ? ((await res.json()) as WPAbout[]) : []
-    const about = Array.isArray(data) ? data[0] : undefined
+    const about = data?.[0]
+    if (!about && certificates.length === 0) return null
 
     return {
       about_me_image: await getImageUrl(about?.acf?.about_me_image),

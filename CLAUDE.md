@@ -5,7 +5,10 @@ Strona salonu prowadzonego przez siostrę właściciela repo (Julia Majewska). P
 ## Stack i uruchomienie
 
 - Next.js 14 (App Router), React 18, TypeScript, Tailwind CSS 3.3, Swiper, framer-motion, react-icons.
-- Dane z headless WordPressa (ACF) przez REST API. Adres w zmiennej `WORDPRESS_API_URL`. Każda funkcja pobierająca dane musi działać także bez WordPressa (pusta lista albo dane zapasowe, nigdy wyjątek, który wywraca stronę).
+- **Źródło treści (`src/lib/cms.ts`, funkcja `fetchCollection`):**
+  - ustawiony `WORDPRESS_API_URL` → treści na żywo z headless WordPressa (ACF, REST API),
+  - brak zmiennej → treści z eksportu w repo: `src/content/wordpress.generated.ts` + zdjęcia w `public/images/cms/`. Eksport robi `npm run export-content -- <adres WordPressa>` (`scripts/export-wordpress.mjs`), uruchamiany lokalnie przy działającym WordPressie.
+  - Wszystkie pliki w `src/lib` pobierają dane tylko przez `fetchCollection`. Błąd WordPressa = dane zapasowe, nigdy wyjątek, który wywraca stronę.
 - `npm run dev` / `npm run build`. Przed oboma automatycznie uruchamia się `npm run portfolio` (lista zdjęć portfolio, patrz niżej).
 - Domena: `NEXT_PUBLIC_SITE_URL`. Na razie tymczasowa `https://jm-studio.example` w `src/lib/seo.ts`. **Przed publikacją trzeba ją ustawić.**
 

@@ -1,3 +1,5 @@
+import { fetchCollection } from "./cms"
+
 export type FAQItem = {
   id: number
   question: string
@@ -33,27 +35,8 @@ function toSlug(value: string): string {
 export async function fetchFAQ(
   lang: "pl" | "en",
 ): Promise<FAQItem[]> {
-  const baseUrl = process.env.WORDPRESS_API_URL
-  if (!baseUrl) return []
-
-  let data: WPFAQItem[]
-
-  try {
-    const res = await fetch(
-      `${baseUrl}/wp-json/wp/v2/question?per_page=100`,
-      {
-        next: { revalidate: 60 },
-      },
-    )
-
-    if (!res.ok) {
-      return []
-    }
-
-    data = await res.json()
-  } catch {
-    return []
-  }
+  const data = await fetchCollection<WPFAQItem>("question")
+  if (!data) return []
 
   return data
     .map((item) => ({

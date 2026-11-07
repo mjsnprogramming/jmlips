@@ -1,3 +1,5 @@
+import { fetchCollection, WP_BASE_URL } from "./cms"
+
 export type Treatment = {
   id: number
   slug: string
@@ -109,15 +111,6 @@ const POLISH_TREATMENT_COPY: PolishTreatmentCopy[] = [
   },
 ]
 
-const env = (globalThis as any).process?.env as
-  | Record<string, string | undefined>
-  | undefined
-
-const WP_BASE_URL = env?.WORDPRESS_API_URL?.trim().replace(/\/+$/, "")
-
-const WP_API_URL = WP_BASE_URL
-  ? `${WP_BASE_URL}/wp-json/wp/v2/alltreatments?per_page=100`
-  : null
 
 function normalizeText(value: string | null | undefined): string {
   return typeof value === "string" ? value.trim() : ""
@@ -233,21 +226,10 @@ export async function fetchTreatments(
 ): Promise<Treatment[]> {
   const polishFallbacks = createPolishFallbacks()
 
-  if (!WP_API_URL) {
-    return lang === "pl" ? polishFallbacks : []
-  }
-
   try {
-    const res = await fetch(WP_API_URL, {
-      next: { revalidate: 60 },
-    })
-
-    if (!res.ok) {
-      return lang === "pl" ? polishFallbacks : []
-    }
-
-    const data = (await res.json()) as WPAllTreatment[]
-    if (!Array.isArray(data)) {
+    const data = await fetchCollection<WPAllTreatment>("alltreatments")
+    // Błąd WordPressa albo pusty eksport → opisy zapasowe z kodu (tylko PL).
+    if (!data || data.length === 0) {
       return lang === "pl" ? polishFallbacks : []
     }
 

@@ -1,3 +1,5 @@
+import { fetchCollection, WP_BASE_URL } from './cms'
+
 export type Testimonial = {
   id: number
   image: string
@@ -12,21 +14,14 @@ type WPTestimonial = {
   }
 }
 
-const env = (globalThis as any).process?.env as
-  | Record<string, string | undefined>
-  | undefined
-
-const WP_API_URL = env?.WORDPRESS_API_URL
-  ? `${env.WORDPRESS_API_URL}/wp-json/wp/v2/testimonial?per_page=100`
-  : null
 
 async function getImageUrl(image: string | number): Promise<string> {
   if (typeof image === 'string') return image
 
-  if (!env?.WORDPRESS_API_URL) return ''
+  if (!WP_BASE_URL) return ''
 
   const res = await fetch(
-    `${env.WORDPRESS_API_URL}/wp-json/wp/v2/media/${image}`,
+    `${WP_BASE_URL}/wp-json/wp/v2/media/${image}`,
     {
       next: { revalidate: 60 },
     }
@@ -40,16 +35,9 @@ async function getImageUrl(image: string | number): Promise<string> {
 }
 
 export async function fetchTestimonials(): Promise<Testimonial[]> {
-  if (!WP_API_URL) return []
-
   try {
-    const res = await fetch(WP_API_URL, {
-      next: { revalidate: 60 },
-    })
-
-    if (!res.ok) return []
-
-    const data = (await res.json()) as WPTestimonial[]
+    const data = await fetchCollection<WPTestimonial>('testimonial')
+    if (!data) return []
 
     const mapped = await Promise.all(
       data.map(async (item) => ({

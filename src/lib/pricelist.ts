@@ -1,3 +1,5 @@
+import { fetchCollection } from "./cms"
+
 export type Row = {
   area: string
   count: number
@@ -59,13 +61,6 @@ const CATEGORY_LABELS = {
   },
 } as const;
 
-const env = (globalThis as any).process?.env as
-  | Record<string, string | undefined>
-  | undefined
-
-const WP_API_URL = env?.WORDPRESS_API_URL
-  ? `${env.WORDPRESS_API_URL}/wp-json/wp/v2/price_item?per_page=100`
-  : null
 
 function slugify(value: string) {
   return value
@@ -92,22 +87,9 @@ function humanizeCategory(value: string) {
 export async function fetchPricelist(
   lang: "pl" | "en"
 ): Promise<Category[]> {
-  if (!WP_API_URL) {
-    return []
-  }
-
   try {
-    const res = await fetch(WP_API_URL, {
-      next: {
-        revalidate: 60,
-      },
-    })
-
-    if (!res.ok) {
-      return []
-    }
-
-    const wpItems = (await res.json()) as WPPriceItem[]
+    const wpItems = await fetchCollection<WPPriceItem>("price_item")
+    if (!wpItems) return []
 
     const sorted = wpItems.sort(
       (a, b) => (a.acf.order ?? 999) - (b.acf.order ?? 999)

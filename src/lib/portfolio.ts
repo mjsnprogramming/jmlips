@@ -1,3 +1,4 @@
+import { fetchCollection, WP_BASE_URL } from "./cms"
 import { CODE_PORTFOLIO_IMAGES } from "./portfolio.generated"
 
 /**
@@ -39,8 +40,6 @@ type WPPortfolioItem = {
   }
 }
 
-const env = (globalThis as any).process?.env as Record<string, string | undefined> | undefined
-const WP_BASE_URL = env?.WORDPRESS_API_URL?.trim().replace(/\/+$/, "")
 
 async function getImageUrl(image: string | number | false | null | undefined) {
   if (typeof image === "string") return image.trim() || null
@@ -60,16 +59,9 @@ async function getImageUrl(image: string | number | false | null | undefined) {
 
 /** Zdjęcia dodane w WordPressie (typ wpisu "portfolio_item"). Brak typu lub błąd = pusta lista. */
 async function fetchWordPressImages(): Promise<Partial<PortfolioImagesByCategory>> {
-  if (!WP_BASE_URL) return {}
-
   try {
-    const res = await fetch(`${WP_BASE_URL}/wp-json/wp/v2/portfolio_item?per_page=100`, {
-      next: { revalidate: 60 },
-    })
-    if (!res.ok) return {}
-
-    const data = (await res.json()) as WPPortfolioItem[]
-    if (!Array.isArray(data)) return {}
+    const data = await fetchCollection<WPPortfolioItem>("portfolio_item")
+    if (!data) return {}
 
     const items = await Promise.all(
       data.map(async (item) => ({
