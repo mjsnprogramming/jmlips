@@ -57,7 +57,12 @@ export const TREATMENTS: OfferTreatment[] = [
       pl: "Stymulatory tkankowe to preparaty stosowane w celu poprawy jakości i kondycji skóry. Ich działanie koncentruje się przede wszystkim na pobudzaniu naturalnych procesów regeneracyjnych oraz wspieraniu produkcji kolagenu i elastyny. Zabieg dobierany jest indywidualnie do potrzeb skóry, jej kondycji oraz obszaru poddanego terapii. W zależności od zastosowanego preparatu terapia może przyczynić się do poprawy jędrności, elastyczności, napięcia oraz ogólnego wyglądu skóry. Efekt: zdrowiej wyglądająca, bardziej napięta i pełna blasku skóra, bez efektu przerysowania.",
       en: "Stymulatory tkankowe to preparaty stosowane w celu poprawy jakości i kondycji skóry. Ich działanie koncentruje się przede wszystkim na pobudzaniu naturalnych procesów regeneracyjnych oraz wspieraniu produkcji kolagenu i elastyny. Zabieg dobierany jest indywidualnie do potrzeb skóry, jej kondycji oraz obszaru poddanego terapii. W zależności od zastosowanego preparatu terapia może przyczynić się do poprawy jędrności, elastyczności, napięcia oraz ogólnego wyglądu skóry. Efekt: zdrowiej wyglądająca, bardziej napięta i pełna blasku skóra, bez efektu przerysowania."
     },
-    images: []
+    // TODO: małe zdjęcia (2. i 3.) są testowe (z portfolio modelowania ust) – podmienić na zdjęcia tego zabiegu.
+    images: [
+      "/images/featured/stymulatory-tkankowe.jpg",
+      "/images/portfolio/modelowanie-ust/07.jpg",
+      "/images/portfolio/modelowanie-ust/08.jpg"
+    ]
   },
   {
     slug: "wolumetria-brody",
@@ -77,7 +82,11 @@ export const TREATMENTS: OfferTreatment[] = [
       pl: "Wolumetria brody ma na celu poprawę proporcji dolnej części twarzy oraz harmonizację jej rysów. Za pomocą odpowiednio dobranej ilości preparatu można delikatnie podkreślić brodę, poprawić jej kształt, zaznaczyć projekcję lub skorygować niewielkie asymetrie. Zabieg zawsze planowany jest z uwzględnieniem całej twarzy, jej proporcji, profilu oraz naturalnej anatomii.",
       en: "Chin contouring aims to improve the proportions of the lower face and create greater harmony between facial features. A carefully selected amount of product can subtly enhance the chin, refine its shape, define its projection or address minor asymmetries. The treatment is always planned with the whole face, its proportions, profile and natural anatomy in mind."
     },
-    images: []
+    images: [
+      "/images/portfolio/wolumetria-brody/01.jpg",
+      "/images/portfolio/wolumetria-brody/05.jpg",
+      "/images/portfolio/wolumetria-brody/06.jpg"
+    ]
   },
   {
     slug: "wolumetria-policzkow",
@@ -97,7 +106,12 @@ export const TREATMENTS: OfferTreatment[] = [
       pl: "Wolumetria policzków pozwala na przywrócenie lub subtelne uzupełnienie objętości w środkowej części twarzy. Zabieg może pomóc w podkreśleniu kości policzkowych, poprawie proporcji twarzy oraz uzyskaniu bardziej wyraźnego konturu. Objętość i miejsce podania preparatu dobierane są indywidualnie, z uwzględnieniem budowy twarzy oraz oczekiwanego efektu.",
       en: "Cheek volumization can restore or subtly replenish volume in the midface. The treatment may help define the cheekbones, improve facial proportions and create a more defined contour. The amount and placement of the product are selected individually, taking facial structure and the desired result into account."
     },
-    images: []
+    // TODO: zdjęcia testowe (z portfolio modelowania ust) – podmienić na zdjęcia tego zabiegu.
+    images: [
+      "/images/portfolio/modelowanie-ust/01.jpg",
+      "/images/portfolio/modelowanie-ust/02.jpg",
+      "/images/portfolio/modelowanie-ust/03.jpg"
+    ]
   },
   {
     slug: "wolumetria-katow-zuchwy",
@@ -117,7 +131,12 @@ export const TREATMENTS: OfferTreatment[] = [
       pl: "Wolumetria kątów żuchwy pozwala na podkreślenie konturu dolnej części twarzy oraz nadanie jej bardziej wyrazistego kształtu. Preparat podawany jest w strategicznie dobrane miejsca, aby zaakcentować kąty żuchwy i poprawić proporcje twarzy. Zakres zabiegu oraz ilość preparatu ustalane są indywidualnie podczas konsultacji, ponieważ każda twarz wymaga innego podejścia.",
       en: "Jawline contouring can define the lower face and give it a more sculpted appearance. The product is placed at carefully selected points to accentuate the jaw angles and improve facial proportions. The scope of the treatment and amount of product are determined individually during a consultation, as every face requires a tailored approach."
     },
-    images: []
+    // TODO: zdjęcia testowe (z portfolio modelowania ust) – podmienić na zdjęcia tego zabiegu.
+    images: [
+      "/images/portfolio/modelowanie-ust/04.jpg",
+      "/images/portfolio/modelowanie-ust/05.jpg",
+      "/images/portfolio/modelowanie-ust/06.jpg"
+    ]
   },
   {
     slug: "usuwanie-kwasu-hialuronowego",
@@ -137,6 +156,10 @@ export const TREATMENTS: OfferTreatment[] = [
       pl: "Hialuronidaza to enzym stosowany w celu rozpuszczania wypełniaczy na bazie kwasu hialuronowego. Zabieg pozwala na usunięcie lub zmniejszenie ilości wcześniej podanego preparatu, a w wybranych przypadkach również na korektę niepożądanego efektu.  Zabieg może być rozważany m.in. w przypadku nadmiernej objętości, nierówności, asymetrii lub nieestetycznego efektu po wcześniejszych wypełniaczach. Możliwość jego wykonania zależy od rodzaju zastosowanego preparatu, czasu, jaki upłynął od zabiegu, oraz indywidualnej sytuacji.  Każdy zabieg poprzedzony jest konsultacją i oceną okolicy poddawanej terapii. Zakres postępowania dobierany jest indywidualnie, z uwzględnieniem oczekiwań klientki oraz bezpieczeństwa zabiegu.",
       en: "Hyaluronidase is an enzyme used to dissolve hyaluronic acid-based fillers. The treatment can help remove or reduce the amount of previously injected product and, in selected cases, correct an undesirable result.  The treatment may be considered in cases of excessive volume, unevenness, asymmetry, or an unsatisfactory aesthetic result following previous filler injections. Whether the treatment is appropriate depends on the type of product used, the time elapsed since the original procedure, and the individual circumstances.  Every treatment is preceded by a consultation and an assessment of the area to be treated. The approach is tailored to the individual, taking into account the client's expectations and the safety of the procedure."
     },
-    images: []
+    images: [
+      "/images/featured/usuwanie-kwasu-hialuronowego.jpg",
+      "/images/portfolio/usuwanie-kwasu-hialuronowego/03.jpg",
+      "/images/portfolio/usuwanie-kwasu-hialuronowego/02.jpg"
+    ]
   }
 ];

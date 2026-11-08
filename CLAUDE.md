@@ -90,7 +90,7 @@ Te same nazwy wszędzie (treści w `src/content`, portfolio, cennik, SEO):
 
 - Dane do `src/lib/legal.ts`: imię i nazwisko lub nazwa firmy, NIP. Potwierdzić zasady w regulaminie (odwołanie 24 h, przedpłaty, przeciwwskazania).
 - Domena (`NEXT_PUBLIC_SITE_URL`).
-- Zdjęcia zabiegów w ofercie: 5 z 6 nie ma zdjęcia (beżowe pole). Pliki do `public/images/offer/<slug>-1.jpg` (do 3 na zabieg) i ścieżki w `images` w `src/content/treatments.ts`.
+- Zdjęcia zabiegów w ofercie: wolumetria kątów żuchwy i policzków mają **zdjęcia testowe** z portfolio modelowania ust, stymulatory tkankowe testowe małe zdjęcia (oznaczone `TODO` w `src/content/treatments.ts`). Docelowe pliki: `public/images/offer/<slug>-1.jpg` (do 3 na zabieg).
 - Zdjęcia do portfolio dla stymulatorów, kątów żuchwy i policzków.
 - Przegląd polityki prywatności i regulaminu przez osobę znającą RODO / prawo przed publikacją.
 - Opcjonalnie: przycięcie screenów opinii (nicki i zdjęcia klientów). Właściciel uznał, że zgoda z Instagrama wystarcza.
