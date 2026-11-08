@@ -5,10 +5,13 @@ Strona salonu prowadzonego przez siostrę właściciela repo (Julia Majewska). P
 ## Stack i uruchomienie
 
 - Next.js 14 (App Router), React 18, TypeScript, Tailwind CSS 3.3, Swiper, framer-motion, react-icons.
-- **Źródło treści (`src/lib/cms.ts`, funkcja `fetchCollection`):**
-  - ustawiony `WORDPRESS_API_URL` → treści na żywo z headless WordPressa (ACF, REST API),
-  - brak zmiennej → treści z eksportu w repo: `src/content/wordpress.generated.ts` + zdjęcia w `public/images/cms/`. Eksport robi `npm run export-content -- <adres WordPressa>` (`scripts/export-wordpress.mjs`), uruchamiany lokalnie przy działającym WordPressie.
-  - Wszystkie pliki w `src/lib` pobierają dane tylko przez `fetchCollection`. Błąd WordPressa = dane zapasowe, nigdy wyjątek, który wywraca stronę.
+- **Treści są w repo, bez WordPressa** (decyzja właściciela: zmieniają się rzadko). Pliki w `src/content/`:
+  - `featured.ts` – polecane zabiegi na stronie głównej (max 3),
+  - `treatments.ts` – zabiegi na stronie oferty (`slug` = adres `?treatment=…` i powiązanie z FAQ),
+  - `faq.ts` – pytania FAQ (pole `treatment` = slug zabiegu),
+  - `pricelist.ts` – cennik (ceny podstawowe, zapis „800 zł”, „600–900 zł”),
+  - `testimonials.ts` – screeny opinii, `certificates.ts` – certyfikaty (dwa pierwsze duże).
+  - Teksty mają pola `{ pl, en }`. Zdjęcia: `public/images/featured|offer|testimonials|certificates/`. Pliki w `src/lib` tylko mapują te dane dla komponentów.
 - `npm run dev` / `npm run build`. Przed oboma automatycznie uruchamia się `npm run portfolio` (lista zdjęć portfolio, patrz niżej).
 - Domena: `NEXT_PUBLIC_SITE_URL`. Na razie tymczasowa `https://jm-studio.example` w `src/lib/seo.ts`. **Przed publikacją trzeba ją ustawić.**
 
@@ -25,22 +28,19 @@ Strona salonu prowadzonego przez siostrę właściciela repo (Julia Majewska). P
 - `src/lib/legal.ts`: dane administratora do polityki i regulaminu. Puste pola widać na stronie jako „[do uzupełnienia: …]”.
 - `src/lib/seo.ts`: tytuły i opisy stron (PL/EN), domena, dane firmy (JSON-LD). Każda strona eksportuje `metadata = pageMetadata("klucz", "pl"|"en")`.
 
-### Typy wpisów w WordPressie (`/wp-json/wp/v2/...`)
+### Zabiegi i linki
 
-`treatment` (polecane na stronie głównej), `alltreatments` (strona zabiegów), `question` (FAQ), `price_item` (cennik), `testimonial` (opinie), `about`, `certyfikat`, `portfolio_item` (jeszcze nie założony, patrz niżej), `media`.
-
-Uwaga: `treatment` i `alltreatments` to różne typy. Linki z polecanych zabiegów do oferty idą po **tytule** (`?treatment=<tytuł>`), a nie po slugu. Strona oferty rozpoznaje też slug i aliasy (`treatmentTitleAliases` w `OfferClient`).
+Linki z polecanych zabiegów do oferty idą po **tytule** (`?treatment=<tytuł>`); strona oferty rozpoznaje też slug i aliasy (`treatmentTitleAliases` w `OfferClient`, np. stary adres `?treatment=hialuronidaza`).
 
 ### Portfolio
 
 - Zdjęcia z kodu: pliki w `public/images/portfolio/<kategoria>/` (kategorie = nazwy folderów, np. `modelowanie-ust`). Kolejność według nazwy pliku. `scripts/generate-portfolio.mjs` tworzy `src/lib/portfolio.generated.ts`. Ten plik commituje się razem ze zdjęciami.
-- Zdjęcia z WordPressa (gdy powstanie typ `portfolio_item` z REST API i polami ACF `category` = nazwa folderu, `image`, `order`) wyświetlają się przed zdjęciami z kodu. Brak typu = same zdjęcia z kodu.
 - Zwykłe zdjęcia z zabiegów, **bez układu przed/po** (decyzja właściciela).
 
 ## Decyzje właściciela (nie zmieniać bez pytania)
 
 - Wygląd i klimat zostają. To ma być poprawa jakości, nie redesign.
-- **Strona działa bez WordPressa w internecie** (treści zmieniają się rzadko). Lokalny WordPress służy właścicielowi jako edytor: zmiana w panelu → `npm run export-content` → push. Portfolio na bieżąco jest na Instagramie; pod galerią i w pustych kategoriach jest odnośnik do Instagrama. Cennik pokazuje ceny podstawowe, promocje są na Instagramie (karta pod nagłówkiem cennika).
+- **Bez WordPressa.** Treści edytuje się w `src/content/*.ts` i robi push. Portfolio na bieżąco jest na Instagramie; pod galerią i w pustych kategoriach jest odnośnik do Instagrama. Cennik pokazuje ceny podstawowe, promocje są na Instagramie (karta pod nagłówkiem cennika).
 - Hero: mały napis „JM Studio • Lublin • Zamość” nad dużym „Medycyna estetyczna i zabiegi upiększające” (oba w `<h1>` ze względu na SEO, wygląd bez zmian). Mały napis pogrubiony, z białą poświatą. Wideo bez nakładki.
 - „Umów wizytę” prowadzi do Booksy (Hero, header od 1280 px, menu mobilne).
 - Wizyty umawia się tylko przez **Booksy i Instagram**. Na stronie nie ma telefonu ani e-maila do kontaktu (właścicielka z nich nie korzysta). E-mail zostaje wyłącznie w polityce prywatności i regulaminie jako kontakt w sprawie danych osobowych.
@@ -48,13 +48,13 @@ Uwaga: `treatment` i `alltreatments` to różne typy. Linki z polecanych zabieg�
 - Bez cen i bez rezerwacji online na kartach zabiegów, bez gwiazdek i ocen z Google.
 - Bez osobnych podstron `/lublin` i `/zamosc`. Zamość to „wizyty wyjazdowe w wybrane dni”.
 - Zwracamy się neutralnie: „klienci” (nie „klientki”), „Polecane zabiegi” (nie „Najpopularniejsze”). Strona mówi głosem właścicielki w 1. osobie („mój Instagram”, „zebrałam”).
-- Nazwa zabiegu: **„Usuwanie kwasu hialuronowego”** wszędzie (EN „Hyaluronic Acid Dissolving”). „Hialuronidaza” to zabieg, nie lek, ale w kodzie używamy nowej nazwy. Tytuł w WordPressie zmienia właścicielka.
+- Nazwa zabiegu: **„Usuwanie kwasu hialuronowego”** wszędzie w nazwach (EN „Hyaluronic Acid Dissolving”). W opisach i FAQ zostaje tekst właścicielki (słowo „hialuronidaza” w treści jest OK).
 - Na stronie zabiegów kategoria może się wyświetlać dwa razy (nad tytułem i nad opisem). Tak ma zostać.
 - Brązowy nagłówek w sekcji opinii zostaje (celowy akcent).
 
 ### Nazwy zabiegów (PL → EN, pisownia brytyjska)
 
-Te same nazwy w kodzie (portfolio, kategorie cennika, SEO) i w polach `title_en` w WordPressie:
+Te same nazwy wszędzie (treści w `src/content`, portfolio, cennik, SEO):
 
 | PL | EN |
 |---|---|
@@ -83,7 +83,6 @@ Te same nazwy w kodzie (portfolio, kategorie cennika, SEO) i w polach `title_en`
 - Zmiany małymi krokami. Przed zmianą pokazać listę propozycji i zapytać. Teksty też oceniać i proponować poprawki.
 - Commity i push bezpośrednio na `main` (właściciel tak woli). Commity podpisane jak w historii repo.
 - Po zmianach: `npx tsc --noEmit -p .`, `npx next lint`, `npx next build`, sprawdzenie w przeglądarce (Playwright) na telefonie i komputerze, PL i EN.
-- Bez WordPressa większość sekcji jest pusta. Do testów warto postawić lokalną atrapę REST API (prosty serwer Node zwracający JSON dla `/wp-json/wp/v2/...`) i uruchomić `WORDPRESS_API_URL=http://localhost:PORT npm run dev`.
 - W kontenerze w chmurze Google Fonts czasem się nie pobiera i nagłówki wyglądają na szeryfowe. To problem środowiska, nie kodu.
 - Na Windowsie zmiana samej wielkości liter w nazwie folderu (np. `pl/priceList` → `pl/pricelist`) może wymagać ręcznej poprawki po `git pull`.
 
@@ -91,10 +90,8 @@ Te same nazwy w kodzie (portfolio, kategorie cennika, SEO) i w polach `title_en`
 
 - Dane do `src/lib/legal.ts`: imię i nazwisko lub nazwa firmy, NIP. Potwierdzić zasady w regulaminie (odwołanie 24 h, przedpłaty, przeciwwskazania).
 - Domena (`NEXT_PUBLIC_SITE_URL`).
-- W WordPressie: angielskie tytuły zabiegów (`title_en` w ofercie, polecanych i cenniku) zgodnie z tabelą „Nazwy zabiegów”.
-- W WordPressie: zmiana tytułu „Hialuronidaza” na „Usuwanie kwasu hialuronowego”, uzupełnienie zdjęć zabiegów (brak zdjęcia = beżowe pole), ewentualnie typ `portfolio_item`.
-- Zdjęcia do portfolio.
+- Zdjęcia zabiegów w ofercie: 5 z 6 nie ma zdjęcia (beżowe pole). Pliki do `public/images/offer/<slug>-1.jpg` (do 3 na zabieg) i ścieżki w `images` w `src/content/treatments.ts`.
+- Zdjęcia do portfolio dla stymulatorów, kątów żuchwy i policzków.
 - Przegląd polityki prywatności i regulaminu przez osobę znającą RODO / prawo przed publikacją.
 - Opcjonalnie: przycięcie screenów opinii (nicki i zdjęcia klientów). Właściciel uznał, że zgoda z Instagrama wystarcza.
-- `homebg2.mp4` (7,5 MB) i `public/images/opinion1-9.webp` są nieużywane. Do usunięcia, jeśli właściciel potwierdzi.
-- Pola „czas zabiegu” i „efekt” z WordPressa nie są nigdzie wyświetlane. Można je dodać pod opisem zabiegu, jeśli właścicielka je uzupełnia.
+- Nieużywane pliki do usunięcia po potwierdzeniu: `homebg2.mp4` (7,5 MB), `public/images/opinion1-9.webp`, stary folder `public/images/treatments/`, `certificate3-6.webp` (zapasowe, zastąpione przez `public/images/certificates/`).

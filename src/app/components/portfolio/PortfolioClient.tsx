@@ -214,7 +214,6 @@ export default function PortfolioClient({
                         alt={image.alt}
                         fill
                         sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                        unoptimized={image.source === "wordpress"}
                         className="object-cover transition-transform duration-500 group-hover:scale-[1.015] motion-reduce:transition-none"
                       />
                     </span>
@@ -311,7 +310,6 @@ export default function PortfolioClient({
                 fill
                 sizes="100vw"
                 className="object-contain"
-                unoptimized={selectedImage.source === "wordpress"}
                 priority
               />
             </div>

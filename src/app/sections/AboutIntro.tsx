@@ -30,7 +30,7 @@ const COPY = {
 
 export default function AboutIntro({ aboutImage, lang = "pl" }: Props) {
   const copy = COPY[lang];
-  // Pusty adres z WordPressa też ma dać zdjęcie zapasowe.
+  // Brak własnego zdjęcia = zdjęcie z public/images/about.png.
   const imageSrc = aboutImage || "/images/about.png";
   const trustPoints = copy.trustPoints.map((title, index) => ({
     number: String(index + 1).padStart(2, "0"),

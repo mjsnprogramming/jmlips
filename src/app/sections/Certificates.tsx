@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 type Props = {
   certificate1?: string | null;
   certificate2?: string | null;
-  /** Certyfikaty z WordPressa (typ "certyfikat"); pusta lista = zdjęcia zapasowe. */
+  /** Certyfikaty do galerii (src/content/certificates.ts); pusta lista = zdjęcia zapasowe. */
   certificates?: string[];
   lang?: "pl" | "en";
 };
@@ -39,8 +39,6 @@ const COPY = {
   },
 } as const;
 
-// Zdjęcia z WordPressa mogą pochodzić z dowolnego hosta – bez optymalizacji Next.
-const isRemote = (src: string) => /^https?:\/\//.test(src);
 
 export default function Certificates({
   certificate1,
@@ -128,7 +126,6 @@ export default function Certificates({
                       alt={alt}
                       width={500}
                       height={700}
-                      unoptimized={isRemote(src)}
                       className="h-full w-full object-cover transition duration-500 group-hover:scale-105 motion-reduce:transition-none"
                     />
                   </button>
@@ -161,7 +158,6 @@ export default function Certificates({
                       alt={alt}
                       fill
                       sizes="(min-width: 768px) 25vw, 50vw"
-                      unoptimized={isRemote(src)}
                       className="object-cover transition duration-500 group-hover:scale-105 motion-reduce:transition-none"
                     />
                   </button>
@@ -198,7 +194,6 @@ export default function Certificates({
               alt={preview.alt}
               fill
               sizes="100vw"
-              unoptimized={isRemote(preview.src)}
               className="object-contain"
             />
           </div>

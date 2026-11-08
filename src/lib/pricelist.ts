@@ -1,4 +1,4 @@
-import { fetchCollection } from "./cms"
+import { PRICELIST } from "@/content/pricelist"
 
 export type Row = {
   area: string
@@ -16,149 +16,19 @@ export type Category = {
   }[]
 }
 
-type WPPriceItem = {
-  id: number
-  acf: {
-    title_pl: string
-    title_en: string
-
-    category_pl: string
-    category_en: string
-
-    area_pl: string
-    area_en: string
-
-    count: number
-    price: string
-
-    description_pl?: string
-    description_en?: string
-
-    order?: number
-  }
-}
-
-const CATEGORY_LABELS = {
-  modelowanie_ust: {
-    pl: "Modelowanie ust",
-    en: "Lip Augmentation",
-  },
-  usuwanie_kwasu: {
-    pl: "Usuwanie kwasu hialuronowego",
-    en: "Hyaluronic Acid Dissolving",
-  },
-  wolumetria_twarzy: {
-    pl: "Wolumetria twarzy",
-    en: "Facial Volumisation",
-  },
-  stymulatory_tkankowe: {
-    pl: "Stymulatory tkankowe",
-    en: "Tissue Stimulators",
-  },
-  pakiety_zabiegowe: {
-    pl: "Pakiety zabiegowe",
-    en: "Treatment Packages",
-  },
-} as const;
-
-
-function slugify(value: string) {
-  return value
-    .toLowerCase()
-    .trim()
-    .replaceAll("ą", "a")
-    .replaceAll("ć", "c")
-    .replaceAll("ę", "e")
-    .replaceAll("ł", "l")
-    .replaceAll("ń", "n")
-    .replaceAll("ó", "o")
-    .replaceAll("ś", "s")
-    .replaceAll("ż", "z")
-    .replaceAll("ź", "z")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "")
-}
-
-function humanizeCategory(value: string) {
-  const text = String(value ?? "").replace(/[_-]+/g, " ").trim()
-  return text ? text.charAt(0).toUpperCase() + text.slice(1) : "—"
-}
-
-export async function fetchPricelist(
-  lang: "pl" | "en"
-): Promise<Category[]> {
-  try {
-    const wpItems = await fetchCollection<WPPriceItem>("price_item")
-    if (!wpItems) return []
-
-    const sorted = wpItems.sort(
-      (a, b) => (a.acf.order ?? 999) - (b.acf.order ?? 999)
-    )
-
-    const categoriesMap = new Map<string, Category>()
-
-    sorted.forEach((item) => {
-      const categorySlug =
-  lang === "pl"
-    ? item.acf.category_pl
-    : item.acf.category_en
-
-const categoryId = categorySlug
-
-      if (!categoriesMap.has(categorySlug)) {
-        categoriesMap.set(categorySlug, {
-          id: categoryId,
-          // Nieznana kategoria (np. nowa w WordPressie) dostaje nazwę z jej klucza,
-          // zamiast wywracać cały cennik.
-          title:
-            CATEGORY_LABELS[categorySlug as keyof typeof CATEGORY_LABELS]?.[lang] ??
-            humanizeCategory(categorySlug),
-          items: [],
-        })
-      }
-
-      const category = categoriesMap.get(categorySlug)!
-
-      const treatmentName =
-        lang === "pl"
-          ? item.acf.title_pl
-          : item.acf.title_en
-
-      let treatment = category.items.find(
-        (t) => t.name === treatmentName
-      )
-
-      if (!treatment) {
-        treatment = {
-          name: treatmentName,
-          rows: [],
-        }
-
-        category.items.push(treatment)
-      }
-
-      treatment.rows.push({
-        area:
-          lang === "pl"
-            ? item.acf.area_pl
-            : item.acf.area_en,
-
-        count: item.acf.count,
-
-        price: item.acf.price,
-
-        desc:
-          (
-            lang === "pl"
-              ? item.acf.description_pl
-              : item.acf.description_en
-          ) || undefined,
-      })
-    })
-
-    return Array.from(categoriesMap.values())
-  } catch (error) {
-    console.error("Nie udało się pobrać cennika:", error)
-    return []
-  }
+/** Cennik – z src/content/pricelist.ts. */
+export async function fetchPricelist(lang: "pl" | "en"): Promise<Category[]> {
+  return PRICELIST.map((category) => ({
+    id: category.id,
+    title: category.title[lang],
+    items: category.items.map((item) => ({
+      name: item.name[lang],
+      rows: item.rows.map((row) => ({
+        area: row.area[lang],
+        count: row.count,
+        price: row.price,
+        desc: row.description[lang] || undefined,
+      })),
+    })),
+  }))
 }

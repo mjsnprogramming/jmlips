@@ -9,8 +9,7 @@
     "lint": "next lint",
     "portfolio": "node scripts/generate-portfolio.mjs",
     "predev": "node scripts/generate-portfolio.mjs",
-    "prebuild": "node scripts/generate-portfolio.mjs",
-    "export-content": "node scripts/export-wordpress.mjs"
+    "prebuild": "node scripts/generate-portfolio.mjs"
   },
   "dependencies": {
     "autoprefixer": "10.4.14",
