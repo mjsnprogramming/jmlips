@@ -6,17 +6,10 @@ import { useEffect, useRef, useState } from "react";
 type Props = {
   certificate1?: string | null;
   certificate2?: string | null;
-  /** Certyfikaty do galerii (src/content/certificates.ts); pusta lista = zdjęcia zapasowe. */
+  /** Certyfikaty do galerii (src/content/certificates.ts, od trzeciego). */
   certificates?: string[];
   lang?: "pl" | "en";
 };
-
-const FALLBACK_GALLERY = [
-  "/images/certificate3.webp",
-  "/images/certificate4.webp",
-  "/images/certificate5.webp",
-  "/images/certificate6.webp",
-];
 
 const COPY = {
   pl: {
@@ -51,9 +44,7 @@ export default function Certificates({
     certificate1 || "/images/certificate1.webp",
     certificate2 || "/images/certificate2.webp",
   ];
-  const gallery = certificates?.filter(Boolean).length
-    ? certificates.filter(Boolean)
-    : FALLBACK_GALLERY;
+  const gallery = certificates?.filter(Boolean) ?? [];
 
   const [preview, setPreview] = useState<{ src: string; alt: string } | null>(null);
   const closeRef = useRef<HTMLButtonElement>(null);

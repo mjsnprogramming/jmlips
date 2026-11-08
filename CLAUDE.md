@@ -94,4 +94,3 @@ Te same nazwy wszędzie (treści w `src/content`, portfolio, cennik, SEO):
 - Zdjęcia do portfolio dla stymulatorów, kątów żuchwy i policzków.
 - Przegląd polityki prywatności i regulaminu przez osobę znającą RODO / prawo przed publikacją.
 - Opcjonalnie: przycięcie screenów opinii (nicki i zdjęcia klientów). Właściciel uznał, że zgoda z Instagrama wystarcza.
-- Nieużywane pliki do usunięcia po potwierdzeniu: `homebg2.mp4` (7,5 MB), `public/images/opinion1-9.webp`, stary folder `public/images/treatments/`, `certificate3-6.webp` (zapasowe, zastąpione przez `public/images/certificates/`).
