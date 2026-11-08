@@ -11,10 +11,13 @@ import {
  * Bez niej strona ma noindex i robots.txt blokuje roboty – np. wersja testowa na *.netlify.app
  * nie trafi do Google.
  */
-export const SITE_URL_CONFIGURED = Boolean(process.env.NEXT_PUBLIC_SITE_URL);
+// Odczyt bez zależności od typów Node (na niektórych komputerach `process.env` nie ma typów).
+const env = ((globalThis as any).process?.env ?? {}) as Record<string, string | undefined>;
+
+export const SITE_URL_CONFIGURED = Boolean(env.NEXT_PUBLIC_SITE_URL);
 
 // Tymczasowa domena, dopóki nie zostanie ustawiona NEXT_PUBLIC_SITE_URL.
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://jm-studio.example").replace(
+export const SITE_URL = (env.NEXT_PUBLIC_SITE_URL || "https://jm-studio.example").replace(
   /\/+$/,
   "",
 );
