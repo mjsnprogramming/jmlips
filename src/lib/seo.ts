@@ -6,7 +6,14 @@ import {
   MAPS_DIRECTIONS_URL,
 } from "./links";
 
-// TODO: tymczasowa domena – podmienić na właściwą (albo ustawić zmienną NEXT_PUBLIC_SITE_URL).
+/**
+ * Czy ustawiono prawdziwą domenę (zmienna NEXT_PUBLIC_SITE_URL)?
+ * Bez niej strona ma noindex i robots.txt blokuje roboty – np. wersja testowa na *.netlify.app
+ * nie trafi do Google.
+ */
+export const SITE_URL_CONFIGURED = Boolean(process.env.NEXT_PUBLIC_SITE_URL);
+
+// Tymczasowa domena, dopóki nie zostanie ustawiona NEXT_PUBLIC_SITE_URL.
 export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://jm-studio.example").replace(
   /\/+$/,
   "",

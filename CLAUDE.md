@@ -13,7 +13,8 @@ Strona salonu prowadzonego przez siostrę właściciela repo (Julia Majewska). P
   - `testimonials.ts` – screeny opinii, `certificates.ts` – certyfikaty (dwa pierwsze duże).
   - Teksty mają pola `{ pl, en }`. Zdjęcia: `public/images/featured|offer|testimonials|certificates/`. Pliki w `src/lib` tylko mapują te dane dla komponentów.
 - `npm run dev` / `npm run build`. Przed oboma automatycznie uruchamia się `npm run portfolio` (lista zdjęć portfolio, patrz niżej).
-- Domena: `NEXT_PUBLIC_SITE_URL`. Na razie tymczasowa `https://jm-studio.example` w `src/lib/seo.ts`. **Przed publikacją trzeba ją ustawić.**
+- Domena: `NEXT_PUBLIC_SITE_URL`. Na razie tymczasowa `https://jm-studio.example` w `src/lib/seo.ts`. **Przed publikacją trzeba ją ustawić.** Bez tej zmiennej strona ma `noindex`, a `robots.txt` blokuje roboty (wersja testowa nie trafia do Google).
+- Hosting: **Netlify** (darmowy plan, `netlify.toml`). Każdy push na `main` = wdrożenie produkcyjne za 15 kredytów z 300 miesięcznie, więc zmiany warto łączyć w większe pushe. Zmiana samego `CLAUDE.md`/`README.md` nie uruchamia wdrożenia.
 
 ## Struktura
 

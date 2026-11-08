@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import HeaderComponent from "./components/HeaderComponent/page";
 import FooterComponent from "./components/FooterComponent/page";
 import HtmlLang from "./components/HtmlLang";
-import { SITE_NAME, SITE_URL, businessJsonLd } from "@/lib/seo";
+import { SITE_NAME, SITE_URL, SITE_URL_CONFIGURED, businessJsonLd } from "@/lib/seo";
 
 import { Inter, Dancing_Script, Quicksand } from "next/font/google";
 
@@ -29,6 +29,8 @@ const quicksand = Quicksand({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  // Bez prawdziwej domeny (wersja testowa) strona nie jest indeksowana.
+  robots: SITE_URL_CONFIGURED ? undefined : { index: false, follow: false },
   title: {
     default: "JM Studio – medycyna estetyczna Lublin i Zamość",
     template: `%s | ${SITE_NAME}`,
